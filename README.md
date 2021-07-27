@@ -1,5 +1,8 @@
-LuaSTG Editor Sharp
+LuaSTG Editor Sharp X
 ====
+
+This is a clone of the [LuaSTG Editor Sharp](https://github.com/czh098tom/LuaSTG-Editor-Sharp) repository with making more features that are compatible with LuaSTG-x.
+
 
 LuaSTG Editor Sharp is a unoffical LuaSTG Editor.
 Aim of the LuaSTG Editor Sharp is to develop a user-friendly, high extensive editor with higher effciency.
