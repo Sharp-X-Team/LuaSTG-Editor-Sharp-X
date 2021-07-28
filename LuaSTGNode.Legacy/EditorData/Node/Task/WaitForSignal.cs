@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace LuaSTGEditorSharp.EditorData.Node.Task
 {
 
-    [Serializable, NodeIcon("taskwait.png")]
+    [Serializable, NodeIcon("taskwaitfor.png")]
     [RequireAncestor(typeof(TaskAlikeTypes))]
     [LeafNode]
     public class WaitForSignal : TreeNode

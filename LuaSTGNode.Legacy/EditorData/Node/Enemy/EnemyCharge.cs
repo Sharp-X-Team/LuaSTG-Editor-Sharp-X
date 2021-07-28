@@ -19,29 +19,71 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         [JsonConstructor]
         public EnemyCharge() : base() { }
 
-        public EnemyCharge(DocumentData workSpaceData) : this(workSpaceData, "self.x,self.y") { }
+        public EnemyCharge(DocumentData workSpaceData) : this(workSpaceData, "self.x,self.y", "360", "255,0,0", "60", "2", "false") { }
 
-        public EnemyCharge(DocumentData workSpaceData, string pos) : base(workSpaceData)
+        public EnemyCharge(DocumentData workSpaceData, string pos, string rad, string col, string time, string _mode, string _snd) : base(workSpaceData)
         {
             Position = pos;
+            Radius = rad;
+            Color = col;
+            Time = time;
+            Mode = _mode;
+            Mute = _snd;
         }
 
         [JsonIgnore, NodeAttribute]
         public string Position
         {
-            get => DoubleCheckAttr(0, "position").attrInput;
-            set => DoubleCheckAttr(0, "position").attrInput = value;
+            get => DoubleCheckAttr(0, "position", "Position").attrInput;
+            set => DoubleCheckAttr(0, "position", "Position").attrInput = value;
         }
+
+        [JsonIgnore, NodeAttribute]
+        public string Radius
+        {
+            get => DoubleCheckAttr(1, name: "Radius").attrInput;
+            set => DoubleCheckAttr(1, name: "Radius").attrInput = value;
+        }
+
+        [JsonIgnore, NodeAttribute]
+        public string Color
+        {
+            get => DoubleCheckAttr(2, "RGB", "Color").attrInput;
+            set => DoubleCheckAttr(2, "RGB", "Color").attrInput = value;
+        }
+
+        [JsonIgnore, NodeAttribute]
+        public string Time
+        {
+            get => DoubleCheckAttr(3, name: "Time").attrInput;
+            set => DoubleCheckAttr(3, name: "Time").attrInput = value;
+        }
+
+        [JsonIgnore, NodeAttribute]
+        public string Mode
+        {
+            get => DoubleCheckAttr(4, name: "Mode").attrInput;
+            set => DoubleCheckAttr(4, name: "Mode").attrInput = value;
+        }
+
+        [JsonIgnore, NodeAttribute]
+        public string Mute
+        {
+            get => DoubleCheckAttr(5, "bool", "Mute").attrInput;
+            set => DoubleCheckAttr(5, "bool", "Mute").attrInput = value;
+        }
+
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "New(boss_cast_ef," + Macrolize(0) + ")\n";
+            yield return sp + "New(boss_cast_ef," + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + ")\n";
         }
 
         public override string ToString()
         {
-            return "Charge in (" + NonMacrolize(0) + ")";
+            return "Charge in (" + NonMacrolize(0) + "), with " + NonMacrolize(1) + " radius and color (" + NonMacrolize(2)
+                + ") on " + NonMacrolize(3) + " frame(s) (mode is " + NonMacrolize(4) + ", muted is " + NonMacrolize(5) + ")";
         }
 
         public override object Clone()

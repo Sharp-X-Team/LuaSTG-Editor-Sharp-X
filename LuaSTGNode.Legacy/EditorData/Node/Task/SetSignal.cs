@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace LuaSTGEditorSharp.EditorData.Node.Task
 {
 
-    [Serializable, NodeIcon("tasker.png")]
+    [Serializable, NodeIcon("signal.png")]
     [LeafNode]
     public class SetSignal : TreeNode
     {

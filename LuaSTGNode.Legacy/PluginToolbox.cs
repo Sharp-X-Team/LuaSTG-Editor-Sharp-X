@@ -101,10 +101,13 @@ namespace LuaSTGEditorSharp
             task.Add(new ToolboxItemData("smoothset", "/LuaSTGNode.Legacy;component/images/tasksetvalue.png", "Smooth set value to")
                 , new AddNode(AddSmoothSetValueNode));
             task.Add(new ToolboxItemData(true), null);
-            task.Add(new ToolboxItemData("setsignal", "/LuaSTGNode.Legacy;component/images/tasksetvalue.png", "Set Signal")
+            task.Add(new ToolboxItemData("setsignal", "/LuaSTGNode.Legacy;component/images/signal.png", "Set Signal")
                 , new AddNode(AddSetSignal));
-            task.Add(new ToolboxItemData("waitsignal", "/LuaSTGNode.Legacy;component/images/tasksetvalue.png", "Wait for Signal")
+            task.Add(new ToolboxItemData("waitsignal", "/LuaSTGNode.Legacy;component/images/taskwaitfor.png", "Wait for Signal")
                 , new AddNode(AddWaitSignal));
+            task.Add(new ToolboxItemData(true), null);
+            task.Add(new ToolboxItemData("setfps", "/LuaSTGNode.Legacy;component/images/setfps.png", "Set FPS")
+                , new AddNode(AddSetFPS));
             #endregion
             ToolInfo.Add("Task", task);
             
@@ -145,6 +148,8 @@ namespace LuaSTGEditorSharp
             boss.Add(new ToolboxItemData("sentence", "/LuaSTGNode.Legacy;component/images/sentence.png", "Sentence")
                 , new AddNode(AddSentenceNode));
             boss.Add(new ToolboxItemData(true), null);
+            boss.Add(new ToolboxItemData("chargeball", "/LuaSTGNode.Legacy;component/images/chargeball.png", "Make chargeball")
+                , new AddNode(AddChargeballNode));
             boss.Add(new ToolboxItemData("bosscast", "/LuaSTGNode.Legacy;component/images/bosscast.png", "Play cast animation")
                 , new AddNode(AddBossCastNode));
             boss.Add(new ToolboxItemData("bossexplode", "/LuaSTGNode.Legacy;component/images/bossexplode.png", "Boss Explode")
@@ -233,6 +238,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddDelNode));
             obj.Add(new ToolboxItemData("kill", "/LuaSTGNode.Legacy;component/images/unitkill.png", "Kill Unit")
                 , new AddNode(AddKillNode));
+            obj.Add(new ToolboxItemData("preserve", "/LuaSTGNode.Legacy;component/images/unitpreserve.png", "Preserve Unit")
+                , new AddNode(AddPreserveNode));
             obj.Add(new ToolboxItemData(true), null);
             obj.Add(new ToolboxItemData("setimage", "/LuaSTGNode.Legacy;component/images/objectsetimg.png", "Set Image")
                 , new AddNode(AddSetObjectImageNode));
@@ -268,6 +275,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddLoadAnimationNode));
             graphics.Add(new ToolboxItemData("loadfx", "/LuaSTGNode.Legacy;component/images/loadFX.png", "Load FX")
                 , new AddNode(AddLoadFXNode));
+            graphics.Add(new ToolboxItemData("loadtexture", "/LuaSTGNode.Legacy;component/images/loadtexture.png", "Load Texture")
+                , new AddNode(AddLoadTextureNode));
             #endregion
             ToolInfo.Add("Graphics", graphics);
 
@@ -288,6 +297,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddResumeBGMNode));
             audio.Add(new ToolboxItemData("stopbgm", "/LuaSTGNode.Legacy;component/images/stopbgm.png", "Stop Background Music")
                 , new AddNode(AddStopBGMNode));
+            audio.Add(new ToolboxItemData("setpace", "/LuaSTGNode.Legacy;component/images/setpace.png", "Set Music Pace")
+                , new AddNode(AddSetPaceNode));
             #endregion
             ToolInfo.Add("Audio", audio);
 
@@ -475,6 +486,11 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new WaitForSignal(parent.ActivatedWorkSpaceData));
         }
+
+        private void AddSetFPS()
+        {
+            parent.Insert(new SetFPS(parent.ActivatedWorkSpaceData));
+        }
         #endregion
 
         private void AddAdvancedRepeatWithWait()
@@ -584,6 +600,11 @@ namespace LuaSTGEditorSharp
         private void AddBossCastNode()
         {
             parent.Insert(new BossCast(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddChargeballNode()
+        {
+            parent.Insert(new Chargeball(parent.ActivatedWorkSpaceData));
         }
 
         private void AddBossExplodeNode()
@@ -763,6 +784,11 @@ namespace LuaSTGEditorSharp
             parent.Insert(new Kill(parent.ActivatedWorkSpaceData));
         }
 
+        private void AddPreserveNode()
+        {
+            parent.Insert(new UnitPreserve(parent.ActivatedWorkSpaceData));
+        }
+
         private void AddSetObjectImageNode()
         {
             parent.Insert(new SetObjectImage(parent.ActivatedWorkSpaceData));
@@ -823,6 +849,11 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new LoadFX(parent.ActivatedWorkSpaceData));
         }
+
+        private void AddLoadTextureNode()
+        {
+            parent.Insert(new LoadTexture(parent.ActivatedWorkSpaceData));
+        }
         #endregion
         #region audio
         private void AddLoadSENode()
@@ -858,6 +889,11 @@ namespace LuaSTGEditorSharp
         private void AddStopBGMNode()
         {
             parent.Insert(new StopBGM(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetPaceNode()
+        {
+            parent.Insert(new SetPace(parent.ActivatedWorkSpaceData));
         }
         #endregion
         #region render

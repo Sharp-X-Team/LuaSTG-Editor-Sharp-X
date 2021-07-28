@@ -78,9 +78,11 @@
     <Compile Include="EditorData\Document\Meta\StageGroupDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\TaskDefineMetaInfo.cs" />
     <Compile Include="EditorData\Node\Audio\PauseBGM.cs" />
+    <Compile Include="EditorData\Node\Audio\SetPace.cs" />
     <Compile Include="EditorData\Node\Audio\ResumeBGM.cs" />
     <Compile Include="EditorData\Node\Audio\StopBGM.cs" />
     <Compile Include="EditorData\Node\Boss\BossAura.cs" />
+    <Compile Include="EditorData\Node\Boss\Chargeball.cs" />
     <Compile Include="EditorData\Node\Boss\BossMoveTo.cs" />
     <Compile Include="EditorData\Node\Boss\BossSCBeforeFinish.cs" />
     <Compile Include="EditorData\Node\Boss\BossSCAfter.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="EditorData\Node\Graphics\LoadAnimation.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadFX.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadParticle.cs" />
+    <Compile Include="EditorData\Node\Graphics\LoadTexture.cs" />
     <Compile Include="EditorData\Node\ICallBackFunc.cs" />
     <Compile Include="EditorData\Message\ArgCountInfo.cs" />
     <Compile Include="EditorData\Message\CannotFindAncestorTypeOf.cs" />
@@ -152,6 +155,7 @@
     <Compile Include="EditorData\Node\Object\CreateObject.cs" />
     <Compile Include="EditorData\Node\Object\DropItem.cs" />
     <Compile Include="EditorData\Node\Object\GroupForEach.cs" />
+    <Compile Include="EditorData\Node\Object\PreserveObject.cs" />
     <Compile Include="EditorData\Node\Object\MakeSmear.cs" />
     <Compile Include="EditorData\Node\Object\ObjectDefine.cs" />
     <Compile Include="EditorData\Node\Object\ObjectInit.cs" />
@@ -196,6 +200,7 @@
     <Compile Include="EditorData\Node\Task\TaskMoveToCurve.cs" />
     <Compile Include="EditorData\Node\Task\TaskForObject.cs" />
     <Compile Include="EditorData\Node\Task\TaskNode.cs" />
+    <Compile Include="EditorData\Node\Task\SetFPS.cs" />
     <Compile Include="EditorData\Node\Task\TaskWait.cs" />
     <Compile Include="EditorData\Node\CodeAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Task\WaitForSignal.cs" />
@@ -1712,6 +1717,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\taskforobject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\unitpreserve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\unitpreserve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\chargeball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\chargeball.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
