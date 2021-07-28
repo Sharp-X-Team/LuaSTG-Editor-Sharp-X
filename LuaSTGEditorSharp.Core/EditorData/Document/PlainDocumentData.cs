@@ -113,7 +113,7 @@ namespace LuaSTGEditorSharp.EditorData.Document
                 {
                     c.currentTempPath = mainAppWithInfo.TempPath;
                 }
-                c.projLuaPath = c.currentTempPath + "_editor_output.lua";
+                c.projLuaPath = c.currentTempPath + mainAppWithInfo.EditorOutputName;
 
                 c.projMetaPath = DocPath + ".meta";
             }
@@ -145,7 +145,7 @@ namespace LuaSTGEditorSharp.EditorData.Document
             if (!string.IsNullOrEmpty(DocPath))
                 c.projPath = Path.GetDirectoryName(DocPath);
 
-            c.rootCode = "Include\'THlib.lua\'\nInclude\'_editor_output.lua\'";
+            c.rootCode = "Include\'THlib.lua\'\nInclude\'" + mainAppWithInfo.EditorOutputName + "\'";
 
             c.zipExePath = mainAppWithInfo.ZipExecutablePath;
             c.luaSTGExePath = mainAppWithInfo.LuaSTGExecutablePath;

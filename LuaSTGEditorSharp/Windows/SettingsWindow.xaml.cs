@@ -52,6 +52,17 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private string editorOutputName;
+        public string EditorOutputName
+        {
+            get => editorOutputName;
+            set
+            {
+                editorOutputName = value;
+                RaiseProertyChanged("LuaSTGExecutablePath");
+            }
+        }
+
         private string tempPath;
         public string TempPath
         {
@@ -294,6 +305,11 @@ namespace LuaSTGEditorSharp.Windows
             get => mainApp.ZipExecutablePath;
             set => mainApp.ZipExecutablePath = value;
         }
+        public string EditorOutputNameSettings
+        {
+            get => mainApp.EditorOutputName;
+            set => mainApp.EditorOutputName = value;
+        }
 
         public string LuaSTGExecutablePathSettings
         {
@@ -420,6 +436,7 @@ namespace LuaSTGEditorSharp.Windows
             PluginPathSettings = PluginPath;
             TempPathSettings = TempPath;
             ZipExecutablePathSettings = ZipExecutablePath;
+            EditorOutputNameSettings = EditorOutputName;
             SpaceIndentationSettings = SpaceIndentation;
             IndentationSpaceLengthSettings = IndentationSpaceLength;
         }
@@ -441,6 +458,7 @@ namespace LuaSTGEditorSharp.Windows
             PluginPath = PluginPathSettings;
             TempPath = TempPathSettings;
             ZipExecutablePath = ZipExecutablePathSettings;
+            EditorOutputName = EditorOutputNameSettings;
             SpaceIndentation = SpaceIndentationSettings;
             IndentationSpaceLength = IndentationSpaceLengthSettings;
         }

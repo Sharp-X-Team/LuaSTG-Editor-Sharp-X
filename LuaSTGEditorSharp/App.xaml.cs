@@ -151,6 +151,15 @@ namespace LuaSTGEditorSharp
                 RaiseProertyChanged("LuaSTGExecuteablePath");
             }
         }
+        public string EditorOutputName
+        {
+            get => Settings.Default.EditorOutputName;
+            set
+            {
+                Settings.Default["EditorOutputName"] = value;
+                //RaiseProertyChanged("EditorOutputName");
+            }
+        }
 
         public int DebugResolutionX
         {

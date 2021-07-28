@@ -469,11 +469,11 @@ namespace LuaSTGEditorSharp
 
         private void AddSetSignal()
         {
-            parent.Insert(new Signal(parent.ActivatedWorkSpaceData));
+            parent.Insert(new SetSignal(parent.ActivatedWorkSpaceData));
         }
         private void AddWaitSignal()
         {
-            parent.Insert(new Signal(parent.ActivatedWorkSpaceData));
+            parent.Insert(new WaitForSignal(parent.ActivatedWorkSpaceData));
         }
         #endregion
 

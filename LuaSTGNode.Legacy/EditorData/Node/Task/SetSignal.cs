@@ -12,17 +12,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 {
 
     [Serializable, NodeIcon("tasker.png")]
-    //[RequireAncestor(typeof(CodeAlikeTypes))]
-    public class Signal : TreeNode
+    [LeafNode]
+    public class SetSignal : TreeNode
     {
         [JsonConstructor]
-        private Signal() : base() { }
+        private SetSignal() : base() { }
 
-        public Signal(DocumentData workSpaceData)
+        public SetSignal(DocumentData workSpaceData)
             : this(workSpaceData, "Name", "Value")
         { }
 
-        public Signal(DocumentData workSpaceData, string signalname, string signalvalue)
+        public SetSignal(DocumentData workSpaceData, string signalname, string signalvalue)
             : base(workSpaceData)
         {
             SignalName = signalname;
@@ -46,7 +46,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "ex.SetSignal(" + Macrolize(0) + "," + Macrolize(1) + ")\n";
+            string sig_name = "\"" + Lua.StringParser.ParseLua(NonMacrolize(0)) + "\"";
+            yield return sp + "ex.SetSignal(" + sig_name + "," + Macrolize(1) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

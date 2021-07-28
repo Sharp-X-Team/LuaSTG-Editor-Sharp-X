@@ -12,7 +12,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 {
 
     [Serializable, NodeIcon("taskwait.png")]
-    //[RequireAncestor(typeof(CodeAlikeTypes))]
+    [RequireAncestor(typeof(TaskAlikeTypes))]
+    [LeafNode]
     public class WaitForSignal : TreeNode
     {
         [JsonConstructor]
@@ -32,7 +33,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         [JsonIgnore, NodeAttribute]
         public string SignalName
         {
-            get => DoubleCheckAttr(0, name: "Signal Name").attrInput;
+            get => DoubleCheckAttr(0,"Signal Name").attrInput;
             set => DoubleCheckAttr(0, name: "Signal Name").attrInput = value;
         }
 
@@ -46,7 +47,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "ex.WaitForSignal(" + Macrolize(0) + "," + Macrolize(1) + ")\n";
+            string sig_name = "\"" + Lua.StringParser.ParseLua(NonMacrolize(0)) + "\"";
+            yield return sp + "ex.WaitForSignal(" + sig_name + "," + Macrolize(1) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

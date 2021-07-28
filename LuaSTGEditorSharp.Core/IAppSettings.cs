@@ -10,6 +10,8 @@ namespace LuaSTGEditorSharp
     {
         string ZipExecutablePath { get; }
         string LuaSTGExecutablePath { get; }
+        
+        string EditorOutputName { get; }
 
         bool IsEXEPathSet { get; }
 

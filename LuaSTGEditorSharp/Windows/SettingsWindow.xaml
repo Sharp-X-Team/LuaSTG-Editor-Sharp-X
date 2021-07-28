@@ -50,22 +50,29 @@
                               IsChecked="{Binding PackProj, ElementName=window}"/>
                     <CheckBox Content="Use MD5 resource check in packing" HorizontalAlignment="Left" Height="26" Margin="10,251,0,0" VerticalAlignment="Top" Width="250" 
                               IsChecked="{Binding MD5Check, ElementName=window}"/>
+                    <Label Content="Editor Output File Name" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="178,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                             Text="{Binding EditorOutputName, ElementName=window}"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="DebugTab" Header="Debug">
                 <Grid>
-                    <Label Content="Resolution" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="75*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Resolution" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" Grid.ColumnSpan="2"/>
                     <ComboBox Text="{Binding CombinedResolution, ElementName=window}" IsEditable="True"
-                              HorizontalAlignment="Left" Height="26" Margin="99,10,0,0" VerticalAlignment="Top" Width="161">
+                              HorizontalAlignment="Left" Height="26" Margin="10.9,10,0,0" VerticalAlignment="Top" Width="161" Grid.Column="1">
                         <ComboBoxItem Content="640x480"/>
                         <ComboBoxItem Content="960x720"/>
                         <ComboBoxItem Content="1280x960"/>
                     </ComboBox>
-                    <CheckBox Content="Windowed" HorizontalAlignment="Left" Height="26" Margin="10,41,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding DebugWindowed, ElementName=window}"/>
-                    <CheckBox Content="Cheat" HorizontalAlignment="Left" Height="26" Margin="10,72,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding DebugCheat, ElementName=window}"/>
+                    <CheckBox Content="Windowed" HorizontalAlignment="Left" Height="26" Margin="10,41,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding DebugWindowed, ElementName=window}" Grid.ColumnSpan="2"/>
+                    <CheckBox Content="Cheat" HorizontalAlignment="Left" Height="26" Margin="10,72,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding DebugCheat, ElementName=window}" Grid.ColumnSpan="2"/>
                     <CheckBox Content="Dynamic debug reporting (unstable)" 
                               HorizontalAlignment="Left" Height="26" Margin="10,103,0,0" VerticalAlignment="Top" Width="250" 
-                              IsChecked="{Binding DynamicDebugReporting, ElementName=window}"/>
+                              IsChecked="{Binding DynamicDebugReporting, ElementName=window}" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="EditorTab" Header="Editor">
