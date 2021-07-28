@@ -183,6 +183,7 @@
     <Compile Include="EditorData\Node\Stage\StageGroupFinish.cs" />
     <Compile Include="EditorData\Node\TaskTypes.cs" />
     <Compile Include="EditorData\Node\TaskAlikeTypes.cs" />
+    <Compile Include="EditorData\Node\Task\Signal.cs" />
     <Compile Include="EditorData\Node\Task\TaskClear.cs" />
     <Compile Include="EditorData\Node\Task\TaskFinish.cs" />
     <Compile Include="EditorData\Node\Task\SmoothSetValueTo.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="EditorData\Node\Task\TaskNode.cs" />
     <Compile Include="EditorData\Node\Task\TaskWait.cs" />
     <Compile Include="EditorData\Node\CodeAlikeTypes.cs" />
+    <Compile Include="EditorData\Node\Task\WaitForSignal.cs" />
     <Compile Include="PluginToolbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NodesConfig.cs" />

@@ -10,9 +10,7 @@
 4,{"$type":".Boss.BossSCStart, ","Attributes":[]}
 5,{"$type":".Task.TaskNode, ","Attributes":[]}
 6,{"$type":".Task.TaskMoveTo, ","Attributes":[{"attrCap":"Destination","attrInput":"0,120","EditWindow":"position"},{"attrCap":"Frame","attrInput":"60","EditWindow":""},{"attrCap":"Mode","attrInput":"MOVE_NORMAL","EditWindow":"interpolation"}],"AttributeCount":3}
-4,{"$type":".Boss.BossSCBeforeFinish, ","Attributes":[]}
 4,{"$type":".Boss.BossSCFinish, ","Attributes":[]}
-4,{"$type":".Boss.BossSCAfter, ","Attributes":[]}
 2,{"$type":".Stage.StageGroup, ","Attributes":[{"attrCap":"Name","attrInput":"SpellCard","EditWindow":"stageGroup"},{"attrCap":"Start life","attrInput":"7","EditWindow":""},{"attrCap":"Start power","attrInput":"400","EditWindow":""},{"attrCap":"Start faith","attrInput":"50000","EditWindow":""},{"attrCap":"Start bomb","attrInput":"3","EditWindow":""},{"attrCap":"Allow practice","attrInput":"true","EditWindow":"bool"},{"attrCap":"Difficulty value","attrInput":"1","EditWindow":"difficulty"}],"IsExpanded":false,"AttributeCount":7}
 3,{"$type":".Stage.Stage, ","Attributes":[{"attrCap":"Name","attrInput":"SpellCard","EditWindow":""},{"attrCap":"Start life (practice)","attrInput":"7","EditWindow":""},{"attrCap":"Start power (practice)","attrInput":"400","EditWindow":""},{"attrCap":"Start faith (practice)","attrInput":"50000","EditWindow":""},{"attrCap":"Start bomb (practice)","attrInput":"3","EditWindow":""},{"attrCap":"Allow practice","attrInput":"true","EditWindow":"bool"}],"AttributeCount":6}
 4,{"$type":".Task.TaskNode, ","Attributes":[]}

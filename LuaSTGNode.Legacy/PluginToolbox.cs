@@ -100,6 +100,11 @@ namespace LuaSTGEditorSharp
             task.Add(new ToolboxItemData(true), null);
             task.Add(new ToolboxItemData("smoothset", "/LuaSTGNode.Legacy;component/images/tasksetvalue.png", "Smooth set value to")
                 , new AddNode(AddSmoothSetValueNode));
+            task.Add(new ToolboxItemData(true), null);
+            task.Add(new ToolboxItemData("setsignal", "/LuaSTGNode.Legacy;component/images/tasksetvalue.png", "Set Signal")
+                , new AddNode(AddSetSignal));
+            task.Add(new ToolboxItemData("waitsignal", "/LuaSTGNode.Legacy;component/images/tasksetvalue.png", "Wait for Signal")
+                , new AddNode(AddWaitSignal));
             #endregion
             ToolInfo.Add("Task", task);
             
@@ -286,8 +291,8 @@ namespace LuaSTGEditorSharp
             #endregion
             ToolInfo.Add("Audio", audio);
 
-            var inherit = new Dictionary<ToolboxItemData, AddNode>();
-            ToolInfo.Add("Inheritance", inherit);
+            //var inherit = new Dictionary<ToolboxItemData, AddNode>();
+            //ToolInfo.Add("Inheritance", inherit);
 
             var render = new Dictionary<ToolboxItemData, AddNode>();
             #region render
@@ -308,11 +313,11 @@ namespace LuaSTGEditorSharp
             #endregion
             ToolInfo.Add("Render", render);
 
-            var background = new Dictionary<ToolboxItemData, AddNode>();
-            ToolInfo.Add("Background", background);
+            //var background = new Dictionary<ToolboxItemData, AddNode>();
+            //ToolInfo.Add("Background", background);
 
-            var player = new Dictionary<ToolboxItemData, AddNode>();
-            ToolInfo.Add("Player", player);
+            //var player = new Dictionary<ToolboxItemData, AddNode>();
+            //ToolInfo.Add("Player", player);
         }
         
         #region data
@@ -461,6 +466,15 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new SmoothSetValueTo(parent.ActivatedWorkSpaceData));
         }
+
+        private void AddSetSignal()
+        {
+            parent.Insert(new Signal(parent.ActivatedWorkSpaceData));
+        }
+        private void AddWaitSignal()
+        {
+            parent.Insert(new Signal(parent.ActivatedWorkSpaceData));
+        }
         #endregion
 
         private void AddAdvancedRepeatWithWait()
@@ -508,15 +522,15 @@ namespace LuaSTGEditorSharp
             TreeNode newSCBeforeStart = new BossSCBeforeStart(parent.ActivatedWorkSpaceData);
             TreeNode newSCStart = new BossSCStart(parent.ActivatedWorkSpaceData);
             TreeNode newTask = new TaskNode(parent.ActivatedWorkSpaceData);
-            TreeNode newSCBeforeFinish = new BossSCBeforeFinish(parent.ActivatedWorkSpaceData);
-            TreeNode newSCAfter = new BossSCAfter(parent.ActivatedWorkSpaceData);
+            //TreeNode newSCBeforeFinish = new BossSCBeforeFinish(parent.ActivatedWorkSpaceData);
+            //TreeNode newSCAfter = new BossSCAfter(parent.ActivatedWorkSpaceData);
             newSCStart.AddChild(newTask);
             newTask.AddChild(new TaskMoveTo(parent.ActivatedWorkSpaceData, "0,120", "60", "MOVE_NORMAL"));
             newSC.AddChild(newSCBeforeStart);
             newSC.AddChild(newSCStart);
-            newSC.AddChild(newSCBeforeFinish);
+            //newSC.AddChild(newSCBeforeFinish);
             newSC.AddChild(new BossSCFinish(parent.ActivatedWorkSpaceData));
-            newSC.AddChild(newSCAfter);
+            //newSC.AddChild(newSCAfter);
             newDef.AddChild(init);
             newDef.AddChild(newSC);
             parent.Insert(newDef);
@@ -528,15 +542,15 @@ namespace LuaSTGEditorSharp
             TreeNode newSCBeforeStart = new BossSCBeforeStart(parent.ActivatedWorkSpaceData);
             TreeNode newSCStart = new BossSCStart(parent.ActivatedWorkSpaceData);
             TreeNode newTask = new TaskNode(parent.ActivatedWorkSpaceData);
-            TreeNode newSCBeforeFinish = new BossSCBeforeFinish(parent.ActivatedWorkSpaceData);
-            TreeNode newSCAfter = new BossSCAfter(parent.ActivatedWorkSpaceData);
+            //TreeNode newSCBeforeFinish = new BossSCBeforeFinish(parent.ActivatedWorkSpaceData);
+            //TreeNode newSCAfter = new BossSCAfter(parent.ActivatedWorkSpaceData);
             newSCStart.AddChild(newTask);
             newTask.AddChild(new TaskMoveTo(parent.ActivatedWorkSpaceData, "0,120", "60", "MOVE_NORMAL"));
             newSC.AddChild(newSCBeforeStart);
             newSC.AddChild(newSCStart);
-            newSC.AddChild(newSCBeforeFinish);
+            //newSC.AddChild(newSCBeforeFinish);
             newSC.AddChild(new BossSCFinish(parent.ActivatedWorkSpaceData));
-            newSC.AddChild(newSCAfter);
+            //newSC.AddChild(newSCAfter);
             parent.Insert(newSC);
         }
 
