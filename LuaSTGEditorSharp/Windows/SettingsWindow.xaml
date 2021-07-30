@@ -22,6 +22,7 @@
                     <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="103"/>
                     <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="118,80,0,0" VerticalAlignment="Top" Width="561" Height="26"/>
                     <Button Content="Register Extension" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click"/>
+                    <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,169,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="CompilerTab" Header="Compiler">

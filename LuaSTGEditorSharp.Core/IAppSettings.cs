@@ -8,6 +8,7 @@ namespace LuaSTGEditorSharp
 {
     public interface IAppSettings
     {
+        bool IgnoreTHLibWarn { get; }
         string ZipExecutablePath { get; }
         string LuaSTGExecutablePath { get; }
         

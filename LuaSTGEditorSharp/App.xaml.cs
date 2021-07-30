@@ -131,6 +131,14 @@ namespace LuaSTGEditorSharp
         {
             (MainWindow as MainWindow).OpenDocByFile(arg);
         }
+        public bool IgnoreTHLibWarn
+        {
+            get => Settings.Default.IgnoreTHLibWarn;
+            set
+            {
+                Settings.Default["IgnoreTHLibWarn"] = value;
+            }
+        }
 
         public string ZipExecutablePath
         {

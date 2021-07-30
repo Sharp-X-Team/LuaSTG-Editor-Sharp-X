@@ -480,11 +480,11 @@ namespace LuaSTGEditorSharp
 
         private void AddSetSignal()
         {
-            parent.Insert(new SetSignal(parent.ActivatedWorkSpaceData));
+            parent.Insert(new SetSignal(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
         }
         private void AddWaitSignal()
         {
-            parent.Insert(new WaitForSignal(parent.ActivatedWorkSpaceData));
+            parent.Insert(new WaitForSignal(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
         }
 
         private void AddSetFPS()

@@ -57,6 +57,33 @@ namespace LuaSTGEditorSharp
                 MessageBox.Show(e.ToString());
             }
         }
+        public void Insert(TreeNode node, bool isInvoke, string rightVer)
+        {
+            try
+            {
+                if (selectedNode == null || selectedNode.Parent == null) return;
+                TreeNode oldSelection = selectedNode;
+                App curApp = Application.Current as App;
+                bool move = curApp.AutoMoveToNew;
+                bool showWindow = !curApp.IgnoreTHLibWarn;
+                showWindow = showWindow & (rightVer != PluginHandler.Plugin.TargetLSTGVersion);
+                Command c = insertState.ValidateAndNewInsert(selectedNode, node);
+                if (ActivatedWorkSpaceData.AddAndExecuteCommand(c))
+                {
+                    if (showWindow) MessageBox.Show("This node is not supported by the current THLib.");
+                    if (move) Reveal(node);
+                    if (isInvoke)
+                    {
+                        node.CheckMessage(null, new System.ComponentModel.PropertyChangedEventArgs(""));
+                        CreateInvoke(node);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

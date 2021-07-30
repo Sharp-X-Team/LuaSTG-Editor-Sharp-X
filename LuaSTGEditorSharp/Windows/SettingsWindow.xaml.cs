@@ -30,6 +30,18 @@ namespace LuaSTGEditorSharp.Windows
         static readonly int[] resY = { 480, 720, 960 };
         readonly ObservableCollection<string> pluginPaths = new ObservableCollection<string>();
 
+
+        private bool ignoreTHLibWarn;
+        public bool IgnoreTHLibWarn
+        {
+            get => ignoreTHLibWarn;
+            set
+            {
+                ignoreTHLibWarn = value;
+                RaiseProertyChanged("IgnoreTHLibWarn");
+            }
+        }
+
         private string zipExecutablePath;
         public string ZipExecutablePath
         {
@@ -300,6 +312,12 @@ namespace LuaSTGEditorSharp.Windows
         }
 
         #region InSettings
+
+        public bool IgnoreTHLibWarnSettings
+        {
+            get => mainApp.IgnoreTHLibWarn;
+            set => mainApp.IgnoreTHLibWarn = value;
+        }
         public string ZipExecutablePathSettings
         {
             get => mainApp.ZipExecutablePath;
@@ -421,6 +439,7 @@ namespace LuaSTGEditorSharp.Windows
 
         private void WriteSettings()
         {
+            IgnoreTHLibWarnSettings = IgnoreTHLibWarn;
             AuthorNameSettings = AuthorName;
             AutoMoveToNewSettings = AutoMoveToNew;
             BatchPackingSettings = BatchPacking;
@@ -443,6 +462,7 @@ namespace LuaSTGEditorSharp.Windows
 
         private void ReadSettings()
         {
+            IgnoreTHLibWarn = IgnoreTHLibWarnSettings;
             AuthorName = AuthorNameSettings;
             AutoMoveToNew = AutoMoveToNewSettings;
             BatchPacking = BatchPackingSettings;

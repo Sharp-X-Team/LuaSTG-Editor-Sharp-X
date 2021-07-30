@@ -11,6 +11,7 @@ namespace LuaSTGEditorSharp
     public interface IMainWindow
     {
         void Insert(TreeNode t, bool isInvoke = true);
+        void Insert(TreeNode t, bool isInvoke, string rightVer);
         void Reveal(TreeNode t);
         DocumentData ActivatedWorkSpaceData { get; }
     }

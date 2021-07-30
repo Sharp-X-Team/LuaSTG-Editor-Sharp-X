@@ -25,6 +25,18 @@ namespace LuaSTGEditorSharp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IgnoreTHLibWarn {
+            get {
+                return ((bool)(this["IgnoreTHLibWarn"]));
+            }
+            set {
+                this["IgnoreTHLibWarn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ZipExecutablePath {
             get {
