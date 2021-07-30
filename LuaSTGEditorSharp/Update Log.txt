@@ -8,6 +8,7 @@ v0.71.1:
 -Groundwork done on the help/about menu (help wanted)
 -Changed target engine text to make it independent of LuaSTG version
 -Added a warning when you try using ExPlus-originally-exclusive nodes on a version that isn't ExPlus (you can disable this warning in the settings)
+-Added more resolution options when debugging
 
 v0.70.1:
 -Added extra parameters to the charge enemy node (enemy tab)

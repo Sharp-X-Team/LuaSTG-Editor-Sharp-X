@@ -66,7 +66,9 @@
                     <ComboBox Text="{Binding CombinedResolution, ElementName=window}" IsEditable="True"
                               HorizontalAlignment="Left" Height="26" Margin="10.9,10,0,0" VerticalAlignment="Top" Width="161" Grid.Column="1">
                         <ComboBoxItem Content="640x480"/>
+                        <ComboBoxItem Content="800x600"/>
                         <ComboBoxItem Content="960x720"/>
+                        <ComboBoxItem Content="1024x768"/>
                         <ComboBoxItem Content="1280x960"/>
                     </ComboBox>
                     <CheckBox Content="Windowed" HorizontalAlignment="Left" Height="26" Margin="10,41,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding DebugWindowed, ElementName=window}" Grid.ColumnSpan="2"/>
