@@ -5,19 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
         mc:Ignorable="d"
-        Title="About Node" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Help Window" Height="450" Width="800" ResizeMode="NoResize" OpacityMask="#FF7C5353" BorderBrush="#FF340202" Background="White">
     <Grid>
-        <ListBox HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Width="292" Margin="10,10,0,0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image VerticalAlignment="Center" Source="{Binding Icon}"
-                                                Stretch="Fill" Width="16" Height="16" Margin="0,0,2,2"/>
-                        <TextBlock VerticalAlignment="Center" Text="{Binding ScreenString}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
+        <Button x:Name="button1" Content="About" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="292" Height="30" Click="Button_Click"/>
+        <Button x:Name="button2" Content="General" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="292" Height="28" Click="Button_Click2"/>
+        <Image x:Name="splashabout" HorizontalAlignment="Left" Height="224" Margin="183,30,0,0" VerticalAlignment="Top" Width="291" Source="SplashScreen.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="45"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="65"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TextBox HorizontalAlignment="Left" Height="214" Margin="316,10,0,0" TextWrapping="Wrap" Text="General tab&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;This is a work in progress, but I have no idea what I'm doing" VerticalAlignment="Top" Width="468" IsEnabled="{Binding IsFocused, ElementName=button2, Mode=OneWay}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" TextChanged="TextBox_TextChanged"/>
+        <Button x:Name="button3" Content="Advanced" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="292" Height="28" Click="Button_Click2"/>
+        <TextBox HorizontalAlignment="Left" Height="214" Margin="316,10,0,0" TextWrapping="Wrap" Text="Advanced tab&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;I still don't know what I'm doing" VerticalAlignment="Top" Width="468" IsEnabled="{Binding IsFocused, ElementName=button3, Mode=OneWay}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="White" TextChanged="TextBox_TextChanged"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="238,284,0,0" VerticalAlignment="Top" Width="100" OpacityMask="#FFD36B6B" Source="SplashScreen.png"/>
+        <Menu HorizontalAlignment="Left" Height="100" Margin="47,249,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

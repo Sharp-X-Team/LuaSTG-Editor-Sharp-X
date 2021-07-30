@@ -125,7 +125,7 @@ namespace LuaSTGEditorSharp
             if (DocumentToRemove.IsUnsaved)
             {
                 switch (MessageBox.Show("Do you want to save \"" + DocumentToRemove.RawDocName 
-                    + "\"? ", "LuaSTG Editor Sharp", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
+                    + "\"? ", "LuaSTG Editor Sharp X", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
                 {
                     case MessageBoxResult.Yes:
                         if(SaveDoc(DocumentToRemove))
@@ -231,7 +231,7 @@ namespace LuaSTGEditorSharp
             {
                 MessageBox.Show("Failed to open document. Please check whether the targeted file is in current version.\n"
                     + e.ToString()
-                    , "LuaSTG Editor Sharp", MessageBoxButton.OK, MessageBoxImage.Error);
+                    , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -281,7 +281,7 @@ namespace LuaSTGEditorSharp
             {
                 MessageBox.Show("Failed to open document or fix attribute. Please check whether the targeted file is in current version.\n"
                     + e.ToString()
-                    , "LuaSTG Editor Sharp", MessageBoxButton.OK, MessageBoxImage.Error);
+                    , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -317,7 +317,7 @@ namespace LuaSTGEditorSharp
             {
                 MessageBox.Show("Failed to open document. Please check whether the targeted file is in current version.\n"
                     + e
-                    , "LuaSTG Editor Sharp", MessageBoxButton.OK, MessageBoxImage.Error);
+                    , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -390,7 +390,7 @@ namespace LuaSTGEditorSharp
             };
             dialog.InitialDirectory = Path.GetFullPath(Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                , "LuaSTG Editor Sharp Presets"));
+                , "LuaSTG Editor Sharp X Presets"));
             string path = "";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -406,7 +406,7 @@ namespace LuaSTGEditorSharp
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Unable to write to file \"{path}\".\n{e}", "LuaSTG Editor Sharp"
+                    MessageBox.Show($"Unable to write to file \"{path}\".\n{e}", "LuaSTG Editor Sharp X"
                         , MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
@@ -484,7 +484,7 @@ namespace LuaSTGEditorSharp
             {
                 tabMessage.IsSelected = true;
                 MessageBox.Show("Errors are found in the editor. The project cannot be compiled if any error is present."
-                    , "LuaSTG Editor Sharp", MessageBoxButton.OK, MessageBoxImage.Error);
+                    , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
                 return true;
             }
             return false;

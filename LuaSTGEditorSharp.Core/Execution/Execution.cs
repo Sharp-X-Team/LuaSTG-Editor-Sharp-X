@@ -96,7 +96,7 @@ namespace LuaSTGEditorSharp.Execution
             else
             {
                 MessageBox.Show("LuaSTG is already running, please exit first."
-                    , "LuaSTG Editor Sharp", MessageBoxButton.OK, MessageBoxImage.Error);
+                    , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

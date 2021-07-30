@@ -1,4 +1,13 @@
-﻿-- Update Log（2021-07-28）
+﻿-- Update Log（2021-07-29）
+
+v0.71.1:
+-Refactored the icons and strings pertaining to LuaSTG Sharp Editor to LuaSTG Sharp Editor X
+-Expanded the bullet type window and dropdown list with previously unavailable bullets
+-Fixed crash on the Play BGM node where if you defined a specific timestamp to start playing the song the editor would close itself
+-Replaced the sampling parameter on the define bent laser on init() with the thunder parameter (bool as to if the laser graphic should be a "Raiko laser", converts to sampling 4/0)
+-Groundwork done on the help/about menu (help wanted)
+-Changed target engine text to make it independent of LuaSTG version
+-Added a warning when you try using ExPlus-originally-exclusive nodes on a version that isn't ExPlus (you can disable this warning in the settings)
 
 v0.70.1:
 -Added extra parameters to the charge enemy node (enemy tab)

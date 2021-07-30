@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
         private BentLaserInit() : base() { }
 
         public BentLaserInit(DocumentData workSpaceData)
-            : this(workSpaceData, "", "COLOR_RED", "32", "8", "4", "0") { }
+            : this(workSpaceData, "", "COLOR_RED", "32", "8", "false", "0") { }
 
         public BentLaserInit(DocumentData workSpaceData, string para, string color, string length, string width
             , string sampling, string node)
@@ -74,8 +74,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
         [JsonIgnore, NodeAttribute]
         public string Sampling
         {
-            get => DoubleCheckAttr(4).attrInput;
-            set => DoubleCheckAttr(4).attrInput = value;
+            get => DoubleCheckAttr(4, "bool", "Thunder").attrInput;
+            set => DoubleCheckAttr(4, "bool", "Thunder").attrInput = value;
         }
 
         [JsonIgnore, NodeAttribute]
@@ -87,6 +87,15 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
 
         public override IEnumerable<string> ToLua(int spacing)
         {
+            int sampling = 0;
+            if (NonMacrolize(4) == "true")
+            {
+                sampling = 0;
+            }
+            if (NonMacrolize(4) == "false")
+            {
+                sampling = 4;
+            }
             string sp = Indent(spacing);
             string s1 = Indent(1);
             TreeNode Parent = GetLogicalParent();
@@ -99,7 +108,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
             yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
                          + sp + s1 + "laser_bent.init(self," + Macrolize(1) + ",_x,_y," + Macrolize(2) + ","
-                         + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + ")\n";
+                         + Macrolize(3) + "," + sampling + "," + Macrolize(5) + ")\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;

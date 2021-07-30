@@ -16,7 +16,7 @@ namespace ExtensionRegister
             key = key.CreateSubKey("open", true);
             key.SetValue("", "&Open");
             key = key.CreateSubKey("command", true);
-            key.SetValue("", $"\"{Path.Combine(path, "LuaSTGEditorSharp.exe")}\" \"%1\"");
+            key.SetValue("", $"\"{Path.Combine(path, "LuaSTGEditorSharpX.exe")}\" \"%1\"");
 
             key = Registry.ClassesRoot.CreateSubKey("LuaSTG.Project");
             key.CreateSubKey("DefaultIcon").SetValue("", Path.Combine(path, "File.ico"));
@@ -25,7 +25,7 @@ namespace ExtensionRegister
             key = key.CreateSubKey("open", true);
             key.SetValue("", "&Open");
             key = key.CreateSubKey("command", true);
-            key.SetValue("", $"\"{Path.Combine(path, "LuaSTGEditorSharp.exe")}\" \"%1\"");
+            key.SetValue("", $"\"{Path.Combine(path, "LuaSTGEditorSharpX.exe")}\" \"%1\"");
 
             key = Registry.ClassesRoot.CreateSubKey(".lstges", true);
             key.SetValue("", "LuaSTG.File");

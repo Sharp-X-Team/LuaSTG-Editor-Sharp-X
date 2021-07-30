@@ -271,7 +271,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="SplashScreen.png" />
+    <Resource Include="SplashScreen.png" />
     <Content Include="Icon.ico" />
     <Content Include="Templates\Raw Resources &amp; Classes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

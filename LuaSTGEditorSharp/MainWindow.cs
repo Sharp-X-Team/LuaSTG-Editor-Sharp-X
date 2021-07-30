@@ -114,7 +114,7 @@ namespace LuaSTGEditorSharp
             PresetsGetList.Clear();
             string s = Path.GetFullPath(Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                , "LuaSTG Editor Sharp Presets"));
+                , "LuaSTG Editor Sharp X Presets"));
             if (!Directory.Exists(s)) Directory.CreateDirectory(s);
             GetDirInfo(new DirectoryInfo(s), PresetsGetList);
         }

@@ -19,9 +19,29 @@ namespace LuaSTGEditorSharp.Windows
     /// </summary>
     public partial class AboutNodeWindow : Window
     {
+        string Selection = "About";
         public AboutNodeWindow()
         {
             InitializeComponent();
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Selection = "About";
+        }
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            Selection = "General";
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -272,7 +272,7 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch
             {
-                System.Windows.MessageBox.Show("Unable to write to file \"" + path + "\".", "LuaSTG Editor Sharp"
+                System.Windows.MessageBox.Show("Unable to write to file \"" + path + "\".", "LuaSTG Editor Sharp X"
                     , System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                 return false;
             }

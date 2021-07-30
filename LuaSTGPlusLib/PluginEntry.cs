@@ -75,6 +75,6 @@ namespace LuaSTGEditorSharp
 
         public override PluginTool[] PluginTools => new PluginTool[] { new DanmakuRandomizer.DanmakuRandomizerPluginTool() };
 
-        public override string TargetLSTGVersion => "LuaSTG ex+ 0.83";
+        public override string TargetLSTGVersion => "LuaSTG ExPlus";
     }
 }

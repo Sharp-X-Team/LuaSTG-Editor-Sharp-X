@@ -1730,5 +1730,14 @@
   <ItemGroup>
     <Resource Include="images\chargeball.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bullet\bigstar_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bullet\smallball_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bullet\smallball_d.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

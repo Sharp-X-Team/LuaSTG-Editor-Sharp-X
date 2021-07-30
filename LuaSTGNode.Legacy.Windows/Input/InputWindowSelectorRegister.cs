@@ -60,10 +60,10 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , new string[] { "", "「」" });
             target.Add("bulletStyle"
                 , new string[] { "arrow_big", "arrow_mid", "arrow_small", "gun_bullet", "butterfly"
-                        , "square", "ball_small", "ball_mid", "ball_mid_c", "ball_big", "ball_huge"
+                        , "square", "ball_small", "ball_mid", "ball_mid_b", "ball_mid_c", "ball_mid_d", "ball_big", "ball_huge"
                         , "ball_light", "star_small", "star_big", "grain_a", "grain_b", "grain_c", "kite"
                         , "knife", "knife_b", "water_drop", "mildew", "ellipse", "heart", "money", "music"
-                        , "silence", "water_drop_dark", "ball_huge_dark", "ball_light_dark"});
+                        , "silence", "water_drop_dark", "ball_huge_dark", "ball_light_dark", "star_big_b"});
             target.Add("laserStyle"
                 , new string[] { "1", "2", "3", "4" });
             target.Add("color"

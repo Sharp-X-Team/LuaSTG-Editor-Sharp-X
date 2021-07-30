@@ -599,5 +599,8 @@
   <ItemGroup>
     <Resource Include="images\16x16\archispace.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SplashScreen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

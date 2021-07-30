@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input;assembly=LuaSTGEditorSharp.Core.Windows"
         mc:Ignorable="d"
-        Title="Bullet Style Selection" Height="678.818" Width="332.536" 
+        Title="Bullet Style Selection" Height="720.818" Width="320" 
                    Loaded="InputWindow_Loaded">
     <Window.Resources>
         <Style x:Key="SelectionImg" TargetType="Image">
@@ -64,9 +64,19 @@
                 <Image Source="/LuaSTGNode.Legacy;component/images/bullet/smallball.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
+        <Button Click="Style_Click" Tag="ball_mid_b">
+            <Button.Content>
+                <Image Source="/LuaSTGNode.Legacy;component/images/bullet/smallball_b.png" Style="{StaticResource SelectionImg}"/>
+            </Button.Content>
+        </Button>
         <Button Click="Style_Click" Tag="ball_mid_c">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/bullet/circle.png" Style="{StaticResource SelectionImg}"/>
+            </Button.Content>
+        </Button>
+        <Button Click="Style_Click" Tag="ball_mid_d">
+            <Button.Content>
+                <Image Source="/LuaSTGNode.Legacy;component/images/bullet/smallball_d.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
         <Button Click="Style_Click" Tag="ball_big">
@@ -172,6 +182,11 @@
         <Button Click="Style_Click" Tag="ball_light_dark">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/bullet/lightball_dark.png" Style="{StaticResource SelectionImg}"/>
+            </Button.Content>
+        </Button>
+        <Button Click="Style_Click" Tag="star_big_b">
+            <Button.Content>
+                <Image Source="/LuaSTGNode.Legacy;component/images/bullet/bigstar_b.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
     </WrapPanel>

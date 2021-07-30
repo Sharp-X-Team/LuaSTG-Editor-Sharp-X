@@ -28,7 +28,7 @@ namespace LuaSTGEditorSharp.EditorData
             {
                 MessageBox.Show("Failed to open document. Please check whether the targeted file is in current version.\n"
                     + e.ToString()
-                    , "LuaSTG Editor Sharp", MessageBoxButton.OK, MessageBoxImage.Error);
+                    , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
