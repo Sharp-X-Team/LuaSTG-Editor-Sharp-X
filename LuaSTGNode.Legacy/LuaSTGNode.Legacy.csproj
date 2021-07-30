@@ -90,6 +90,21 @@
     <Compile Include="EditorData\Node\Boss\BossUI.cs" />
     <Compile Include="EditorData\Node\Boss\Dialog.cs" />
     <Compile Include="EditorData\Node\Boss\Sentence.cs" />
+    <Compile Include="EditorData\Node\Control\SetCollision.cs" />
+    <Compile Include="EditorData\Node\Control\SetShuttle.cs" />
+    <Compile Include="EditorData\Node\Control\SetVisibility.cs" />
+    <Compile Include="EditorData\Node\Control\SetLayer.cs" />
+    <Compile Include="EditorData\Node\Control\SetGroup.cs" />
+    <Compile Include="EditorData\Node\Control\SetRebounce.cs" />
+    <Compile Include="EditorData\Node\Control\SetBound.cs" />
+    <Compile Include="EditorData\Node\Control\SetAutoRotation.cs" />
+    <Compile Include="EditorData\Node\Control\SetHitbox.cs" />
+    <Compile Include="EditorData\Node\Control\SetAVel.cs" />
+    <Compile Include="EditorData\Node\Control\SetOmiga.cs" />
+    <Compile Include="EditorData\Node\Control\SetXYVel.cs" />
+    <Compile Include="EditorData\Node\Control\SetSize.cs" />
+    <Compile Include="EditorData\Node\Control\SetRotation.cs" />
+    <Compile Include="EditorData\Node\Control\Property.cs" />
     <Compile Include="EditorData\Node\Data\PositionAssignment.cs" />
     <Compile Include="EditorData\Node\Enemy\CreateSimpleEnemy.cs" />
     <Compile Include="EditorData\Node\Enemy\CreateEnemy.cs" />
@@ -1738,6 +1753,46 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\bullet\smallball_d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\objectautorotation.png" />
+    <Resource Include="images\objectavel.png" />
+    <Resource Include="images\objectbound.png" />
+    <Resource Include="images\objectgroup.png" />
+    <Resource Include="images\objecthitbox.png" />
+    <Resource Include="images\objectlayer.png" />
+    <Resource Include="images\objectomiga.png" />
+    <Resource Include="images\objectrebounce.png" />
+    <Resource Include="images\objectrotation.png" />
+    <Resource Include="images\objectsize.png" />
+    <Resource Include="images\objectvisibility.png" />
+    <Resource Include="images\objectxyvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\objectautorotation.png" />
+    <Resource Include="images\16x16\objectavel.png" />
+    <Resource Include="images\16x16\objectbound.png" />
+    <Resource Include="images\16x16\objectgroup.png" />
+    <Resource Include="images\16x16\objecthitbox.png" />
+    <Resource Include="images\16x16\objectlayer.png" />
+    <Resource Include="images\16x16\objectomiga.png" />
+    <Resource Include="images\16x16\objectrebounce.png" />
+    <Resource Include="images\16x16\objectrotation.png" />
+    <Resource Include="images\16x16\objectsize.png" />
+    <Resource Include="images\16x16\objectvisibility.png" />
+    <Resource Include="images\16x16\objectxyvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\objectshuttle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\objectshuttle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\objectcollision.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\objectcollision.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

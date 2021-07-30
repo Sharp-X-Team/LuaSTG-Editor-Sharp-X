@@ -42,8 +42,6 @@ namespace LuaSTGEditorSharp
             data.Add(new ToolboxItemData(true), null);
             data.Add(new ToolboxItemData("recordpos", "/LuaSTGNode.Legacy;component/images/positionVar.png", "Record Position")
                 ,  new AddNode(AddRecordPosNode));
-            data.Add(new ToolboxItemData("assignpos", "/LuaSTGNode.Legacy;component/images/positionassignment.png", "Position Assignment")
-                , new AddNode(AddPositionAssignmentNode));
             #endregion
             ToolInfo.Add("Data", data);
 
@@ -263,6 +261,47 @@ namespace LuaSTGEditorSharp
             #endregion
             ToolInfo.Add("Object", obj);
 
+            var ctrol = new Dictionary<ToolboxItemData, AddNode>();
+            #region control
+            ctrol.Add(new ToolboxItemData("properties", "/LuaSTGNode.Legacy;component/images/properties.png", "Set Unit Property")
+                , new AddNode(AddPropertyNode));
+            ctrol.Add(new ToolboxItemData(true), null);
+            ctrol.Add(new ToolboxItemData("objectrotation", "/LuaSTGNode.Legacy;component/images/objectrotation.png", "Set Object Rotation")
+                , new AddNode(AddSetRotationNode));
+            ctrol.Add(new ToolboxItemData("objectautorotation", "/LuaSTGNode.Legacy;component/images/objectautorotation.png", "Set Object Autorotation")
+                , new AddNode(AddSetAutoRotationNode));
+            ctrol.Add(new ToolboxItemData("objectsize", "/LuaSTGNode.Legacy;component/images/objectsize.png", "Set Object Size")
+                , new AddNode(AddSetSizeNode));
+            ctrol.Add(new ToolboxItemData("objecthitbox", "/LuaSTGNode.Legacy;component/images/objecthitbox.png", "Set Hitbox Size")
+                , new AddNode(AddSetHitboxNode));
+            ctrol.Add(new ToolboxItemData("objectcollision", "/LuaSTGNode.Legacy;component/images/objectcollision.png", "Set Collision Detection")
+                , new AddNode(AddSetCollisionNode));
+            ctrol.Add(new ToolboxItemData(true), null);
+            ctrol.Add(new ToolboxItemData("objectbound", "/LuaSTGNode.Legacy;component/images/objectbound.png", "Set Object Border Autodeletion")
+                , new AddNode(AddSetBoundNode));
+            ctrol.Add(new ToolboxItemData("objectshuttle", "/LuaSTGNode.Legacy;component/images/objectshuttle.png", "Set Object Border Shuttle")
+                , new AddNode(AddSetShuttleNode));
+            ctrol.Add(new ToolboxItemData("objectrebounce", "/LuaSTGNode.Legacy;component/images/objectrebounce.png", "Set Object Border Rebounce")
+                , new AddNode(AddSetRebounceNode));
+            ctrol.Add(new ToolboxItemData(true), null);
+            ctrol.Add(new ToolboxItemData("assignpos", "/LuaSTGNode.Legacy;component/images/positionassignment.png", "Position Assignment")
+                , new AddNode(AddPositionAssignmentNode));
+            ctrol.Add(new ToolboxItemData("objectxyvel", "/LuaSTGNode.Legacy;component/images/objectxyvel.png", "Set Object X/Y Velocity")
+                , new AddNode(AddSetXYVelNode));
+            ctrol.Add(new ToolboxItemData("objectavel", "/LuaSTGNode.Legacy;component/images/objectavel.png", "Set Object X/Y Acceleration")
+                , new AddNode(AddSetAVelNode));
+            ctrol.Add(new ToolboxItemData("objectomiga", "/LuaSTGNode.Legacy;component/images/objectomiga.png", "Set Object Omiga")
+                , new AddNode(AddSetOmigaNode));
+            ctrol.Add(new ToolboxItemData(true), null);
+            ctrol.Add(new ToolboxItemData("objectgroup", "/LuaSTGNode.Legacy;component/images/objectgroup.png", "Set Object Group")
+                , new AddNode(AddSetGroupNode));
+            ctrol.Add(new ToolboxItemData("objectlayer", "/LuaSTGNode.Legacy;component/images/objectlayer.png", "Set Object Layer")
+                , new AddNode(AddSetLayerNode));
+            ctrol.Add(new ToolboxItemData("objectvisibility", "/LuaSTGNode.Legacy;component/images/objectvisibility.png", "Set Object Visibility")
+                , new AddNode(AddSetVisibilityNode));
+            #endregion
+            ToolInfo.Add("Control", ctrol);
+            
             var graphics = new Dictionary<ToolboxItemData, AddNode>();
             #region graphics
             graphics.Add(new ToolboxItemData("loadimage", "/LuaSTGNode.Legacy;component/images/loadimage.png", "Load Image")
@@ -604,7 +643,7 @@ namespace LuaSTGEditorSharp
 
         private void AddChargeballNode()
         {
-            parent.Insert(new Chargeball(parent.ActivatedWorkSpaceData));
+            parent.Insert(new Chargeball(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
         }
 
         private void AddBossExplodeNode()
@@ -824,6 +863,84 @@ namespace LuaSTGEditorSharp
             parent.Insert(new GroupForEach(parent.ActivatedWorkSpaceData));
         }
         #endregion
+
+        #region control
+        private void AddPropertyNode()
+        {
+            parent.Insert(new Property(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetRotationNode()
+        {
+            parent.Insert(new SetRotation(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetAutoRotationNode()
+        {
+            parent.Insert(new SetAutoRotation(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetSizeNode()
+        {
+            parent.Insert(new SetSize(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetHitboxNode()
+        {
+            parent.Insert(new SetHitbox(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetCollisionNode()
+        {
+            parent.Insert(new SetCollision(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetBoundNode()
+        {
+            parent.Insert(new SetBound(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetShuttleNode()
+        {
+            parent.Insert(new SetShuttle(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetRebounceNode()
+        {
+            parent.Insert(new SetRebounce(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetXYVelNode()
+        {
+            parent.Insert(new SetXYVel(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetAVelNode()
+        {
+            parent.Insert(new SetAVel(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetOmigaNode()
+        {
+            parent.Insert(new SetOmiga(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetGroupNode()
+        {
+            parent.Insert(new SetGroup(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetLayerNode()
+        {
+            parent.Insert(new SetLayer(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetVisibilityNode()
+        {
+            parent.Insert(new SetVisibility(parent.ActivatedWorkSpaceData));
+        }
+        #endregion
+
         #region graphics
         private void AddLoadImageNode()
         {
@@ -893,7 +1010,7 @@ namespace LuaSTGEditorSharp
 
         private void AddSetPaceNode()
         {
-            parent.Insert(new SetPace(parent.ActivatedWorkSpaceData));
+            parent.Insert(new SetPace(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
         }
         #endregion
         #region render

@@ -50,7 +50,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutNode.xaml.cs">
+    <Compile Include="AboutMenu\AboutNode.xaml.cs">
       <DependentUpon>AboutNode.xaml</DependentUpon>
     </Compile>
     <Compile Include="CodePreviewWindow.xaml.cs">
@@ -86,7 +86,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AboutNode.xaml">
+    <Page Include="AboutMenu\AboutNode.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -116,7 +116,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SplashScreen.png" />
+    <Resource Include="AboutMenu\folder.png" />
+    <Resource Include="AboutMenu\plustest.png" />
+    <Resource Include="AboutMenu\ryannthipfp.png" />
+    <Resource Include="AboutMenu\tompfp.png" />
+    <Resource Include="AboutMenu\zinopfp.png" />
+    <Resource Include="plustest.png" />
+    <Resource Include="AboutMenu\SplashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AboutMenu\archispace.png" />
+    <Resource Include="AboutMenu\code.png" />
+    <Resource Include="AboutMenu\folderexample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AboutMenu\codeexample.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
