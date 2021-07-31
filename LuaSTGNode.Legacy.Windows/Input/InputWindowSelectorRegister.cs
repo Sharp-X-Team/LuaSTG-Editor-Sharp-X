@@ -23,6 +23,8 @@ namespace LuaSTGEditorSharp.Windows.Input
         {
             target.Add("bool"
                 , new string[] { "true", "false" });
+            target.Add("bubble_style"
+                , new string[] { "1", "2", "3", "4" });
             target.Add("sineinterpolation"
                 , new string[] { "SINE_ACCEL", "SINE_DECEL", "SINE_ACC_DEC" });
             target.Add("target"
@@ -167,6 +169,7 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , InputWindowSelector.SelectComboBox("renderOp"), "Input Render Target Operation"));
             target.Add("bulletStyle", (src, tar) => new BulletInput(tar));
             target.Add("laserStyle", (src, tar) => new LaserInput(tar));
+            target.Add("bubble_style", (src, tar) => new BubbleInput(tar));
             target.Add("enemyStyle", (src, tar) => new EnemyInput(tar));
             target.Add("userDefinedNode", (src, tar) => new NodeDefInput(tar, src));
             target.Add("bulletDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Bullet, src));

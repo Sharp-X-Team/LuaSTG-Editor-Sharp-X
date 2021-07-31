@@ -89,6 +89,7 @@
     <Compile Include="EditorData\Node\Boss\BossSCBeforeStart.cs" />
     <Compile Include="EditorData\Node\Boss\BossUI.cs" />
     <Compile Include="EditorData\Node\Boss\Dialog.cs" />
+    <Compile Include="EditorData\Node\Boss\AdvancedSentence.cs" />
     <Compile Include="EditorData\Node\Boss\Sentence.cs" />
     <Compile Include="EditorData\Node\Control\SetCollision.cs" />
     <Compile Include="EditorData\Node\Control\SetShuttle.cs" />
@@ -1793,6 +1794,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\objectcollision.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\advancedsentence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\advancedsentence.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

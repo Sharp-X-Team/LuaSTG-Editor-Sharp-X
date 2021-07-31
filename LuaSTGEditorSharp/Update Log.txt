@@ -9,7 +9,27 @@ v0.71.1:
 -Changed target engine text to make it independent of LuaSTG version
 -Added a warning when you try using ExPlus-originally-exclusive nodes on a version that isn't ExPlus (you can disable this warning in the settings)
 -Added more resolution options when debugging
--Added the entirety of the Control tab (will detail later) _----------------------_=================
+-Added the entirety of the Control tab
+(Set Property node -> lets you assign any property to an unit
+Set Rotation node -> lets you change the rotation/angle/rot of an unit
+Set Autorotation node -> lets you enable/disable autorotation (navi) of an unit
+Set Size node -> lets you change the scale (hscale, vscale) of an unit
+Set Hitbox node -> lets you set the hitbox (a, b) size of an unit
+Set Collision node -> lets you enable/disable the hitbox collision of an unit
+Set Object Border Autodeletion -> lets you enable/disable the border culling of an unit
+Set Object Border Shuttle -> lets you teleport an unit to the other side of the screen once they're past the other side
+Set Object Border Rebounce -> lets you make an unit rebounce off the edges
+Position Assignment -> relocated from the Data tab to the Control tab
+Set Object X/Y Velocity -> lets you input specific x and y velocities of an unit
+Set Object X/Y Acceleration -> lets you input specific x and y acceleration values of an unit
+Set Object Omiga -> lets you set an unit's omiga value (autospin)
+Set Object Group -> lets you set an unit's group
+Set Object Layer -> lets you set an unit's layer
+Set Object Visibility -> lets you enable/disable the hide property of an unit)
+-Added advanced sentence node (boss tab)
+
+
+
 
 v0.70.1:
 -Added extra parameters to the charge enemy node (enemy tab)

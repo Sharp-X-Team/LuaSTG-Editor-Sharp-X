@@ -145,6 +145,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddDialogNode));
             boss.Add(new ToolboxItemData("sentence", "/LuaSTGNode.Legacy;component/images/sentence.png", "Sentence")
                 , new AddNode(AddSentenceNode));
+            boss.Add(new ToolboxItemData("advancedsentence", "/LuaSTGNode.Legacy;component/images/advancedsentence.png", "Advanced Sentence")
+                , new AddNode(AddAdvancedSentenceNode));
             boss.Add(new ToolboxItemData(true), null);
             boss.Add(new ToolboxItemData("chargeball", "/LuaSTGNode.Legacy;component/images/chargeball.png", "Make chargeball")
                 , new AddNode(AddChargeballNode));
@@ -629,6 +631,11 @@ namespace LuaSTGEditorSharp
         private void AddSentenceNode()
         {
             parent.Insert(new Sentence(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddAdvancedSentenceNode()
+        {
+            parent.Insert(new AdvancedSentence(parent.ActivatedWorkSpaceData));
         }
 
         private void AddSetBossWISysNode()

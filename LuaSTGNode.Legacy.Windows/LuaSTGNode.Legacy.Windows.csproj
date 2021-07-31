@@ -113,6 +113,9 @@
       <DependentUpon>ImageInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Input\InputWindowSelectorRegister.cs" />
+    <Compile Include="Input\BubbleInput.xaml.cs">
+      <DependentUpon>BubbleInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Input\LaserInput.xaml.cs">
       <DependentUpon>LaserInput.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Input\BubbleInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Input\LaserInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -260,6 +267,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Input\bubble_1.png" />
+    <Resource Include="Input\bubble_2.png" />
+    <Resource Include="Input\bubble_3.png" />
+    <Resource Include="Input\bubble_4.png" />
     <Content Include="scale.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
