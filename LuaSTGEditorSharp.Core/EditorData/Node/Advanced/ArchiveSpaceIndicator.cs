@@ -17,15 +17,16 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 {
     [Serializable, NodeIcon("archispace.png")]
     [LeafNode]
-    [CreateInvoke(0), RCInvoke(0)]
     public class ArchiveSpaceIndicator : TreeNode
     {
         [JsonConstructor]
         private ArchiveSpaceIndicator() : base() { }
+        public ArchiveSpaceIndicator(DocumentData workSpaceData)
+            : this(workSpaceData, "") { }
 
-        public ArchiveSpaceIndicator(DocumentData workSpaceData) : base(workSpaceData)
+        public ArchiveSpaceIndicator(DocumentData workSpaceData, string name) : base(workSpaceData)
         {
-            Name = "";
+            Name = name;
         }
 
         [JsonIgnore, NodeAttribute, XmlAttribute("Name")]
@@ -58,7 +59,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 
         public override object Clone()
         {
-            var n = new ArchiveSpaceIndicator(parentWorkSpace);
+            var n = new ArchiveSpaceIndicator(parentWorkSpace, "");
             n.DeepCopyFrom(this);
             return n;
         }

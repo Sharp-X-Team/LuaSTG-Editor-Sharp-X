@@ -27,9 +27,11 @@ Set Object Group -> lets you set an unit's group
 Set Object Layer -> lets you set an unit's layer
 Set Object Visibility -> lets you enable/disable the hide property of an unit)
 -Added advanced sentence node (boss tab)
-
-
-
+-Added load font and load font image node (graphics tab)
+-Added render text node (render tab)
+-Added load TTF node (graphics tab)
+-Added render TTF node (render tab)
+-Added set view mode node (render tab)
 
 v0.70.1:
 -Added extra parameters to the charge enemy node (enemy tab)

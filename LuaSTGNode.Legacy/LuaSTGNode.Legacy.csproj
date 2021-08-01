@@ -64,6 +64,8 @@
     <Compile Include="EditorData\Document\Meta\BentLaserDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\EnemyDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\AnimationLoadMetaInfo.cs" />
+    <Compile Include="EditorData\Document\Meta\TTFLoadMetaInfo.cs" />
+    <Compile Include="EditorData\Document\Meta\FontLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\ParticleLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\FXLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\SELoadMetaInfo.cs" />
@@ -113,7 +115,10 @@
     <Compile Include="EditorData\Node\Enemy\EnemyInit.cs" />
     <Compile Include="EditorData\Node\Enemy\EnemyWander.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadAnimation.cs" />
+    <Compile Include="EditorData\Node\Graphics\LoadTTF.cs" />
+    <Compile Include="EditorData\Node\Graphics\LoadFont.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadFX.cs" />
+    <Compile Include="EditorData\Node\Graphics\LoadFontImage.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadParticle.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadTexture.cs" />
     <Compile Include="EditorData\Node\ICallBackFunc.cs" />
@@ -194,6 +199,9 @@
     <Compile Include="EditorData\Node\Render\PostEffectCapture.cs" />
     <Compile Include="EditorData\Node\Render\Render4V.cs" />
     <Compile Include="EditorData\Node\Render\RenderTarget.cs" />
+    <Compile Include="EditorData\Node\Render\RenderTTF.cs" />
+    <Compile Include="EditorData\Node\Render\RenderText.cs" />
+    <Compile Include="EditorData\Node\Render\SetViewMode.cs" />
     <Compile Include="EditorData\Node\Stage\ShakeScreen.cs" />
     <Compile Include="EditorData\Node\Stage\Stage.cs" />
     <Compile Include="EditorData\Node\Stage\StageBG.cs" />
@@ -1523,6 +1531,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Resource Include="ResourceList\SysFont.json" />
+    <Resource Include="ResourceList\SysTTF.json" />
     <Resource Include="ResourceList\SysSE.json" />
     <Resource Include="ResourceList\SysImageGroup.json" />
   </ItemGroup>
@@ -1800,6 +1810,54 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\advancedsentence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\loadfont.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\loadfont.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\loadfontimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\loadfontimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\rendertext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rendertext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\loadttf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\loadttf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\renderttf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\renderttf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\setviewmode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\setviewmode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\loadttf_Sys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\loadttf_Sys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\loadfont_Sys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\loadfont_Sys.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

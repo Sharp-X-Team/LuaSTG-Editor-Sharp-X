@@ -93,6 +93,9 @@
     <Compile Include="Input\Canvas\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Input\AlignInput.xaml.cs">
+      <DependentUpon>AlignInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Input\ColorInput.xaml.cs">
       <DependentUpon>ColorInput.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,12 @@
     </Compile>
     <Compile Include="Input\EnemyInput.xaml.cs">
       <DependentUpon>EnemyInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\TTFInput.xaml.cs">
+      <DependentUpon>TTFInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\FontInput.xaml.cs">
+      <DependentUpon>FontInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Input\FXInput.xaml.cs">
       <DependentUpon>FXInput.xaml</DependentUpon>
@@ -184,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Input\AlignInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Input\ColorInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -197,6 +210,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Input\EnemyInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Input\TTFInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Input\FontInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -271,6 +292,8 @@
     <Resource Include="Input\bubble_2.png" />
     <Resource Include="Input\bubble_3.png" />
     <Resource Include="Input\bubble_4.png" />
+    <Resource Include="Input\down.png" />
+    <Resource Include="Input\nodir.png" />
     <Content Include="scale.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

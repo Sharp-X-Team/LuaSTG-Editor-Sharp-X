@@ -203,7 +203,7 @@ namespace LuaSTGEditorSharp.Plugin
 
         private void AddArchiveSpaceNode()
         {
-            parent.Insert(new ArchiveSpaceIndicator(parent.ActivatedWorkSpaceData));
+            parent.Insert(new ArchiveSpaceIndicator(parent.ActivatedWorkSpaceData, ""));
         }
 
         private void AddBlockCodeNode()

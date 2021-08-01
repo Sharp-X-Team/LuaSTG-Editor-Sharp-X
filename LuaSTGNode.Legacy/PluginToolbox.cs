@@ -18,6 +18,8 @@ using LuaSTGEditorSharp.EditorData.Node.Object;
 using LuaSTGEditorSharp.EditorData.Node.Graphics;
 using LuaSTGEditorSharp.EditorData.Node.Audio;
 using LuaSTGEditorSharp.EditorData.Node.Render;
+using LuaSTGEditorSharp.EditorData.Node.Advanced;
+
 
 namespace LuaSTGEditorSharp
 {
@@ -318,6 +320,13 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddLoadFXNode));
             graphics.Add(new ToolboxItemData("loadtexture", "/LuaSTGNode.Legacy;component/images/loadtexture.png", "Load Texture")
                 , new AddNode(AddLoadTextureNode));
+            graphics.Add(new ToolboxItemData(true), null);
+            graphics.Add(new ToolboxItemData("loadfont", "/LuaSTGNode.Legacy;component/images/loadfont.png", "Load Font")
+                , new AddNode(AddLoadFontNode));
+            graphics.Add(new ToolboxItemData("loadfontimage", "/LuaSTGNode.Legacy;component/images/loadfontimage.png", "Load Font Image")
+                , new AddNode(AddLoadFontImageNode));
+            graphics.Add(new ToolboxItemData("loadttf", "/LuaSTGNode.Legacy;component/images/loadttf.png", "Load TTF")
+                , new AddNode(AddLoadTTFNode));
             #endregion
             ToolInfo.Add("Graphics", graphics);
 
@@ -350,6 +359,8 @@ namespace LuaSTGEditorSharp
             #region render
             render.Add(new ToolboxItemData("onrender", "/LuaSTGNode.Legacy;component/images/onrender.png", "On Render")
                 , new AddNode(AddOnRenderNode));
+            render.Add(new ToolboxItemData("setviewmode", "/LuaSTGNode.Legacy;component/images/setviewmode.png", "Set View Mode")
+                , new AddNode(AddSetViewModeNode));
             render.Add(new ToolboxItemData(true), null);
             render.Add(new ToolboxItemData("r4v", "/LuaSTGNode.Legacy;component/images/render4v.png", "Render4V")
                 , new AddNode(AddR4VNode));
@@ -362,6 +373,11 @@ namespace LuaSTGEditorSharp
             //    , new AddNode(AddPostEffectCaptureNode));
             render.Add(new ToolboxItemData("posteff", "/LuaSTGNode.Legacy;component/images/PostEffect.png", "Post Effect")
                 , new AddNode(AddPostEffectNode));
+            render.Add(new ToolboxItemData(true), null);
+            render.Add(new ToolboxItemData("rendertext", "/LuaSTGNode.Legacy;component/images/rendertext.png", "Render Text")
+                , new AddNode(AddRenderTextNode));
+            render.Add(new ToolboxItemData("renderttf", "/LuaSTGNode.Legacy;component/images/renderttf.png", "Render TTF")
+                , new AddNode(AddRenderTTFNode));
             #endregion
             ToolInfo.Add("Render", render);
 
@@ -978,6 +994,21 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new LoadTexture(parent.ActivatedWorkSpaceData));
         }
+
+        private void AddLoadFontNode()
+        {
+            parent.Insert(new LoadFont(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddLoadFontImageNode()
+        {
+            parent.Insert(new LoadFontImage(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddLoadTTFNode()
+        {
+            parent.Insert(new LoadTTF(parent.ActivatedWorkSpaceData));
+        }
         #endregion
         #region audio
         private void AddLoadSENode()
@@ -1028,6 +1059,11 @@ namespace LuaSTGEditorSharp
             parent.Insert(o);
         }
 
+        private void AddSetViewModeNode()
+        {
+            parent.Insert(new SetViewMode(parent.ActivatedWorkSpaceData));
+        }
+
         private void AddR4VNode()
         {
             parent.Insert(new Render4V(parent.ActivatedWorkSpaceData));
@@ -1051,6 +1087,16 @@ namespace LuaSTGEditorSharp
         private void AddPostEffectNode()
         {
             parent.Insert(new PostEffect(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRenderTextNode()
+        {
+            parent.Insert(new RenderText(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRenderTTFNode()
+        {
+            parent.Insert(new RenderTTF(parent.ActivatedWorkSpaceData));
         }
         #endregion
     }

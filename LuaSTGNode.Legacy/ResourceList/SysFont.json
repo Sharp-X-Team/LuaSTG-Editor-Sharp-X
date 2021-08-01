@@ -1,0 +1,56 @@
+[
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) score",
+    "Result": "\"score\"",
+    "FullName": "score",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) item",
+    "Result": "\"item\"",
+    "FullName": "item",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) menu",
+    "Result": "\"menu\"",
+    "FullName": "menu",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) bonus",
+    "Result": "\"bonus\"",
+    "FullName": "bonus",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) score1",
+    "Result": "\"score1\"",
+    "FullName": "score1",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) score2",
+    "Result": "\"score2\"",
+    "FullName": "score2",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) score3",
+    "Result": "\"score3\"",
+    "FullName": "score3",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) time",
+    "Result": "\"time\"",
+    "FullName": "time",
+  },
+  {
+    "Icon": "/LuaSTGNode.Legacy;component/images/16x16/loadfont_Sys.png",
+    "Text": "(Internal) replay",
+    "Result": "\"replay\"",
+    "FullName": "replay",
+  }
+]

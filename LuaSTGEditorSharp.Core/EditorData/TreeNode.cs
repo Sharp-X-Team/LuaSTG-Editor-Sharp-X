@@ -1532,6 +1532,12 @@ namespace LuaSTGEditorSharp.EditorData
             return Lua.StringParser.ParseLua(s + Path.GetFileName(NonMacrolize(pathAttrID)));
         }
 
+        protected string GetRawPath(int pathAttrID)
+        {
+            if ((System.Windows.Application.Current as IAppSettings).BatchPacking) return Path.GetFileName(NonMacrolize(pathAttrID));
+            return Lua.StringParser.ParseLua(Path.GetFileName(NonMacrolize(pathAttrID)));
+        }
+
         /// <summary>
         /// UNFINISHED
         /// </summary>

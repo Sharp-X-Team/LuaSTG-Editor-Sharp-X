@@ -18,6 +18,10 @@ namespace LuaSTGEditorSharp
             SystemMetaLoader.FromResource("pack://application:,,,/LuaSTGNode.Legacy;component/ResourceList/SysImageGroup.json");
         public static MetaModel[] SysSE =
             SystemMetaLoader.FromResource("pack://application:,,,/LuaSTGNode.Legacy;component/ResourceList/SysSE.json");
+        public static MetaModel[] SysTTF =
+            SystemMetaLoader.FromResource("pack://application:,,,/LuaSTGNode.Legacy;component/ResourceList/SysTTF.json");
+        public static MetaModel[] SysFont =
+            SystemMetaLoader.FromResource("pack://application:,,,/LuaSTGNode.Legacy;component/ResourceList/SysFont.json");
 
         public static int MetaInfoCollectionTypeCount = (int)MetaType.__max;
     }

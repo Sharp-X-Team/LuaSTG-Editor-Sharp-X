@@ -38,6 +38,8 @@ namespace LuaSTGEditorSharp.Windows
             Tree.Add(GetParticleMeta());
             Tree.Add(GetAnimationMeta());
             Tree.Add(GetFXMeta());
+            Tree.Add(GetFontMeta());
+            Tree.Add(GetTTFMeta());
             Tree.Add(GetBGMMeta());
             Tree.Add(GetSEMeta());
             Tree.Add(GetBossBGDefineMeta());
@@ -465,6 +467,38 @@ namespace LuaSTGEditorSharp.Windows
             }
 
             return fx;
+        }
+
+        private MetaModel GetFontMeta()
+        {
+            MetaModel font = new MetaModel
+            {
+                Icon = "/LuaSTGNode.Legacy;component/images/16x16/loadfont.png",
+                Text = "Font"
+            };
+            var a = data.Meta.aggregatableMetas[(int)MetaType.FontLoad].GetAllFullWithDifficulty();
+            foreach (MetaModel info in a)
+            {
+                font.Children.Add(info);
+            }
+
+            return font;
+        }
+
+        private MetaModel GetTTFMeta()
+        {
+            MetaModel ttf = new MetaModel
+            {
+                Icon = "/LuaSTGNode.Legacy;component/images/16x16/loadttf.png",
+                Text = "TTF"
+            };
+            var a = data.Meta.aggregatableMetas[(int)MetaType.FontLoad].GetAllFullWithDifficulty();
+            foreach (MetaModel info in a)
+            {
+                ttf.Children.Add(info);
+            }
+
+            return ttf;
         }
 
         private MetaModel GetParticleMeta()

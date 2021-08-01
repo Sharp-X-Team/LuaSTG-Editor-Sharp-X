@@ -68,6 +68,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                         , "silence", "water_drop_dark", "ball_huge_dark", "ball_light_dark", "star_big_b"});
             target.Add("laserStyle"
                 , new string[] { "1", "2", "3", "4" });
+            target.Add("alignInput"
+                , new string[] { "0", "1", "2", "4", "5", "6", "8", "9", "10" });
             target.Add("color"
                 , new string[] { "COLOR_RED", "COLOR_DEEP_RED", "COLOR_PURPLE", "COLOR_DEEP_PURPLE"
                         , "COLOR_BLUE", "COLOR_DEEP_BLUE", "COLOR_ROYAL_BLUE", "COLOR_CYAN", "COLOR_DEEP_GREEN"
@@ -120,6 +122,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , new string[] { "Bezier", "CR", "Basis2" });
             target.Add("renderOp"
                 , new string[] { "Push", "Pop" });
+            target.Add("viewmode"
+                , new string[] { "ui", "world", "3D" });
         }
 
         public void RegisterInputWindow(Dictionary<string, Func<AttrItem, string, IInputWindow>> target)
@@ -134,6 +138,8 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("imageFile", (src, tar) => new PathInput(tar, "Image File (*.png;*.jpg;*.bmp)|*.png;*.jpg;*.bmp", src));
             target.Add("particleFile", (src, tar) => new PathInput(tar, "HGE Particle File (*.psi)|*.psi", src));
             target.Add("fxFile", (src, tar) => new PathInput(tar, "Shader File (*.fx)|*.fx", src));
+            target.Add("fontFile", (src, tar) => new PathInput(tar, "Font File (*.fnt)|*.fnt", src));
+            target.Add("ttfFile", (src, tar) => new PathInput(tar, "TTF File (*.ttf;*.otf)|*.ttf;*.otf", src));
             target.Add("audioFile", (src, tar) => new PathInput(tar, "Audio File (*.wav;*.ogg)|*.wav;*.ogg", src));
             target.Add("seFile", (src, tar) => new PathInput(tar, "Sound Effect File (*.wav;*.ogg)|*.wav;*.ogg", src));
             target.Add("luaFile", (src, tar) => new PathInput(tar, "Lua File (*.lua)|*.lua", src));
@@ -184,6 +190,9 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("BGM", (src, tar) => new BGMInput(tar, src));
             target.Add("se", (src, tar) => new SEInput(tar, src));
             target.Add("fx", (src, tar) => new FXInput(tar, src));
+            target.Add("font", (src, tar) => new FontInput(tar, src));
+            target.Add("ttf", (src, tar) => new TTFInput(tar, src));
+            target.Add("alignInput", (src, tar) => new AlignInput(tar));
             target.Add("multilineText", (src, tar) => new MultilineInput(tar));
             target.Add("bulletParam", (src, tar) => new EditorObjParamInput(src, MetaType.Bullet, tar));
             target.Add("objectParam", (src, tar) => new EditorObjParamInput(src, MetaType.Object, tar));
