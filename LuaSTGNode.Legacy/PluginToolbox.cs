@@ -108,6 +108,9 @@ namespace LuaSTGEditorSharp
             task.Add(new ToolboxItemData(true), null);
             task.Add(new ToolboxItemData("setfps", "/LuaSTGNode.Legacy;component/images/setfps.png", "Set FPS")
                 , new AddNode(AddSetFPS));
+            task.Add(new ToolboxItemData(true), null);
+            task.Add(new ToolboxItemData("snapshot", "/LuaSTGNode.Legacy;component/images/snapshot.png", "Snapshot Screen")
+                , new AddNode(AddSnapshot));
             #endregion
             ToolInfo.Add("Task", task);
             
@@ -362,6 +365,10 @@ namespace LuaSTGEditorSharp
             render.Add(new ToolboxItemData("setviewmode", "/LuaSTGNode.Legacy;component/images/setviewmode.png", "Set View Mode")
                 , new AddNode(AddSetViewModeNode));
             render.Add(new ToolboxItemData(true), null);
+            render.Add(new ToolboxItemData("rendernode", "/LuaSTGNode.Legacy;component/images/rendernode.png", "Render Image")
+                , new AddNode(AddRenderNodeNode));
+            render.Add(new ToolboxItemData("renderrect", "/LuaSTGNode.Legacy;component/images/renderrect.png", "Render Rect Image")
+                , new AddNode(AddRenderRectNode));
             render.Add(new ToolboxItemData("r4v", "/LuaSTGNode.Legacy;component/images/render4v.png", "Render4V")
                 , new AddNode(AddR4VNode));
             render.Add(new ToolboxItemData(true), null);
@@ -381,13 +388,17 @@ namespace LuaSTGEditorSharp
             #endregion
             ToolInfo.Add("Render", render);
 
-            //var background = new Dictionary<ToolboxItemData, AddNode>();
-            //ToolInfo.Add("Background", background);
+            var background = new Dictionary<ToolboxItemData, AddNode>();
+            #region background
+            background.Add(new ToolboxItemData("set3d", "/LuaSTGNode.Legacy;component/images/set3d.png", "Set 3D Viewpoint")
+                , new AddNode(AddSet3DNode));
+            #endregion
+            ToolInfo.Add("Background", background);
 
             //var player = new Dictionary<ToolboxItemData, AddNode>();
             //ToolInfo.Add("Player", player);
         }
-        
+
         #region data
         private void AddLocalVarNode()
         {
@@ -547,6 +558,11 @@ namespace LuaSTGEditorSharp
         private void AddSetFPS()
         {
             parent.Insert(new SetFPS(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSnapshot()
+        {
+            parent.Insert(new Snapshot(parent.ActivatedWorkSpaceData));
         }
         #endregion
 
@@ -1064,6 +1080,16 @@ namespace LuaSTGEditorSharp
             parent.Insert(new SetViewMode(parent.ActivatedWorkSpaceData));
         }
 
+        private void AddRenderNodeNode()
+        {
+            parent.Insert(new RenderNode(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRenderRectNode()
+        {
+            parent.Insert(new RenderRect(parent.ActivatedWorkSpaceData));
+        }
+
         private void AddR4VNode()
         {
             parent.Insert(new Render4V(parent.ActivatedWorkSpaceData));
@@ -1098,6 +1124,14 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new RenderTTF(parent.ActivatedWorkSpaceData));
         }
+        #endregion
+
+        #region background
+        private void AddSet3DNode()
+        {
+            parent.Insert(new Set3D(parent.ActivatedWorkSpaceData));
+        }
+
         #endregion
     }
 }

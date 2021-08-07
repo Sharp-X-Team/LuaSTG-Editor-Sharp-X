@@ -124,6 +124,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , new string[] { "Push", "Pop" });
             target.Add("viewmode"
                 , new string[] { "ui", "world", "3D" });
+            target.Add("viewpoint"
+                , new string[] { "\"eye\"", "\"at\"", "\"3D\"", "\"up\"", "\"z\"", "\"fovy\"", "\"fog\"" });
         }
 
         public void RegisterInputWindow(Dictionary<string, Func<AttrItem, string, IInputWindow>> target)

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Code Preview" Height="450" Width="800">
     <Grid>
-        <avalon:TextEditor x:Name="codeText" FontFamily="Courier New" FontSize="14" SyntaxHighlighting="Lua" ShowLineNumbers="True"/>
+        <avalon:TextEditor x:Name="codeText" FontFamily="JetBrains Mono" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"/>
         <!--<TextBox x:Name="codeText" AcceptsReturn="True" FontFamily="Courier New" VerticalScrollBarVisibility="Visible"/>-->
     </Grid>
 </Window>

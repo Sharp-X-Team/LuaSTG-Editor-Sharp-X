@@ -176,8 +176,7 @@ namespace LuaSTGEditorSharp
             {
                 string fullPathClone = Path.GetFullPath(nw.SelectedPath);
                 CloneDocFromPath(nw.FileName, fullPathClone,
-                    new ProjSettings(ActivatedWorkSpaceData, "", nw.Author
-                    , nw.AllowPR.ToString().ToLower(), nw.AllowSCPR.ToString().ToLower()));
+                    new ProjSettings(ActivatedWorkSpaceData, "", nw.Author, nw.AllowPR.ToString().ToLower(), nw.AllowSCPR.ToString().ToLower(), nw.ModVersion.ToString().ToLower()));
             }
         }
 

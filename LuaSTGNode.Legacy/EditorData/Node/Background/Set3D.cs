@@ -9,48 +9,48 @@ using LuaSTGEditorSharp.EditorData.Document;
 using LuaSTGEditorSharp.EditorData.Node.NodeAttributes;
 using Newtonsoft.Json;
 
-namespace LuaSTGEditorSharp.EditorData.Node.Task
+namespace LuaSTGEditorSharp.EditorData.Node.Render
 {
-    [Serializable, NodeIcon("setpace.png")]
+    [Serializable, NodeIcon("set3d.png")]
     [RequireAncestor(typeof(CodeAlikeTypes))]
     [LeafNode]
     [RCInvoke(0)]
-    public class SetPace : TreeNode
+    public class Set3D : TreeNode
     {
         [JsonConstructor]
-        private SetPace() : base() { }
+        private Set3D() : base() { }
 
-        public SetPace(DocumentData workSpaceData)
-            : this(workSpaceData, "0", "0") { }
+        public Set3D(DocumentData workSpaceData)
+            : this(workSpaceData, "\"eye\"", "0, 0, 0") { }
 
-        public SetPace(DocumentData workSpaceData, string stime, string ptime)
+        public Set3D(DocumentData workSpaceData, string td, string val)
             : base(workSpaceData)
         {
-            StartTime = stime;
-            PaceTime = ptime;
+            Viewpoint = td;
+            Value = val;
             //attributes.Add(new AttrItem("Time", code, this, "yield"));
         }
 
         [JsonIgnore, NodeAttribute]
-        public string StartTime
+        public string Viewpoint
         {
-            get => DoubleCheckAttr(0, name: "Start Time").attrInput;
-            set => DoubleCheckAttr(0, name: "Start Time").attrInput = value;
+            get => DoubleCheckAttr(0, "viewpoint", "Viewpoint").attrInput;
+            set => DoubleCheckAttr(0, "viewpoint", "Viewpoint").attrInput = value;
         }
 
         [JsonIgnore, NodeAttribute]
-        public string PaceTime
+        public string Value
         {
-            get => DoubleCheckAttr(1, name: "Pace Time").attrInput;
-            set => DoubleCheckAttr(1, name: "Pace Time").attrInput = value;
+            get => DoubleCheckAttr(1, name: "Value").attrInput;
+            set => DoubleCheckAttr(1, name: "Value").attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "ex.meterstart = " + Macrolize(0) + "; ex.meterclock = " + Macrolize(1) + "\n";
+            yield return sp + "Set3D(" + Macrolize(0) + "," + Macrolize(1) + ")" + "\n";
         }
-
+        
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
             yield return new Tuple<int, TreeNode>(1, this);
@@ -58,12 +58,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            return "Set pace start " + NonMacrolize(0) + " seconds, tick " + NonMacrolize(1) + " seconds";
+            return "Set 3D viewpoint " + NonMacrolize(0) + " to value(s) (" + NonMacrolize(1) + ")";
         }
 
         public override object Clone()
         {
-            var n = new SetPace(parentWorkSpace);
+            var n = new Set3D(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }

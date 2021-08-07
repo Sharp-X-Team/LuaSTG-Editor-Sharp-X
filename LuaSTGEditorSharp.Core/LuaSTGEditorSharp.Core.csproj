@@ -600,6 +600,14 @@
     <Resource Include="images\16x16\archispace.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\16x16\folderblue.png" />
+    <Resource Include="images\16x16\foldergreen.png" />
+    <Resource Include="images\16x16\folderred.png" />
+    <Resource Include="images\16x16\folderyellow.png" />
+    <Resource Include="images\folderblue.png" />
+    <Resource Include="images\foldergreen.png" />
+    <Resource Include="images\folderred.png" />
+    <Resource Include="images\folderyellow.png" />
     <Content Include="SplashScreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

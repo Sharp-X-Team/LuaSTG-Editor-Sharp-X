@@ -198,9 +198,12 @@
     <Compile Include="EditorData\Node\Render\PostEffect.cs" />
     <Compile Include="EditorData\Node\Render\PostEffectCapture.cs" />
     <Compile Include="EditorData\Node\Render\Render4V.cs" />
+    <Compile Include="EditorData\Node\Background\Set3D.cs" />
+    <Compile Include="EditorData\Node\Render\RenderRect.cs" />
     <Compile Include="EditorData\Node\Render\RenderTarget.cs" />
     <Compile Include="EditorData\Node\Render\RenderTTF.cs" />
     <Compile Include="EditorData\Node\Render\RenderText.cs" />
+    <Compile Include="EditorData\Node\Render\RenderNode.cs" />
     <Compile Include="EditorData\Node\Render\SetViewMode.cs" />
     <Compile Include="EditorData\Node\Stage\ShakeScreen.cs" />
     <Compile Include="EditorData\Node\Stage\Stage.cs" />
@@ -225,6 +228,7 @@
     <Compile Include="EditorData\Node\Task\TaskForObject.cs" />
     <Compile Include="EditorData\Node\Task\TaskNode.cs" />
     <Compile Include="EditorData\Node\Task\SetFPS.cs" />
+    <Compile Include="EditorData\Node\Task\Snapshot.cs" />
     <Compile Include="EditorData\Node\Task\TaskWait.cs" />
     <Compile Include="EditorData\Node\CodeAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Task\WaitForSignal.cs" />
@@ -1858,6 +1862,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\loadfont_Sys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\rendernode.png" />
+    <Resource Include="images\16x16\renderrect.png" />
+    <Resource Include="images\16x16\set3d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rendernode.png" />
+    <Resource Include="images\renderrect.png" />
+    <Resource Include="images\set3d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\snapshot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\snapshot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

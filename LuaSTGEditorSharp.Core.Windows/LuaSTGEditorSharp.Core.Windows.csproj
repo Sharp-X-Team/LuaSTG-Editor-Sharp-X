@@ -83,6 +83,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="JBMono.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

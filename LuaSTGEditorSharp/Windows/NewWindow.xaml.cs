@@ -24,6 +24,7 @@ namespace LuaSTGEditorSharp.Windows
         private string author = (Application.Current as App).AuthorName;
         private bool allowpr = true;
         private bool allowscpr = true;
+        private int modversion = 4096;
 
         public string FileName
         {
@@ -62,6 +63,16 @@ namespace LuaSTGEditorSharp.Windows
             {
                 allowscpr = value;
                 RaiseProertyChanged("AllowSCPR");
+            }
+        }
+
+        public int ModVersion
+        {
+            get => modversion;
+            set
+            {
+                modversion = value;
+                RaiseProertyChanged("ModVersion");
             }
         }
 

@@ -11,46 +11,39 @@ using Newtonsoft.Json;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Task
 {
-    [Serializable, NodeIcon("setpace.png")]
+    [Serializable, NodeIcon("snapshot.png")]
     [RequireAncestor(typeof(CodeAlikeTypes))]
     [LeafNode]
     [RCInvoke(0)]
-    public class SetPace : TreeNode
+    public class Snapshot : TreeNode
     {
         [JsonConstructor]
-        private SetPace() : base() { }
+        private Snapshot() : base() { }
 
-        public SetPace(DocumentData workSpaceData)
-            : this(workSpaceData, "0", "0") { }
+        public Snapshot(DocumentData workSpaceData)
+            : this(workSpaceData, "os.date(\"!%Y-%m-%d-%H-%M-%S\", os.time() + setting.timezone * 3600)") { }
 
-        public SetPace(DocumentData workSpaceData, string stime, string ptime)
+        public Snapshot(DocumentData workSpaceData, string name)
             : base(workSpaceData)
         {
-            StartTime = stime;
-            PaceTime = ptime;
+            Name = name;
             //attributes.Add(new AttrItem("Time", code, this, "yield"));
         }
 
         [JsonIgnore, NodeAttribute]
-        public string StartTime
+        public string Name
         {
-            get => DoubleCheckAttr(0, name: "Start Time").attrInput;
-            set => DoubleCheckAttr(0, name: "Start Time").attrInput = value;
-        }
-
-        [JsonIgnore, NodeAttribute]
-        public string PaceTime
-        {
-            get => DoubleCheckAttr(1, name: "Pace Time").attrInput;
-            set => DoubleCheckAttr(1, name: "Pace Time").attrInput = value;
+            get => DoubleCheckAttr(0, name: "File name").attrInput;
+            set => DoubleCheckAttr(0, name: "File name").attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "ex.meterstart = " + Macrolize(0) + "; ex.meterclock = " + Macrolize(1) + "\n";
+            string snappath = "\"snapshot" + "\\\\" + "\"";
+            yield return sp + "Snapshot(" + snappath + " .. " + Macrolize(0) + " .. \".png\")\n";
         }
-
+        
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
             yield return new Tuple<int, TreeNode>(1, this);
@@ -58,12 +51,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            return "Set pace start " + NonMacrolize(0) + " seconds, tick " + NonMacrolize(1) + " seconds";
+            return "Snapshot screen and save as \"" + attributes[0].AttrInput + "\"";
         }
 
         public override object Clone()
         {
-            var n = new SetPace(parentWorkSpace);
+            var n = new Snapshot(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }

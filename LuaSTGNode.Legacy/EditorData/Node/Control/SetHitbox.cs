@@ -44,6 +44,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
             get => DoubleCheckAttr(1, "size", "Size").attrInput;
             set => DoubleCheckAttr(1, "size", "Size").attrInput = value;
         }
+        [JsonIgnore, NodeAttribute]
         public string PptyA
         {
             get => DoubleCheckAttr(2, "bool", "Is Rectangle").attrInput;
