@@ -64,6 +64,7 @@
     <Compile Include="EditorData\Document\Meta\BentLaserDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\EnemyDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\AnimationLoadMetaInfo.cs" />
+    <Compile Include="EditorData\Document\Meta\BackgroundDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\TTFLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\FontLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\ParticleLoadMetaInfo.cs" />
@@ -83,6 +84,14 @@
     <Compile Include="EditorData\Node\Audio\SetPace.cs" />
     <Compile Include="EditorData\Node\Audio\ResumeBGM.cs" />
     <Compile Include="EditorData\Node\Audio\StopBGM.cs" />
+    <Compile Include="EditorData\Node\Background\BackgroundDefine.cs" />
+    <Compile Include="EditorData\Node\Background\BackgroundInit.cs" />
+    <Compile Include="EditorData\Node\Background\BGOnRender.cs" />
+    <Compile Include="EditorData\Node\Background\BGOnFrame.cs" />
+    <Compile Include="EditorData\Node\Background\Render4V3D.cs" />
+    <Compile Include="EditorData\Node\Background\RenderClear.cs" />
+    <Compile Include="EditorData\Node\Background\BGWarp.cs" />
+    <Compile Include="EditorData\Node\Background\CameraSetter.cs" />
     <Compile Include="EditorData\Node\Boss\BossAura.cs" />
     <Compile Include="EditorData\Node\Boss\Chargeball.cs" />
     <Compile Include="EditorData\Node\Boss\BossMoveTo.cs" />
@@ -1878,6 +1887,34 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\snapshot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\bgstagecreate.png" />
+    <Resource Include="images\16x16\bgstagewarp.png" />
+    <Resource Include="images\16x16\renderclear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bgstagecreate.png" />
+    <Resource Include="images\bgstagewarp.png" />
+    <Resource Include="images\renderclear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\bgonrender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bgonrender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\render4v3d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\render4v3d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\camerasetter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\camerasetter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

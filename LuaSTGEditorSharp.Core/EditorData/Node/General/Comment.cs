@@ -21,9 +21,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
         private Comment() : base() { }
 
         public Comment(DocumentData workSpaceData) 
-            : this(workSpaceData, "") { }
+            : this(workSpaceData, "", "") { }
 
-        public Comment(DocumentData workSpaceData, string code) 
+        public Comment(DocumentData workSpaceData, string code, string onchild = "true") 
             : base(workSpaceData)
         {
             /*
@@ -31,7 +31,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
             attributes.Add(new AttrItem("Comment on child", "true", this, "bool"));
             */
             CommentContent = code;
-            CommentOnChild = "true";
+            CommentOnChild = onchild;
         }
 
         [JsonIgnore, NodeAttribute, XmlAttribute("Comment")]

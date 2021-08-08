@@ -392,6 +392,22 @@ namespace LuaSTGEditorSharp
             #region background
             background.Add(new ToolboxItemData("set3d", "/LuaSTGNode.Legacy;component/images/set3d.png", "Set 3D Viewpoint")
                 , new AddNode(AddSet3DNode));
+            background.Add(new ToolboxItemData("camerasetter", "/LuaSTGNode.Legacy;component/images/camerasetter.png", "Create Camera Setter")
+                , new AddNode(AddCameraSetterNode));
+            background.Add(new ToolboxItemData(true), null);
+            background.Add(new ToolboxItemData("bgstagecreate", "/LuaSTGNode.Legacy;component/images/bgstagecreate.png", "Define Background")
+                , new AddNode(AddDefineBackgroundNode));
+            background.Add(new ToolboxItemData("bgonframe", "/LuaSTGNode.Legacy;component/images/callbackfunc.png", "BG On Frame")
+                , new AddNode(AddBGOnFrameNode));
+            background.Add(new ToolboxItemData("bgonrender", "/LuaSTGNode.Legacy;component/images/bgonrender.png", "BG On Render")
+                , new AddNode(AddBGOnRenderNode));
+            background.Add(new ToolboxItemData(true), null);
+            background.Add(new ToolboxItemData("renderclear", "/LuaSTGNode.Legacy;component/images/renderclear.png", "Render Clear")
+                , new AddNode(AddRenderClearNode));
+            background.Add(new ToolboxItemData("render4v3d", "/LuaSTGNode.Legacy;component/images/render4v3d.png", "Render4V 3D")
+                , new AddNode(AddRender4V3DNode));
+            background.Add(new ToolboxItemData("bgstagewarp", "/LuaSTGNode.Legacy;component/images/bgstagewarp.png", "Background Warp Effect Capture/Apply")
+                , new AddNode(AddBGWarpNode));
             #endregion
             ToolInfo.Add("Background", background);
 
@@ -1130,6 +1146,56 @@ namespace LuaSTGEditorSharp
         private void AddSet3DNode()
         {
             parent.Insert(new Set3D(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddCameraSetterNode()
+        {
+            parent.Insert(new CameraSetter(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddDefineBackgroundNode()
+        {
+            TreeNode bgdef = new BackgroundDefine(parent.ActivatedWorkSpaceData);
+            bgdef.AddChild(new BackgroundInit(parent.ActivatedWorkSpaceData));
+            bgdef.AddChild(new BGOnFrame(parent.ActivatedWorkSpaceData));
+            bgdef.AddChild(new BGOnRender(parent.ActivatedWorkSpaceData));
+            var bgrend = bgdef.Children.Last();
+            bgrend.AddChild(new SetViewMode(parent.ActivatedWorkSpaceData, "3d"));
+            bgrend.AddChild(new BGWarp(parent.ActivatedWorkSpaceData, "Capture"));
+            bgrend.AddChild(new RenderClear(parent.ActivatedWorkSpaceData));
+            bgrend.AddChild(new Comment(parent.ActivatedWorkSpaceData, "Start code here", "false"));
+            bgrend.AddChild(new BGWarp(parent.ActivatedWorkSpaceData, "Apply"));
+            bgrend.AddChild(new SetViewMode(parent.ActivatedWorkSpaceData, "world"));
+            parent.Insert(bgrend);
+            parent.Insert(bgdef);
+        }
+
+        private void AddBGOnFrameNode()
+        {
+            var o = new BGOnFrame(parent.ActivatedWorkSpaceData);
+            parent.Insert(o);
+        }
+
+        private void AddBGOnRenderNode()
+        {
+            var o = new BGOnRender(parent.ActivatedWorkSpaceData);
+            o.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData));
+            parent.Insert(o);
+        }
+
+        private void AddRenderClearNode()
+        {
+            parent.Insert(new RenderClear(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddBGWarpNode()
+        {
+            parent.Insert(new BGWarp(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRender4V3DNode()
+        {
+            parent.Insert(new Render4V3D(parent.ActivatedWorkSpaceData));
         }
 
         #endregion

@@ -122,6 +122,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , new string[] { "Bezier", "CR", "Basis2" });
             target.Add("renderOp"
                 , new string[] { "Push", "Pop" });
+            target.Add("warptarget"
+                , new string[] { "Capture", "Apply" });
             target.Add("viewmode"
                 , new string[] { "ui", "world", "3D" });
             target.Add("viewpoint"

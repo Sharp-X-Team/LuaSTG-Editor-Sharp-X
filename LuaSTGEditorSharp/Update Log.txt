@@ -7,7 +7,6 @@ v0.72.1:
 -Changed the font for the code view/edit input box from Courier New 14 to JetBrains Mono 13
 -Added a "mod version" parameter to the editor settings node (won't appear on already-existing projects)
 -Added render rect node (render tab)
--Added set 3d node (background tab, which was brought back)
 -Added snapshot node (task tab)
 -Create bullet group node now returns in a table called "last_list";
 (tip, individual bullets can be used through (use unit here)

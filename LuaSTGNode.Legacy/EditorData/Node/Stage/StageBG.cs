@@ -44,7 +44,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "New(" + NonMacrolize(0) + ")\n";
+            string name = Macrolize(0);
+            yield return "New(_editor_class[\"" + name + "\"] or " + name + ")";
+
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

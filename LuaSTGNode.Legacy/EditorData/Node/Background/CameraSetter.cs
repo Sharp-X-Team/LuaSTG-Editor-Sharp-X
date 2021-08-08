@@ -11,44 +11,25 @@ using Newtonsoft.Json;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Render
 {
-    [Serializable, NodeIcon("set3d.png")]
+    [Serializable, NodeIcon("camerasetter.png")]
     [RequireAncestor(typeof(CodeAlikeTypes))]
     [LeafNode]
     [RCInvoke(0)]
-    public class Set3D : TreeNode
+    public class CameraSetter : TreeNode
     {
         [JsonConstructor]
-        private Set3D() : base() { }
+        private CameraSetter() : base() { }
 
-        public Set3D(DocumentData workSpaceData)
-            : this(workSpaceData, "\"eye\"", "0,0,0") { }
-
-        public Set3D(DocumentData workSpaceData, string td, string val)
+        public CameraSetter(DocumentData workSpaceData)
             : base(workSpaceData)
         {
-            Viewpoint = td;
-            Value = val;
             //attributes.Add(new AttrItem("Time", code, this, "yield"));
-        }
-
-        [JsonIgnore, NodeAttribute]
-        public string Viewpoint
-        {
-            get => DoubleCheckAttr(0, "viewpoint", "Viewpoint").attrInput;
-            set => DoubleCheckAttr(0, "viewpoint", "Viewpoint").attrInput = value;
-        }
-
-        [JsonIgnore, NodeAttribute]
-        public string Value
-        {
-            get => DoubleCheckAttr(1, name: "Value").attrInput;
-            set => DoubleCheckAttr(1, name: "Value").attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "Set3D(" + Macrolize(0) + "," + Macrolize(1) + ")" + "\n";
+            yield return sp + "last=New(camera_setter)\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -58,12 +39,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Set 3D viewpoint " + NonMacrolize(0) + " to value(s) (" + NonMacrolize(1) + ")";
+            return "Create camera setter";
         }
 
         public override object Clone()
         {
-            var n = new Set3D(parentWorkSpace);
+            var n = new CameraSetter(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }

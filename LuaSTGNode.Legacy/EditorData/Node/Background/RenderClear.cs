@@ -11,44 +11,36 @@ using Newtonsoft.Json;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Render
 {
-    [Serializable, NodeIcon("set3d.png")]
+    [Serializable, NodeIcon("renderclear.png")]
     [RequireAncestor(typeof(CodeAlikeTypes))]
     [LeafNode]
     [RCInvoke(0)]
-    public class Set3D : TreeNode
+    public class RenderClear : TreeNode
     {
         [JsonConstructor]
-        private Set3D() : base() { }
+        private RenderClear() : base() { }
 
-        public Set3D(DocumentData workSpaceData)
-            : this(workSpaceData, "\"eye\"", "0,0,0") { }
+        public RenderClear(DocumentData workSpaceData)
+            : this(workSpaceData, "lstg.view3d.fog[3]") { }
 
-        public Set3D(DocumentData workSpaceData, string td, string val)
+        public RenderClear(DocumentData workSpaceData, string col)
             : base(workSpaceData)
         {
-            Viewpoint = td;
-            Value = val;
+            Color = col;
             //attributes.Add(new AttrItem("Time", code, this, "yield"));
         }
 
         [JsonIgnore, NodeAttribute]
-        public string Viewpoint
+        public string Color
         {
-            get => DoubleCheckAttr(0, "viewpoint", "Viewpoint").attrInput;
-            set => DoubleCheckAttr(0, "viewpoint", "Viewpoint").attrInput = value;
-        }
-
-        [JsonIgnore, NodeAttribute]
-        public string Value
-        {
-            get => DoubleCheckAttr(1, name: "Value").attrInput;
-            set => DoubleCheckAttr(1, name: "Value").attrInput = value;
+            get => DoubleCheckAttr(0, "ARGB", "Color").attrInput;
+            set => DoubleCheckAttr(0, "ARGB", "Color").attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "Set3D(" + Macrolize(0) + "," + Macrolize(1) + ")" + "\n";
+            yield return sp + "RenderClear(" + Macrolize(0) + ")" + "\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -58,12 +50,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Set 3D viewpoint " + NonMacrolize(0) + " to value(s) (" + NonMacrolize(1) + ")";
+            return "Render clear with color (" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()
         {
-            var n = new Set3D(parentWorkSpace);
+            var n = new RenderClear(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }
