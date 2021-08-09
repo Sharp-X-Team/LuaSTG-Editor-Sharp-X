@@ -1089,7 +1089,11 @@ namespace LuaSTGEditorSharp
             }
             e.CanExecute = canE;
             */
-            e.CanExecute = selectedNode != null && selectedNode is Folder;
+            e.CanExecute = selectedNode != null && (selectedNode is Folder ||
+                                                    selectedNode is FolderRed ||
+                                                    selectedNode is FolderGreen ||
+                                                    selectedNode is FolderBlue ||
+                                                    selectedNode is FolderYellow);
         }
 
         private void SwitchBanCommandExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -1221,7 +1225,11 @@ namespace LuaSTGEditorSharp
             e.CanExecute = false;
             if (selectedNode == null) return;
             TreeNode t = selectedNode;
-            while (t != null && t?.Parent is Folder)
+            while (t != null && (t?.Parent is Folder ||
+                                 t?.Parent is FolderRed ||
+                                 t?.Parent is FolderGreen ||
+                                 t?.Parent is FolderBlue ||
+                                 t?.Parent is FolderYellow))
             {
                 t = t.Parent;
             }

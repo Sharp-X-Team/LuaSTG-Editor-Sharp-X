@@ -65,6 +65,7 @@
     <Compile Include="EditorData\Document\Meta\EnemyDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\AnimationLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\BackgroundDefineMetaInfo.cs" />
+    <Compile Include="EditorData\Document\Meta\PlayerDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\TTFLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\FontLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\ParticleLoadMetaInfo.cs" />
@@ -201,6 +202,24 @@
     <Compile Include="EditorData\Node\Object\SetRelativePosition.cs" />
     <Compile Include="EditorData\Node\Object\SetVelocityLimit.cs" />
     <Compile Include="EditorData\Node\Object\SetVelocity.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerClassFrame.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerClassRender.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerSimpleBullet.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerSpellMask.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerSpecial.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerSpell.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerShoot.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerRender.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerFrame.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerInit.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerDefine.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerNextSP.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerNextSpell.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerNextShoot.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerProtect.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerSpeed.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerOption.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerWalkImageSystem.cs" />
     <Compile Include="EditorData\Node\RenderAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Render\CreateRenderTarget.cs" />
     <Compile Include="EditorData\Node\Render\OnRender.cs" />
@@ -1915,6 +1934,77 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\camerasetter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playeroption.png" />
+    <Resource Include="images\16x16\playerprotect.png" />
+    <Resource Include="images\16x16\playersimplebullet.png" />
+    <Resource Include="images\16x16\playerwalkimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playerdefine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playeroption.png" />
+    <Resource Include="images\playerprotect.png" />
+    <Resource Include="images\playersimplebullet.png" />
+    <Resource Include="images\playerwalkimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playerbulletcreate.png" />
+    <Resource Include="images\playerdefinebullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playerbulletcreate.png" />
+    <Resource Include="images\16x16\playerdefinebullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playerspeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playerspeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playernextshoot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playernextshoot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playernextspell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playernextspell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playernextsp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playernextsp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playerclassrender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playerclassrender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playerclassframe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playerclassframe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playerspellmask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playerspellmask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playertarget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playertarget.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

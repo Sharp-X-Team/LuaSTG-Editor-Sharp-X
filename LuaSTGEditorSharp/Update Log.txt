@@ -16,6 +16,30 @@ v0.72.1:
     end
 
 )
+-Added (back?) the entirety of the background tab
+(Set 3D node -> lets you set individual values for the many 3d viewpoints (eye, at, fog, etc)
+Create Camera Setter node -> creates the camera setter object
+Define Background node -> lets you define a background (comes with many nodes inside)
+BG On Frame node -> the define background node custom on frame()
+BG On Render node -> the define background node custom on render()
+Render clear node -> executes the render clear function
+Render 4V 3D node -> executes the render4v function, but with the Z axis available for the user
+Background Warp Effect Capture/Apply node -> executes the background warp effect capture/apply function)
+-Changed the set stage background node to make it check if there's an editor-defined background named as the selected one before creating one from THlib
+-Fixed extension register bug where it tried to attach the file types to a non-existent executable
+-Added colored folder nodes (Red/Green/Blue/Yellow)
+-Added (back?) the entirety of the player tab
+(Define player node -> lets you define a custom player
+Set player walk image node -> lets you set the player's image and hitbox
+Player class render node -> renders the player in a player class
+Player class frame node -> executes the frame of the player in a player class
+Set player speed node -> lets you set the unfocused and focused speed of a player
+Set player protect node -> lets you set a player invulnerability for a given amount of frames
+Set player shooting delay node -> lets you alter the nextshoot player variable
+Set player spell delay node -> lets you alter the nextspell player variable
+Set player special delay node -> lets you alter the nextspecial player variable
+Create player spell mask node -> creates a player spell mask with colors and times
+Create simple player bullet node -> creates a simple player bullet with or not homing capability)
 
 v0.71.1:
 -Refactored the icons and strings pertaining to LuaSTG Sharp Editor to LuaSTG Sharp Editor X

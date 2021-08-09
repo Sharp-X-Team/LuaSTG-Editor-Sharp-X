@@ -582,7 +582,11 @@ namespace LuaSTGEditorSharp.EditorData
                                 firstC = true;
                                 yield return "if false then ";
                             }
-                            if (!folderFound && t is Folder)
+                            if (!folderFound && (t is Folder ||
+                                                 t is FolderRed ||
+                                                 t is FolderGreen ||
+                                                 t is FolderBlue ||
+                                                 t is FolderYellow))
                             {
                                 folderFound = true;
                             }
@@ -871,8 +875,12 @@ namespace LuaSTGEditorSharp.EditorData
         /// </returns>
         private bool ValidateChild(TreeNode toV, TreeNode originalParent)
         {
-            if (this is Folder) return GetLogicalParent()?.ValidateChild(toV, originalParent) ?? true;
-            if (toV is Folder)
+            if (this is Folder 
+                || this is FolderRed 
+                || this is FolderGreen 
+                || this is FolderBlue 
+                || this is FolderYellow) return GetLogicalParent()?.ValidateChild(toV, originalParent) ?? true;
+            if (toV is Folder || toV is FolderRed || toV is FolderGreen || toV is FolderBlue || toV is FolderYellow)
             {
                 foreach (TreeNode t in toV.GetLogicalChildren())
                 {
@@ -1315,7 +1323,11 @@ namespace LuaSTGEditorSharp.EditorData
             while (beg != end)
             {
                 if (beg.IgnoreValidation) return true;
-                if (beg.GetType() != typeof(Folder) && beg.GetType() != typeof(RootFolder) && beg.GetType() != typeof(ProjectRoot)) return false;
+                if ((beg.GetType() != typeof(Folder) ||
+                    beg.GetType() != typeof(FolderRed) ||
+                    beg.GetType() != typeof(FolderGreen) ||
+                    beg.GetType() != typeof(FolderBlue) ||
+                    beg.GetType() != typeof(FolderYellow)) && beg.GetType() != typeof(RootFolder) && beg.GetType() != typeof(ProjectRoot)) return false;
                 beg = beg.Parent;
             }
             return true;
@@ -1670,7 +1682,7 @@ namespace LuaSTGEditorSharp.EditorData
         public TreeNode GetLogicalParent()
         {
             TreeNode p = _parent;
-            while ((p is Folder) && p != null)
+            while ((p is Folder || p is FolderRed || p is FolderGreen || p is FolderBlue || p is FolderYellow) && p != null)
             {
                 p = p._parent;
             }
@@ -1688,7 +1700,7 @@ namespace LuaSTGEditorSharp.EditorData
                 //Ensure not in TryLink
                 if (n._parent == this)
                 {
-                    if (n is Folder)
+                    if (n is Folder || n is FolderRed || n is FolderGreen || n is FolderBlue || n is FolderYellow)
                     {
                         foreach (TreeNode t in n.GetLogicalChildren())
                         {
@@ -1709,7 +1721,7 @@ namespace LuaSTGEditorSharp.EditorData
         /// <returns>A bool value, true for can.</returns>
         public bool CanLogicallyDelete()
         {
-            if (this is Folder)
+            if (this is Folder || this is FolderRed || this is FolderGreen || this is FolderBlue || this is FolderYellow)
             {
                 foreach (TreeNode t in GetLogicalChildren())
                 {
@@ -1729,7 +1741,7 @@ namespace LuaSTGEditorSharp.EditorData
         /// <returns>A bool value, true for can.</returns>
         public bool CanLogicallyBeBanned()
         {
-            if (this is Folder)
+            if (this is Folder || this is FolderRed || this is FolderGreen || this is FolderBlue || this is FolderYellow)
             {
                 foreach (TreeNode t in GetLogicalChildren())
                 {

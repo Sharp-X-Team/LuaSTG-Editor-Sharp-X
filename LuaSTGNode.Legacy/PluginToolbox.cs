@@ -411,8 +411,35 @@ namespace LuaSTGEditorSharp
             #endregion
             ToolInfo.Add("Background", background);
 
-            //var player = new Dictionary<ToolboxItemData, AddNode>();
-            //ToolInfo.Add("Player", player);
+            var player = new Dictionary<ToolboxItemData, AddNode>();
+            #region player
+            player.Add(new ToolboxItemData("playerdefine", "/LuaSTGNode.Legacy;component/images/playerdefine.png", "Define Player")
+                , new AddNode(AddPlayerDefineNode));
+            player.Add(new ToolboxItemData("playerwalkimg", "/LuaSTGNode.Legacy;component/images/playerwalkimg.png", "Set Player Walk Image")
+                , new AddNode(AddPlayerWalkImageNode));
+            player.Add(new ToolboxItemData("playerclassrender", "/LuaSTGNode.Legacy;component/images/playerclassrender.png", "Set Player Class Render")
+                , new AddNode(AddPlayerClassRenderNode));
+            player.Add(new ToolboxItemData("playerclassframe", "/LuaSTGNode.Legacy;component/images/playerclassframe.png", "Set Player Class Frame")
+                , new AddNode(AddPlayerClassFrameNode));
+            player.Add(new ToolboxItemData(true), null);
+            player.Add(new ToolboxItemData("playerspeed", "/LuaSTGNode.Legacy;component/images/playerspeed.png", "Set Player Speed")
+                , new AddNode(AddPlayerSpeedNode));
+            player.Add(new ToolboxItemData("playerprotect", "/LuaSTGNode.Legacy;component/images/playerprotect.png", "Set Player Protect")
+                , new AddNode(AddPlayerProtectNode));
+            player.Add(new ToolboxItemData("playerspellmask", "/LuaSTGNode.Legacy;component/images/playerspellmask.png", "Create Player Spell Mask")
+                , new AddNode(AddPlayerSpellMaskNode));
+            player.Add(new ToolboxItemData(true), null);
+            player.Add(new ToolboxItemData("playersimplebullet", "/LuaSTGNode.Legacy;component/images/playersimplebullet.png", "Create Simple Player Bullet")
+                , new AddNode(AddPlayerSimpleBulletNode));
+            player.Add(new ToolboxItemData(true), null);
+            player.Add(new ToolboxItemData("playernextshoot", "/LuaSTGNode.Legacy;component/images/playernextshoot.png", "Set Player Shooting Delay")
+                , new AddNode(AddPlayerNextShootNode));
+            player.Add(new ToolboxItemData("playernextspell", "/LuaSTGNode.Legacy;component/images/playernextspell.png", "Set Player Spell Delay")
+                , new AddNode(AddPlayerNextSpellNode));
+            player.Add(new ToolboxItemData("playernextsp", "/LuaSTGNode.Legacy;component/images/playernextsp.png", "Set Player Special Delay")
+                , new AddNode(AddPlayerNextSpecialNode));
+            #endregion 
+            ToolInfo.Add("Player", player);
         }
 
         #region data
@@ -1197,6 +1224,92 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new Render4V3D(parent.ActivatedWorkSpaceData));
         }
+
+        #region player
+        private void AddPlayerDefineNode()
+        {
+            var pl = new PlayerDefine(parent.ActivatedWorkSpaceData);
+            pl.AddChild(new PlayerInit(parent.ActivatedWorkSpaceData));
+            var pl2 = pl.Children.Last();
+            pl2.AddChild(new SetPlayerWalkImageSystem(parent.ActivatedWorkSpaceData));
+            pl2.AddChild(new PlayerSpeed(parent.ActivatedWorkSpaceData));
+            pl2.AddChild(new PlayerProtect(parent.ActivatedWorkSpaceData));
+            parent.Insert(pl2);
+            pl.AddChild(new PlayerFrame(parent.ActivatedWorkSpaceData));
+            var plF = pl.Children.Last();
+            plF.AddChild(new PlayerClassFrame(parent.ActivatedWorkSpaceData));
+            parent.Insert(plF);
+            pl.AddChild(new PlayerRender(parent.ActivatedWorkSpaceData));
+            var plR = pl.Children.Last();
+            plR.AddChild(new PlayerClassRender(parent.ActivatedWorkSpaceData));
+            parent.Insert(plR);
+            pl.AddChild(new PlayerShoot(parent.ActivatedWorkSpaceData));
+            var pl3 = pl.Children.Last();
+            pl3.AddChild(new PlayerNextShoot(parent.ActivatedWorkSpaceData));
+            pl3.AddChild(new PlaySE(parent.ActivatedWorkSpaceData, "\"plst00\"", "0.3", "self.x/1024", "false"));
+            parent.Insert(pl3);
+            pl.AddChild(new PlayerSpell(parent.ActivatedWorkSpaceData));
+            var pl4 = pl.Children.Last();
+            pl4.AddChild(new PlayerNextSpell(parent.ActivatedWorkSpaceData));
+            pl4.AddChild(new PlaySE(parent.ActivatedWorkSpaceData, "\"nep00\"", "0.8", "self.x/1024", "false"));
+            pl4.AddChild(new PlayerSpellMask(parent.ActivatedWorkSpaceData));
+            parent.Insert(pl4);
+            pl.AddChild(new PlayerSpecial(parent.ActivatedWorkSpaceData));
+            var pl5 = pl.Children.Last();
+            pl5.AddChild(new PlayerNextSP(parent.ActivatedWorkSpaceData));
+            pl5.AddChild(new PlaySE(parent.ActivatedWorkSpaceData, "\"slash\"", "0.8", "self.x/1024", "false"));
+            parent.Insert(pl5);
+            parent.Insert(pl);
+        }
+
+        private void AddPlayerSpeedNode()
+        {
+            parent.Insert(new PlayerSpeed(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerWalkImageNode()
+        {
+            parent.Insert(new SetPlayerWalkImageSystem(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerProtectNode()
+        {
+            parent.Insert(new PlayerProtect(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerNextShootNode()
+        {
+            parent.Insert(new PlayerNextShoot(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerNextSpellNode()
+        {
+            parent.Insert(new PlayerNextSpell(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerNextSpecialNode()
+        {
+            parent.Insert(new PlayerNextSP(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerClassRenderNode()
+        {
+            parent.Insert(new PlayerClassRender(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerClassFrameNode()
+        {
+            parent.Insert(new PlayerClassFrame(parent.ActivatedWorkSpaceData));
+        }
+        private void AddPlayerSpellMaskNode()
+        {
+            parent.Insert(new PlayerSpellMask(parent.ActivatedWorkSpaceData));
+        }
+        private void AddPlayerSimpleBulletNode()
+        {
+            parent.Insert(new PlayerSimpleBullet(parent.ActivatedWorkSpaceData));
+        }
+        #endregion
 
         #endregion
     }

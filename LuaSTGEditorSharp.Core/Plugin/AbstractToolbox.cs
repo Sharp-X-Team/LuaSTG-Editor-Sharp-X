@@ -44,6 +44,10 @@ namespace LuaSTGEditorSharp.Plugin
             var gen = new Dictionary<ToolboxItemData, AddNode>();
             #region general
             gen.Add(new ToolboxItemData("folder", "/LuaSTGEditorSharp.Core;component/images/folder.png", "Folder"), new AddNode(AddFolderNode));
+            gen.Add(new ToolboxItemData("folderred", "/LuaSTGEditorSharp.Core;component/images/folderred.png", "Red Folder"), new AddNode(AddRedFolderNode));
+            gen.Add(new ToolboxItemData("foldergreen", "/LuaSTGEditorSharp.Core;component/images/foldergreen.png", "Green Folder"), new AddNode(AddGreenFolderNode));
+            gen.Add(new ToolboxItemData("folderblue", "/LuaSTGEditorSharp.Core;component/images/folderblue.png", "Blue Folder"), new AddNode(AddBlueFolderNode));
+            gen.Add(new ToolboxItemData("folderyellow", "/LuaSTGEditorSharp.Core;component/images/folderyellow.png", "Yellow Folder"), new AddNode(AddYellowFolderNode));
             gen.Add(new ToolboxItemData("code", "/LuaSTGEditorSharp.Core;component/images/code.png", "Code"), new AddNode(AddCodeNode));
             gen.Add(new ToolboxItemData("codeseg", "/LuaSTGEditorSharp.Core;component/images/codesegment.png", "Code Segment"), new AddNode(AddBlockCodeNode));
             gen.Add(new ToolboxItemData("comment", "/LuaSTGEditorSharp.Core;component/images/comment.png", "Comment"), new AddNode(AddCommentNode));
@@ -140,6 +144,26 @@ namespace LuaSTGEditorSharp.Plugin
         private void AddFolderNode()
         {
             parent.Insert(new Folder(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRedFolderNode()
+        {
+            parent.Insert(new FolderRed(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddGreenFolderNode()
+        {
+            parent.Insert(new FolderGreen(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddBlueFolderNode()
+        {
+            parent.Insert(new FolderBlue(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddYellowFolderNode()
+        {
+            parent.Insert(new FolderYellow(parent.ActivatedWorkSpaceData));
         }
 
         private void AddCodeNode()

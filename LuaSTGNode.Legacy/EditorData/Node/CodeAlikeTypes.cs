@@ -10,7 +10,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
     public class CodeAlikeTypes : ITypeEnumerable
     {
         private static readonly Type[] types =
-            { typeof(Stage.Stage), typeof(Object.CallBackFunc), typeof(Object.BGOnFrame), typeof(Object.BackgroundInit), typeof(Render.BGOnRender), typeof(Bullet.BulletInit), typeof(Boss.BossBGLayerInit)
+            { typeof(Stage.Stage), typeof(Object.CallBackFunc), typeof(Object.BGOnFrame), typeof(Object.PlayerDefine), typeof(Object.PlayerInit), typeof(Object.BackgroundInit), typeof(Render.BGOnRender), typeof(Bullet.BulletInit), typeof(Boss.BossBGLayerInit)
             , typeof(Boss.BossBGLayerFrame), typeof(Boss.BossBGLayerRender), typeof(Boss.BossSCStart), typeof(Boss.BossSCFinish)
             , typeof(Laser.LaserInit), typeof(Laser.BentLaserInit), typeof(Data.Function), typeof(Task.TaskDefine)
             , typeof(Boss.BossInit), typeof(Render.OnRender), typeof(Boss.Dialog), typeof(Enemy.EnemyInit)

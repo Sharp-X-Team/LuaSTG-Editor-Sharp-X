@@ -133,6 +133,10 @@
     <Compile Include="EditorData\Node\General\CodeBlock.cs" />
     <Compile Include="EditorData\Node\General\CodeSegment.cs" />
     <Compile Include="EditorData\Node\General\Comment.cs" />
+    <Compile Include="EditorData\Node\General\FolderYellow.cs" />
+    <Compile Include="EditorData\Node\General\FolderBlue.cs" />
+    <Compile Include="EditorData\Node\General\FolderGreen.cs" />
+    <Compile Include="EditorData\Node\General\FolderRed.cs" />
     <Compile Include="EditorData\Node\General\Folder.cs" />
     <Compile Include="EditorData\Node\General\IfElse.cs" />
     <Compile Include="EditorData\Node\General\IfElseIf.cs" />
