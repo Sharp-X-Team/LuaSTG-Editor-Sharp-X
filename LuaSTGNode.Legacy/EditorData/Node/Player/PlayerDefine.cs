@@ -81,7 +81,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             }
             if (NonMacrolize(1) == "true")
             {
-                yield return "AddPlayerToPlayerList('" + Macrolize(2) + "','" + Macrolize(0) + "','" + Macrolize(3) + "')";
+                yield return "table.insert(player_list, {'" + Macrolize(2) + "','" + Macrolize(0) + "','" + Macrolize(3) + "'})";
             }
         }
 
@@ -116,6 +116,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             List<MessageBase> messages = new List<MessageBase>();
             if (string.IsNullOrEmpty(NonMacrolize(0)))
                 messages.Add(new ArgNotNullMessage(attributes[0].AttrCap, 0, this));
+            if (string.IsNullOrEmpty(NonMacrolize(2)))
+                messages.Add(new ArgNotNullMessage(attributes[2].AttrCap, 2, this));
+            if (string.IsNullOrEmpty(NonMacrolize(3)))
+                messages.Add(new ArgNotNullMessage(attributes[3].AttrCap, 3, this));
             return messages;
         }
     }

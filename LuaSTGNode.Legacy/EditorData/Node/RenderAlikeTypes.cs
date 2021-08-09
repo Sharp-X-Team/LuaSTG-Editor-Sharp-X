@@ -9,7 +9,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
 {
     class RenderAlikeTypes : ITypeEnumerable
     {
-        private static readonly Type[] types = { typeof(Render.OnRender), typeof(Object.BGOnFrame), typeof(Object.BackgroundInit), typeof(Render.BGOnRender), typeof(Data.Function) };
+        private static readonly Type[] types = { typeof(Render.OnRender), typeof(Object.BGOnFrame), typeof(Object.BackgroundInit), typeof(Render.BGOnRender), typeof(Bullet.PlayerBulletRender), typeof(Data.Function) };
 
         public IEnumerator<Type> GetEnumerator()
         {

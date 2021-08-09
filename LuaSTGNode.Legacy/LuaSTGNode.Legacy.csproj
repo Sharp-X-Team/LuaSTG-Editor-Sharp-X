@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="EditorData\Document\MetaData.cs" />
     <Compile Include="EditorData\Document\Meta\BentLaserDefineMetaInfo.cs" />
+    <Compile Include="EditorData\Document\Meta\PlayerBulletDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\EnemyDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\AnimationLoadMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\BackgroundDefineMetaInfo.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="EditorData\Node\Boss\Dialog.cs" />
     <Compile Include="EditorData\Node\Boss\AdvancedSentence.cs" />
     <Compile Include="EditorData\Node\Boss\Sentence.cs" />
+    <Compile Include="EditorData\Node\Control\SetKillflag.cs" />
     <Compile Include="EditorData\Node\Control\SetCollision.cs" />
     <Compile Include="EditorData\Node\Control\SetShuttle.cs" />
     <Compile Include="EditorData\Node\Control\SetVisibility.cs" />
@@ -124,6 +126,16 @@
     <Compile Include="EditorData\Node\Enemy\EnemyDefine.cs" />
     <Compile Include="EditorData\Node\Enemy\EnemyInit.cs" />
     <Compile Include="EditorData\Node\Enemy\EnemyWander.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameBomb.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameBombPiece.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameKillPlayer.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameScore.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameGraze.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGamePoint.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameFaith.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGamePower.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameLifePiece.cs" />
+    <Compile Include="EditorData\Node\GameData\SetGameLife.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadAnimation.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadTTF.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadFont.cs" />
@@ -131,6 +143,9 @@
     <Compile Include="EditorData\Node\Graphics\LoadFontImage.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadParticle.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadTexture.cs" />
+    <Compile Include="EditorData\Node\Graphics\SetAnimationCenter.cs" />
+    <Compile Include="EditorData\Node\Graphics\SetImageCenter.cs" />
+    <Compile Include="EditorData\Node\Graphics\SetFontState.cs" />
     <Compile Include="EditorData\Node\ICallBackFunc.cs" />
     <Compile Include="EditorData\Message\ArgCountInfo.cs" />
     <Compile Include="EditorData\Message\CannotFindAncestorTypeOf.cs" />
@@ -202,8 +217,21 @@
     <Compile Include="EditorData\Node\Object\SetRelativePosition.cs" />
     <Compile Include="EditorData\Node\Object\SetVelocityLimit.cs" />
     <Compile Include="EditorData\Node\Object\SetVelocity.cs" />
+    <Compile Include="EditorData\Node\Player\CreatePlayerBullet.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletColli.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletDel.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletKill.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletRender.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletFrame.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletInit.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerBulletDefine.cs" />
     <Compile Include="EditorData\Node\Player\PlayerClassFrame.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerOptionForEach.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerOptionRender.cs" />
     <Compile Include="EditorData\Node\Player\PlayerClassRender.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerFindTarget.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerOptionPosition.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerOptionPower.cs" />
     <Compile Include="EditorData\Node\Player\PlayerSimpleBullet.cs" />
     <Compile Include="EditorData\Node\Player\PlayerSpellMask.cs" />
     <Compile Include="EditorData\Node\Player\PlayerSpecial.cs" />
@@ -218,7 +246,7 @@
     <Compile Include="EditorData\Node\Player\PlayerNextShoot.cs" />
     <Compile Include="EditorData\Node\Player\PlayerProtect.cs" />
     <Compile Include="EditorData\Node\Player\PlayerSpeed.cs" />
-    <Compile Include="EditorData\Node\Player\PlayerOption.cs" />
+    <Compile Include="EditorData\Node\Player\PlayerOptionList.cs" />
     <Compile Include="EditorData\Node\Player\PlayerWalkImageSystem.cs" />
     <Compile Include="EditorData\Node\RenderAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Render\CreateRenderTarget.cs" />
@@ -242,6 +270,8 @@
     <Compile Include="EditorData\Node\Stage\StageGroupFinish.cs" />
     <Compile Include="EditorData\Node\TaskTypes.cs" />
     <Compile Include="EditorData\Node\TaskAlikeTypes.cs" />
+    <Compile Include="EditorData\Node\Task\RaiseWarning.cs" />
+    <Compile Include="EditorData\Node\Task\RaiseError.cs" />
     <Compile Include="EditorData\Node\Task\SetSignal.cs" />
     <Compile Include="EditorData\Node\Task\TaskClear.cs" />
     <Compile Include="EditorData\Node\Task\TaskFinish.cs" />
@@ -2005,6 +2035,82 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\playertarget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\objectkillflag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\objectkillflag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\gdatabomb.png" />
+    <Resource Include="images\16x16\gdatabombpiece.png" />
+    <Resource Include="images\16x16\gdatafaith.png" />
+    <Resource Include="images\16x16\gdatagraze.png" />
+    <Resource Include="images\16x16\gdatalife.png" />
+    <Resource Include="images\16x16\gdatalifepiece.png" />
+    <Resource Include="images\16x16\gdatapoint.png" />
+    <Resource Include="images\16x16\gdatapower.png" />
+    <Resource Include="images\16x16\gdatascore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gdatabomb.png" />
+    <Resource Include="images\gdatabombpiece.png" />
+    <Resource Include="images\gdatafaith.png" />
+    <Resource Include="images\gdatagraze.png" />
+    <Resource Include="images\gdatalife.png" />
+    <Resource Include="images\gdatalifepiece.png" />
+    <Resource Include="images\gdatapoint.png" />
+    <Resource Include="images\gdatapower.png" />
+    <Resource Include="images\gdatascore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\raiseerror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\raiseerror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\raisewarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\raisewarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\gdatakillplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gdatakillplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playeroptionlist.png" />
+    <Resource Include="images\16x16\playeroptionpos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playeroptionlist.png" />
+    <Resource Include="images\playeroptionpos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playeroptionrender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playeroptionrender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\playeroptionforeach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\playeroptionforeach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\setanimationcenter.png" />
+    <Resource Include="images\16x16\setfontstate.png" />
+    <Resource Include="images\16x16\setimagecenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\setanimationcenter.png" />
+    <Resource Include="images\setfontstate.png" />
+    <Resource Include="images\setimagecenter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         private RenderText() : base() { }
 
         public RenderText(DocumentData workSpaceData)
-            : this(workSpaceData, "", "", "", "", "") { }
+            : this(workSpaceData, "", "\"\"", "self.x,self.y", "1,1", "0") { }
 
         public RenderText(DocumentData workSpaceData, string font, string strn, string posit, string sizez, string aline)
             : base(workSpaceData)
@@ -81,7 +81,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Render text " + NonMacrolize(1) + " with font \"" + NonMacrolize(0) + "\"\n" +
+            return "Render text " + NonMacrolize(1) + " with font " + NonMacrolize(0) + "\n" +
                 "Position = (" + NonMacrolize(2) + ") Scale = (" + NonMacrolize(3) + ") Align = (" + NonMacrolize(4) + ")";
         }
 

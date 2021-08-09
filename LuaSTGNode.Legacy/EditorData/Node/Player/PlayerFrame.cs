@@ -45,7 +45,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             {
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
-            yield return sp + "" + parentName + ".frame=function(self)\n";
+            yield return sp + "" + parentName + ".frame=function(self)\n" + 
+                         sp + s1 + "task.Do(self)";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;

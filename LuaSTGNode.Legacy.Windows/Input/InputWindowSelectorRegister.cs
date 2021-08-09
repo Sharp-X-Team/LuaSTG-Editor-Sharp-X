@@ -183,6 +183,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("enemyStyle", (src, tar) => new EnemyInput(tar));
             target.Add("userDefinedNode", (src, tar) => new NodeDefInput(tar, src));
             target.Add("bulletDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Bullet, src));
+            target.Add("playerbulletDef", (src, tar) => new EditorObjDefInput(tar, MetaType.PlayerBullet, src));
             target.Add("objectDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Object, src));
             target.Add("laserDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Laser, src));
             target.Add("bentLaserDef", (src, tar) => new EditorObjDefInput(tar, MetaType.BentLaser, src));
@@ -199,6 +200,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("alignInput", (src, tar) => new AlignInput(tar));
             target.Add("multilineText", (src, tar) => new MultilineInput(tar));
             target.Add("bulletParam", (src, tar) => new EditorObjParamInput(src, MetaType.Bullet, tar));
+            target.Add("playerbulletParam", (src, tar) => new EditorObjParamInput(src, MetaType.PlayerBullet, tar));
             target.Add("objectParam", (src, tar) => new EditorObjParamInput(src, MetaType.Object, tar));
             target.Add("laserParam", (src, tar) => new EditorObjParamInput(src, MetaType.Laser, tar));
             target.Add("bentLaserParam", (src, tar) => new EditorObjParamInput(src, MetaType.BentLaser, tar));

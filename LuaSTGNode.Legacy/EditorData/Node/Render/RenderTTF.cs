@@ -113,7 +113,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Render TTF " + NonMacrolize(1) + " with font \"" + NonMacrolize(0) + "\"\n" +
+            return "Render TTF " + NonMacrolize(1) + " with font " + NonMacrolize(0) + "\n" +
                 "Position = (" + NonMacrolize(2) + "," + NonMacrolize(3) + "," + NonMacrolize(4) + "," + NonMacrolize(5) + ")" +
                 " Format = (" + NonMacrolize(6) + ") Color = (" + NonMacrolize(7) + "), Scale = (" + NonMacrolize(8) + ")";
         }

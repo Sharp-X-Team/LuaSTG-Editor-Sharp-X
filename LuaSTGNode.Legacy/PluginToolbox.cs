@@ -105,12 +105,6 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddSetSignal));
             task.Add(new ToolboxItemData("waitsignal", "/LuaSTGNode.Legacy;component/images/taskwaitfor.png", "Wait for Signal")
                 , new AddNode(AddWaitSignal));
-            task.Add(new ToolboxItemData(true), null);
-            task.Add(new ToolboxItemData("setfps", "/LuaSTGNode.Legacy;component/images/setfps.png", "Set FPS")
-                , new AddNode(AddSetFPS));
-            task.Add(new ToolboxItemData(true), null);
-            task.Add(new ToolboxItemData("snapshot", "/LuaSTGNode.Legacy;component/images/snapshot.png", "Snapshot Screen")
-                , new AddNode(AddSnapshot));
             #endregion
             ToolInfo.Add("Task", task);
             
@@ -283,6 +277,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddSetHitboxNode));
             ctrol.Add(new ToolboxItemData("objectcollision", "/LuaSTGNode.Legacy;component/images/objectcollision.png", "Set Collision Detection")
                 , new AddNode(AddSetCollisionNode));
+            ctrol.Add(new ToolboxItemData("objectkillflag", "/LuaSTGNode.Legacy;component/images/objectkillflag.png", "Set Object Killflag")
+                , new AddNode(AddSetKillflagNode));
             ctrol.Add(new ToolboxItemData(true), null);
             ctrol.Add(new ToolboxItemData("objectbound", "/LuaSTGNode.Legacy;component/images/objectbound.png", "Set Object Border Autodeletion")
                 , new AddNode(AddSetBoundNode));
@@ -330,6 +326,14 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddLoadFontImageNode));
             graphics.Add(new ToolboxItemData("loadttf", "/LuaSTGNode.Legacy;component/images/loadttf.png", "Load TTF")
                 , new AddNode(AddLoadTTFNode));
+            graphics.Add(new ToolboxItemData(true), null);
+            graphics.Add(new ToolboxItemData("setimagecenter", "/LuaSTGNode.Legacy;component/images/setimagecenter.png", "Set Image Center")
+                , new AddNode(AddSetImageCenterNode));
+            graphics.Add(new ToolboxItemData("setanimationcenter", "/LuaSTGNode.Legacy;component/images/setanimationcenter.png", "Set Animation Center")
+                , new AddNode(AddSetAnimationCenterNode));
+            graphics.Add(new ToolboxItemData(true), null);
+            graphics.Add(new ToolboxItemData("setfontstate", "/LuaSTGNode.Legacy;component/images/setfontstate.png", "Set Font State")
+                , new AddNode(AddSetFontStateNode));
             #endregion
             ToolInfo.Add("Graphics", graphics);
 
@@ -422,15 +426,28 @@ namespace LuaSTGEditorSharp
             player.Add(new ToolboxItemData("playerclassframe", "/LuaSTGNode.Legacy;component/images/playerclassframe.png", "Set Player Class Frame")
                 , new AddNode(AddPlayerClassFrameNode));
             player.Add(new ToolboxItemData(true), null);
+            player.Add(new ToolboxItemData("playeroptionlist", "/LuaSTGNode.Legacy;component/images/playeroptionlist.png", "Create Player Option List"),
+                new AddNode(AddPlayerOptionListNode));
+            player.Add(new ToolboxItemData("playeroptionrender", "/LuaSTGNode.Legacy;component/images/playeroptionrender.png", "Render Player Options"),
+                new AddNode(AddPlayerOptionRenderNode));
+            player.Add(new ToolboxItemData("playeroptionforeach", "/LuaSTGNode.Legacy;component/images/playeroptionforeach.png", "For Each Player Option"),
+                new AddNode(AddPlayerOptionForEachNode));
+            player.Add(new ToolboxItemData(true), null);
             player.Add(new ToolboxItemData("playerspeed", "/LuaSTGNode.Legacy;component/images/playerspeed.png", "Set Player Speed")
                 , new AddNode(AddPlayerSpeedNode));
             player.Add(new ToolboxItemData("playerprotect", "/LuaSTGNode.Legacy;component/images/playerprotect.png", "Set Player Protect")
                 , new AddNode(AddPlayerProtectNode));
             player.Add(new ToolboxItemData("playerspellmask", "/LuaSTGNode.Legacy;component/images/playerspellmask.png", "Create Player Spell Mask")
                 , new AddNode(AddPlayerSpellMaskNode));
+            player.Add(new ToolboxItemData("playertarget", "/LuaSTGNode.Legacy;component/images/playertarget.png", "Find Player Target")
+                , new AddNode(AddPlayerFindTargetNode));
             player.Add(new ToolboxItemData(true), null);
             player.Add(new ToolboxItemData("playersimplebullet", "/LuaSTGNode.Legacy;component/images/playersimplebullet.png", "Create Simple Player Bullet")
                 , new AddNode(AddPlayerSimpleBulletNode));
+            player.Add(new ToolboxItemData("playerdefinebullet", "/LuaSTGNode.Legacy;component/images/playerdefinebullet.png", "Define Player Bullet")
+                , new AddNode(AddPlayerDefineBulletNode));
+            player.Add(new ToolboxItemData("playerbulletcreate", "/LuaSTGNode.Legacy;component/images/playerbulletcreate.png", "Create Player Bullet")
+                , new AddNode(AddCreatePlayerBulletNode));
             player.Add(new ToolboxItemData(true), null);
             player.Add(new ToolboxItemData("playernextshoot", "/LuaSTGNode.Legacy;component/images/playernextshoot.png", "Set Player Shooting Delay")
                 , new AddNode(AddPlayerNextShootNode));
@@ -440,6 +457,45 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddPlayerNextSpecialNode));
             #endregion 
             ToolInfo.Add("Player", player);
+
+            var gdata = new Dictionary<ToolboxItemData, AddNode>();
+            #region gamedata
+            gdata.Add(new ToolboxItemData("gdatalife", "/LuaSTGNode.Legacy;component/images/gdatalife.png", "Set Player Lives")
+                , new AddNode(AddSetGameLifeNode));
+            gdata.Add(new ToolboxItemData("gdatalifepiece", "/LuaSTGNode.Legacy;component/images/gdatalifepiece.png", "Set Player Life Pieces")
+                , new AddNode(AddSetGameLifePieceNode));
+            gdata.Add(new ToolboxItemData("gdatabomb", "/LuaSTGNode.Legacy;component/images/gdatabomb.png", "Set Player Bombs")
+                , new AddNode(AddSetGameBombNode));
+            gdata.Add(new ToolboxItemData("gdatabombpiece", "/LuaSTGNode.Legacy;component/images/gdatabombpiece.png", "Set Player Bomb Pieces")
+                , new AddNode(AddSetGameBombPieceNode));
+            gdata.Add(new ToolboxItemData(true), null);
+            gdata.Add(new ToolboxItemData("gdatapower", "/LuaSTGNode.Legacy;component/images/gdatapower.png", "Set Player Power")
+                , new AddNode(AddSetGamePowerNode));
+            gdata.Add(new ToolboxItemData("gdatapoint", "/LuaSTGNode.Legacy;component/images/gdatapoint.png", "Set Player Pointrate")
+                , new AddNode(AddSetGamePointNode));
+            gdata.Add(new ToolboxItemData("gdatafaith", "/LuaSTGNode.Legacy;component/images/gdatafaith.png", "Set Player Faith")
+                , new AddNode(AddSetGameFaithNode));
+            gdata.Add(new ToolboxItemData(true), null);
+            gdata.Add(new ToolboxItemData("gdatagraze", "/LuaSTGNode.Legacy;component/images/gdatagraze.png", "Set Player Graze")
+                , new AddNode(AddSetGameGrazeNode));
+            gdata.Add(new ToolboxItemData("gdatascore", "/LuaSTGNode.Legacy;component/images/gdatascore.png", "Set Game Score")
+                , new AddNode(AddSetGameScoreNode));
+            gdata.Add(new ToolboxItemData(true), null);
+            gdata.Add(new ToolboxItemData("gdatakillplayer", "/LuaSTGNode.Legacy;component/images/gdatakillplayer.png", "Kill Player")
+                , new AddNode(AddSetGameKillPlayerNode));
+            gdata.Add(new ToolboxItemData(true), null);
+            gdata.Add(new ToolboxItemData("setfps", "/LuaSTGNode.Legacy;component/images/setfps.png", "Set FPS")
+                , new AddNode(AddSetFPS));
+            gdata.Add(new ToolboxItemData(true), null);
+            gdata.Add(new ToolboxItemData("snapshot", "/LuaSTGNode.Legacy;component/images/snapshot.png", "Snapshot Screen")
+                , new AddNode(AddSnapshot));
+            gdata.Add(new ToolboxItemData(true), null);
+            gdata.Add(new ToolboxItemData("raiseerror", "/LuaSTGNode.Legacy;component/images/raiseerror.png", "Raise Error")
+                , new AddNode(AddRaiseError));
+            gdata.Add(new ToolboxItemData("raisewarning", "/LuaSTGNode.Legacy;component/images/raisewarning.png", "Raise Warning")
+                , new AddNode(AddRaiseWarning));
+            #endregion
+            ToolInfo.Add("Game Data", gdata);
         }
 
         #region data
@@ -606,6 +662,16 @@ namespace LuaSTGEditorSharp
         private void AddSnapshot()
         {
             parent.Insert(new Snapshot(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRaiseError()
+        {
+            parent.Insert(new RaiseError(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRaiseWarning()
+        {
+            parent.Insert(new RaiseWarning(parent.ActivatedWorkSpaceData));
         }
         #endregion
 
@@ -977,6 +1043,11 @@ namespace LuaSTGEditorSharp
             parent.Insert(new SetCollision(parent.ActivatedWorkSpaceData));
         }
 
+        private void AddSetKillflagNode()
+        {
+            parent.Insert(new SetKillflag(parent.ActivatedWorkSpaceData));
+        }
+
         private void AddSetBoundNode()
         {
             parent.Insert(new SetBound(parent.ActivatedWorkSpaceData));
@@ -1067,6 +1138,19 @@ namespace LuaSTGEditorSharp
         private void AddLoadTTFNode()
         {
             parent.Insert(new LoadTTF(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetFontStateNode()
+        {
+            parent.Insert(new SetFontState(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetImageCenterNode()
+        {
+            parent.Insert(new SetImageCenter(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetAnimationCenterNode()
+        {
+            parent.Insert(new SetAnimationCenter(parent.ActivatedWorkSpaceData));
         }
         #endregion
         #region audio
@@ -1224,6 +1308,7 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new Render4V3D(parent.ActivatedWorkSpaceData));
         }
+        #endregion
 
         #region player
         private void AddPlayerDefineNode()
@@ -1231,6 +1316,7 @@ namespace LuaSTGEditorSharp
             var pl = new PlayerDefine(parent.ActivatedWorkSpaceData);
             pl.AddChild(new PlayerInit(parent.ActivatedWorkSpaceData));
             var pl2 = pl.Children.Last();
+            pl2.AddChild(new Comment(parent.ActivatedWorkSpaceData, "Add Option List Here", "false"));
             pl2.AddChild(new SetPlayerWalkImageSystem(parent.ActivatedWorkSpaceData));
             pl2.AddChild(new PlayerSpeed(parent.ActivatedWorkSpaceData));
             pl2.AddChild(new PlayerProtect(parent.ActivatedWorkSpaceData));
@@ -1242,6 +1328,7 @@ namespace LuaSTGEditorSharp
             pl.AddChild(new PlayerRender(parent.ActivatedWorkSpaceData));
             var plR = pl.Children.Last();
             plR.AddChild(new PlayerClassRender(parent.ActivatedWorkSpaceData));
+            plR.AddChild(new PlayerOptionRender(parent.ActivatedWorkSpaceData));
             parent.Insert(plR);
             pl.AddChild(new PlayerShoot(parent.ActivatedWorkSpaceData));
             var pl3 = pl.Children.Last();
@@ -1260,6 +1347,29 @@ namespace LuaSTGEditorSharp
             pl5.AddChild(new PlaySE(parent.ActivatedWorkSpaceData, "\"slash\"", "0.8", "self.x/1024", "false"));
             parent.Insert(pl5);
             parent.Insert(pl);
+        }
+        private void AddPlayerOptionListNode()
+        {
+            var listOpt = new PlayerOptionList(parent.ActivatedWorkSpaceData);
+            for (int i = 1; i <= 4; i++)
+            {
+                var powerOpt = new PlayerOptionPower(parent.ActivatedWorkSpaceData);
+                for (int k = 0; k < i; k++)
+                {
+                    powerOpt.AddChild(new PlayerOptionPosition(parent.ActivatedWorkSpaceData));
+                }
+                listOpt.AddChild(powerOpt);
+            }
+            parent.Insert(listOpt);
+        }
+        private void AddPlayerOptionRenderNode()
+        {
+            parent.Insert(new PlayerOptionRender(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPlayerOptionForEachNode()
+        {
+            parent.Insert(new PlayerOptionForEach(parent.ActivatedWorkSpaceData));
         }
 
         private void AddPlayerSpeedNode()
@@ -1305,12 +1415,74 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new PlayerSpellMask(parent.ActivatedWorkSpaceData));
         }
+        private void AddPlayerFindTargetNode()
+        {
+            parent.Insert(new PlayerFindTarget(parent.ActivatedWorkSpaceData));
+        }
         private void AddPlayerSimpleBulletNode()
         {
             parent.Insert(new PlayerSimpleBullet(parent.ActivatedWorkSpaceData));
         }
+
+        private void AddPlayerDefineBulletNode()
+        {
+            var pl = new PlayerBulletDefine(parent.ActivatedWorkSpaceData);
+            pl.AddChild(new PlayerBulletInit(parent.ActivatedWorkSpaceData));
+            pl.AddChild(new PlayerBulletFrame(parent.ActivatedWorkSpaceData));
+            pl.AddChild(new PlayerBulletRender(parent.ActivatedWorkSpaceData));
+            pl.AddChild(new PlayerBulletColli(parent.ActivatedWorkSpaceData));
+            pl.AddChild(new PlayerBulletKill(parent.ActivatedWorkSpaceData));
+            pl.AddChild(new PlayerBulletDel(parent.ActivatedWorkSpaceData));
+            parent.Insert(pl);
+        }
+
+        private void AddCreatePlayerBulletNode()
+        {
+            parent.Insert(new CreatePlayerBullet(parent.ActivatedWorkSpaceData));
+        }
         #endregion
 
+        #region game data
+        private void AddSetGameLifeNode()
+        {
+            parent.Insert(new SetGameLife(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameBombNode()
+        {
+            parent.Insert(new SetGameBomb(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameLifePieceNode()
+        {
+            parent.Insert(new SetGameLifePiece(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameBombPieceNode()
+        {
+            parent.Insert(new SetGameBombPiece(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGamePointNode()
+        {
+            parent.Insert(new SetGamePoint(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGamePowerNode()
+        {
+            parent.Insert(new SetGamePower(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameFaithNode()
+        {
+            parent.Insert(new SetGameFaith(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameGrazeNode()
+        {
+            parent.Insert(new SetGameGraze(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameScoreNode()
+        {
+            parent.Insert(new SetGameScore(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetGameKillPlayerNode()
+        {
+            parent.Insert(new SetGameKillPlayer(parent.ActivatedWorkSpaceData));
+        }
         #endregion
     }
 }

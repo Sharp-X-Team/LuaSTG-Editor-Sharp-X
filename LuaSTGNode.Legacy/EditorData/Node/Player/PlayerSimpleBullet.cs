@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerSimpleBullet() : base() { }
 
         public PlayerSimpleBullet(DocumentData workSpaceData)
-            : this(workSpaceData, "leaf", "self.x,self.y", "9", "90", "2", "0") { }
+            : this(workSpaceData, "\"leaf\"", "self.x,self.y", "9", "90", "2", "0") { }
 
         public PlayerSimpleBullet(DocumentData workSpaceData, string img, string pos, string spd, string ang, string dmg, string home)
             : base(workSpaceData)
