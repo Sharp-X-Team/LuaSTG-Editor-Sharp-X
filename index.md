@@ -14,8 +14,8 @@ nav_order: 1
 
 | Avatars | The people responsible for this | 
 | - | :-: |
-| <img src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/ryannthipfp.png"> | @RyannThi, Main developer | 
-| <img src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/zinopfp.png"> | @zinoLath, The person I keep coming back to whenever I can't do stuff |
-| <img src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/tompfp.png"> | @czh098tom, Original developer |
+| <img width="96" height="96" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/ryannthipfp.png"> | @RyannThi, Main developer | 
+| <img width="96" height="96" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/zinopfp.png"> | @zinoLath, The person I keep coming back to whenever I can't do stuff |
+| <img width="96" height="96" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/tompfp.png"> | @czh098tom, Original developer |
   
 
