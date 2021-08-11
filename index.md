@@ -10,7 +10,7 @@ nav_order: 1
   <img width="512" height="320" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/SplashScreen.png">
 </p>
 
-<div style="text-align: center">
+
 
 | Avatars | The people responsible for this | 
 | - | :-: |
@@ -18,4 +18,4 @@ nav_order: 1
 | <img width="96" height="96" src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/zinopfp.png"> | @zinoLath, The person I keep coming back to whenever I can't do stuff |
 | <img width="96" height="96" src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/tompfp.png"> | @czh098tom, Original developer |
   
-</div>
+
