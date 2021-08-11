@@ -21,7 +21,7 @@ Content in the first column | Content in the second column
   
 | O | ico                     | 
 | - | :-:                     |
-| a | :grinning:              | 
+| a | <img width="64" height="40" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/SplashScreen.png">              | 
 | b | :smile:                 |
 | c | :laughing:              |
 | d | :rofl:                  |
