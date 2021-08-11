@@ -1,3 +1,3 @@
 layout: page
 title: "Home"
-permalink: /home/
+permalink: /LuaSTG-Editor-Sharp-X/home/
