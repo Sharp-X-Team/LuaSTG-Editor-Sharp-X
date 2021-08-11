@@ -6,7 +6,7 @@ nav_order: 2
 
 # General
 
-## ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderred.png) ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/foldergreen.png) ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderblue.png) ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderyellow.png) Colored folders node
+## ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderred.png) ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/foldergreen.png) ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderblue.png) ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderyellow.png) Colored folders nodes
 
 | Icon | Folder | Note |
 | - | :-: | - |
