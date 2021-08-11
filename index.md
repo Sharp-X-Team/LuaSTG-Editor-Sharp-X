@@ -1,3 +1,9 @@
+---
+title: Homepage
+has_children: false
+nav_order: 1
+---
+
 # Welcome to the LuaSTG Editor Sharp X wiki!
 ![Splash image](https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/SplashScreen.png)
 
