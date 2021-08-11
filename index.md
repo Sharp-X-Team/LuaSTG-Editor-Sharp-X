@@ -12,21 +12,10 @@ nav_order: 1
 
 <div style="text-align: center">
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+| Avatars | The people responsible for this | 
+| - | :-: |
+| <img width="96" height="96" src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/ryannthipfp.png"> | @RyannThi, Main developer | 
+| <img width="96" height="96" src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/zinopfp.png"> | @zinoLath, The person I keep coming back to whenever I can't do stuff |
+| <img width="96" height="96" src="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/tompfp.png"> | @czh098tom, Original developer |
   
 </div>
-  
-| O | ico                     | 
-| - | :-:                     |
-| a | <img width="64" height="40" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/SplashScreen.png">              | 
-| b | :smile:                 |
-| c | :laughing:              |
-| d | :rofl:                  |
-| e | :slightly_smiling_face: |
-| f | :wink:                  |
-| g | :innocent:              | 
-  
-
