@@ -4,6 +4,7 @@ has_children: false
 nav_order: 1
 ---
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
 # Welcome to the LuaSTG Editor Sharp X site!
 
 <p align="center">
