@@ -6,6 +6,8 @@ This is a clone of the [LuaSTG Editor Sharp](https://github.com/czh098tom/LuaSTG
 
 You can check the changes we've made already at our [wiki page](https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki)!
 
+*Join our Discord server for more information and other content:* https://discord.gg/bhM599npvd
+
 
 LuaSTG Editor Sharp is a unoffical LuaSTG Editor.
 Aim of the LuaSTG Editor Sharp is to develop a user-friendly, high extensive editor with higher effciency.
