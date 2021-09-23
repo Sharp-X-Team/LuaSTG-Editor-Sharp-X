@@ -43,7 +43,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
             yield return sp + "_editor_class[\"" + parentName + "\"].frame=function(self)\n" +
-                         sp + s1 + "task.Do(self)\n";
+                         sp + s1 + "task.Do(self)\n" +
+                         sp + s1 + "player_bullet_straight.frame(self)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
