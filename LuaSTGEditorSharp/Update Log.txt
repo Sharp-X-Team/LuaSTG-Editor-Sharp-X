@@ -5,6 +5,7 @@ v0.73.1:
 -Fixed the not working frame/render operations of defined player bullets
 -Replaced the help screen with a browser navigator that points to https://ryannthi.github.io/LuaSTG-Editor-Sharp-X/
 -Fixed signal cloning
+-Fixed the incorrect indenting output of the set stage background node
 
 v0.72.1:
 -Added render node (render tab)

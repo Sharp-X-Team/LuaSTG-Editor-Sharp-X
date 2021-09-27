@@ -45,7 +45,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
         {
             string sp = Indent(spacing);
             string name = Macrolize(0);
-            yield return sp + "New(_editor_class[\"" + name + "\"] or " + name + ")";
+            yield return sp + "New(_editor_class[\"" + name + "\"] or " + name + ")\n";
 
         }
 
