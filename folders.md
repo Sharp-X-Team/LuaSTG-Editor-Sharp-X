@@ -24,11 +24,13 @@ Colored folders have the same attributes as normal, "uncolored", folders. They'r
 
 ## Usage and in-game result
 
+
 ![](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/site/img/Folder_example.png?raw=true)
 
 There is no visible behavior inside the game that directly relates to the node function itself.
 
 ## Lua Output
+
 
 ![](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/site/img/Folder_output.png?raw=true)
 
@@ -37,5 +39,6 @@ The folder node doesn't have any output by default, however, if it has nodes ins
 ![](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/site/img/Folder_output_2.png?raw=true)
 
 ## Parents
+
 
 The folder node doesn't have any strict parenting rules.
