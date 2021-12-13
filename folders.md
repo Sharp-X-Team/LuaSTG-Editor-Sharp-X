@@ -7,7 +7,7 @@ parent: General tab
 
 # Folders
 
-### ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folderred.png) Folder node
+### ![](https://raw.githubusercontent.com/zinoLath/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core/images/16x16/folder.png) Folder node
 
 Folders are used to organize content inside the editor.
 
