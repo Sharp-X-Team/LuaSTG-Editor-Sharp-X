@@ -334,6 +334,10 @@ namespace LuaSTGEditorSharp
             graphics.Add(new ToolboxItemData(true), null);
             graphics.Add(new ToolboxItemData("setfontstate", "/LuaSTGNode.Legacy;component/images/setfontstate.png", "Set Font State")
                 , new AddNode(AddSetFontStateNode));
+            graphics.Add(new ToolboxItemData("setimagestate", "/LuaSTGNode.Legacy;component/images/setimagestate.png", "Set Image State")
+                , new AddNode(AddSetImageStateNode));
+            graphics.Add(new ToolboxItemData("setanimationstate", "/LuaSTGNode.Legacy;component/images/setanimationstate.png", "Set Animation State")
+                , new AddNode(AddSetAnimationStateNode));
             #endregion
             ToolInfo.Add("Graphics", graphics);
 
@@ -1143,6 +1147,14 @@ namespace LuaSTGEditorSharp
         private void AddSetFontStateNode()
         {
             parent.Insert(new SetFontState(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetImageStateNode()
+        {
+            parent.Insert(new SetImageState(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetAnimationStateNode()
+        {
+            parent.Insert(new SetAnimationState(parent.ActivatedWorkSpaceData));
         }
         private void AddSetImageCenterNode()
         {

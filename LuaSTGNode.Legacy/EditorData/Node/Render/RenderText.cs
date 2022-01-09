@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         private RenderText() : base() { }
 
         public RenderText(DocumentData workSpaceData)
-            : this(workSpaceData, "", "\"\"", "self.x,self.y", "1,1", "0") { }
+            : this(workSpaceData, "", "\"\"", "self.x,self.y", "1", "0") { }
 
         public RenderText(DocumentData workSpaceData, string font, string strn, string posit, string sizez, string aline)
             : base(workSpaceData)

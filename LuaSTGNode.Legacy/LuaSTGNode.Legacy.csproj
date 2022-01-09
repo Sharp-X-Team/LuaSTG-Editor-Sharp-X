@@ -144,6 +144,8 @@
     <Compile Include="EditorData\Node\Graphics\LoadParticle.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadTexture.cs" />
     <Compile Include="EditorData\Node\Graphics\SetAnimationCenter.cs" />
+    <Compile Include="EditorData\Node\Graphics\SetAnimationState.cs" />
+    <Compile Include="EditorData\Node\Graphics\SetImageState.cs" />
     <Compile Include="EditorData\Node\Graphics\SetImageCenter.cs" />
     <Compile Include="EditorData\Node\Graphics\SetFontState.cs" />
     <Compile Include="EditorData\Node\ICallBackFunc.cs" />
@@ -295,6 +297,7 @@
     <Compile Include="NodesConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\setimagestate.png" />
     <Resource Include="images\_node_aa.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2111,6 +2114,11 @@
     <Resource Include="images\setanimationcenter.png" />
     <Resource Include="images\setfontstate.png" />
     <Resource Include="images\setimagecenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\setanimationstate.png" />
+    <Resource Include="images\16x16\setimagestate.png" />
+    <Resource Include="images\setanimationstate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

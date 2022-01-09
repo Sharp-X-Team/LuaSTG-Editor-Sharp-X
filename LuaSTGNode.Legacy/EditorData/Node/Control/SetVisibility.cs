@@ -57,7 +57,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            return "Set " + NonMacrolize(0) + "\'s visibility to not " + NonMacrolize(1) + "";
+            return "Set " + NonMacrolize(0) + "\'s invisibility to " + NonMacrolize(1) + "";
         }
 
         public override object Clone()

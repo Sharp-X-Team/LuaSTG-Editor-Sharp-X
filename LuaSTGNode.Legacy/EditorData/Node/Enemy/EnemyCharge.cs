@@ -77,7 +77,20 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "New(boss_cast_ef," + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + ")\n";
+            string[] macarray = new string[6];
+            //
+            for (int i = 0; i <= 5; i++) {
+                if (string.IsNullOrEmpty(NonMacrolize(i))) {
+                    macarray[i] = "";
+                }
+                else {
+                    macarray[i] = Macrolize(i) + ((i == 5 || string.IsNullOrEmpty(NonMacrolize(i+1))) ? "" : ",");
+                }
+            }
+            //
+
+            yield return sp + "New(boss_cast_ef," + macarray[0] + macarray[1] + macarray[2] + macarray[3] + macarray[4] + macarray[5] + ")\n";
+       
         }
 
         public override string ToString()

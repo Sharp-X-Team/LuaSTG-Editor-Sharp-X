@@ -11,19 +11,19 @@ using Newtonsoft.Json;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Object
 {
-    [Serializable, NodeIcon("setcolor.png")]
+    [Serializable, NodeIcon("setanimationstate.png")]
     [RequireAncestor(typeof(CodeAlikeTypes))]
     [LeafNode]
     [RCInvoke(2)]
-    public class SetBlend : TreeNode
+    public class SetAnimationState : TreeNode
     {
         [JsonConstructor]
-        private SetBlend() : base() { }
+        private SetAnimationState() : base() { }
 
-        public SetBlend(DocumentData workSpaceData)
-            : this(workSpaceData, "self", "\"\"", "255,255,255,255") { }
+        public SetAnimationState(DocumentData workSpaceData)
+            : this(workSpaceData, "", "\"\"", "255,255,255,255") { }
 
-        public SetBlend(DocumentData workSpaceData, string tar, string blend, string color)
+        public SetAnimationState(DocumentData workSpaceData, string tar, string blend, string color)
             : base(workSpaceData)
         {
             Target = tar;
@@ -39,8 +39,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         [JsonIgnore, NodeAttribute]
         public string Target
         {
-            get => DoubleCheckAttr(0, "target").attrInput;
-            set => DoubleCheckAttr(0, "target").attrInput = value;
+            get => DoubleCheckAttr(0, "objimage", "Image (select only anim)").attrInput;
+            set => DoubleCheckAttr(0, "objimage", "Image (select only anim)").attrInput = value;
         }
 
         [JsonIgnore, NodeAttribute]
@@ -60,7 +60,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "_object.set_color(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + ")\n";
+            yield return sp + "SetAnimationState(" + Macrolize(0) + "," + Macrolize(1) + ",Color(" + Macrolize(2) + "))\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
@@ -70,13 +70,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "Set color of " + NonMacrolize(0) + " to (" + NonMacrolize(2) + "), blend mode to " 
+            return "Set animation state of animation " + NonMacrolize(0) + " to (" + NonMacrolize(2) + "), blend mode to " 
                 + NonMacrolize(1);
         }
 
         public override object Clone()
         {
-            var n = new SetBlend(parentWorkSpace);
+            var n = new SetAnimationState(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }

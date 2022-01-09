@@ -9,7 +9,7 @@
         xmlns:tb="clr-namespace:LuaSTGEditorSharp.Plugin;assembly=LuaSTGEditorSharp.Core"
         xmlns:om="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="LuaSTG Editor Sharp X v0.72.1" Height="679.6" Width="800" WindowState="Maximized" Closing="Window_Closing">
+        Title="LuaSTG Editor Sharp X v0.73.1" Height="679.6" Width="800" WindowState="Maximized" Closing="Window_Closing">
     <Window.CommandBindings>
         <!--#region File -->
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommandExecuted"/>

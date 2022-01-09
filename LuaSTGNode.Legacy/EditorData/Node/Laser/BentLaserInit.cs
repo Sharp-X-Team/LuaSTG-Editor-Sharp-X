@@ -87,14 +87,14 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
 
         public override IEnumerable<string> ToLua(int spacing)
         {
-            int sampling = 0;
-            if (NonMacrolize(4) == "true")
+            string sampling = NonMacrolize(4);
+            if (sampling == "true")
             {
-                sampling = 0;
+                sampling = "0";
             }
-            if (NonMacrolize(4) == "false")
+            if (sampling == "false")
             {
-                sampling = 4;
+                sampling = "4";
             }
             string sp = Indent(spacing);
             string s1 = Indent(1);

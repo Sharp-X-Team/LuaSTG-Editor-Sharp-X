@@ -6,6 +6,19 @@ v0.73.1:
 -Replaced the help screen with a browser navigator that points to https://ryannthi.github.io/LuaSTG-Editor-Sharp-X/
 -Fixed signal cloning
 -Fixed the incorrect indenting output of the set stage background node
+-Fixed the incorrect spacing of the set color node display string
+-If players don't have names defined, the editor now will not permit the user to run the game
+-Fixed the set image node indenting output
+-Fixed the output of the thunder parameter of the curvy laser node to allow numbers instead of booleans as well
+-Added target option to the player option list node
+-Remade the output of the enemy charge node so that it only inputs parameters you placed in (compatibility for -x)
+-Reworded the display string of the set visibility node
+-Fixed the position assignment node output
+-Fixed the incorrect default value of scale of the render text node
+-Fixed the incorrect parenting properties of the callback nodes from the defined player bullets
+-Fixed bullet cleaner display string mixup
+-Added set image state (graphics tab)
+-Added set animation state (graphics tab)
 
 v0.72.1:
 -Added render node (render tab)
