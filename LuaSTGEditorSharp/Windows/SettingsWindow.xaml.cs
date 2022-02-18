@@ -262,6 +262,14 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 pluginPath = value;
+                if (pluginPath.Contains("lib\\") == true)
+                {
+                    pluginPath = value;
+                } else
+                {
+                    pluginPath = "lib\\" + value;
+                }
+                
                 RaiseProertyChanged("PluginPath");
             }
         }
@@ -504,7 +512,7 @@ namespace LuaSTGEditorSharp.Windows
 
             pluginPaths = new ObservableCollection<string>(
                 from string s
-                in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory)
+                in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "\\lib")
                 where Path.GetExtension(s) == ".dll" && names.Contains(Path.GetFileNameWithoutExtension(s))
                 select Path.GetFileName(s)
                 );
