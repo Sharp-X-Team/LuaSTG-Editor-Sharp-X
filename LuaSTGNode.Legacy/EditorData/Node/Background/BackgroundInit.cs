@@ -41,8 +41,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         [JsonIgnore, NodeAttribute]
         public string Spellc
         {
-            get => DoubleCheckAttr(1, name: "Is Spell Card BG").attrInput;
-            set => DoubleCheckAttr(1, name: "Is Spell Card BG").attrInput = value;
+            get => DoubleCheckAttr(1, "bool", "Is Spell Card BG").attrInput;
+            set => DoubleCheckAttr(1, "bool", "Is Spell Card BG").attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)

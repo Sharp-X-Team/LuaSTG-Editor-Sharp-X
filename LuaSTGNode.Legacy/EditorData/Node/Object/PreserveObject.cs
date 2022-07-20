@@ -55,7 +55,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override object Clone()
         {
-            var n = new TaskWait(parentWorkSpace);
+            var n = new UnitPreserve(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }

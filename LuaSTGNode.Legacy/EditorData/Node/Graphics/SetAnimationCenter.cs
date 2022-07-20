@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 namespace LuaSTGEditorSharp.EditorData.Node.Object
 {
     [Serializable, NodeIcon("setanimationcenter.png")]
-    [RequireAncestor(typeof(CodeAlikeTypes))]
     [LeafNode]
     [RCInvoke(1)]
     public class SetAnimationCenter : TreeNode

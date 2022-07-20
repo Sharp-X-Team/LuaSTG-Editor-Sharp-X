@@ -21,12 +21,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerOptionRender() : base() { }
 
         public PlayerOptionRender(DocumentData workSpaceData)
-            : this(workSpaceData, "\"leaf\"") { }
+            : this(workSpaceData, "\"leaf\"", "self.timer * 3") { }
 
-        public PlayerOptionRender(DocumentData workSpaceData, string img)
+        public PlayerOptionRender(DocumentData workSpaceData, string img, string ang)
             : base(workSpaceData)
         {
             Image = img;
+            AngleVal = ang;
             //attributes.Add(new AttrItem("Time", code, this, "yield"));
         }
 
@@ -37,6 +38,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             set => DoubleCheckAttr(0, "objimage").attrInput = value;
         }
 
+        [JsonIgnore, NodeAttribute]
+        public string AngleVal
+        {
+            get => DoubleCheckAttr(1, name: "Angle").attrInput;
+            set => DoubleCheckAttr(1, name: "Angle").attrInput = value;
+        }
+
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
@@ -44,7 +52,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string help = "" +
                 sp + "for i = 1, 4 do\n" +
                 sp + s1 + "if self.sp[i] and self.sp[i][3] > 0.5 then\n" +
-                sp + s1 + s1 + "Render(" + Macrolize(0) + ", self.supportx + self.sp[i][1], self.supporty + self.sp[i][2], self.timer * 3)\n" +
+                sp + s1 + s1 + "Render(" + Macrolize(0) + ", self.supportx + self.sp[i][1], self.supporty + self.sp[i][2], " + Macrolize(1) + ")\n" +
                 sp + s1 + "end\n" +
                 sp + "end\n";
             yield return sp + help;
@@ -57,7 +65,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "Render player options with image " + NonMacrolize(0) + "";
+            return "Render player options with image " + NonMacrolize(0) + " at angle \"" + NonMacrolize(1) + "\"";
         }
 
         public override object Clone()
