@@ -2144,5 +2144,13 @@
   <ItemGroup>
     <Resource Include="images\16x16\stagefinishreplay.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\beforeboss.png" />
+    <Resource Include="images\fadeoutbgm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\beforeboss.png" />
+    <Resource Include="images\16x16\fadeoutbgm.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

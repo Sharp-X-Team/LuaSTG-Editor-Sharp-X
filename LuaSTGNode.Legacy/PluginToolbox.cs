@@ -266,6 +266,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddGroupForEachNode));
             obj.Add(new ToolboxItemData("listforeach", "/LuaSTGNode.Legacy;component/images/listforeach.png", "For Each Unit in List")
                 , new AddNode(AddListForEachNode));
+            obj.Add(new ToolboxItemData("beforeboss", "/LuaSTGNode.Legacy;component/images/beforeboss.png", "Before boss deletion")
+                , new AddNode(AddBeforeBoss));
             #endregion
             ToolInfo.Add("Object", obj);
 
@@ -365,6 +367,10 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddResumeBGMNode));
             audio.Add(new ToolboxItemData("stopbgm", "/LuaSTGNode.Legacy;component/images/stopbgm.png", "Stop Background Music")
                 , new AddNode(AddStopBGMNode));
+            audio.Add(new ToolboxItemData("setbgmvolume", "/LuaSTGNode.Legacy;component/images/bgmvolume.png", "Set BGM Volume")
+                , new AddNode(AddSetBGMVolumeNode));
+            audio.Add(new ToolboxItemData("fadeoutbgm", "/LuaSTGNode.Legacy;component/images/fadeoutbgm.png", "Fade-out Music")
+                , new AddNode(AddFadeOutBGM));
             audio.Add(new ToolboxItemData("setpace", "/LuaSTGNode.Legacy;component/images/setpace.png", "Set Music Pace")
                 , new AddNode(AddSetPaceNode));
             #endregion
@@ -1030,6 +1036,16 @@ namespace LuaSTGEditorSharp
         private void AddGroupForEachNode()
         {
             parent.Insert(new GroupForEach(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddListForEachNode()
+        {
+            parent.Insert(new UnitForEach(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddBeforeBoss()
+        {
+            parent.Insert(new BeforeBoss(parent.ActivatedWorkSpaceData));
         }
         #endregion
 
