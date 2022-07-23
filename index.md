@@ -17,6 +17,7 @@ LuaSTG Editor Sharp X is a clone/fork of LuaSTG Editor Sharp aimed towards impro
 | - | :-: |
 | <img width="96" height="96" align="center" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/ryannthipfp.png"> | @RyannThi, Main developer | 
 | <img width="96" height="96" align="center" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/zinopfp.png"> | @zinoLath, The person I keep coming back to whenever I can't do stuff |
+| <img width="96" height="96" align="center" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/taniapfp.png"> | @AtaeKurri, Assistant developer | 
 | <img width="96" height="96" align="center" src="https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp.Core.Windows/AboutMenu/tompfp.png"> | @czh098tom, Original developer |
 
 So we decided to start this project to add new features we felt like Sharp could have and also edit some existing nodes to add more functionality to them. You can see all the changes we did in the pages on the left!
