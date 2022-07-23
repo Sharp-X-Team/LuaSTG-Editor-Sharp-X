@@ -59,12 +59,16 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddStageGoToNode));
             stage.Add(new ToolboxItemData("stagegroupfinish", "/LuaSTGNode.Legacy;component/images/stagefinishgroup.png", "Finish Stage Group")
                 , new AddNode(AddStageGroupFinishNode));
+            stage.Add(new ToolboxItemData("stagefinishreplay", "/LuaSTGNode.Legacy;component/images/stagefinishreplay.png", "Finish Stage Replay")
+                , new AddNode(AddStageFinishReplayNode));
             stage.Add(new ToolboxItemData(true), null);
             stage.Add(new ToolboxItemData("setstagebg", "/LuaSTGNode.Legacy;component/images/bgstage.png", "Set Stage Background")
                 , new AddNode(AddSetStageBGNode));
             stage.Add(new ToolboxItemData(true), null);
             stage.Add(new ToolboxItemData("shakescreen", "/LuaSTGNode.Legacy;component/images/shakescreen.png", "Shake Screen")
                 , new AddNode(AddShakeScreenNode));
+            stage.Add(new ToolboxItemData("maskfader", "/LuaSTGNode.Legacy;component/images/maskfader.png", "Mask Fader")
+                , new AddNode(AddMaskFaderNode));
             #endregion
             ToolInfo.Add("Stage", stage);
 
@@ -260,8 +264,8 @@ namespace LuaSTGEditorSharp
             obj.Add(new ToolboxItemData(true), null);
             obj.Add(new ToolboxItemData("groupforeach", "/LuaSTGNode.Legacy;component/images/unitforeach.png", "For Each Unit in Group")
                 , new AddNode(AddGroupForEachNode));
-            obj.Add(new ToolboxItemData("beforeboss", "/LuaSTGNode.Legacy;component/images/beforeboss.png", "Delete objects before boss")
-                , new AddNode(AddBeforeBoss));
+            obj.Add(new ToolboxItemData("listforeach", "/LuaSTGNode.Legacy;component/images/listforeach.png", "For Each Unit in List")
+                , new AddNode(AddListForEachNode));
             #endregion
             ToolInfo.Add("Object", obj);
 
@@ -361,8 +365,6 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddResumeBGMNode));
             audio.Add(new ToolboxItemData("stopbgm", "/LuaSTGNode.Legacy;component/images/stopbgm.png", "Stop Background Music")
                 , new AddNode(AddStopBGMNode));
-            audio.Add(new ToolboxItemData("fadeoutbgm", "/LuaSTGNode.Legacy;component/images/fadeoutbgm.png", "Fade-out Music")
-                , new AddNode(AddFadeOutBGM));
             audio.Add(new ToolboxItemData("setpace", "/LuaSTGNode.Legacy;component/images/setpace.png", "Set Music Pace")
                 , new AddNode(AddSetPaceNode));
             #endregion
@@ -568,6 +570,16 @@ namespace LuaSTGEditorSharp
         private void AddShakeScreenNode()
         {
             parent.Insert(new ShakeScreen(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddMaskFaderNode()
+        {
+            parent.Insert(new MaskFader(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddStageFinishReplayNode()
+        {
+            parent.Insert(new StageFinishReplay(parent.ActivatedWorkSpaceData));
         }
 
         private void AddStageGoToNode()
@@ -1019,10 +1031,6 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new GroupForEach(parent.ActivatedWorkSpaceData));
         }
-        private void AddBeforeBoss()
-        {
-            parent.Insert(new BeforeBoss(parent.ActivatedWorkSpaceData));
-        }
         #endregion
 
         #region control
@@ -1193,6 +1201,11 @@ namespace LuaSTGEditorSharp
         private void AddPlayBGMNode()
         {
             parent.Insert(new PlayBGM(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddSetBGMVolumeNode()
+        {
+            parent.Insert(new SetBGMVolume(parent.ActivatedWorkSpaceData));
         }
 
         private void AddPauseBGMNode()

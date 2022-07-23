@@ -84,6 +84,7 @@
     <Compile Include="EditorData\Document\Meta\TaskDefineMetaInfo.cs" />
     <Compile Include="EditorData\Node\Audio\FadeOutBGM.cs" />
     <Compile Include="EditorData\Node\Audio\PauseBGM.cs" />
+    <Compile Include="EditorData\Node\Audio\SetBGMVolume.cs" />
     <Compile Include="EditorData\Node\Audio\SetPace.cs" />
     <Compile Include="EditorData\Node\Audio\ResumeBGM.cs" />
     <Compile Include="EditorData\Node\Audio\StopBGM.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="EditorData\Node\ObjectPoolTypeAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Object\CreateObject.cs" />
     <Compile Include="EditorData\Node\Object\DropItem.cs" />
+    <Compile Include="EditorData\Node\Object\UnitForEach.cs" />
     <Compile Include="EditorData\Node\Object\GroupForEach.cs" />
     <Compile Include="EditorData\Node\Object\PreserveObject.cs" />
     <Compile Include="EditorData\Node\Object\MakeSmear.cs" />
@@ -264,6 +266,8 @@
     <Compile Include="EditorData\Node\Render\RenderText.cs" />
     <Compile Include="EditorData\Node\Render\RenderNode.cs" />
     <Compile Include="EditorData\Node\Render\SetViewMode.cs" />
+    <Compile Include="EditorData\Node\Stage\StageFinishReplay.cs" />
+    <Compile Include="EditorData\Node\Stage\MaskFader.cs" />
     <Compile Include="EditorData\Node\Stage\ShakeScreen.cs" />
     <Compile Include="EditorData\Node\Stage\Stage.cs" />
     <Compile Include="EditorData\Node\Stage\StageBG.cs" />
@@ -2123,16 +2127,22 @@
     <Resource Include="images\setanimationstate.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\beforeboss.png" />
+    <Resource Include="images\bgmvolume.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\16x16\beforeboss.png" />
+    <Resource Include="images\16x16\bgmvolume.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\fadeoutbgm.png" />
+    <Resource Include="images\maskfader.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\16x16\fadeoutbgm.png" />
+    <Resource Include="images\16x16\maskfader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\stagefinishreplay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\stagefinishreplay.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

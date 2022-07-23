@@ -33,7 +33,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             TreeNode Parent = GetLogicalParent();
             string parentName = "";
             parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
-            yield return sp + "_editor_class[\"" + parentName + "\"].frame" + "=function(self)\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].frame" + "=function(self)\n" + Indent(1) + "task.Do(self)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;

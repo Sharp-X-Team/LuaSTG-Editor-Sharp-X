@@ -140,6 +140,7 @@
     <Compile Include="EditorData\Node\General\Folder.cs" />
     <Compile Include="EditorData\Node\General\IfElse.cs" />
     <Compile Include="EditorData\Node\General\IfElseIf.cs" />
+    <Compile Include="EditorData\Node\General\WhileNode.cs" />
     <Compile Include="EditorData\Node\General\IfNode.cs" />
     <Compile Include="EditorData\Node\General\IfThen.cs" />
     <Compile Include="EditorData\Node\General\Patch.cs" />
@@ -612,6 +613,8 @@
     <Resource Include="images\foldergreen.png" />
     <Resource Include="images\folderred.png" />
     <Resource Include="images\folderyellow.png" />
+    <Resource Include="images\while.png" />
+    <Resource Include="images\16x16\while.png" />
     <Content Include="SplashScreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
