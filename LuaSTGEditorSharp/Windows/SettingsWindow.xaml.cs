@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
+using REghZyFramework.Themes;
+using static REghZyFramework.Themes.ThemesController;
 
 namespace LuaSTGEditorSharp.Windows
 {
@@ -128,6 +130,13 @@ namespace LuaSTGEditorSharp.Windows
                 }
             }
         }
+
+        /*public Uri ThemeDictionaryGet
+        {
+            get => ThemeDictionary.Source;
+        }*/
+
+        public Uri ThemePath = new Uri($"Themes/DarkTheme.xaml", UriKind.Relative);
 
         public int IndexedReso
         {
@@ -308,6 +317,17 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private string editortheme;
+        public string Editortheme
+        {
+            get => editortheme;
+            set
+            {
+                editortheme = value;
+                RaiseProertyChanged("Editortheme");
+            }
+        }
+
         private bool dynamicDebugReporting;
         public bool DynamicDebugReporting
         {
@@ -438,6 +458,12 @@ namespace LuaSTGEditorSharp.Windows
             get => mainApp.IndentationSpaceLength;
             set => mainApp.IndentationSpaceLength = value;
         }
+
+        public string EditorthemeSettings
+        {
+            get => mainApp.Editortheme;
+            set => mainApp.Editortheme = value;
+        }
         #endregion
 
         public string TargetVersion
@@ -466,6 +492,7 @@ namespace LuaSTGEditorSharp.Windows
             EditorOutputNameSettings = EditorOutputName;
             SpaceIndentationSettings = SpaceIndentation;
             IndentationSpaceLengthSettings = IndentationSpaceLength;
+            EditorthemeSettings = Editortheme;
         }
 
         private void ReadSettings()
@@ -489,6 +516,7 @@ namespace LuaSTGEditorSharp.Windows
             EditorOutputName = EditorOutputNameSettings;
             SpaceIndentation = SpaceIndentationSettings;
             IndentationSpaceLength = IndentationSpaceLengthSettings;
+            Editortheme = EditorthemeSettings;
         }
 
         public SettingsWindow()
@@ -517,6 +545,9 @@ namespace LuaSTGEditorSharp.Windows
                 select Path.GetFileName(s)
                 );
             PluginList.ItemsSource = pluginPaths;
+
+            SetTheme(Editortheme);
+            ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         public SettingsWindow(int i) : this()
@@ -611,6 +642,20 @@ namespace LuaSTGEditorSharp.Windows
                 p.WaitForExit();
             }
             catch { }
+        }
+
+        public string CurrentEditorTheme
+        {
+            get => Editortheme;
+            set => Editortheme = value;
+        }
+
+        private void ThemeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            System.Windows.Controls.ComboBox box = (System.Windows.Controls.ComboBox)sender;
+            ComboBoxItem selectedItem = (ComboBoxItem)box.SelectedItem;
+            SetTheme((string)selectedItem.Content);
+            ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
     }
 }

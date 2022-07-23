@@ -82,6 +82,7 @@
     <Compile Include="EditorData\Document\Meta\LaserDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\StageGroupDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\TaskDefineMetaInfo.cs" />
+    <Compile Include="EditorData\Node\Audio\FadeOutBGM.cs" />
     <Compile Include="EditorData\Node\Audio\PauseBGM.cs" />
     <Compile Include="EditorData\Node\Audio\SetPace.cs" />
     <Compile Include="EditorData\Node\Audio\ResumeBGM.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="EditorData\Node\Stage\StageGroup.cs" />
     <Compile Include="EditorData\Node\LaserAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Stage\StageGroupFinish.cs" />
+    <Compile Include="EditorData\Node\Object\BeforeBoss.cs" />
     <Compile Include="EditorData\Node\TaskTypes.cs" />
     <Compile Include="EditorData\Node\TaskAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Task\RaiseWarning.cs" />
@@ -2119,6 +2121,18 @@
     <Resource Include="images\16x16\setanimationstate.png" />
     <Resource Include="images\16x16\setimagestate.png" />
     <Resource Include="images\setanimationstate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\beforeboss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\beforeboss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fadeoutbgm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\fadeoutbgm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

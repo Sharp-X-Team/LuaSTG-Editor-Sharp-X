@@ -34,6 +34,7 @@ using LuaSTGEditorSharp.EditorData.Node.Advanced;
 using LuaSTGEditorSharp.EditorData.Commands;
 using LuaSTGEditorSharp.EditorData.Commands.Factory;
 using Newtonsoft.Json;
+using static REghZyFramework.Themes.ThemesController;
 
 using Path = System.IO.Path;
 
@@ -118,6 +119,9 @@ namespace LuaSTGEditorSharp
             GetPluginTools();
             presetsMenu.ItemsSource = PresetsGetList;
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
+
+            SetTheme(Properties.Settings.Default.Editortheme);
+            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         private bool CloseFile(DocumentData DocumentToRemove)

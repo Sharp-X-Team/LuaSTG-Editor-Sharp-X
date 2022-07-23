@@ -13,19 +13,19 @@ namespace REghZyFramework.Themes
 
         public static ThemeTypes CurrentTheme { get; set; }
 
-        private static ResourceDictionary ThemeDictionary
-        {
-            get { return Application.Current.Resources.MergedDictionaries[0]; }
-            set { Application.Current.Resources.MergedDictionaries[0] = value; }
-        }
+        public static ResourceDictionary ThemeDictionary;
 
         private static void ChangeTheme(Uri uri)
         {
             ThemeDictionary = new ResourceDictionary() { Source = uri };
         }
-        public static void SetTheme(ThemeTypes theme)
+
+        public static void SetTheme(string themeInput)
         {
-            string themeName = null;
+            //ThemeDictionary = new ResourceDictionary() { Source = new Uri("Themes/DarkTheme.xaml", UriKind.Relative)};
+            //MessageBox.Show($"Hello, the new theme dictionary is {ThemeDictionary}");
+            ThemeTypes theme = (ThemeTypes)Enum.Parse(typeof(ThemeTypes), themeInput);
+            string themeName;
             CurrentTheme = theme;
             switch (theme)
             {
@@ -33,14 +33,10 @@ namespace REghZyFramework.Themes
                 case ThemeTypes.Light: themeName = "LightTheme"; break;
                 case ThemeTypes.ColourfulDark: themeName = "ColourfulDarkTheme"; break;
                 case ThemeTypes.ColourfulLight: themeName = "ColourfulLightTheme"; break;
+                default: themeName = "LightTheme"; break;
             }
 
-            try
-            {
-                if (!string.IsNullOrEmpty(themeName))
-                    ChangeTheme(new Uri($"Themes/{themeName}.xaml", UriKind.Relative));
-            }
-            catch { }
+            ChangeTheme(new Uri($"../Themes/{themeName}.xaml", UriKind.Relative));
         }
     }
 }

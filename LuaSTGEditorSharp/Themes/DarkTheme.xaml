@@ -74,6 +74,14 @@
 
     <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
 
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderColour}"/>
+    </Style>
+
+    <Style TargetType="{x:Type DockPanel}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundColour}"/>
+    </Style>
+
     <!-- Controls all in Order in toolbox -->
 
     <!-- Button -->

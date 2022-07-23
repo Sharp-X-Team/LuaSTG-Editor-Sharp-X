@@ -18,6 +18,7 @@ using LuaSTGEditorSharp.Plugin;
 using LuaSTGEditorSharp.Plugin.Default;
 using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.Windows;
+using static REghZyFramework.Themes.ThemesController;
 
 namespace LuaSTGEditorSharp
 {
@@ -76,6 +77,10 @@ namespace LuaSTGEditorSharp
                     LoadDoc(fp);
                     //LoadDoc(arg);
                 }
+
+                // Load the editor theme at startup
+                SetTheme(Editortheme);
+
                 MainWindow = mainWindow;
                 MainWindow.Show();
             }
@@ -330,6 +335,15 @@ namespace LuaSTGEditorSharp
                 if (Lua.IndentationGenerator.Current is Lua.SpaceIndentation)
                     (Lua.IndentationGenerator.Current as Lua.SpaceIndentation).NumOfSpaces = value;
                 Settings.Default["IndentationSpaceLength"] = value;
+            }
+        }
+
+        public string Editortheme
+        {
+            get => Settings.Default.Editortheme;
+            set
+            {
+                Settings.Default["Editortheme"] = value;
             }
         }
 

@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
         mc:Ignorable="d"
-        Title="Settings" Height="498.433" Width="700.178" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="Settings"
+        Height="498.433"
+        Width="700.178"
+        ResizeMode="NoResize"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <ResourceDictionary x:Name="ThemeDictionaryRes"/>
+    </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
             <Button Content="OK" Margin="5,5" Height="32" Width="96" Click="ButtonOK_Click"/>
@@ -83,7 +90,7 @@
                     <Label Content="Default Author Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150"/>
                     <TextBox HorizontalAlignment="Left" Height="26" Margin="178,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" Text="{Binding AuthorName, ElementName=window}"/>
                     <CheckBox Content="Move to new nodes Automatically" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="275" IsChecked="{Binding AutoMoveToNew, ElementName=window}" Margin="10,50,0,0"/>
-                    <GroupBox Header="Indentation" Margin="10,81,10,228">
+                    <GroupBox Header="Indentation" Margin="10,81,10,228" Height="110">
                         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
                             <RadioButton Height="26" IsChecked="{Binding SpaceIndentation,ElementName=window}">
                                 <Grid>
@@ -98,9 +105,18 @@
                                              IsEnabled="{Binding IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RadioButton}}}"/>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Content="Tab" IsChecked="{Binding TabIndentation,ElementName=window}"/>
+                            <RadioButton Height="26" Content="Tab" IsChecked="{Binding TabIndentation,ElementName=window}"/>
                         </StackPanel>
                     </GroupBox>
+                    <Label Content="Change Editor Theme" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Grid.ColumnSpan="1"/>
+                    <ComboBox IsEditable="True" Text="{Binding CurrentEditorTheme, ElementName=window}"
+                              HorizontalAlignment="Left" Height="26" Margin="140,190,0,0" VerticalAlignment="Top" Width="161" Grid.Column="1"
+                              x:Name="ThemeBox" SelectionChanged="ThemeBox_SelectionChanged">
+                        <ComboBoxItem Content="Light"/>
+                        <ComboBoxItem Content="ColourfulLight"/>
+                        <ComboBoxItem Content="Dark"/>
+                        <ComboBoxItem Content="ColourfulDark"/>
+                    </ComboBox>
                 </Grid>
             </TabItem>
         </TabControl>

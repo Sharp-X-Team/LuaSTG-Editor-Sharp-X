@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
         mc:Ignorable="d"
-        Title="New File..." Height="450" Width="800" MinHeight="400" MinWidth="200">
+        Title="New File..."
+        Height="450"
+        Width="800"
+        MinHeight="400"
+        MinWidth="200">
+    <Window.Resources>
+        <ResourceDictionary x:Name="ThemeDictionaryRes"/>
+    </Window.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>

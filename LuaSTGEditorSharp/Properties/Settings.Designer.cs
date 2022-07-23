@@ -274,5 +274,17 @@ namespace LuaSTGEditorSharp.Properties {
                 this["DynamicDebugReporting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
+        public string Editortheme {
+            get {
+                return ((string)(this["Editortheme"]));
+            }
+            set {
+                this["Editortheme"] = value;
+            }
+        }
     }
 }

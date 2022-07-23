@@ -32,7 +32,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("yield"
                 , new string[] { "_infinite" });
             target.Add("nullabletarget"
-                , new string[] { "", "self", "last", "unit", "player", "_boss" });
+                , new string[] { "", "self", "last", "lastlist", "unit", "player", "_boss" });
             target.Add("blend"
                 , new string[] { "\"\"", "\"mul+add\"", "\"mul+alpha\"", "\"add+add\"", "\"add+alpha\""
                         , "\"mul+sub\"", "\"mul+rev\"", "\"add+sub\"", "\"add+rev\"", "\"alpha+bal\"" });
@@ -53,9 +53,9 @@ namespace LuaSTGEditorSharp.Windows.Input
                         , "LAYER_ENEMY_BULLET_EF-5", "LAYER_ENEMY_BULLET_EF", "LAYER_ENEMY_BULLET_EF+5"
                         , "LAYER_TOP-5", "LAYER_TOP", "LAYER_TOP+5" });
             target.Add("stageGroup"
-                , new string[] { "Easy", "Normal", "Hard", "Lunatic", "Extra" });
+                , new string[] { "Chill", "Hard", "Overdrive", "Canvas" });
             target.Add("objDifficulty"
-                , new string[] { "All", "Easy", "Normal", "Hard", "Lunatic" });
+                , new string[] { "All", "Chill", "Hard", "Overdrive"});
             target.Add("difficulty"
                 , new string[] { "1", "2", "3", "4", "5" });
             target.Add("SCName"
@@ -89,7 +89,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                         , "bamboo2_background", "cube_background", "gensokyosora_background", "hongmoguanB_background"
                         , "icepool_background", "lake_background", "le03_5_background", "magic_forest_fast_background"
                         , "river_background", "starlight_background", "temple2_background", "woods_background"
-                        , "world_background"});
+                        , "world_background", "woods_snow_background", "woods_snow2_background", "aeralis_village_background"
+                        , "lunar_lake_background", "beast_ruins_background", "myarastage6_background"});
             target.Add("prop"
                 , new string[] { "x", "y", "rot", "omiga", "timer", "vx", "vy", "ax", "ay", "layer", "group"
                         , "hide", "bound", "navi", "colli", "status", "hscale", "vscale", "a", "b", "rect", "img"

@@ -19,6 +19,7 @@ using LuaSTGEditorSharp.EditorData.Node.Graphics;
 using LuaSTGEditorSharp.EditorData.Node.Audio;
 using LuaSTGEditorSharp.EditorData.Node.Render;
 using LuaSTGEditorSharp.EditorData.Node.Advanced;
+using LuaSTGEditorSharp.EditorData.Node.Tania;
 
 
 namespace LuaSTGEditorSharp
@@ -259,6 +260,8 @@ namespace LuaSTGEditorSharp
             obj.Add(new ToolboxItemData(true), null);
             obj.Add(new ToolboxItemData("groupforeach", "/LuaSTGNode.Legacy;component/images/unitforeach.png", "For Each Unit in Group")
                 , new AddNode(AddGroupForEachNode));
+            obj.Add(new ToolboxItemData("beforeboss", "/LuaSTGNode.Legacy;component/images/beforeboss.png", "Delete objects before boss")
+                , new AddNode(AddBeforeBoss));
             #endregion
             ToolInfo.Add("Object", obj);
 
@@ -358,6 +361,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddResumeBGMNode));
             audio.Add(new ToolboxItemData("stopbgm", "/LuaSTGNode.Legacy;component/images/stopbgm.png", "Stop Background Music")
                 , new AddNode(AddStopBGMNode));
+            audio.Add(new ToolboxItemData("fadeoutbgm", "/LuaSTGNode.Legacy;component/images/fadeoutbgm.png", "Fade-out Music")
+                , new AddNode(AddFadeOutBGM));
             audio.Add(new ToolboxItemData("setpace", "/LuaSTGNode.Legacy;component/images/setpace.png", "Set Music Pace")
                 , new AddNode(AddSetPaceNode));
             #endregion
@@ -1014,6 +1019,10 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new GroupForEach(parent.ActivatedWorkSpaceData));
         }
+        private void AddBeforeBoss()
+        {
+            parent.Insert(new BeforeBoss(parent.ActivatedWorkSpaceData));
+        }
         #endregion
 
         #region control
@@ -1204,6 +1213,11 @@ namespace LuaSTGEditorSharp
         private void AddSetPaceNode()
         {
             parent.Insert(new SetPace(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
+        }
+
+        private void AddFadeOutBGM()
+        {
+            parent.Insert(new FadeOutBGM(parent.ActivatedWorkSpaceData));
         }
         #endregion
         #region render

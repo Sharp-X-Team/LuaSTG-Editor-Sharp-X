@@ -9,7 +9,11 @@
         xmlns:tb="clr-namespace:LuaSTGEditorSharp.Plugin;assembly=LuaSTGEditorSharp.Core"
         xmlns:om="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="LuaSTG Editor Sharp X v0.74.1" Height="679.6" Width="800" WindowState="Maximized" Closing="Window_Closing">
+        Title="LuaSTG Editor Sharp X v0.74.1"
+        Height="679.6"
+        Width="800"
+        WindowState="Maximized"
+        Closing="Window_Closing">
     <Window.CommandBindings>
         <!--#region File -->
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommandExecuted"/>
@@ -61,6 +65,7 @@
         <CommandBinding Command="local:EditorRoutedCommands.AboutNode" Executed="AboutNodeCommandExecuted"/>
     </Window.CommandBindings>
     <Window.Resources>
+        <!--#region Base style-->
         <tool:ToolboxContentTemplateSelector x:Key="ToolboxContentTemplateSelector"/>
         <tool:ToolboxTemplateSelector x:Key="ToolboxTemplateSelector"/>
         <DataTemplate x:Key="ToolboxSeperator" DataType="{x:Type tb:ToolboxItemData}">
@@ -104,7 +109,7 @@
                              ProgressChanged="PackageProgressReport"
                              RunWorkerCompleted="FinishPackaging"
                              />
-        
+        <!--#endregion-->
         <!--#region Linked Tree Style-->
         <tool:TreeViewLineConverter x:Key="TreeViewLineConverter"/>
         <SolidColorBrush x:Key="TreeViewItem.TreeArrow.Static.Checked.Fill" Color="#FF595959"/>
@@ -206,16 +211,6 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-
-                            <!-- Connecting Lines 
-                            <Rectangle x:Name="HorLn" Height="1" Stroke="#8888" Margin="10,8,0,0" SnapsToDevicePixels="False" ClipToBounds="True" VerticalAlignment="Top"/>
-                            
-                            <Line x:Name="Ver" Width="5" X1="2.5" Y1="0" X2="2.5" Y2="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-                                  StrokeDashArray="3" Stroke="#8888"
-                                  Grid.RowSpan="2" SnapsToDevicePixels="False" 
-                                  ClipToBounds="True" 
-                                  VerticalAlignment="Stretch"/>
-                            -->
                             <Rectangle x:Name="VerLn" Width="1" Grid.RowSpan="2" SnapsToDevicePixels="False" ClipToBounds="True" VerticalAlignment="Stretch">
                                 <Rectangle.Fill>
                                     <DrawingBrush Viewport="0,0,3,6" ViewportUnits="Absolute" TileMode="Tile" Stretch="None">
@@ -232,8 +227,8 @@
                                     </DrawingBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            
-                            
+
+
                             <ToggleButton x:Name="Expander"
                                           Style="{StaticResource ExpandCollapseToggleStyle}"
                                           IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
@@ -254,28 +249,6 @@
                                             Grid.ColumnSpan="2"/>
                         </Grid>
                         <ControlTemplate.Triggers>
-
-                            <!-- This trigger changes the connecting lines if the item is the last in the list 
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1
-                                , AncestorType={x:Type Grid}}, Path=DataContext, Converter={StaticResource TreeViewLineConverter}}" 
-                                         Value="true">
-                                <Setter TargetName="VerLn"
-                                        Property="VerticalAlignment"
-                                        Value="Top"/>
-                                <Setter TargetName="VerLn"
-                                        Property="Height"
-                                        Value="9"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource TreeViewLineConverter}}" 
-                                         Value="false">
-                                <Setter TargetName="VerLn"
-                                        Property="VerticalAlignment"
-                                        Value="Stretch"/>
-                                <Setter TargetName="VerLn"
-                                        Property="Height"
-                                        Value="Auto"/>
-                            </DataTrigger>
-                            -->
                             <Trigger Property="IsExpanded"
                                      Value="false">
                                 <Setter TargetName="ItemsHost"
@@ -342,7 +315,7 @@
             </Setter>
         </Style>
         <!--#endregion-->
-        
+        <ResourceDictionary Source="./Themes/DarkTheme.xaml" x:Key="Rosana"/>
     </Window.Resources>
     <DockPanel>
         <Border DockPanel.Dock="Top">
