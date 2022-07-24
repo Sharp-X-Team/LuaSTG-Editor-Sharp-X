@@ -122,7 +122,11 @@
     <Compile Include="EditorData\Node\Control\SetSize.cs" />
     <Compile Include="EditorData\Node\Control\SetRotation.cs" />
     <Compile Include="EditorData\Node\Control\Property.cs" />
+    <Compile Include="EditorData\Node\Data\ListRemove.cs" />
+    <Compile Include="EditorData\Node\Data\ListAdd.cs" />
+    <Compile Include="EditorData\Node\Data\ListCreate.cs" />
     <Compile Include="EditorData\Node\Data\PositionAssignment.cs" />
+    <Compile Include="EditorData\Node\Data\ListFor.cs" />
     <Compile Include="EditorData\Node\Enemy\CreateSimpleEnemy.cs" />
     <Compile Include="EditorData\Node\Enemy\CreateEnemy.cs" />
     <Compile Include="EditorData\Node\Enemy\EnemyDefine.cs" />
@@ -2151,6 +2155,18 @@
   <ItemGroup>
     <Resource Include="images\16x16\beforeboss.png" />
     <Resource Include="images\16x16\fadeoutbgm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\listremove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\listremove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\listfor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\listfor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -45,6 +45,15 @@ namespace LuaSTGEditorSharp
             data.Add(new ToolboxItemData(true), null);
             data.Add(new ToolboxItemData("recordpos", "/LuaSTGNode.Legacy;component/images/positionVar.png", "Record Position")
                 ,  new AddNode(AddRecordPosNode));
+            data.Add(new ToolboxItemData(true), null);
+            data.Add(new ToolboxItemData("listcreate", "/LuaSTGNode.Legacy;component/images/listcreate.png", "Create a list")
+                , new AddNode(AddListCreateNode));
+            data.Add(new ToolboxItemData("listadd", "/LuaSTGNode.Legacy;component/images/listadd.png", "Insert to a list")
+                , new AddNode(AddListAddNode));
+            data.Add(new ToolboxItemData("listremove", "/LuaSTGNode.Legacy;component/images/listremove.png", "Remove item from a list")
+                , new AddNode(AddListRemoveNode));
+            data.Add(new ToolboxItemData("listfor", "/LuaSTGNode.Legacy;component/images/listfor.png", "For each item in list")
+                , new AddNode(AddListForNode));
             #endregion
             ToolInfo.Add("Data", data);
 
@@ -538,6 +547,26 @@ namespace LuaSTGEditorSharp
         private void AddPositionAssignmentNode()
         {
             parent.Insert(new PositionAssignment(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddListCreateNode()
+        {
+            parent.Insert(new ListCreate(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddListAddNode()
+        {
+            parent.Insert(new ListAdd(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddListRemoveNode()
+        {
+            parent.Insert(new ListRemove(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddListForNode()
+        {
+            parent.Insert(new ListFor(parent.ActivatedWorkSpaceData));
         }
         #endregion
         #region stage
