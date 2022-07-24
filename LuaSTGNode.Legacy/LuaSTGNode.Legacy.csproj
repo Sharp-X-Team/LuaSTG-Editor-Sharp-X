@@ -269,6 +269,7 @@
     <Compile Include="EditorData\Node\Render\RenderText.cs" />
     <Compile Include="EditorData\Node\Render\RenderNode.cs" />
     <Compile Include="EditorData\Node\Render\SetViewMode.cs" />
+    <Compile Include="EditorData\Node\Stage\Hinter.cs" />
     <Compile Include="EditorData\Node\Stage\StageFinishReplay.cs" />
     <Compile Include="EditorData\Node\Stage\MaskFader.cs" />
     <Compile Include="EditorData\Node\Stage\ShakeScreen.cs" />
@@ -2157,6 +2158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\listremove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\hinter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\hinter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
