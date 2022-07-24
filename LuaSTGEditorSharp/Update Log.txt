@@ -3,7 +3,6 @@
 v0.74.1:
 -Added table control nodes
 -Added Base support of color themes
--Added Before Boss deletion of enemies and bullets node
 -Added Fadeout BGM node
 -Fix set image/animation center parenting (cannot place under resources)
 -Added "task.Do(self)" to the define background's on frame() output

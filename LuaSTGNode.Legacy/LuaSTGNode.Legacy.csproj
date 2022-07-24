@@ -126,7 +126,6 @@
     <Compile Include="EditorData\Node\Data\ListAdd.cs" />
     <Compile Include="EditorData\Node\Data\ListCreate.cs" />
     <Compile Include="EditorData\Node\Data\PositionAssignment.cs" />
-    <Compile Include="EditorData\Node\Data\ListFor.cs" />
     <Compile Include="EditorData\Node\Enemy\CreateSimpleEnemy.cs" />
     <Compile Include="EditorData\Node\Enemy\CreateEnemy.cs" />
     <Compile Include="EditorData\Node\Enemy\EnemyDefine.cs" />
@@ -279,7 +278,6 @@
     <Compile Include="EditorData\Node\Stage\StageGroup.cs" />
     <Compile Include="EditorData\Node\LaserAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Stage\StageGroupFinish.cs" />
-    <Compile Include="EditorData\Node\Object\BeforeBoss.cs" />
     <Compile Include="EditorData\Node\TaskTypes.cs" />
     <Compile Include="EditorData\Node\TaskAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Task\RaiseWarning.cs" />
@@ -2149,11 +2147,9 @@
     <Resource Include="images\16x16\stagefinishreplay.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\beforeboss.png" />
     <Resource Include="images\fadeoutbgm.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\16x16\beforeboss.png" />
     <Resource Include="images\16x16\fadeoutbgm.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2161,12 +2157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\listremove.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\listfor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\16x16\listfor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

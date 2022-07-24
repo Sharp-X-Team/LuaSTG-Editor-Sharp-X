@@ -273,8 +273,6 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddGroupForEachNode));
             obj.Add(new ToolboxItemData("listforeach", "/LuaSTGNode.Legacy;component/images/listforeach.png", "For Each Unit in List")
                 , new AddNode(AddListForEachNode));
-            obj.Add(new ToolboxItemData("beforeboss", "/LuaSTGNode.Legacy;component/images/beforeboss.png", "Before boss deletion")
-                , new AddNode(AddBeforeBoss));
             #endregion
             ToolInfo.Add("Object", obj);
 
@@ -1063,11 +1061,6 @@ namespace LuaSTGEditorSharp
         private void AddListForEachNode()
         {
             parent.Insert(new UnitForEach(parent.ActivatedWorkSpaceData));
-        }
-
-        private void AddBeforeBoss()
-        {
-            parent.Insert(new BeforeBoss(parent.ActivatedWorkSpaceData));
         }
         #endregion
 
