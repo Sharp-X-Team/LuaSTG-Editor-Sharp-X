@@ -52,8 +52,6 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddListAddNode));
             data.Add(new ToolboxItemData("listremove", "/LuaSTGNode.Legacy;component/images/listremove.png", "Remove item from a list")
                 , new AddNode(AddListRemoveNode));
-            data.Add(new ToolboxItemData("listfor", "/LuaSTGNode.Legacy;component/images/listfor.png", "For each item in list")
-                , new AddNode(AddListForNode));
             #endregion
             ToolInfo.Add("Data", data);
 
@@ -562,11 +560,6 @@ namespace LuaSTGEditorSharp
         private void AddListRemoveNode()
         {
             parent.Insert(new ListRemove(parent.ActivatedWorkSpaceData));
-        }
-
-        private void AddListForNode()
-        {
-            parent.Insert(new ListFor(parent.ActivatedWorkSpaceData));
         }
         #endregion
         #region stage
