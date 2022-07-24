@@ -19,7 +19,6 @@ using LuaSTGEditorSharp.EditorData.Node.Graphics;
 using LuaSTGEditorSharp.EditorData.Node.Audio;
 using LuaSTGEditorSharp.EditorData.Node.Render;
 using LuaSTGEditorSharp.EditorData.Node.Advanced;
-using LuaSTGEditorSharp.EditorData.Node.Tania;
 
 
 namespace LuaSTGEditorSharp
