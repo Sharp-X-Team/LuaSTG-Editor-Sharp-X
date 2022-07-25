@@ -1344,15 +1344,26 @@ namespace LuaSTGEditorSharp
         {
             TreeNode bgdef = new BackgroundDefine(parent.ActivatedWorkSpaceData);
             bgdef.AddChild(new BackgroundInit(parent.ActivatedWorkSpaceData));
+            var bginit = bgdef.Children.Last();
             bgdef.AddChild(new BGOnFrame(parent.ActivatedWorkSpaceData));
             bgdef.AddChild(new BGOnRender(parent.ActivatedWorkSpaceData));
             var bgrend = bgdef.Children.Last();
+
+            bginit.AddChild(new Set3D(parent.ActivatedWorkSpaceData, "\"eye\"", "0,0,0"));
+            bginit.AddChild(new Set3D(parent.ActivatedWorkSpaceData, "\"at\"", "0,0,0"));
+            bginit.AddChild(new Set3D(parent.ActivatedWorkSpaceData, "\"up\"", "0,0,0"));
+            bginit.AddChild(new Set3D(parent.ActivatedWorkSpaceData, "\"z\"", "0,0"));
+            bginit.AddChild(new Set3D(parent.ActivatedWorkSpaceData, "\"fovy\"", "0"));
+            bginit.AddChild(new Set3D(parent.ActivatedWorkSpaceData, "\"fog\"", "0,0,Color(255, 255, 255, 255)"));
+
             bgrend.AddChild(new SetViewMode(parent.ActivatedWorkSpaceData, "3d"));
             bgrend.AddChild(new BGWarp(parent.ActivatedWorkSpaceData, "Capture"));
             bgrend.AddChild(new RenderClear(parent.ActivatedWorkSpaceData));
             bgrend.AddChild(new Comment(parent.ActivatedWorkSpaceData, "Start code here", "false"));
             bgrend.AddChild(new BGWarp(parent.ActivatedWorkSpaceData, "Apply"));
             bgrend.AddChild(new SetViewMode(parent.ActivatedWorkSpaceData, "world"));
+
+            parent.Insert(bginit);
             parent.Insert(bgrend);
             parent.Insert(bgdef);
         }
