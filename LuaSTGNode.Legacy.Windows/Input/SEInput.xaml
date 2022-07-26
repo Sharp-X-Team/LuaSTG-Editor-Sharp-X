@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input;assembly=LuaSTGEditorSharp.Core.Windows"
         xmlns:cv="clr-namespace:LuaSTGEditorSharp.Windows.Input.Canvas"
         xmlns:conv="clr-namespace:LuaSTGEditorSharp.Windows.Input.Converter"
-        xmlns:m="clr-namespace:LuaSTGEditorSharp.Windows.Input.MediaPlayer"
         mc:Ignorable="d"
         Title="Choose SE" Height="475.012" Width="840.879" MinHeight="100" MinWidth="200"
                    Loaded="InputWindow_Loaded">
@@ -23,29 +22,44 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="BoxSEData" Grid.Column="0" SelectionChanged="BoxSEData_SelectionChanged" 
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="/LuaSTGEditorSharp.Core.Windows;component/images/search.png"/>
+                        <TextBox Grid.Column="1" x:Name="filter" AcceptsReturn="False" TextChanged="Filter_TextChanged"/>
+                    </Grid>
+                    <ListBox x:Name="BoxSEData" Grid.Row="1" SelectionChanged="BoxSEData_SelectionChanged" 
                          MouseDoubleClick="UserControl_MouseDoubleClick">
-                    <ListBox.Resources>
-                        <CollectionViewSource x:Key="SEInfoSys" Source="{Binding SEInfoSys, ElementName=inputWindow}"/>
-                        <CollectionViewSource x:Key="SEInfo" Source="{Binding SEInfo, ElementName=inputWindow}"/>
-                    </ListBox.Resources>
-                    <ListBox.ItemsSource>
-                        <CompositeCollection>
-                            <CollectionContainer Collection="{Binding Source={StaticResource SEInfoSys}}"/>
-                            <CollectionContainer Collection="{Binding Source={StaticResource SEInfo}}"/>
-                        </CompositeCollection>
-                    </ListBox.ItemsSource>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="MetaModel">
-                            <StackPanel Orientation="Horizontal">
-                                <Image VerticalAlignment="Center" Source="{Binding Icon}"
+                        <ListBox.Resources>
+                            <CollectionViewSource x:Key="SEInfoSys" Source="{Binding FilteredSEInfoSys, ElementName=inputWindow}"/>
+                            <CollectionViewSource x:Key="SEInfo" Source="{Binding FilteredSEInfo, ElementName=inputWindow}"/>
+                        </ListBox.Resources>
+                        <ListBox.ItemsSource>
+                            <CompositeCollection>
+                                <CollectionContainer Collection="{Binding Source={StaticResource SEInfoSys}}"/>
+                                <CollectionContainer Collection="{Binding Source={StaticResource SEInfo}}"/>
+                            </CompositeCollection>
+                        </ListBox.ItemsSource>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="MetaModel">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image VerticalAlignment="Center" Source="{Binding Icon}"
                                        Stretch="Fill" Width="16" Height="16" Margin="0,0,2,2"/>
-                                <TextBlock VerticalAlignment="Center" Text="{Binding Text}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <m:MediaPlayer x:Name="mediaPlayer" Grid.Column="1"/>
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Text}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <MediaElement x:Name="mediaPlayer" LoadedBehavior="Play" UnloadedBehavior="Stop" Grid.Column="1"/>
             </Grid>
         </DockPanel>
     </Grid>

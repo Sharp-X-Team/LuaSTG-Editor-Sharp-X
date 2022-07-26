@@ -63,6 +63,11 @@ namespace LuaSTGEditorSharp.Windows.Input
                 return new List<string>() { };
             }
         }
+		
+		protected static bool MatchFilter(string source, string filter)
+        {
+            return source.Contains(filter);
+        }
 
         protected string result;
 
