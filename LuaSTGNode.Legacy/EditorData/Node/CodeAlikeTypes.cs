@@ -16,7 +16,8 @@ namespace LuaSTGEditorSharp.EditorData.Node
             , typeof(Boss.BossInit), typeof(Render.OnRender), typeof(Boss.Dialog), typeof(Enemy.EnemyInit)
             , typeof(Object.ObjectInit)
             , typeof(Boss.BossSCBeforeStart), typeof(Boss.BossSCBeforeFinish), typeof(Boss.BossSCAfter)
-            , typeof(Bullet.PlayerBulletInit), typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletRender), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill), typeof(Bullet.PlayerBulletDel)};
+            , typeof(Bullet.PlayerBulletInit), typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletRender), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill), typeof(Bullet.PlayerBulletDel)
+            , typeof(Object.DefineItem)};
 
         public IEnumerator<Type> GetEnumerator()
         {

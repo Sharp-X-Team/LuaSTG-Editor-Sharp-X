@@ -11,7 +11,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
     {
         private static readonly Type[] types =
             { typeof(Bullet.BulletDefine), typeof(Laser.LaserDefine), typeof(Laser.BentLaserDefine), typeof(Object.ObjectDefine) 
-            , typeof(Enemy.EnemyDefine), typeof(Bullet.PlayerBulletDefine)  };
+            , typeof(Enemy.EnemyDefine), typeof(Bullet.PlayerBulletDefine), typeof(Object.DefineItem) };
 
         public IEnumerator<Type> GetEnumerator()
         {

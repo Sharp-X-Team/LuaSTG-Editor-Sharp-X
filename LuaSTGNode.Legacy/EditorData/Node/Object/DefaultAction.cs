@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 namespace LuaSTGEditorSharp.EditorData.Node.Object
 {
     [Serializable, NodeIcon("defaultaction.png")]
-    [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender))]
+    [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender), typeof(Render.ItemOnRender))]
     [LeafNode]
     public class DefaultAction : TreeNode
     {

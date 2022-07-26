@@ -267,6 +267,10 @@ namespace LuaSTGEditorSharp
             obj.Add(new ToolboxItemData("smear", "/LuaSTGNode.Legacy;component/images/smear.png", "Create Smear")
                 , new AddNode(AddMakeSmearNode));
             obj.Add(new ToolboxItemData(true), null);
+            obj.Add(new ToolboxItemData("defineitem", "/LuaSTGNode.Legacy;component/images/itemdefine.png", "Define Item")
+                , new AddNode(AddDefineItemNode));
+            obj.Add(new ToolboxItemData("createitem", "/LuaSTGNode.Legacy;component/images/createitem.png", "Create Item")
+                , new AddNode(AddCreateItemNode));
             obj.Add(new ToolboxItemData("dropitem", "/LuaSTGNode.Legacy;component/images/dropitem.png", "Drop Item")
                 , new AddNode(AddDropItemNode));
             obj.Add(new ToolboxItemData(true), null);
@@ -1047,6 +1051,31 @@ namespace LuaSTGEditorSharp
         private void AddSetRelativePositionNode()
         {
             parent.Insert(new SetRelativePosition(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddDefineItemNode()
+        {
+            TreeNode itemdef = new DefineItem(parent.ActivatedWorkSpaceData);
+            itemdef.AddChild(new ItemInit(parent.ActivatedWorkSpaceData));
+            itemdef.AddChild(new ItemOnRender(parent.ActivatedWorkSpaceData));
+            var itemrender = itemdef.Children.Last();
+            itemdef.AddChild(new ItemOnFrame(parent.ActivatedWorkSpaceData));
+            itemdef.AddChild(new ItemOnColli(parent.ActivatedWorkSpaceData));
+            var itemcolli = itemdef.Children.Last();
+
+            itemrender.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData));
+
+            itemcolli.AddChild(new Comment(parent.ActivatedWorkSpaceData, "Code here.", "false"));
+            itemcolli.AddChild(new Kill(parent.ActivatedWorkSpaceData, "self", "false"));
+
+            parent.Insert(itemcolli);
+            parent.Insert(itemrender);
+            parent.Insert(itemdef);
+        }
+
+        private void AddCreateItemNode()
+        {
+            parent.Insert(new CreateItem(parent.ActivatedWorkSpaceData));
         }
 
         private void AddDropItemNode()

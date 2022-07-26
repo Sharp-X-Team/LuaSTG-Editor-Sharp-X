@@ -10,17 +10,17 @@ using LuaSTGEditorSharp.Windows;
 
 namespace LuaSTGEditorSharp.EditorData.Document.Meta
 {
-    public class BackgroundDefineMetaInfo : MetaInfo, IComparable<BackgroundDefineMetaInfo>
+    public class ItemDefineMetaInfo : MetaInfo, IComparable<ItemDefineMetaInfo>
     {
-        BackgroundInit Init { get; set; }
+        ItemInit Init { get; set; }
 
-        public BackgroundDefineMetaInfo(BackgroundDefine target) : base(target) { }
-        
+        public ItemDefineMetaInfo(DefineItem target) : base(target) { }
+
         private void TryChild()
         {
             foreach (TreeNode t in this.target.GetLogicalChildren())
             {
-                if (t is BackgroundInit) Init = t as BackgroundInit;
+                if (t is ItemInit) Init = t as ItemInit;
             }
         }
 
@@ -60,19 +60,19 @@ namespace LuaSTGEditorSharp.EditorData.Document.Meta
                     select t.attributes[0].AttrInput).ToArray();
         }
 
-        public int CompareTo(BackgroundDefineMetaInfo other)
+        public int CompareTo(ItemDefineMetaInfo other)
         {
             return Name.CompareTo(other.Name);
         }
 
         public override void Create(IAggregatableMeta meta, MetaDataEntity documentMetaData)
         {
-            documentMetaData.aggregatableMetas[(int)MetaType.Background].Add(meta);
+            documentMetaData.aggregatableMetas[(int)MetaType.Item].Add(meta);
         }
 
         public override void Remove(IAggregatableMeta meta, MetaDataEntity documentMetaData)
         {
-            documentMetaData.aggregatableMetas[(int)MetaType.Background].Remove(meta);
+            documentMetaData.aggregatableMetas[(int)MetaType.Item].Remove(meta);
         }
 
         public override string FullName
@@ -88,18 +88,21 @@ namespace LuaSTGEditorSharp.EditorData.Document.Meta
             get => "Name: " + Name + "\nParameters: " + Params;
         }
 
-        public override string Difficulty => throw new NotImplementedException();
+        public override string Difficulty
+        {
+            get => Lua.StringParser.ParseLua(target.attributes[1].AttrInput);
+        }
 
         public override MetaModel GetFullMetaModel()
         {
             MetaModel parent = new MetaModel
             {
-                Icon = "/LuaSTGNode.Legacy;component/images/16x16/bgstagecreate.png",
+                Icon = "/LuaSTGNode.Legacy;component/images/16x16/itemdefine.png",
                 Text = Name
             };
             MetaModel child = new MetaModel()
             {
-                Icon = "/LuaSTGNode.Legacy;component/images/16x16/bgstagecreate.png",
+                Icon = "/LuaSTGNode.Legacy;component/images/16x16/callbackfunc.png",
                 Text = "init"
             };
             parent.Children.Add(child);
@@ -135,7 +138,7 @@ namespace LuaSTGEditorSharp.EditorData.Document.Meta
                 Text = ScrString,
                 FullName = FullName,
                 Param = Params,
-                Icon = "/LuaSTGNode.Legacy;component/images/16x16/bgstagecreate.png"
+                Icon = "/LuaSTGNode.Legacy;component/images/16x16/itemdefine.png"
             };
         }
 

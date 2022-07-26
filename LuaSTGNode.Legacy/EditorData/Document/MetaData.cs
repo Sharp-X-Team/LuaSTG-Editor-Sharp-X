@@ -12,7 +12,7 @@ namespace LuaSTGEditorSharp.EditorData.Document
 {
     public enum MetaType { Proj, UserDefined
             , StageGroup, Boss, Bullet, ImageLoad, ImageGroupLoad
-            , BGMLoad, BossBG, Laser, BentLaser, Object, Background, Enemy, Task
+            , BGMLoad, BossBG, Laser, BentLaser, Object, Background, Enemy, Task, Item
             , SELoad, AnimationLoad, ParticleLoad, TextureLoad, FXLoad, FontLoad, TTFLoad, Player, PlayerBullet, __max }
 
     //List version, used in non-immediate update cases
@@ -63,6 +63,8 @@ namespace LuaSTGEditorSharp.EditorData.Document
         public IMetaInfoCollection PlayerDefineData { get => aggregatableMetas[(int)MetaType.Player]; }
         [JsonIgnore]
         public IMetaInfoCollection PlayerBulletDefineData { get => aggregatableMetas[(int)MetaType.PlayerBullet]; }
+        [JsonIgnore]
+        public IMetaInfoCollection ItemDefineData { get => aggregatableMetas[(int)MetaType.Item]; }
 
         public MetaData()
         {

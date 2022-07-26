@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="EditorData\Document\MetaData.cs" />
     <Compile Include="EditorData\Document\Meta\BentLaserDefineMetaInfo.cs" />
+    <Compile Include="EditorData\Document\Meta\ItemDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\PlayerBulletDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\EnemyDefineMetaInfo.cs" />
     <Compile Include="EditorData\Document\Meta\AnimationLoadMetaInfo.cs" />
@@ -205,8 +206,14 @@
     <Compile Include="EditorData\Node\Laser\LaserTurnOn.cs" />
     <Compile Include="EditorData\Node\NodeTypeCache.cs" />
     <Compile Include="EditorData\Node\ObjectPoolTypeAlikeTypes.cs" />
+    <Compile Include="EditorData\Node\Object\CreateItem.cs" />
     <Compile Include="EditorData\Node\Object\CreateObject.cs" />
+    <Compile Include="EditorData\Node\Object\DefineItem.cs" />
     <Compile Include="EditorData\Node\Object\DropItem.cs" />
+    <Compile Include="EditorData\Node\Object\ItemInit.cs" />
+    <Compile Include="EditorData\Node\Object\ItemOnColli.cs" />
+    <Compile Include="EditorData\Node\Object\ItemOnFrame.cs" />
+    <Compile Include="EditorData\Node\Object\ItemOnRender.cs" />
     <Compile Include="EditorData\Node\Object\UnitForEach.cs" />
     <Compile Include="EditorData\Node\Object\GroupForEach.cs" />
     <Compile Include="EditorData\Node\Object\PreserveObject.cs" />
@@ -2164,6 +2171,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\hinter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\itemdefine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\itemdefine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\createitem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\createitem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
