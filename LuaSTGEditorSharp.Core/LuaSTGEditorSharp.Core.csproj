@@ -112,6 +112,7 @@
     <Compile Include="EditorData\Message\VarNameInvalidMessage.cs" />
     <Compile Include="EditorData\Node\AbstractNodeTypeCache.cs" />
     <Compile Include="EditorData\Node\Advanced\AdvancedRepeat\AdvancedRepeat.cs" />
+    <Compile Include="EditorData\Node\Advanced\AdvancedRepeat\CustomInterpolationVariable.cs" />
     <Compile Include="EditorData\Node\Advanced\AdvancedRepeat\IncrementVariable.cs" />
     <Compile Include="EditorData\Node\Advanced\AdvancedRepeat\LinearVariable.cs" />
     <Compile Include="EditorData\Node\Advanced\AdvancedRepeat\ReboundingVariable.cs" />
@@ -615,6 +616,8 @@
     <Resource Include="images\folderyellow.png" />
     <Resource Include="images\while.png" />
     <Resource Include="images\16x16\while.png" />
+    <Resource Include="images\CustomInterpolationVariable.png" />
+    <Resource Include="images\16x16\CustomInterpolationVariable.png" />
     <Content Include="SplashScreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
