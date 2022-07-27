@@ -1516,10 +1516,20 @@ namespace LuaSTGEditorSharp
             var pl = new PlayerBulletDefine(parent.ActivatedWorkSpaceData);
             pl.AddChild(new PlayerBulletInit(parent.ActivatedWorkSpaceData));
             pl.AddChild(new PlayerBulletFrame(parent.ActivatedWorkSpaceData));
+            var pl2 = pl.Children.Last();
+            pl2.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "frame"));
             pl.AddChild(new PlayerBulletRender(parent.ActivatedWorkSpaceData));
+            var pl3 = pl.Children.Last();
+            pl3.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "render"));
             pl.AddChild(new PlayerBulletColli(parent.ActivatedWorkSpaceData));
+            var pl4 = pl.Children.Last();
+            pl4.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "colli"));
             pl.AddChild(new PlayerBulletKill(parent.ActivatedWorkSpaceData));
+            var pl5 = pl.Children.Last();
+            pl5.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "kill"));
             pl.AddChild(new PlayerBulletDel(parent.ActivatedWorkSpaceData));
+            var pl6 = pl.Children.Last();
+            pl6.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "del"));
             parent.Insert(pl);
         }
 

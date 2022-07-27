@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 namespace LuaSTGEditorSharp.EditorData.Node.Object
 {
     [Serializable, NodeIcon("defaultaction.png")]
-    [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender))]
+    [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender), typeof(Bullet.PlayerBulletRender), typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill), typeof(Bullet.PlayerBulletDel))]
     [LeafNode]
     public class DefaultAction : TreeNode
     {
@@ -21,25 +21,45 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private DefaultAction() : base() { }
 
         public DefaultAction(DocumentData workSpaceData)
-            : base(workSpaceData) { }
+            : this(workSpaceData, "") { }
+
+        public DefaultAction(DocumentData workSpaceData, string code)
+            : base(workSpaceData)
+        {
+            CodeAddon = code;
+        }
+
+        [JsonIgnore, NodeAttribute]
+        public string CodeAddon
+        {
+            get => DoubleCheckAttr(0, "event", "Event type").attrInput;
+            set => DoubleCheckAttr(0, "event", "Event type").attrInput = value;
+        }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
             TreeNode callBackFunc = this;
-            while(!(callBackFunc is ICallBackFunc) && callBackFunc != null)
+            if (!string.IsNullOrEmpty(NonMacrolize(0)))
             {
-                callBackFunc = callBackFunc.Parent;
-            }
-            ICallBackFunc func = (ICallBackFunc)callBackFunc;
-            if (callBackFunc != null)
-            {
-                string other = func.FuncName == "colli" ? ",other" : "";
-                yield return sp + "self.class.base." + func.FuncName + "(self" + other + ")\n";
+                yield return sp + "self.class.base." + Macrolize(0) + "(self)\n";
             }
             else
             {
-                yield return "\n";
+                while (!(callBackFunc is ICallBackFunc) && callBackFunc != null)
+                {
+                    callBackFunc = callBackFunc.Parent;
+                }
+                ICallBackFunc func = (ICallBackFunc)callBackFunc;
+                if (callBackFunc != null)
+                {
+                    string other = func.FuncName == "colli" ? ",other" : "";
+                    yield return sp + "self.class.base." + func.FuncName + "(self" + other + ")\n";
+                }
+                else
+                {
+                    yield return "\n";
+                }
             }
         }
 
@@ -68,7 +88,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             {
                 callBackFunc = callBackFunc.Parent;
             }
-            if (callBackFunc == null) 
+            if (callBackFunc == null && string.IsNullOrEmpty(NonMacrolize(0))) 
             {
                 a.Add(new CannotFindAncestorTypeOf("CallBackFunc", this));
             }

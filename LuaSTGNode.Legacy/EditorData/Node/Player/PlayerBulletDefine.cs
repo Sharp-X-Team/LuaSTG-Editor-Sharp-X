@@ -47,7 +47,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0)) + "\"]=Class(player_bullet_straight)\n";
+            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0)) + "\"]=Class(_object)\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;
