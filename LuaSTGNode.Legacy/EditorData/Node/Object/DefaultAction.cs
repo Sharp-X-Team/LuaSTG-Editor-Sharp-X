@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 namespace LuaSTGEditorSharp.EditorData.Node.Object
 {
     [Serializable, NodeIcon("defaultaction.png")]
-    [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender), typeof(Bullet.PlayerBulletRender), typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill), typeof(Bullet.PlayerBulletDel))]
+    [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender), typeof(Bullet.PlayerBulletRender), typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill), typeof(Bullet.PlayerBulletDel), typeof(Render.ItemOnRender))]
     [LeafNode]
     public class DefaultAction : TreeNode
     {
