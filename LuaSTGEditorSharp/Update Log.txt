@@ -1,24 +1,23 @@
 ﻿-- Update Log（2021-08-09）
 
 v0.74.1:
--Added event type parameter for default action node
--Changed defined player bullet classes to editor classes (added default action support)
+-Added Defined items (and the create item node)
 -Ported (added) custom interpolation variable node from Tom's repo
 -Ported (added) filtering from Tom's repo
 -3D nodes are now added by default in the init function of defined backgrounds
--Added Hinter node (stage tab)
--Added table control nodes (data tab)
+-Added Hinter node
+-Added table control nodes
 -Added Base support of color themes
--Added Fadeout BGM node (audio tab)
+-Added Fadeout BGM node
 -Fix set image/animation center parenting (cannot place under resources)
 -Added "task.Do(self)" to the define background's on frame() output
 -Replaced "self" with "player" on the set player's speed node output
--Added stage finish replay node (stage tab)
--Added set BGM volume node (audio tab)
+-Added stage finish replay node
+-Added set BGM volume node
 -Added bool type to the define background's 2nd parameter (Is Spell BG)
--Added while node (general tab)
+-Added while node
 -Fixed preserve node cloning
--Added for each unit in list node (object tab)
+-Added for each unit in list node
 
 v0.73.1:
 -Fixed the not loading of meta info in TTF types in Xlib

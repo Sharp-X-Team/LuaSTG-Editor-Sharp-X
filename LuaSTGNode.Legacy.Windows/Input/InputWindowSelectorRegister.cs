@@ -190,6 +190,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("enemyDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Enemy, src));
             target.Add("taskDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Task, src));
             target.Add("bossDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Boss, src));
+            target.Add("itemDef", (src, tar) => new EditorObjDefInput(tar, MetaType.Item, src));
             target.Add("objimage", (src, tar) => new ImageInput(tar, src, ImageClassType.Animation | ImageClassType.Particle));
             target.Add("image", (src, tar) => new ImageInput(tar, src));
             target.Add("BGM", (src, tar) => new BGMInput(tar, src));
@@ -206,6 +207,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("bentLaserParam", (src, tar) => new EditorObjParamInput(src, MetaType.BentLaser, tar));
             target.Add("enemyParam", (src, tar) => new EditorObjParamInput(src, MetaType.Enemy, tar));
             target.Add("taskParam", (src, tar) => new EditorObjParamInput(src, MetaType.Task, tar));
+            target.Add("itemParam", (src, tar) => new EditorObjParamInput(src, MetaType.Item, tar));
             target.Add("color", (src, tar) => new ColorInput(tar));
             target.Add("nullableColor", (src, tar) => new ColorInput(tar));
             target.Add("ARGB", (src, tar) => new ARGBInput(tar));

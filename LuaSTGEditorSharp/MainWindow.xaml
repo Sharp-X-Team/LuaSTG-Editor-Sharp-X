@@ -315,7 +315,6 @@
             </Setter>
         </Style>
         <!--#endregion-->
-        <ResourceDictionary Source="./Themes/DarkTheme.xaml" x:Key="Rosana"/>
     </Window.Resources>
     <DockPanel>
         <Border DockPanel.Dock="Top">
