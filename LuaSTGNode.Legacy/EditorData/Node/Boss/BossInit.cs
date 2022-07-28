@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            string s1 = Indent(spacing);
+            string s1 = Indent(1);
             TreeNode Parent = GetLogicalParent();
             string parentName = "";
             if (Parent?.attributes != null && Parent.AttributeCount >= 2)
