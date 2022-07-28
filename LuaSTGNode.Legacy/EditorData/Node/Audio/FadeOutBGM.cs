@@ -58,12 +58,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
             + sp + s2 + $"vol = vol - 1 / {Macrolize(1)}\n"
             + sp + s2 + "task.Wait(1)\n"
             + sp + s1 + "end\n"
-            + sp + s1 + "StopMusic(music)\n"
+            + sp + s1 + $"StopMusic({Macrolize(0)})\n"
             + sp + "end)\n";
-            foreach (string a in base.ToLua(spacing + 1))
-            {
-                yield return a;
-            }
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
