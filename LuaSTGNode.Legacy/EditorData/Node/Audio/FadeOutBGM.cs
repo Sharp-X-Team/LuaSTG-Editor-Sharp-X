@@ -52,14 +52,14 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
             string s1 = Indent(1);
             string s2 = Indent(2);
             yield return sp + "New(tasker, function()\n"
-            + sp + s1 + "local vol = 1\n"
-            + sp + s1 + $"for i = 0, {Macrolize(1)} do\n"
-            + sp + s2 + $"SetBGMVolume({Macrolize(0)}, vol)\n"
-            + sp + s2 + $"vol = vol - 1 / {Macrolize(1)}\n"
-            + sp + s2 + "task.Wait(1)\n"
-            + sp + s1 + "end\n"
-            + sp + s1 + $"StopMusic({Macrolize(0)})\n"
-            + sp + "end)\n";
+                        + sp + s1 + "local vol = 1\n"
+                        + sp + s1 + $"for i = 0, {Macrolize(1)} do\n"
+                        + sp + s2 + $"SetBGMVolume({Macrolize(0)}, vol)\n"
+                        + sp + s2 + $"vol = vol - 1 / {Macrolize(1)}\n"
+                        + sp + s2 + "task.Wait(1)\n"
+                        + sp + s1 + "end\n"
+                        + sp + s1 + $"StopMusic({Macrolize(0)})\n"
+                        + sp + "end)\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

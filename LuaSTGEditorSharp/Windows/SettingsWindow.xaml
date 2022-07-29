@@ -10,9 +10,9 @@
         Width="700.178"
         ResizeMode="NoResize"
         Closing="Window_Closing">
-    <Window.Resources>
+    <!--<Window.Resources>
         <ResourceDictionary x:Name="ThemeDictionaryRes"/>
-    </Window.Resources>
+    </Window.Resources>-->
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
             <Button Content="OK" Margin="5,5" Height="32" Width="96" Click="ButtonOK_Click"/>
@@ -108,7 +108,7 @@
                             <RadioButton Height="26" Content="Tab" IsChecked="{Binding TabIndentation,ElementName=window}"/>
                         </StackPanel>
                     </GroupBox>
-                    <Label Content="Change Editor Theme" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Grid.ColumnSpan="1"/>
+                    <!--<Label Content="Change Editor Theme" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Grid.ColumnSpan="1"/>
                     <ComboBox IsEditable="True" Text="{Binding CurrentEditorTheme, ElementName=window}"
                               HorizontalAlignment="Left" Height="26" Margin="140,190,0,0" VerticalAlignment="Top" Width="161" Grid.Column="1"
                               x:Name="ThemeBox" SelectionChanged="ThemeBox_SelectionChanged">
@@ -116,7 +116,7 @@
                         <ComboBoxItem Content="ColourfulLight"/>
                         <ComboBoxItem Content="Dark"/>
                         <ComboBoxItem Content="ColourfulDark"/>
-                    </ComboBox>
+                    </ComboBox>-->
                 </Grid>
             </TabItem>
         </TabControl>

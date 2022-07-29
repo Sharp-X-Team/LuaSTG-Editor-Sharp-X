@@ -547,7 +547,7 @@ namespace LuaSTGEditorSharp.Windows
             PluginList.ItemsSource = pluginPaths;
 
             SetTheme(Editortheme);
-            ThemeDictionaryRes.Source = ThemeDictionary.Source;
+            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         public SettingsWindow(int i) : this()
@@ -655,7 +655,7 @@ namespace LuaSTGEditorSharp.Windows
             System.Windows.Controls.ComboBox box = (System.Windows.Controls.ComboBox)sender;
             ComboBoxItem selectedItem = (ComboBoxItem)box.SelectedItem;
             SetTheme((string)selectedItem.Content);
-            ThemeDictionaryRes.Source = ThemeDictionary.Source;
+            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
     }
 }

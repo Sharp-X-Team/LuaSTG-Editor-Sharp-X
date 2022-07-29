@@ -112,7 +112,7 @@ namespace LuaSTGEditorSharp.Windows
             TextName.SelectAll();
 
             SetTheme(Properties.Settings.Default.Editortheme);
-            ThemeDictionaryRes.Source = ThemeDictionary.Source;
+            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         private void ListTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)
