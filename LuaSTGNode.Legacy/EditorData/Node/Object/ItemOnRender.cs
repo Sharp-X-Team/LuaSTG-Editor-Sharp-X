@@ -15,7 +15,7 @@ using LuaSTGEditorSharp.EditorData.Node.Object;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Render
 {
-    [Serializable, NodeIcon("callbackfunc.png")]
+    [Serializable, NodeIcon("onrender.png")]
     [CannotDelete, CannotBan]
     [RequireParent(typeof(DefineItem))]
     [RCInvoke(0)]

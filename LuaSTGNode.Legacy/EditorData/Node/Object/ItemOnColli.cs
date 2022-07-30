@@ -35,7 +35,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             yield return sp + "_editor_class[\"" + parentName + "\"].colli" + "=function(self, other)\n"
                         + sp + s1 + "if other == player then\n";
-            foreach (var a in base.ToLua(spacing + 1))
+            foreach (var a in base.ToLua(spacing + 2))
             {
                 yield return a;
             }

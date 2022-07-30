@@ -1057,11 +1057,13 @@ namespace LuaSTGEditorSharp
         {
             TreeNode itemdef = new DefineItem(parent.ActivatedWorkSpaceData);
             itemdef.AddChild(new ItemInit(parent.ActivatedWorkSpaceData));
-            itemdef.AddChild(new ItemOnRender(parent.ActivatedWorkSpaceData));
-            var itemrender = itemdef.Children.Last();
+            
             itemdef.AddChild(new ItemOnFrame(parent.ActivatedWorkSpaceData));
             itemdef.AddChild(new ItemOnColli(parent.ActivatedWorkSpaceData));
             var itemcolli = itemdef.Children.Last();
+
+            itemdef.AddChild(new ItemOnRender(parent.ActivatedWorkSpaceData));
+            var itemrender = itemdef.Children.Last();
 
             itemrender.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData));
 
