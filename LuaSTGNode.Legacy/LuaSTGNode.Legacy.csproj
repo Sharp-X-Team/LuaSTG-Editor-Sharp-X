@@ -135,6 +135,7 @@
     <Compile Include="EditorData\Node\GameData\SetGameBomb.cs" />
     <Compile Include="EditorData\Node\GameData\SetGameBombPiece.cs" />
     <Compile Include="EditorData\Node\GameData\SetGameKillPlayer.cs" />
+    <Compile Include="EditorData\Node\GameData\SetSplash.cs" />
     <Compile Include="EditorData\Node\GameData\SetGameScore.cs" />
     <Compile Include="EditorData\Node\GameData\SetGameGraze.cs" />
     <Compile Include="EditorData\Node\GameData\SetGamePoint.cs" />
@@ -2183,6 +2184,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\createitem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\setsplash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\setsplash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

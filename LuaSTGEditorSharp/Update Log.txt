@@ -1,4 +1,8 @@
-﻿-- Update Log（2022-07-30）
+﻿-- Update Log（2022-08-22）
+
+v0.74.2:
+-Fixed fatal behavior on defined player bullets (uninitialized default procedure for _object type class)
+-Added show mouse node (game data tab)
 
 v0.74.1:
 -Added event type parameter for default action node
