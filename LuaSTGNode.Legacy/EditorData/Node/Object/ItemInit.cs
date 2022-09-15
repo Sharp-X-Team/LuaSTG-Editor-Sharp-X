@@ -64,8 +64,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
             yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                        + sp + s1 + "x = min(max(x, lstg.world.l + 8), lstg.world.r - 8)\n"
-                        + sp + s1 + "self.x,self.y=_x,_y\n"
+                        + sp + s1 + "x = min(max(_x, lstg.world.l + 8), lstg.world.r - 8)\n"
+                        + sp + s1 + "self.x,self.y=x,_y\n"
                         + sp + s1 + "angle = angle or 90\n"
                         + sp + s1 + "v = v or 1.5\n"
                         + sp + s1 + "SetV(self, v, angle)\n"
