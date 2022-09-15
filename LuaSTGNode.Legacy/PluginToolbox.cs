@@ -521,6 +521,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddRaiseError));
             gdata.Add(new ToolboxItemData("raisewarning", "/LuaSTGNode.Legacy;component/images/raisewarning.png", "Raise Warning")
                 , new AddNode(AddRaiseWarning));
+            gdata.Add(new ToolboxItemData("setsplash", "/LuaSTGNode.Legacy;component/images/setsplash.png", "Show Mouse")
+                , new AddNode(AddSetSplash));
             #endregion
             ToolInfo.Add("Game Data", gdata);
         }
@@ -1557,7 +1559,8 @@ namespace LuaSTGEditorSharp
             pl4.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "colli"));
             pl.AddChild(new PlayerBulletKill(parent.ActivatedWorkSpaceData));
             var pl5 = pl.Children.Last();
-            pl5.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "kill"));
+            //pl5.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "kill"));
+            //pl5.AddChild(new Del(parent.ActivatedWorkSpaceData, "self", "false"));
             pl.AddChild(new PlayerBulletDel(parent.ActivatedWorkSpaceData));
             var pl6 = pl.Children.Last();
             pl6.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "del"));
@@ -1610,6 +1613,10 @@ namespace LuaSTGEditorSharp
         private void AddSetGameKillPlayerNode()
         {
             parent.Insert(new SetGameKillPlayer(parent.ActivatedWorkSpaceData));
+        }
+        private void AddSetSplash()
+        {
+            parent.Insert(new SetSplash(parent.ActivatedWorkSpaceData));
         }
         #endregion
     }
