@@ -35,8 +35,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         [JsonIgnore, NodeAttribute]
         public string Name
         {
-            get => DoubleCheckAttr(0, "se").attrInput;
-            set => DoubleCheckAttr(0, "se").attrInput = value;
+            get => DoubleCheckAttr(0, "seWithQuotes").attrInput;
+            set => DoubleCheckAttr(0, "seWithQuotes").attrInput = value;
         }
 
         [JsonIgnore, NodeAttribute]
