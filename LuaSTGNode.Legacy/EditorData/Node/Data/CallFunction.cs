@@ -55,7 +55,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
 
         public override string ToString()
         {
-            return $"Call function {NonMacrolize(0)} with paramaters: ({NonMacrolize(1)})";
+            return $"Call function {NonMacrolize(0)} with parameters: ({NonMacrolize(1)})";
         }
 
         public override object Clone()
