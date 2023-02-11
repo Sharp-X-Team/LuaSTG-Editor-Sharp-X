@@ -39,8 +39,10 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddLocalVarNode));
             data.Add(new ToolboxItemData("assign", "/LuaSTGNode.Legacy;component/images/assignment.png", "Assignment")
                 , new AddNode(AddAssignmentNode));
-            data.Add(new ToolboxItemData("function", "/LuaSTGNode.Legacy;component/images/func.png", "Function")
+            data.Add(new ToolboxItemData("function", "/LuaSTGNode.Legacy;component/images/func.png", "Define Function")
                 , new AddNode(AddFunctionNode));
+            data.Add(new ToolboxItemData("callfunction", "/LuaSTGNode.Legacy;component/images/callfunc.png", "Call Function")
+                , new AddNode(AddCallFunctionNode));
             data.Add(new ToolboxItemData(true), null);
             data.Add(new ToolboxItemData("recordpos", "/LuaSTGNode.Legacy;component/images/positionVar.png", "Record Position")
                 ,  new AddNode(AddRecordPosNode));
@@ -540,6 +542,11 @@ namespace LuaSTGEditorSharp
         private void AddFunctionNode()
         {
             parent.Insert(new Function(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddCallFunctionNode()
+        {
+            parent.Insert(new CallFunction(parent.ActivatedWorkSpaceData));
         }
 
         private void AddRecordPosNode()

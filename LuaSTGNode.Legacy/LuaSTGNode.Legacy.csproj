@@ -123,6 +123,7 @@
     <Compile Include="EditorData\Node\Control\SetSize.cs" />
     <Compile Include="EditorData\Node\Control\SetRotation.cs" />
     <Compile Include="EditorData\Node\Control\Property.cs" />
+    <Compile Include="EditorData\Node\Data\CallFunction.cs" />
     <Compile Include="EditorData\Node\Data\ListRemove.cs" />
     <Compile Include="EditorData\Node\Data\ListAdd.cs" />
     <Compile Include="EditorData\Node\Data\ListCreate.cs" />
@@ -2190,6 +2191,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\setsplash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\callfunc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\callfunc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
