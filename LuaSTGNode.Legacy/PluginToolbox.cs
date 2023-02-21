@@ -418,6 +418,11 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddRenderTextNode));
             render.Add(new ToolboxItemData("renderttf", "/LuaSTGNode.Legacy;component/images/renderttf.png", "Render TTF")
                 , new AddNode(AddRenderTTFNode));
+            render.Add(new ToolboxItemData(true), null);
+            render.Add(new ToolboxItemData("particlefire", "/LuaSTGNode.Legacy;component/images/particlefire.png", "Fire Particles")
+                , new AddNode(AddParticleFire));
+            render.Add(new ToolboxItemData("particlestop", "/LuaSTGNode.Legacy;component/images/particlestop.png", "Stop Particles")
+                , new AddNode(AddParticleStop));
             #endregion
             ToolInfo.Add("Render", render);
 
@@ -1366,6 +1371,16 @@ namespace LuaSTGEditorSharp
         private void AddRenderTTFNode()
         {
             parent.Insert(new RenderTTF(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddParticleFire()
+        {
+            parent.Insert(new ParticleFire(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddParticleStop()
+        {
+            parent.Insert(new ParticleStop(parent.ActivatedWorkSpaceData));
         }
         #endregion
 

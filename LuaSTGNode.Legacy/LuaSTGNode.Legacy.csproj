@@ -268,6 +268,8 @@
     <Compile Include="EditorData\Node\RenderAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Render\CreateRenderTarget.cs" />
     <Compile Include="EditorData\Node\Render\OnRender.cs" />
+    <Compile Include="EditorData\Node\Render\ParticleStop.cs" />
+    <Compile Include="EditorData\Node\Render\ParticleFire.cs" />
     <Compile Include="EditorData\Node\Render\PostEffect.cs" />
     <Compile Include="EditorData\Node\Render\PostEffectCapture.cs" />
     <Compile Include="EditorData\Node\Render\Render4V.cs" />
@@ -2197,6 +2199,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\16x16\callfunc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\particlefire.png" />
+    <Resource Include="images\particlestop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16x16\particlefire.png" />
+    <Resource Include="images\16x16\particlestop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
