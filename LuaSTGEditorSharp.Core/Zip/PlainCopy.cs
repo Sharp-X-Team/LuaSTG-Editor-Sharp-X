@@ -14,12 +14,16 @@ namespace LuaSTGEditorSharp.Zip
 
         public PlainCopy(string targetArchivePath)
         {
+            if (targetArchivePath.EndsWith(".zip"))
+            {
+                targetArchivePath = targetArchivePath.Substring(0, targetArchivePath.Length - 4);
+            }
             this.targetArchivePath = targetArchivePath;
         }
 
         public override void PackByDict(Dictionary<string, string> fileInfo, bool removeIfExists)
         {
-            if (removeIfExists && Directory.Exists(targetArchivePath)) { Directory.Delete(targetArchivePath); }
+            if (removeIfExists && Directory.Exists(targetArchivePath)) { Directory.Delete(targetArchivePath, true); }
             if (!Directory.Exists(targetArchivePath)) { 
                 Directory.CreateDirectory(targetArchivePath);
             }
@@ -27,8 +31,8 @@ namespace LuaSTGEditorSharp.Zip
             {
                 foreach (KeyValuePair<string, string> kvp in fileInfo)
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(targetArchivePath + kvp.Key));
-                    File.Copy(kvp.Value, targetArchivePath + kvp.Key, true);
+                    Directory.CreateDirectory(Path.GetDirectoryName(targetArchivePath + "\\" + kvp.Key));
+                    File.Copy(kvp.Value, targetArchivePath + "\\" + kvp.Key, true);
                 }
             }
             catch (System.Exception e)

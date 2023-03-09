@@ -20,47 +20,58 @@
             <Button Content="Apply" Margin="5,5" Height="32" Width="96" Click="ButtonApply_Click"/>
         </StackPanel>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,-0.4,-0.4">
-            <TabItem x:Name="GeneralTab" Header="General">
+            <TabItem x:Name="GeneralTab" Header="General" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
                 <Grid>
-                    <Label Content="Plugin" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="83*"/>
+                        <ColumnDefinition Width="612*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Plugin" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" Grid.ColumnSpan="2"/>
                     <ComboBox x:Name="PluginList" Text="{Binding PluginPath,ElementName=window}" IsEditable="True" 
-                              HorizontalAlignment="Left" Height="26" Margin="99,10,0,0" VerticalAlignment="Top" Width="512"/>
-                    <Label Content="Note: The selection of plugin will only apply once you restart the application." HorizontalAlignment="Left" Height="34" Margin="10,41,0,0" VerticalAlignment="Top" Width="669"/>
-                    <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="103"/>
-                    <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="118,80,0,0" VerticalAlignment="Top" Width="561" Height="26"/>
-                    <Button Content="Register Extension" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click"/>
-                    <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,169,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}"/>
+                              HorizontalAlignment="Left" Height="26" Margin="16,10,0,0" VerticalAlignment="Top" Width="512" Grid.Column="1"/>
+                    <Label Content="Note: The selection of plugin will only apply once you restart the application." HorizontalAlignment="Left" Height="34" Margin="10,41,0,0" VerticalAlignment="Top" Width="669" Grid.ColumnSpan="2"/>
+                    <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="103" Grid.ColumnSpan="2"/>
+                    <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="35,80,0,0" VerticalAlignment="Top" Width="561" Height="26" Grid.Column="1"/>
+                    <Button Content="Register Extension" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click" Grid.ColumnSpan="2"/>
+                    <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,169,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="CompilerTab" Header="Compiler">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="131*"/>
+                    </Grid.ColumnDefinitions>
                     <CheckBox x:Name="BatchPackingCheck" Content="Use Batch Packing" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="669" Height="26" 
-                              IsChecked="{Binding BatchPacking, ElementName=window}"/>
-                    <Label Content="Zip Executable Path" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="150"/>
-                    <Label Content="LuaSTG Executable Path" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
-                    <Label Content="Temp Path" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="178,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
-                             Text="{Binding ZipExecutablePath, ElementName=window}" IsEnabled="{Binding IsChecked, ElementName=BatchPackingCheck}"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="178,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
-                             Text="{Binding LuaSTGExecutablePath, ElementName=window}"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="178,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
-                             Text="{Binding TempPath, ElementName=window}"/>
-                    <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
-                    <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="178,96,0,0" VerticalAlignment="Top" Width="501" Height="26"/>
-                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="653,34,0,0" VerticalAlignment="Top" Width="26" Click="ButtonZipExecutablePath_Click" 
-                            IsEnabled="{Binding IsChecked, ElementName=BatchPackingCheck}"/>
-                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="653,65,0,0" VerticalAlignment="Top" Width="26" Click="ButtonLuaSTGExecutablePath_Click"/>
+                              IsChecked="{Binding BatchPacking, ElementName=window}" Grid.ColumnSpan="3"/>
+                    <Label Content="Zip Executable Path" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
+                    <Label Content="LuaSTG Executable Path" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
+                    <Label Content="Temp Path" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                             Text="{Binding ZipExecutablePath, ElementName=window}" IsEnabled="{Binding IsChecked, ElementName=BatchPackingCheck}" Grid.Column="2"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                             Text="{Binding LuaSTGExecutablePath, ElementName=window}" Grid.Column="2"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                             Text="{Binding TempPath, ElementName=window}" Grid.Column="2"/>
+                    <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150" Height="26" Grid.ColumnSpan="3"/>
+                    <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="138,96,0,0" VerticalAlignment="Top" Width="501" Height="26" Grid.Column="2"/>
+                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="613,34,0,0" VerticalAlignment="Top" Width="26" Click="ButtonZipExecutablePath_Click" 
+                            IsEnabled="{Binding IsChecked, ElementName=BatchPackingCheck}" Grid.Column="2"/>
+                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="613,65,0,0" VerticalAlignment="Top" Width="26" Click="ButtonLuaSTGExecutablePath_Click" Grid.Column="2"/>
                     <CheckBox Content="Update Thlib before running" HorizontalAlignment="Left" Height="26" Margin="10,158,0,0" VerticalAlignment="Top" Width="250" 
-                              IsChecked="{Binding DebugUpdateLib, ElementName=window}"/>
+                              IsChecked="{Binding DebugUpdateLib, ElementName=window}" Grid.ColumnSpan="3"/>
                     <CheckBox Content="Save project before running" HorizontalAlignment="Left" Height="26" Margin="10,189,0,0" VerticalAlignment="Top" Width="250" 
-                              IsChecked="{Binding DebugSaveProj, ElementName=window}"/>
+                              IsChecked="{Binding DebugSaveProj, ElementName=window}" Grid.ColumnSpan="3"/>
                     <CheckBox Content="Pack project" HorizontalAlignment="Left" Height="26" Margin="10,220,0,0" VerticalAlignment="Top" Width="205" 
-                              IsChecked="{Binding PackProj, ElementName=window}"/>
+                              IsChecked="{Binding PackProj, ElementName=window}" Grid.ColumnSpan="3"/>
                     <CheckBox Content="Use MD5 resource check in packing" HorizontalAlignment="Left" Height="26" Margin="10,251,0,0" VerticalAlignment="Top" Width="250" 
-                              IsChecked="{Binding MD5Check, ElementName=window}"/>
-                    <Label Content="Editor Output File Name" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="150"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="178,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
-                             Text="{Binding EditorOutputName, ElementName=window}"/>
+                              IsChecked="{Binding MD5Check, ElementName=window}" Grid.ColumnSpan="3"/>
+                    <Label Content="Editor Output File Name" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                             Text="{Binding EditorOutputName, ElementName=window}" Grid.Column="2"/>
+                    <CheckBox x:Name="FolderPackingCheck" Content="Use Folder Packing" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="669" Height="26" 
+                        IsChecked="{Binding UseFolderPacking, ElementName=window}" Checked="FolderPackingCheck_Checked" Grid.ColumnSpan="3"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="DebugTab" Header="Debug">

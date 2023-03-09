@@ -5,6 +5,9 @@
     <Setting Name="IgnoreTHLibWarn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="UseFolderPacking" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="ZipExecutablePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

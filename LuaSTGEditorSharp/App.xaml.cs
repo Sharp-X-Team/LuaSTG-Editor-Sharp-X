@@ -144,6 +144,14 @@ namespace LuaSTGEditorSharp
                 Settings.Default["IgnoreTHLibWarn"] = value;
             }
         }
+        public bool UseFolderPacking
+        {
+            get => Settings.Default.UseFolderPacking;
+            set
+            {
+                Settings.Default["UseFolderPacking"] = value;
+            }
+        }
 
         public string ZipExecutablePath
         {

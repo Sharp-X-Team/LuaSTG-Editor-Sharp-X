@@ -44,6 +44,17 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private bool useFolderPacking;
+        public bool UseFolderPacking
+        {
+            get => useFolderPacking;
+            set
+            {
+                useFolderPacking = value;
+                RaiseProertyChanged("IgnoreTHLibWarn");
+            }
+        }
+
         private string zipExecutablePath;
         public string ZipExecutablePath
         {
@@ -346,6 +357,11 @@ namespace LuaSTGEditorSharp.Windows
             get => mainApp.IgnoreTHLibWarn;
             set => mainApp.IgnoreTHLibWarn = value;
         }
+        public bool UseFolderPackingSettings
+        {
+            get => mainApp.UseFolderPacking;
+            set => mainApp.UseFolderPacking = value;
+        }
         public string ZipExecutablePathSettings
         {
             get => mainApp.ZipExecutablePath;
@@ -473,6 +489,7 @@ namespace LuaSTGEditorSharp.Windows
 
         private void WriteSettings()
         {
+            UseFolderPackingSettings = UseFolderPacking;
             IgnoreTHLibWarnSettings = IgnoreTHLibWarn;
             AuthorNameSettings = AuthorName;
             AutoMoveToNewSettings = AutoMoveToNew;
@@ -497,6 +514,7 @@ namespace LuaSTGEditorSharp.Windows
 
         private void ReadSettings()
         {
+            UseFolderPacking = UseFolderPackingSettings;
             IgnoreTHLibWarn = IgnoreTHLibWarnSettings;
             AuthorName = AuthorNameSettings;
             AutoMoveToNew = AutoMoveToNewSettings;
@@ -656,6 +674,11 @@ namespace LuaSTGEditorSharp.Windows
             ComboBoxItem selectedItem = (ComboBoxItem)box.SelectedItem;
             SetTheme((string)selectedItem.Content);
             //ThemeDictionaryRes.Source = ThemeDictionary.Source;
+        }
+
+        private void FolderPackingCheck_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -418,7 +418,11 @@ namespace LuaSTGEditorSharp.EditorData
                 int entryCount = entry2File.Count;
                 float currentCount = 0;
                 ZipCompressor compressor;
-                if (currentApp.BatchPacking)
+                if (currentApp.UseFolderPacking)
+                {
+                    compressor = new PlainCopy(targetZipPath);
+                }
+                else if (currentApp.BatchPacking)
                 {
                     compressor = new ZipCompressorBatch(targetZipPath, zipExePath, rootZipPackPath);
                 }
