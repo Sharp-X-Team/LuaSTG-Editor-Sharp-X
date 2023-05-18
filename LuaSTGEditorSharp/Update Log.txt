@@ -1,6 +1,6 @@
-﻿-- Update Log（January 1st, 2033）
+﻿-- Update Log（January 1st, 2023）
 
-v0.74.2:
+v0.74.3:
 -Fixed defined items crashing the game
 -Fixed play SE/BGM nodes not playing a preview for the selected option
 -Fixed the dropdown list on the Play SE node not having quotes around the sound effect name
