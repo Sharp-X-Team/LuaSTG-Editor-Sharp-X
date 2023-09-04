@@ -93,7 +93,6 @@ namespace LuaSTGEditorSharp
             if (tag.StartsWith("cusNode_"))
             {
                 toolbox.CNFuncs[tag](toolbox.CustomScripts[tag]);
-                var r = toolbox.CustomScripts[tag];
             }
             else
             {

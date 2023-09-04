@@ -274,11 +274,6 @@ namespace LuaSTGEditorSharp.EditorData
         public bool isCustomNode = false;
 
         /// <summary>
-        /// Store the Custom Node's tag.
-        /// </summary>
-        public string NodeTag = "";
-
-        /// <summary>
         /// Event when node is created.
         /// </summary>
         private event OnCreateNodeHandler OnCreate;
@@ -657,7 +652,7 @@ namespace LuaSTGEditorSharp.EditorData
             {
                 if (parentWorkSpace == null) return a;
                 TreeNode t = PluginHandler.Plugin.NodeTypeCache.StandardNode[GetType()].Clone() as TreeNode;
-                if (t.isCustomNode) return a; // Ignore mismatching attributes if the node is a Custom One (propbably not a good idea tho.)
+                if (t.isCustomNode) return a; // Ignore mismatching attributes if the node is a Custom One (probably not a good idea tho.)
                 if (t.GetType() != GetType()) return a;
                 for (int i = 0; i < 2; i++)
                 {
