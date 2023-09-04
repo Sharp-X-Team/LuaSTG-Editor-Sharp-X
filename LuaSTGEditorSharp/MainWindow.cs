@@ -87,7 +87,18 @@ namespace LuaSTGEditorSharp
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            toolbox.NFuncs[(sender as Button)?.Tag?.ToString()]();
+            string tag = (sender as Button)?.Tag?.ToString();
+            if (string.IsNullOrEmpty(tag))
+                return;
+            if (tag.StartsWith("cusNode_"))
+            {
+                toolbox.CNFuncs[tag](toolbox.CustomScripts[tag]);
+                var r = toolbox.CustomScripts[tag];
+            }
+            else
+            {
+                toolbox.NFuncs[tag]();
+            }
         }
 
         private void ComboDict_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)

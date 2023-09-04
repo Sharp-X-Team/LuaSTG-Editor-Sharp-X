@@ -11,21 +11,27 @@ using LuaSTGEditorSharp.EditorData.Node.General;
 using LuaSTGEditorSharp.EditorData.Node.Advanced;
 using LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat;
 using LuaSTGEditorSharp.EditorData.Node.Project;
+using MoonSharp.Interpreter;
 
 namespace LuaSTGEditorSharp.Plugin
 {
     public abstract class AbstractToolbox
     {
         public delegate void AddNode();
+        public delegate void AddCustomNode(Script nodeScript);
 
         protected Dictionary<string, Dictionary<ToolboxItemData, AddNode>> ToolInfo 
             = new Dictionary<string, Dictionary<ToolboxItemData, AddNode>>();
+        protected Dictionary<string, Dictionary<ToolboxItemData, AddCustomNode>> ToolInfoCustom
+            = new Dictionary<string, Dictionary<ToolboxItemData, AddCustomNode>>();
 
         public Dictionary<string, AddNode> NFuncs = new Dictionary<string, AddNode>();
+        public Dictionary<string, AddCustomNode> CNFuncs = new Dictionary<string, AddCustomNode>();
+        public Dictionary<string, Script> CustomScripts = new Dictionary<string, Script>();
 
         public List<SearchModel> nodeNameList;
 
-        protected readonly IMainWindow parent;
+        public readonly IMainWindow parent;
 
         public ObservableCollection<ToolboxTab> ToolboxTabs = new ObservableCollection<ToolboxTab>();
 
@@ -112,7 +118,19 @@ namespace LuaSTGEditorSharp.Plugin
                     in kvp.Value
                     select kvp2.Key)
                 });
+            foreach (var tab in ToolInfoCustom)
+            {
+                ToolboxTabs.Add(new ToolboxTab()
+                {
+                    Header = tab.Key,
+                    Data = new ObservableCollection<ToolboxItemData>(
+                    from KeyValuePair<ToolboxItemData, AddCustomNode> kvp2
+                    in tab.Value
+                    select kvp2.Key)
+                });
+            }
             NFuncs = new Dictionary<string, AddNode>();
+            CNFuncs = new Dictionary<string, AddCustomNode>();
             nodeNameList = new List<SearchModel>();
             foreach (KeyValuePair<string, Dictionary<ToolboxItemData, AddNode>> kvp in ToolInfo)
             {
@@ -121,6 +139,17 @@ namespace LuaSTGEditorSharp.Plugin
                     if (!kvp2.Key.IsSeperator)
                     {
                         NFuncs.Add(kvp2.Key.Tag, kvp2.Value);
+                        nodeNameList.Add(new SearchModel() { Name = kvp2.Key.Tag, Icon = kvp2.Key.Image });
+                    }
+                }
+            }
+            foreach (KeyValuePair<string, Dictionary<ToolboxItemData, AddCustomNode>> kvp in ToolInfoCustom)
+            {
+                foreach (KeyValuePair<ToolboxItemData, AddCustomNode> kvp2 in kvp.Value)
+                {
+                    if (!kvp2.Key.IsSeperator)
+                    {
+                        CNFuncs.Add(kvp2.Key.Tag, kvp2.Value);
                         nodeNameList.Add(new SearchModel() { Name = kvp2.Key.Tag, Icon = kvp2.Key.Image });
                     }
                 }

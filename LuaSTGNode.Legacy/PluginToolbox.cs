@@ -19,7 +19,11 @@ using LuaSTGEditorSharp.EditorData.Node.Graphics;
 using LuaSTGEditorSharp.EditorData.Node.Audio;
 using LuaSTGEditorSharp.EditorData.Node.Render;
 using LuaSTGEditorSharp.EditorData.Node.Advanced;
-
+using System.Windows;
+using System.Windows.Resources;
+using System.IO;
+using MoonSharp.Interpreter;
+using LuaSTGEditorSharp.CustomNodes;
 
 namespace LuaSTGEditorSharp
 {
@@ -532,6 +536,18 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddSetSplash));
             #endregion
             ToolInfo.Add("Game Data", gdata);
+
+            var cnodes = new Dictionary<ToolboxItemData, AddCustomNode>();
+            #region cnodes
+            // Don't do anything if the Init.lua file doesn't exist in the CustomNodes folder.
+            if (File.Exists(@"CustomNodes/Init.lua"))
+            {
+                CustomNodeLoader customNodeLoader = new CustomNodeLoader(this);
+                customNodeLoader.LoadCustomNodes(ref cnodes);
+
+                ToolInfoCustom.Add("Custom Nodes", cnodes);
+            }
+            #endregion
         }
 
         #region data
