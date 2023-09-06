@@ -45,7 +45,7 @@ namespace LuaSTGEditorSharp.CustomNodes
                 string tag = "cusNode_" + node_properties.Table.Get("name").String.ToLower();
 
                 cnodes.Add(new ToolboxItemData(tag,
-                            GetCustomImage(NodesToLoad.Table[i].ToString()),
+                            GetComponentImage(node_properties.Table.Get("image").String),
                             node_properties.Table.Get("name").String)
                     , new AddCustomNode(AddCustomNode));
 
@@ -53,9 +53,17 @@ namespace LuaSTGEditorSharp.CustomNodes
             }
         }
 
+        public string GetComponentImage(string FileName)
+        {
+            string img_name = "userdefinednode.png";
+            if (!string.IsNullOrEmpty(FileName))
+                img_name = FileName;
+            return img_name;
+        }
+
         public string GetCustomImage(string FileName)
         {
-            string img_name = @"CustomNodes/Imagess/" + FileName + ".png";
+            string img_name = @"CustomNodes/Images/" + FileName + ".png";
             bool exists = File.Exists(img_name);
             if (!exists)
                 img_name = "/LuaSTGEditorSharp.Core;component/images/userdefinednode.png"; // Default Icon when the image doesn't exists.

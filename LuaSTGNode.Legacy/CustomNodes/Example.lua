@@ -1,9 +1,8 @@
 ﻿function InitNode()
 	local properties = {
 		name = "Example Node",
+		image = "if.png",
 
-		leafNode = true, -- Cannot have any children. true/false.
-		RequireParent = "CodeAlike", -- See documentation
 		Parameters = {
 			{"Unit", "self", "target"},
 			{"Position", "0,0", "position"}

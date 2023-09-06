@@ -12,6 +12,7 @@ using LuaSTGEditorSharp.EditorData.Node.Advanced;
 using LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat;
 using LuaSTGEditorSharp.EditorData.Node.Project;
 using MoonSharp.Interpreter;
+using System.IO;
 
 namespace LuaSTGEditorSharp.Plugin
 {
@@ -167,6 +168,20 @@ namespace LuaSTGEditorSharp.Plugin
                     {
                         string s = kvp2.Key.Image;
                         yield return new KeyValuePair<string, BitmapImage>(s, new BitmapImage(new Uri(s, UriKind.RelativeOrAbsolute)));
+                    }
+                }
+            }
+            foreach (KeyValuePair<string, Dictionary<ToolboxItemData, AddCustomNode>> kvp in ToolInfoCustom)
+            {
+                foreach (KeyValuePair<ToolboxItemData, AddCustomNode> kvp2 in kvp.Value)
+                {
+                    if (!kvp2.Key.IsSeperator)
+                    {
+                        string s = kvp2.Key.Image;
+                        BitmapImage img = new BitmapImage(new Uri("/LuaSTGEditorSharp.Core;component/images/"+s, UriKind.RelativeOrAbsolute));
+                        if (img == null)
+                            img = new BitmapImage(new Uri("/LuaSTGNode.Legacy;component/images/"+s, UriKind.RelativeOrAbsolute));
+                        yield return new KeyValuePair<string, BitmapImage>(s, img);
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,13 +15,15 @@ using Newtonsoft.Json;
 using System.Runtime.Remoting.Messaging;
 using LuaSTGEditorSharp.CustomNodes;
 using System.ComponentModel;
+using LuaSTGEditorSharp.EditorData.Message;
 
 namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
 {
-    [Serializable, NodeIcon("objectgroup.png")]
-    [RequireAncestor(typeof(CodeAlikeTypes))]
-    [LeafNode]
-    [RCInvoke(0)]
+    [Serializable, NodeIcon("basecustomnode.png")]
+    [CustomNode]
+    [IgnoreValidation]
+    [CreateInvoke(0)]
+    [IgnoreAttributesParityCheck]
     public class BaseCustomNode : TreeNode
     {
         [JsonIgnore, XmlIgnore]
@@ -54,7 +57,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             isCustomNode = true;
             NodeFilePath = nodeFilePath;
             NodeScript = new Script();
-            if (NodeFilePath != "NullNode")
+            if (NodeFilePath != "NullNode" && File.Exists(@"CustomNodes/" + NodeFilePath + ".lua"))
                 NodeScript.DoFile(@"CustomNodes/" + NodeFilePath + ".lua");
 
             DynValue f_Init = NodeScript.Globals.Get("InitNode");
@@ -70,23 +73,38 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             }
         }
 
-        public void GenerateScript()
+        /// <summary>
+        /// Regenerate the script's lua code at runtime.
+        /// Is needed for runtime script edits and not crashing the editor when it starts (for some reason).
+        /// </summary>
+        /// <returns>If the code was parsed correctly returns true, returns false if it's not the case.</returns>
+        public bool GenerateScript()
         {
-            if (nodeProperties != null) return;
+            if (nodeProperties != null) return true;
             NodeScript = new Script();
-            if (NodeFilePath != "NullNode")
+            if (NodeFilePath != "NullNode" && File.Exists(@"CustomNodes/" + NodeFilePath + ".lua"))
                 NodeScript.DoFile(@"CustomNodes/" + NodeFilePath + ".lua");
 
             DynValue f_Init = NodeScript.Globals.Get("InitNode");
-            if (f_Init.IsNil()) return;
+            if (f_Init.IsNil()) return false;
             nodeProperties = NodeScript.Call(f_Init);
+            return true;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
-            GenerateScript();
-            string sp = Indent(spacing);
-            yield return sp + "" + Macrolize(0) + ".group = " + Macrolize(1) + "\n";
+            if (GenerateScript())
+            {
+                string sp = Indent(spacing);
+                yield return sp + "" + Macrolize(0) + ".group = " + Macrolize(1) + "\n";
+            }
+            else
+            {
+                foreach (var a in base.ToLua(spacing + 1))
+                {
+                    yield return a;
+                }
+            }
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -97,7 +115,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
 
         public override string ToString()
         {
-            GenerateScript();
+            if (!GenerateScript()) return "* Unknown Node *";
             string NoText = "No Node description set for (" + nodeProperties.Table.Get("name") + "). Please set one.";
             DynValue f_ToString = NodeScript.Globals.Get("ToString");
             if (f_ToString.IsNil()) return NoText;
@@ -124,9 +142,21 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             //return "Set " + NonMacrolize(0) + "\'s group to " + NonMacrolize(1) + "";
         }
 
+        /// <summary>
+        /// Overriden function, returns a <see cref="InvalidCustomNodeMessage"/> error when the node doesn't exist in the "CustomNodes" folder.
+        /// </summary>
+        /// <returns>A <see cref="List{T}"/> of error messages.</returns>
         public override List<MessageBase> GetMessage()
         {
-            return new List<MessageBase>();
+            List<MessageBase> messages = new List<MessageBase>();
+            if (NodeFilePath != "NullNode")
+            {
+                if (!File.Exists(@"CustomNodes/" + NodeFilePath + ".lua"))
+                {
+                    messages.Add(new InvalidCustomNodeMessage(NodeFilePath, this));
+                }
+            }
+            return messages;
         }
 
         public override object Clone()

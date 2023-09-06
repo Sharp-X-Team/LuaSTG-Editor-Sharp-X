@@ -111,6 +111,7 @@
     <Compile Include="EditorData\Message\ArgNotNullMessage.cs" />
     <Compile Include="EditorData\Message\AttributeMismatchMessage.cs" />
     <Compile Include="EditorData\Message\InvalidArchiveSpaceMessage.cs" />
+    <Compile Include="EditorData\Message\InvalidCustomNodeMessage.cs" />
     <Compile Include="EditorData\Message\RepeatedNameMessage.cs" />
     <Compile Include="EditorData\Message\VarNameInvalidMessage.cs" />
     <Compile Include="EditorData\Node\AbstractNodeTypeCache.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="EditorData\Node\NodeAttributes\CannotDeleteAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\ClassNodeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\CreateInvokeAttribute.cs" />
+    <Compile Include="EditorData\Node\NodeAttributes\CustomNodeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\DCInvokeAttributeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\IgnoreParityCheckAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\IgnoreValidationAttribute.cs" />

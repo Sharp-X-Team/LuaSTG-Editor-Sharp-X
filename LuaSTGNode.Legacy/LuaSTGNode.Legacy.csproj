@@ -1633,6 +1633,8 @@
     <Content Include="CustomNodes\Example 3.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\16x16\basecustomnode.png" />
+    <Resource Include="images\basecustomnode.png" />
     <None Include="packages.config" />
     <Resource Include="ResourceList\SysFont.json" />
     <Resource Include="ResourceList\SysTTF.json" />
