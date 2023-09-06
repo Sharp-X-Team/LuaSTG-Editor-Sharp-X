@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LuaSTGEditorSharp.EditorData.Node.Enemy;
 using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.Plugin;
 using MoonSharp.Interpreter;
@@ -38,7 +34,7 @@ namespace LuaSTGEditorSharp.CustomNodes
                     continue;
                 }
 
-                string path = @"CustomNodes/" + NodesToLoad.Table[i] + ".lua";
+                string path = @"CustomNodes/" + NodesToLoad.Table[i].ToString() + ".lua";
                 if (!File.Exists(path))
                     continue;
                 Script tmp_node = new Script();
@@ -52,7 +48,8 @@ namespace LuaSTGEditorSharp.CustomNodes
                             GetCustomImage(NodesToLoad.Table[i].ToString()),
                             node_properties.Table.Get("name").String)
                     , new AddCustomNode(AddCustomNode));
-                pluginToolbox.CustomScripts.Add(tag, tmp_node);
+
+                pluginToolbox.CustomScripts.Add(tag, NodesToLoad.Table[i].ToString());
             }
         }
 
@@ -65,9 +62,9 @@ namespace LuaSTGEditorSharp.CustomNodes
             return img_name;
         }
 
-        private void AddCustomNode(Script nodeScript)
+        private void AddCustomNode(string nodeScriptString)
         {
-            TreeNode c_Node = new BaseCustomNode(pluginToolbox.parent.ActivatedWorkSpaceData, nodeScript);
+            TreeNode c_Node = new BaseCustomNode(pluginToolbox.parent.ActivatedWorkSpaceData, nodeScriptString);
             pluginToolbox.parent.Insert(c_Node);
         }
     }

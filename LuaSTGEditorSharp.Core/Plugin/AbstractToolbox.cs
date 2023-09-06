@@ -18,7 +18,7 @@ namespace LuaSTGEditorSharp.Plugin
     public abstract class AbstractToolbox
     {
         public delegate void AddNode();
-        public delegate void AddCustomNode(Script nodeScript);
+        public delegate void AddCustomNode(string nodeScriptString);
 
         protected Dictionary<string, Dictionary<ToolboxItemData, AddNode>> ToolInfo 
             = new Dictionary<string, Dictionary<ToolboxItemData, AddNode>>();
@@ -27,7 +27,7 @@ namespace LuaSTGEditorSharp.Plugin
 
         public Dictionary<string, AddNode> NFuncs = new Dictionary<string, AddNode>();
         public Dictionary<string, AddCustomNode> CNFuncs = new Dictionary<string, AddCustomNode>();
-        public Dictionary<string, Script> CustomScripts = new Dictionary<string, Script>();
+        public Dictionary<string, string> CustomScripts = new Dictionary<string, string>();
 
         public List<SearchModel> nodeNameList;
 
