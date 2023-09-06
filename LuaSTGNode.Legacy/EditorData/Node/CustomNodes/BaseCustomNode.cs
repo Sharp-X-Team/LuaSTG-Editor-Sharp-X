@@ -1,10 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.EditorData.Document;
 using LuaSTGEditorSharp.EditorData.Node;
@@ -12,8 +10,6 @@ using LuaSTGEditorSharp.EditorData.Node.NodeAttributes;
 using MoonSharp.Interpreter;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
-using System.Runtime.Remoting.Messaging;
-using LuaSTGEditorSharp.CustomNodes;
 using System.ComponentModel;
 using LuaSTGEditorSharp.EditorData.Message;
 
@@ -95,8 +91,30 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
         {
             if (GenerateScript())
             {
+                string head = "", body = $"-- No code for {NodeFilePath}", tail = "";
+                string[] parameters = GetParameters().ToArray();
                 string sp = Indent(spacing);
-                yield return sp + "" + Macrolize(0) + ".group = " + Macrolize(1) + "\n";
+                DynValue f_Head = GetLuaFunc("ToLuaHead");
+                DynValue f_Body = GetLuaFunc("ToLuaBody");
+                DynValue f_Tail = GetLuaFunc("ToLuaTail");
+                if (!f_Head.IsNil()) head = NodeScript.Call(f_Head).String;
+                if (!f_Body.IsNil()) body = NodeScript.Call(f_Body).String;
+                if (!f_Tail.IsNil()) tail = NodeScript.Call(f_Tail).String;
+
+                try
+                {
+                    head = sp + string.Format(head, parameters) + "\n";
+                    body = sp + string.Format(body, parameters) + "\n";
+                    tail = sp + string.Format(tail, parameters) + "\n";
+                }
+                catch {}
+                if (head != sp + "\n") yield return head;
+                if (body != sp + "\n") yield return body;
+                foreach (var a in base.ToLua(spacing + 1))
+                {
+                    yield return a;
+                }
+                if (tail != sp + "\n") yield return tail;
             }
             else
             {
@@ -122,24 +140,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             DynValue DescString = NodeScript.Call(f_ToString);
             if (DescString.IsNil()) return NoText;
 
-            List<string> parameters = new List<string>();
-            for (int i = 2; i < DescString.Table.Length+1; i++)
-            {
-                int attrId = 0;
-                Table _parameters = nodeProperties.Table.Get("Parameters").Table;
-                if (_parameters == null) return "NaN";
-                for (int j = 1; j < _parameters.Length+1; j++)
-                {
-                    if (_parameters.Get(j).Table[1].ToString() == DescString.Table[i].ToString())
-                    {
-                        attrId = j-1;
-                        break;
-                    }
-                }
-                parameters.Add(NonMacrolize(attrId).ToString());
-            }
-            return string.Format(DescString.Table[1].ToString(), parameters.ToArray());
-            //return "Set " + NonMacrolize(0) + "\'s group to " + NonMacrolize(1) + "";
+            List<string> parameters = GetParameters();
+            return string.Format(DescString.String, parameters.ToArray());
         }
 
         /// <summary>
@@ -164,6 +166,21 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             var n = new BaseCustomNode(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
+        }
+
+        public List<string> GetParameters()
+        {
+            List<string> parameters = new List<string>();
+            for (int i = 0; i < attributes.Count; i++)
+            {
+                parameters.Add(NonMacrolize(i));
+            }
+            return parameters;
+        }
+
+        public DynValue GetLuaFunc(string func)
+        {
+            return NodeScript.Globals.Get(func);
         }
     }
 }

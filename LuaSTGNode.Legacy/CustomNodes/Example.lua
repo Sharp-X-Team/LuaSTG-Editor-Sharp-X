@@ -12,10 +12,23 @@
 	return properties
 end
 
-function ToLua()
-	return {"%s.x, %s.y = %s", "Unit", "Unit", "Position"}
+function ToLuaHead()
+	return "-- Custom node head code"
+end
+
+function ToLuaBody()
+	local lua_code = [[-- Put the lua code here.
+{0}.x, {0}.y = {1}
+	-- test indent.
+]]
+	return lua_code
+end
+
+function ToLuaTail()
+	return "-- Custom node tail code"
 end
 
 function ToString()
-	return {"Sets {0}'s position to ({1})", "Unit", "Position"}
+	local node_description = "Sets {0}'s position to ({1})"
+	return node_description
 end
