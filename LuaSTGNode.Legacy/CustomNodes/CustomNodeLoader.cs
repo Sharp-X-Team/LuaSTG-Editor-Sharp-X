@@ -6,6 +6,7 @@ using LuaSTGEditorSharp.Plugin;
 using MoonSharp.Interpreter;
 using static LuaSTGEditorSharp.Plugin.AbstractToolbox;
 using LuaSTGEditorSharp.EditorData.Node.CustomNodes;
+using System;
 
 namespace LuaSTGEditorSharp.CustomNodes
 {
@@ -61,6 +62,7 @@ namespace LuaSTGEditorSharp.CustomNodes
             return img_name;
         }
 
+        [Obsolete]
         public string GetCustomImage(string FileName)
         {
             string img_name = @"CustomNodes/Images/" + FileName + ".png";

@@ -125,12 +125,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             }
         }
 
-        public override IEnumerable<Tuple<int, TreeNode>> GetLines()
-        {
-            GenerateScript();
-            yield return new Tuple<int, TreeNode>(1, this);
-        }
-
         public override string ToString()
         {
             if (!GenerateScript()) return "* Unknown Node *";
@@ -159,6 +153,35 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
                 }
             }
             return messages;
+        }
+
+        public override IEnumerable<Tuple<int, TreeNode>> GetLines()
+        {
+            if (GenerateScript())
+            {
+                string head = "", body = $"-- No code for {NodeFilePath}", tail = "";
+                DynValue f_Head = GetLuaFunc("ToLuaHead");
+                DynValue f_Body = GetLuaFunc("ToLuaBody");
+                DynValue f_Tail = GetLuaFunc("ToLuaTail");
+                if (!f_Head.IsNil()) head = NodeScript.Call(f_Head).String;
+                if (!f_Body.IsNil()) body = NodeScript.Call(f_Body).String;
+                if (!f_Tail.IsNil()) tail = NodeScript.Call(f_Tail).String;
+                if (!string.IsNullOrEmpty(head)) yield return new Tuple<int, TreeNode>(head.Count((c) => c == '\n')+1, this);
+                if (!string.IsNullOrEmpty(body)) yield return new Tuple<int, TreeNode>(body.Count((c) => c == '\n')+1, this);
+                foreach (Tuple<int, TreeNode> t in GetChildLines())
+                {
+                    yield return t;
+                }
+                if (!string.IsNullOrEmpty(tail)) yield return new Tuple<int, TreeNode>(tail.Count((c) => c == '\n')+1, this);
+            }
+            else
+            {
+                yield return new Tuple<int, TreeNode>(1, this);
+                foreach (Tuple<int, TreeNode> t in GetChildLines())
+                {
+                    yield return t;
+                }
+            }
         }
 
         public override object Clone()
