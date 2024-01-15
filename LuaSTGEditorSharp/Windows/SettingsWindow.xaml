@@ -26,14 +26,8 @@
                         <ColumnDefinition Width="83*"/>
                         <ColumnDefinition Width="612*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Plugin" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="PluginList" Text="{Binding PluginPath,ElementName=window}" IsEditable="True" 
-                              HorizontalAlignment="Left" Height="26" Margin="16,10,0,0" VerticalAlignment="Top" Width="512" Grid.Column="1"/>
-                    <Label Content="Note: The selection of plugin will only apply once you restart the application." HorizontalAlignment="Left" Height="34" Margin="10,41,0,0" VerticalAlignment="Top" Width="669" Grid.ColumnSpan="2"/>
-                    <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="103" Grid.ColumnSpan="2"/>
-                    <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="35,80,0,0" VerticalAlignment="Top" Width="561" Height="26" Grid.Column="1"/>
-                    <Button Content="Register Extension" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click" Grid.ColumnSpan="2"/>
-                    <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,169,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}" Grid.ColumnSpan="2"/>
+                    <Button Content="Register .lstges File Extension" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click" Grid.ColumnSpan="2"/>
+                    <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,50,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="CompilerTab" Header="Compiler">

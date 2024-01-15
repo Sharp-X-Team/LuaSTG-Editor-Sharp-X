@@ -484,7 +484,44 @@ namespace LuaSTGEditorSharp.Windows
 
         public string TargetVersion
         {
-            get => Plugin.PluginHandler.Plugin.TargetLSTGVersion;
+            get => GetTargetVersion();
+            set => SetTargetVersion();
+        }
+
+        private string GetTargetVersion()
+        {
+            if (!File.Exists(LuaSTGExecutablePath))
+            {
+                return "No LuaSTG exectuable set yet.";
+            }
+            FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
+            return $"{LuaSTGExecutableInfos.InternalName} v{LuaSTGExecutableInfos.ProductVersion} (Dev Info: Using plugin '{PluginPath}')";
+        }
+
+        private void SetTargetVersion()
+        {
+            FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
+
+            string PluginNameInte;
+            switch (LuaSTGExecutableInfos.InternalName)
+            {
+                case "LuaSTGExPlus":
+                    PluginNameInte = "lib\\LuaSTGPlusLib.dll";
+                    break;
+                case "LuaSTG Sub":
+                    PluginNameInte = "lib\\LuaSTGSubLib.dll";
+                    break;
+                case "LuaSTG-x":
+                    PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
+                    break;
+                default:
+                    PluginNameInte = "lib\\LuaSTGPlusLib.dll";
+                    break;
+            }
+
+            if (PluginNameInte != PluginPath)
+                System.Windows.MessageBox.Show("Warning: The editor must be restarted for these changes to work.");
+            PluginPath = PluginNameInte;
         }
 
         private void WriteSettings()
@@ -562,7 +599,7 @@ namespace LuaSTGEditorSharp.Windows
                 where Path.GetExtension(s) == ".dll" && names.Contains(Path.GetFileNameWithoutExtension(s))
                 select Path.GetFileName(s)
                 );
-            PluginList.ItemsSource = pluginPaths;
+            //PluginList.ItemsSource = pluginPaths;
 
             SetTheme(Editortheme);
             //ThemeDictionaryRes.Source = ThemeDictionary.Source;
@@ -613,7 +650,7 @@ namespace LuaSTGEditorSharp.Windows
         {
             var chooseExc = new OpenFileDialog()
             {
-                Filter = "LuaSTG Executable|" + Plugin.PluginHandler.Plugin.Execution.ExecutableName
+                Filter = "LuaSTG Executable|*.exe"
             };
             if (chooseExc.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
@@ -629,6 +666,7 @@ namespace LuaSTGEditorSharp.Windows
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             WriteSettings();
+            TargetVersion = GetTargetVersion();
             Properties.Settings.Default.Save();
             Close();
         }
@@ -641,6 +679,7 @@ namespace LuaSTGEditorSharp.Windows
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
             WriteSettings();
+            TargetVersion = GetTargetVersion();
             Properties.Settings.Default.Save();
         }
 
