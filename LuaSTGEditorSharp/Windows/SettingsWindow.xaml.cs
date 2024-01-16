@@ -495,7 +495,7 @@ namespace LuaSTGEditorSharp.Windows
                 return "No LuaSTG exectuable set yet.";
             }
             FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
-            return $"{LuaSTGExecutableInfos.InternalName} v{LuaSTGExecutableInfos.ProductVersion} (Dev Info: Using plugin '{PluginPath}')";
+            return $"{LuaSTGExecutableInfos.ProductName} v{LuaSTGExecutableInfos.ProductVersion} (Dev Info: Using plugin '{PluginPath}')";
         }
 
         private void SetTargetVersion()
@@ -503,7 +503,7 @@ namespace LuaSTGEditorSharp.Windows
             FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
 
             string PluginNameInte;
-            switch (LuaSTGExecutableInfos.InternalName)
+            switch (LuaSTGExecutableInfos.ProductName)
             {
                 case "LuaSTGExPlus":
                     PluginNameInte = "lib\\LuaSTGPlusLib.dll";
@@ -515,7 +515,7 @@ namespace LuaSTGEditorSharp.Windows
                     PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
                     break;
                 default:
-                    PluginNameInte = "lib\\LuaSTGPlusLib.dll";
+                    PluginNameInte = "lib\\LuaSTGLib.Default.dll";
                     break;
             }
 
