@@ -495,7 +495,7 @@ namespace LuaSTGEditorSharp.Windows
                 return "No LuaSTG exectuable set yet.";
             }
             FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
-            return $"{LuaSTGExecutableInfos.ProductName} v{LuaSTGExecutableInfos.ProductVersion} (Dev Info: Using plugin '{PluginPath}')";
+            return $"{LuaSTGExecutableInfos.ProductName} v{LuaSTGExecutableInfos.ProductVersion}";
         }
 
         private void SetTargetVersion()
@@ -503,7 +503,7 @@ namespace LuaSTGEditorSharp.Windows
             FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
 
             string PluginNameInte;
-            if (LuaSTGExecutableInfos.ProductName.Contains("ExPlus"))
+            if (LuaSTGExecutableInfos.ProductName.Contains("Plus"))
                 PluginNameInte = "lib\\LuaSTGPlusLib.dll";
             else if (LuaSTGExecutableInfos.ProductName.Contains("Sub"))
                 PluginNameInte = "lib\\LuaSTGSubLib.dll";
@@ -658,8 +658,8 @@ namespace LuaSTGEditorSharp.Windows
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
-            WriteSettings();
             TargetVersion = GetTargetVersion();
+            WriteSettings();
             Properties.Settings.Default.Save();
             Close();
         }
@@ -671,8 +671,8 @@ namespace LuaSTGEditorSharp.Windows
 
         private void ButtonApply_Click(object sender, RoutedEventArgs e)
         {
-            WriteSettings();
             TargetVersion = GetTargetVersion();
+            WriteSettings();
             Properties.Settings.Default.Save();
         }
 
