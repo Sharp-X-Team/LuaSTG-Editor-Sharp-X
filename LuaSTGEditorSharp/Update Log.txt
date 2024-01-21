@@ -1,4 +1,12 @@
-﻿-- Update Log（January 1st, 2023）
+﻿-- Update Log（January 21st, 2024）
+
+v0.75.1:
+-Added call function node (data tab)
+-Added particle fire and particle stop nodes (render tab)
+-Added option to export projects to folders instead of compressed files
+-Added automatic plugin detection for the selected LuaSTG version
+-Remade the plugin loading failure warning behavior and text
+-(EXPERIMENTAL) Added custom editor nodes. See the examples.
 
 v0.74.3:
 -Fixed defined items crashing the game

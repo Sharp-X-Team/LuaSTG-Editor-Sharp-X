@@ -24,7 +24,7 @@ namespace LuaSTGEditorSharp.EditorData.Message
 
         public override string ToString()
         {
-            return "Path \"" + ArgSourceName + "\" for " + ArgTargetName + " is not valid. (Make sure you're using the correct plugin)";
+            return "Path \"" + ArgSourceName + "\" for " + ArgTargetName + " is not valid.";
         }
 
         public override object Clone()
