@@ -503,21 +503,14 @@ namespace LuaSTGEditorSharp.Windows
             FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
 
             string PluginNameInte;
-            switch (LuaSTGExecutableInfos.ProductName)
-            {
-                case "LuaSTGExPlus":
-                    PluginNameInte = "lib\\LuaSTGPlusLib.dll";
-                    break;
-                case "LuaSTG Sub":
-                    PluginNameInte = "lib\\LuaSTGSubLib.dll";
-                    break;
-                case "LuaSTG-x":
-                    PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
-                    break;
-                default:
-                    PluginNameInte = "lib\\LuaSTGLib.Default.dll";
-                    break;
-            }
+            if (LuaSTGExecutableInfos.ProductName.Contains("ExPlus"))
+                PluginNameInte = "lib\\LuaSTGPlusLib.dll";
+            else if (LuaSTGExecutableInfos.ProductName.Contains("Sub"))
+                PluginNameInte = "lib\\LuaSTGSubLib.dll";
+            else if (LuaSTGExecutableInfos.ProductName.Contains("-x"))
+                PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
+            else
+                PluginNameInte = "lib\\LuaSTGLib.Default.dll";
 
             if (PluginNameInte != PluginPath)
                 System.Windows.MessageBox.Show("Warning: The editor must be restarted for these changes to work.");
