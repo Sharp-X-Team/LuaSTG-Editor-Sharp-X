@@ -51,10 +51,11 @@ namespace LuaSTGEditorSharp
                 Console.SetOut(sw);
                 base.OnStartup(e);
 
+                bool isPluginLoadedCorrectly = true;
                 PluginHandler.DefaultPlugin = new DefaultPluginEntry();
                 if (!PluginHandler.LoadPlugin(PluginPath))
                 {
-                    MessageBox.Show("Load Plugin Failed.");
+                    isPluginLoadedCorrectly = false;
                 }
                 LuaSTGEditorSharp.Windows.InputWindowSelector.Register(PluginHandler.Plugin.GetInputWindowSelectorRegister());
                 LuaSTGEditorSharp.Windows.InputWindowSelector.AfterRegister();
@@ -83,6 +84,11 @@ namespace LuaSTGEditorSharp
 
                 MainWindow = mainWindow;
                 MainWindow.Show();
+
+                // If the plugin wasn't loaded correctly, display the MessageBox after creating the main window.
+                // This way, it won't close instantly.
+                if (!isPluginLoadedCorrectly)
+                    MessageBox.Show("A plugin/target LuaSTG version has not been set approriately.\nPlease check your settings.");
             }
             catch (Exception ex)
             {
