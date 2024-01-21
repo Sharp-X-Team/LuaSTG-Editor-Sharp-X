@@ -269,6 +269,11 @@ namespace LuaSTGEditorSharp.EditorData
         private HashSet<AttrItem> usedAttributes = null;
 
         /// <summary>
+        /// Store whether a <see cref="TreeNode"/> is a custom Node. 
+        /// </summary>
+        public bool isCustomNode = false;
+
+        /// <summary>
         /// Event when node is created.
         /// </summary>
         private event OnCreateNodeHandler OnCreate;

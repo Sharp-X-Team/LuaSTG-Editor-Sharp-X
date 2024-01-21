@@ -38,6 +38,9 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="MoonSharp.Interpreter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=921e73ce94aa17f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\MoonSharp.2.0.0.0\lib\net40-client\MoonSharp.Interpreter.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -108,6 +111,7 @@
     <Compile Include="EditorData\Message\ArgNotNullMessage.cs" />
     <Compile Include="EditorData\Message\AttributeMismatchMessage.cs" />
     <Compile Include="EditorData\Message\InvalidArchiveSpaceMessage.cs" />
+    <Compile Include="EditorData\Message\InvalidCustomNodeMessage.cs" />
     <Compile Include="EditorData\Message\RepeatedNameMessage.cs" />
     <Compile Include="EditorData\Message\VarNameInvalidMessage.cs" />
     <Compile Include="EditorData\Node\AbstractNodeTypeCache.cs" />
@@ -152,6 +156,7 @@
     <Compile Include="EditorData\Node\NodeAttributes\CannotDeleteAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\ClassNodeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\CreateInvokeAttribute.cs" />
+    <Compile Include="EditorData\Node\NodeAttributes\CustomNodeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\DCInvokeAttributeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\IgnoreParityCheckAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\IgnoreValidationAttribute.cs" />

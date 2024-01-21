@@ -11,21 +11,28 @@ using LuaSTGEditorSharp.EditorData.Node.General;
 using LuaSTGEditorSharp.EditorData.Node.Advanced;
 using LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat;
 using LuaSTGEditorSharp.EditorData.Node.Project;
+using MoonSharp.Interpreter;
+using System.IO;
 
 namespace LuaSTGEditorSharp.Plugin
 {
     public abstract class AbstractToolbox
     {
         public delegate void AddNode();
+        public delegate void AddCustomNode(string nodeScriptString);
 
         protected Dictionary<string, Dictionary<ToolboxItemData, AddNode>> ToolInfo 
             = new Dictionary<string, Dictionary<ToolboxItemData, AddNode>>();
+        protected Dictionary<string, Dictionary<ToolboxItemData, AddCustomNode>> ToolInfoCustom
+            = new Dictionary<string, Dictionary<ToolboxItemData, AddCustomNode>>();
 
         public Dictionary<string, AddNode> NFuncs = new Dictionary<string, AddNode>();
+        public Dictionary<string, AddCustomNode> CNFuncs = new Dictionary<string, AddCustomNode>();
+        public Dictionary<string, string> CustomScripts = new Dictionary<string, string>();
 
         public List<SearchModel> nodeNameList;
 
-        protected readonly IMainWindow parent;
+        public readonly IMainWindow parent;
 
         public ObservableCollection<ToolboxTab> ToolboxTabs = new ObservableCollection<ToolboxTab>();
 
@@ -112,7 +119,19 @@ namespace LuaSTGEditorSharp.Plugin
                     in kvp.Value
                     select kvp2.Key)
                 });
+            foreach (var tab in ToolInfoCustom)
+            {
+                ToolboxTabs.Add(new ToolboxTab()
+                {
+                    Header = tab.Key,
+                    Data = new ObservableCollection<ToolboxItemData>(
+                    from KeyValuePair<ToolboxItemData, AddCustomNode> kvp2
+                    in tab.Value
+                    select kvp2.Key)
+                });
+            }
             NFuncs = new Dictionary<string, AddNode>();
+            CNFuncs = new Dictionary<string, AddCustomNode>();
             nodeNameList = new List<SearchModel>();
             foreach (KeyValuePair<string, Dictionary<ToolboxItemData, AddNode>> kvp in ToolInfo)
             {
@@ -121,6 +140,17 @@ namespace LuaSTGEditorSharp.Plugin
                     if (!kvp2.Key.IsSeperator)
                     {
                         NFuncs.Add(kvp2.Key.Tag, kvp2.Value);
+                        nodeNameList.Add(new SearchModel() { Name = kvp2.Key.Tag, Icon = kvp2.Key.Image });
+                    }
+                }
+            }
+            foreach (KeyValuePair<string, Dictionary<ToolboxItemData, AddCustomNode>> kvp in ToolInfoCustom)
+            {
+                foreach (KeyValuePair<ToolboxItemData, AddCustomNode> kvp2 in kvp.Value)
+                {
+                    if (!kvp2.Key.IsSeperator)
+                    {
+                        CNFuncs.Add(kvp2.Key.Tag, kvp2.Value);
                         nodeNameList.Add(new SearchModel() { Name = kvp2.Key.Tag, Icon = kvp2.Key.Image });
                     }
                 }
@@ -138,6 +168,20 @@ namespace LuaSTGEditorSharp.Plugin
                     {
                         string s = kvp2.Key.Image;
                         yield return new KeyValuePair<string, BitmapImage>(s, new BitmapImage(new Uri(s, UriKind.RelativeOrAbsolute)));
+                    }
+                }
+            }
+            foreach (KeyValuePair<string, Dictionary<ToolboxItemData, AddCustomNode>> kvp in ToolInfoCustom)
+            {
+                foreach (KeyValuePair<ToolboxItemData, AddCustomNode> kvp2 in kvp.Value)
+                {
+                    if (!kvp2.Key.IsSeperator)
+                    {
+                        string s = kvp2.Key.Image;
+                        BitmapImage img = new BitmapImage(new Uri("/LuaSTGEditorSharp.Core;component/images/"+s, UriKind.RelativeOrAbsolute));
+                        if (img == null)
+                            img = new BitmapImage(new Uri("/LuaSTGNode.Legacy;component/images/"+s, UriKind.RelativeOrAbsolute));
+                        yield return new KeyValuePair<string, BitmapImage>(s, img);
                     }
                 }
             }
