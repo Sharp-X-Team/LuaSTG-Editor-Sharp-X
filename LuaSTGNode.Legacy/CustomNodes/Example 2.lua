@@ -2,6 +2,7 @@
 	local properties = {
 		name = "Example Node 2",
 		image = "repeat.png",
+		isLeaf = true,
 
 		Parameters = {
 			{"Color", "COLOR_RED", "color"}

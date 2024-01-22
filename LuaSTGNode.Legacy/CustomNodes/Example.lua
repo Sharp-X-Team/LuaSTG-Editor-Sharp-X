@@ -2,6 +2,7 @@
 	local properties = {
 		name = "Example Node",
 		image = "if.png",
+		isLeaf = false,
 
 		Parameters = {
 			{"Unit", "self", "target"},

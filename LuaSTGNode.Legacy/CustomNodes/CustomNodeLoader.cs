@@ -69,6 +69,7 @@ namespace LuaSTGEditorSharp.CustomNodes
             var f_InitNodes = InitScript.Globals["InitNodes"];
             DynValue NodesToLoad = InitScript.Call(f_InitNodes);
             filesNotLoaded.Clear();
+            nodeRuntimeError.Clear();
 
             PropertyChanged += new PropertyChangedEventHandler(CheckMessage);
 
@@ -89,7 +90,7 @@ namespace LuaSTGEditorSharp.CustomNodes
                 {
                     tmp_node.DoFile(path);
                 }
-                catch (InterpreterException)
+                catch (SyntaxErrorException)
                 {
                     filesNotLoaded.Add(path);
                     RaisePropertyChanged("filesNotLoaded");

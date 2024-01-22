@@ -274,6 +274,12 @@ namespace LuaSTGEditorSharp.EditorData
         public bool isCustomNode = false;
 
         /// <summary>
+        /// Store whether a custom node is a LeafNode (cannot have children).
+        /// Set in runtime by <see cref="BaseCustomNode"/>
+        /// </summary>
+        public bool isCustomNodeLeaf = false;
+
+        /// <summary>
         /// Event when node is created.
         /// </summary>
         private event OnCreateNodeHandler OnCreate;
@@ -872,7 +878,7 @@ namespace LuaSTGEditorSharp.EditorData
         /// <param name="toV">
         /// The given node.
         /// </param>
-        /// <param name="toV">
+        /// <param name="originalParent">
         /// The orginal parent for searching.
         /// </param>
         /// <returns>
@@ -893,7 +899,8 @@ namespace LuaSTGEditorSharp.EditorData
                 }
                 return true;
             }
-            if (PluginHandler.Plugin.NodeTypeCache.NodeTypeInfo[GetType()].leaf) return false;
+            if (isCustomNode && isCustomNodeLeaf) return false;
+            else if (PluginHandler.Plugin.NodeTypeCache.NodeTypeInfo[GetType()].leaf) return false;
             var e = this != originalParent
                 ? this.GetLogicalChildren().Concat(originalParent.GetLogicalChildren()).Distinct()
                 : GetLogicalChildren();

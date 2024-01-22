@@ -60,6 +60,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
             if (f_Init.IsNil()) return;
             nodeProperties = NodeScript.Call(f_Init);
 
+            // Tries to read the "isLeaf" property, if not found, won't be a leaf node by default.
+            try { isCustomNodeLeaf = nodeProperties.Table.Get("isLeaf").Boolean ? true : false; }
+            catch (System.Exception) { isCustomNodeLeaf = false; }
+
             Table parameters = nodeProperties.Table.Get("Parameters").Table;
             if (parameters == null) return;
 
