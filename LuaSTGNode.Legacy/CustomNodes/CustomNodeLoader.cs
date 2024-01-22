@@ -7,13 +7,55 @@ using MoonSharp.Interpreter;
 using static LuaSTGEditorSharp.Plugin.AbstractToolbox;
 using LuaSTGEditorSharp.EditorData.Node.CustomNodes;
 using System;
+using LuaSTGEditorSharp.EditorData.Interfaces;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace LuaSTGEditorSharp.CustomNodes
 {
-    public class CustomNodeLoader
+    public class CustomNodeLoader : IMessageThrowable
     {
         public Script InitScript = new Script();
         public PluginToolbox pluginToolbox;
+
+        private List<string> filesNotLoaded = new List<string>();
+        private List<string> nodeRuntimeError = new List<string>();
+
+        #region IMessageThrowable implementation
+
+        public ObservableCollection<MessageBase> Messages { get; } = new ObservableCollection<MessageBase>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void RaisePropertyChanged(string s)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(s));
+        }
+
+        public void CheckMessage(object sender, PropertyChangedEventArgs e)
+        {
+            var ms = GetMessage();
+            Messages.Clear();
+            foreach (MessageBase mb in ms)
+            {
+                Messages.Add(mb);
+            }
+            MessageContainer.UpdateMessage(this);
+        }
+
+        public List<MessageBase> GetMessage()
+        {
+            List<MessageBase> messages = new List<MessageBase>();
+
+            foreach (string file in filesNotLoaded)
+                messages.Add(new CustomNodeSyntaxError(file, this));
+            foreach (string file in nodeRuntimeError)
+                messages.Add(new CustomNodeRuntimeError(file, this));
+
+            return messages;
+        }
+
+        #endregion
 
         public CustomNodeLoader(PluginToolbox pT)
         {
@@ -26,6 +68,9 @@ namespace LuaSTGEditorSharp.CustomNodes
         {
             var f_InitNodes = InitScript.Globals["InitNodes"];
             DynValue NodesToLoad = InitScript.Call(f_InitNodes);
+            filesNotLoaded.Clear();
+
+            PropertyChanged += new PropertyChangedEventHandler(CheckMessage);
 
             for (int i = 1; i < NodesToLoad.Table.Length + 1; i++)
             {
@@ -38,19 +83,41 @@ namespace LuaSTGEditorSharp.CustomNodes
                 string path = @"CustomNodes/" + NodesToLoad.Table[i].ToString() + ".lua";
                 if (!File.Exists(path))
                     continue;
+                // Node loading from file.
                 Script tmp_node = new Script();
-                tmp_node.DoFile(path);
-                DynValue f_Init = tmp_node.Globals.Get("InitNode");
-                DynValue node_properties = tmp_node.Call(f_Init);
+                try
+                {
+                    tmp_node.DoFile(path);
+                }
+                catch (InterpreterException)
+                {
+                    filesNotLoaded.Add(path);
+                    RaisePropertyChanged("filesNotLoaded");
+                    continue;
+                }
 
-                string tag = "cusNode_" + node_properties.Table.Get("name").String.ToLower();
+                // Attempt to add the node to the toolbox. The only failure possible is a ScriptRuntimeException
+                try
+                {
+                    DynValue f_Init = tmp_node.Globals.Get("InitNode");
+                    if (f_Init.IsNil()) continue;
+                    DynValue node_properties = tmp_node.Call(f_Init);
 
-                cnodes.Add(new ToolboxItemData(tag,
-                            GetComponentImage(node_properties.Table.Get("image").String),
-                            node_properties.Table.Get("name").String)
-                    , new AddCustomNode(AddCustomNode));
+                    string tag = "cusNode_" + node_properties.Table.Get("name").String.ToLower();
 
-                pluginToolbox.CustomScripts.Add(tag, NodesToLoad.Table[i].ToString());
+                    cnodes.Add(new ToolboxItemData(tag,
+                                GetComponentImage(node_properties.Table.Get("image").String),
+                                node_properties.Table.Get("name").String)
+                        , new AddCustomNode(AddCustomNode));
+
+                    pluginToolbox.CustomScripts.Add(tag, NodesToLoad.Table[i].ToString());
+                }
+                catch (ScriptRuntimeException)
+                {
+                    nodeRuntimeError.Add(path);
+                    RaisePropertyChanged("nodeRuntimeError");
+                    continue;
+                }
             }
         }
 

@@ -3,8 +3,7 @@
 	local Registered_Nodes = {
 		"Example",
 		"_Separator", -- See documentation. You can't name a node "_Separator", it's a reserved name.
-		"Example 2",
-		"Example 3"
+		"Example 2"
 	}
 
 	-- Returing the Registered_Nodes array for the Editor to know what nodes to load at startup.
