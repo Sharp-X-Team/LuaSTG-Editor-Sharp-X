@@ -197,6 +197,16 @@ namespace LuaSTGEditorSharp.Windows
                 RaiseProertyChanged("DebugCheat");
             }
         }
+        private bool subLogWindow;
+        public bool SubLogWindow
+        {
+            get => subLogWindow;
+            set
+            {
+                subLogWindow = value;
+                RaiseProertyChanged("SubLogWindow");
+            }
+        }
 
         private bool debugUpdateLib;
         public bool DebugUpdateLib
@@ -408,6 +418,11 @@ namespace LuaSTGEditorSharp.Windows
             get => mainApp.DebugCheat;
             set => mainApp.DebugCheat = value;
         }
+        public bool SubLogWindowSettings
+        {
+            get => mainApp.SubLogWindow;
+            set => mainApp.SubLogWindow = value;
+        }
 
         public bool DebugUpdateLibSettings
         {
@@ -540,6 +555,7 @@ namespace LuaSTGEditorSharp.Windows
             SpaceIndentationSettings = SpaceIndentation;
             IndentationSpaceLengthSettings = IndentationSpaceLength;
             EditorthemeSettings = Editortheme;
+            SubLogWindowSettings = SubLogWindow;
         }
 
         private void ReadSettings()
@@ -565,6 +581,7 @@ namespace LuaSTGEditorSharp.Windows
             SpaceIndentation = SpaceIndentationSettings;
             IndentationSpaceLength = IndentationSpaceLengthSettings;
             Editortheme = EditorthemeSettings;
+            SubLogWindow = SubLogWindowSettings;
         }
 
         public SettingsWindow()

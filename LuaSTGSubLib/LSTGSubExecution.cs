@@ -17,11 +17,12 @@ namespace LuaSTGEditorSharp
                 + currentApp.DebugWindowed.ToString().ToLower() + " setting.resx=" + currentApp.DebugResolutionX
                 + " setting.resy=" + currentApp.DebugResolutionY + " cheat=" + currentApp.DebugCheat.ToString().ToLower()
                 + " updatelib=" + currentApp.DebugUpdateLib.ToString().ToLower() + " setting.mod=\'"
-                + config.ModName + "\'\"";
+                + config.ModName + "\'\" "
+                + (currentApp.SubLogWindow ? "--log-window" : "");
             UseShellExecute = false;
             CreateNoWindow = true;
-            RedirectStandardError = true;
-            RedirectStandardOutput = true;
+            RedirectStandardError = !currentApp.SubLogWindow;
+            RedirectStandardOutput = !currentApp.SubLogWindow;
         }
 
         protected override string LogFileName => "engine.log";

@@ -12,6 +12,7 @@ namespace LuaSTGEditorSharp
         int DebugResolutionX { get; }
         int DebugResolutionY { get; }
         bool DebugCheat { get; }
+        bool SubLogWindow { get; }
         bool DebugUpdateLib { get; }
 
         bool DynamicDebugReporting { get; }

@@ -88,6 +88,9 @@
                     <CheckBox Content="Dynamic debug reporting (unstable)" 
                               HorizontalAlignment="Left" Height="26" Margin="10,103,0,0" VerticalAlignment="Top" Width="250" 
                               IsChecked="{Binding DynamicDebugReporting, ElementName=window}" Grid.ColumnSpan="2"/>
+                    <CheckBox Content="Enable log window (LuaSTG Sub only)" 
+                        HorizontalAlignment="Left" Height="26" Margin="10,134,0,0" VerticalAlignment="Top" Width="250" 
+                        IsChecked="{Binding SubLogWindow, ElementName=window}" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="EditorTab" Header="Editor">

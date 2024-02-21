@@ -224,6 +224,15 @@ namespace LuaSTGEditorSharp
             }
         }
 
+        public bool SubLogWindow
+        {
+            get => Settings.Default.SubLogWindow;
+            set
+            {
+                Settings.Default["SubLogWindow"] = value;
+            }
+        }
+
         public bool DebugUpdateLib
         {
             //get => Settings.Default.DebugUpdateLib;
