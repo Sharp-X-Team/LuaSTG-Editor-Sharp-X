@@ -823,6 +823,7 @@ namespace LuaSTGEditorSharp
             workSpace = sender as TreeView;
             SelectedNode = ((TreeNode)(workSpace.SelectedItem));
             if (selectedNode != null) this.propData.ItemsSource = selectedNode.attributes;
+            Title = $"LuaSTG Editor Sharp X v0.75.2 - {ActivatedWorkSpaceData.RawDocName}";
             //EditorConsole.Text = selectedNode.ToLua(0);
         }
 

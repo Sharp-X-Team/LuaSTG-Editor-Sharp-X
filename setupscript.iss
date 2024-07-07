@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LuaSTG Editor Sharp X"
-#define MyAppVersion "0.76.1"
+#define MyAppVersion "0.75.2"
 #define MyAppPublisher "LuaSTG Editor Sharp X"
 #define MyAppURL "https://github.com/RyannThi/LuaSTG-Editor-Sharp-X"
 #define MyAppExeName "LuaSTGEditorSharp.exe"
@@ -21,16 +21,16 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={autopf}\LuaSTG Editor Sharp X v0.76.1
+DefaultDirName={autopf}\LuaSTG Editor Sharp X v0.75.2
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\ryann\Desktop\license.txt
-InfoBeforeFile=C:\Users\ryann\Desktop\before.txt
-InfoAfterFile=C:\Users\ryann\Desktop\after.txt
+LicenseFile=C:\Users\ryann\Documents\LuaSTG-Editor-Sharp-X\InnoFiles\license.txt
+InfoBeforeFile=C:\Users\ryann\Documents\LuaSTG-Editor-Sharp-X\InnoFiles\before.txt
+InfoAfterFile=C:\Users\ryann\Documents\LuaSTG-Editor-Sharp-X\InnoFiles\after.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\ryann\sharpxinstall
-OutputBaseFilename=LuaSTG Editor Sharp X v0.76.1
+OutputBaseFilename=LuaSTG Editor Sharp X v0.75.2
 SetupIconFile=C:\Users\ryann\Documents\LuaSTG-Editor-Sharp-X\LuaSTGEditorSharp\Icon.ico
 Compression=lzma
 SolidCompression=yes
@@ -43,8 +43,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\ryann\Desktop\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ryann\Desktop\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\ryann\Documents\LuaSTG-Editor-Sharp-X\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ryann\Documents\LuaSTG-Editor-Sharp-X\bin\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

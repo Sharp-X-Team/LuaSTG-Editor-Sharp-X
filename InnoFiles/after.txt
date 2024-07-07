@@ -1,0 +1,4 @@
+Thank you for installing LuaSTG Editor Sharp X.
+
+GitHub page: https://github.com/RyannThi/LuaSTG-Editor-Sharp-X
+Discord server: https://discord.gg/bhM599npvd

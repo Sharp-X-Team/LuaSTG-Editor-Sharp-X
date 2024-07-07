@@ -1,10 +1,10 @@
 LuaSTG Editor Sharp X
 ====
-![](https://cdn.discordapp.com/emojis/871436538087624805.png?v=1) (Current version (in dev/released): 0.75.1)
+![](https://cdn.discordapp.com/emojis/871436538087624805.png?v=1) (Current version (in dev/released): 0.75.2)
 
-This is a clone of the [LuaSTG Editor Sharp](https://github.com/czh098tom/LuaSTG-Editor-Sharp) repository with making more features that are compatible with LuaSTG-x.
+This is a clone of the [LuaSTG Editor Sharp](https://github.com/czh098tom/LuaSTG-Editor-Sharp) repository with the aim of further expanding the editor's functionality.
 
-You can check the changes we've made already at our [wiki page](https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki)!
+You can check the changes for each version made at our [releases page](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases)!
 
 *Join our Discord server for more information and other content:* https://discord.gg/bhM599npvd
 
