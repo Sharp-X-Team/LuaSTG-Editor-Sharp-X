@@ -375,6 +375,18 @@ namespace LuaSTGEditorSharp
             get => !(BatchPacking && string.IsNullOrEmpty(ZipExecutablePath)) && !string.IsNullOrEmpty(LuaSTGExecutablePath);
         }
 
+        public bool UseAutoSave
+        {
+            get => Settings.Default.UseAutoSave;
+            set => Settings.Default.UseAutoSave = value;
+        }
+
+        public int AutoSaveTimer
+        {
+            get => Settings.Default.AutoSaveTimer;
+            set => Settings.Default.AutoSaveTimer = value;
+        }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Settings.Default.Save();

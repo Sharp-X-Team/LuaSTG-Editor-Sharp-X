@@ -37,6 +37,8 @@ using Newtonsoft.Json;
 using static REghZyFramework.Themes.ThemesController;
 
 using Path = System.IO.Path;
+using System.Windows.Threading;
+using LuaSTGEditorSharp.Properties;
 
 namespace LuaSTGEditorSharp
 {
@@ -122,6 +124,19 @@ namespace LuaSTGEditorSharp
 
             SetTheme(Properties.Settings.Default.Editortheme);
             //ThemeDictionaryRes.Source = ThemeDictionary.Source;
+
+            if ((App.Current as App).UseAutoSave)
+            {
+                var autoSaveTimer = new DispatcherTimer
+                {
+                    Interval = TimeSpan.FromSeconds((App.Current as App).AutoSaveTimer)
+                };
+                autoSaveTimer.Tick += delegate (object sender, EventArgs e)
+                {
+                    AutoSaveAndBackup();
+                };
+                autoSaveTimer.Start();
+            }
         }
 
         private bool CloseFile(DocumentData DocumentToRemove)
@@ -339,6 +354,20 @@ namespace LuaSTGEditorSharp
         {
             propData.CommitEdit();
             ActivatedWorkSpaceData.Save(App.Current as App, true);
+        }
+
+        /// <summary>
+        /// Auto save all opened projects every X minutes and create a backup.
+        /// </summary>
+        private void AutoSaveAndBackup()
+        {
+            // Copy the project files and treat them as the backup, then, save all the opened documents.
+            foreach (DocumentData doc in Documents)
+            {
+                FileInfo fi = new FileInfo(doc.DocPath);
+                fi.CopyTo(doc.DocPath + ".backup", true);
+                SaveDoc(doc);
+            }
         }
 
         private void CutNode()
@@ -818,12 +847,13 @@ namespace LuaSTGEditorSharp
             insertState = new ParentFac();
         }
 
-        private void WorkSpaceSelectedChanged(object sender,RoutedEventArgs e)
+        private void WorkSpaceSelectedChanged(object sender, RoutedEventArgs e)
         {
             workSpace = sender as TreeView;
             SelectedNode = ((TreeNode)(workSpace.SelectedItem));
             if (selectedNode != null) this.propData.ItemsSource = selectedNode.attributes;
-            Title = $"LuaSTG Editor Sharp X v0.75.2 - {ActivatedWorkSpaceData.RawDocName}";
+            if (ActivatedWorkSpaceData != null)
+                Title = $"LuaSTG Editor Sharp X v0.75.2 - {ActivatedWorkSpaceData.RawDocName}";
             //EditorConsole.Text = selectedNode.ToLua(0);
         }
 

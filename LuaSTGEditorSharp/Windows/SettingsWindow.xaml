@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Settings"
         Height="498.433"
@@ -94,11 +95,16 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="EditorTab" Header="Editor">
-                <Grid>
+                <Grid Height="500">
                     <Label Content="Default Author Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150"/>
                     <TextBox HorizontalAlignment="Left" Height="26" Margin="178,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" Text="{Binding AuthorName, ElementName=window}"/>
                     <CheckBox Content="Move to new nodes Automatically" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="275" IsChecked="{Binding AutoMoveToNew, ElementName=window}" Margin="10,50,0,0"/>
-                    <GroupBox Header="Indentation" Margin="10,81,10,228" Height="110">
+                    <CheckBox Content="Auto Save Projects" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="275" IsChecked="{Binding UseAutoSave, ElementName=window}" Margin="10,80,0,0"/>
+                    <Label Content="Autosave interval (in minutes)" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="170"/>
+                    <xctk:IntegerUpDown Value="{Binding AutoSaveTimer, ElementName=window}" Minimum="1" Height="26" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="178,100,0,0"/>
+                    <Label Content="(Require restarting the editor)" HorizontalAlignment="Left" Margin="280,100,0,0" VerticalAlignment="Top" Width="170"/>
+                    <GroupBox Header="Indentation" Margin="10,140,10,228" Height="110"
+                              VerticalAlignment="Top">
                         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
                             <RadioButton Height="26" IsChecked="{Binding SpaceIndentation,ElementName=window}">
                                 <Grid>

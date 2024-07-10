@@ -360,6 +360,28 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private bool useAutoSave;
+        public bool UseAutoSave
+        {
+            get => useAutoSave;
+            set
+            {
+                useAutoSave = value;
+                RaiseProertyChanged("UseAutoSave");
+            }
+        }
+
+        private int autoSaveTimer;
+        public int AutoSaveTimer
+        {
+            get => autoSaveTimer;
+            set
+            {
+                autoSaveTimer = value;
+                RaiseProertyChanged("AutoSaveTimer");
+            }
+        }
+
         #region InSettings
 
         public bool IgnoreTHLibWarnSettings
@@ -495,6 +517,19 @@ namespace LuaSTGEditorSharp.Windows
             get => mainApp.Editortheme;
             set => mainApp.Editortheme = value;
         }
+
+        public bool UseAutoSaveSettings
+        {
+            get => mainApp.UseAutoSave;
+            set => mainApp.UseAutoSave = value;
+        }
+
+        public int AutoSaveTimerSettings
+        {
+            get => mainApp.AutoSaveTimer;
+            set => mainApp.AutoSaveTimer = value;
+        }
+
         #endregion
 
         public string TargetVersion
@@ -556,6 +591,8 @@ namespace LuaSTGEditorSharp.Windows
             IndentationSpaceLengthSettings = IndentationSpaceLength;
             EditorthemeSettings = Editortheme;
             SubLogWindowSettings = SubLogWindow;
+            AutoSaveTimerSettings = AutoSaveTimer;
+            UseAutoSaveSettings = UseAutoSave;
         }
 
         private void ReadSettings()
@@ -582,6 +619,8 @@ namespace LuaSTGEditorSharp.Windows
             IndentationSpaceLength = IndentationSpaceLengthSettings;
             Editortheme = EditorthemeSettings;
             SubLogWindow = SubLogWindowSettings;
+            AutoSaveTimer = AutoSaveTimerSettings;
+            UseAutoSave = UseAutoSaveSettings;
         }
 
         public SettingsWindow()
