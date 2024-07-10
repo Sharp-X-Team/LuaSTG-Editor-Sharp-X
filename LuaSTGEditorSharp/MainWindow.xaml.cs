@@ -129,7 +129,7 @@ namespace LuaSTGEditorSharp
             {
                 var autoSaveTimer = new DispatcherTimer
                 {
-                    Interval = TimeSpan.FromSeconds((App.Current as App).AutoSaveTimer)
+                    Interval = TimeSpan.FromMinutes((App.Current as App).AutoSaveTimer)
                 };
                 autoSaveTimer.Tick += delegate (object sender, EventArgs e)
                 {
