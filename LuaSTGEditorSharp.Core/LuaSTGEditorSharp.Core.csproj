@@ -625,5 +625,11 @@
     <Resource Include="images\16x16\CustomInterpolationVariable.png" />
     <Content Include="SplashScreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuaSTGEditorThemes\LuaSTGEditorThemes.csproj">
+      <Project>{5b636ea9-a54d-4763-8e54-19bb3fd41f47}</Project>
+      <Name>LuaSTGEditorThemes</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

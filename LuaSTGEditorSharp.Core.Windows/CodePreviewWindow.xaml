@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
         xmlns:avalon="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit"
         mc:Ignorable="d"
-        Title="Code Preview" Height="450" Width="800">
+        Title="Code Preview" Height="450" Width="800"
+        Style="{StaticResource CustomWindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <avalon:TextEditor x:Name="codeText" FontFamily="JetBrains Mono" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"/>
         <!--<TextBox x:Name="codeText" AcceptsReturn="True" FontFamily="Courier New" VerticalScrollBarVisibility="Visible"/>-->

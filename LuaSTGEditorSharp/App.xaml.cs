@@ -18,7 +18,6 @@ using LuaSTGEditorSharp.Plugin;
 using LuaSTGEditorSharp.Plugin.Default;
 using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.Windows;
-using static REghZyFramework.Themes.ThemesController;
 
 namespace LuaSTGEditorSharp
 {
@@ -38,6 +37,23 @@ namespace LuaSTGEditorSharp
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            // Don't ask. I don't know. It just works. Start of the fuckery.
+            /*
+            ResourceDictionary r1 = new ResourceDictionary();
+            r1.Source = new Uri($"Themes/ColourDictionaries/{CurrentTheme}.xaml", UriKind.Relative);
+            ResourceDictionary r2 = new ResourceDictionary();
+            r2.Source = new Uri($"Themes/ControlColours.xaml", UriKind.Relative);
+            ResourceDictionary r3 = new ResourceDictionary();
+            r3.Source = new Uri($"Themes/Controls.xaml", UriKind.Relative);
+            Resources.MergedDictionaries.Add(r1);
+            Resources.MergedDictionaries.Add(r2);
+            Resources.MergedDictionaries.Add(r3);
+            */
+            ResourceDictionary r1 = new ResourceDictionary();
+            r1.Source = new Uri($"pack://application:,,,/LuaSTGEditorThemes;component/{CurrentTheme}.xaml");
+            Resources.MergedDictionaries.Add(r1);
+            // End of the fuckery.
+
             FileStream fs = null;
             StreamWriter sw = null;
             TextWriter tw = Console.Out;
@@ -78,9 +94,6 @@ namespace LuaSTGEditorSharp
                     LoadDoc(fp);
                     //LoadDoc(arg);
                 }
-
-                // Load the editor theme at startup
-                SetTheme(Editortheme);
 
                 MainWindow = mainWindow;
                 MainWindow.Show();
@@ -385,6 +398,12 @@ namespace LuaSTGEditorSharp
         {
             get => Settings.Default.AutoSaveTimer;
             set => Settings.Default.AutoSaveTimer = value;
+        }
+
+        public string CurrentTheme
+        {
+            get => Settings.Default.CurrentTheme;
+            set => Settings.Default.CurrentTheme = value;
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)

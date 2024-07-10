@@ -155,19 +155,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SingleInstanceWrapper.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Themes\ColourfulDarkTheme.xaml.cs">
-      <DependentUpon>ColourfulDarkTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Themes\ColourfulLightTheme.xaml.cs">
-      <DependentUpon>ColourfulLightTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Themes\DarkTheme.xaml.cs">
-      <DependentUpon>DarkTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Themes\LightTheme.xaml.cs">
-      <DependentUpon>LightTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Themes\ThemesController.cs" />
     <Compile Include="Toolbox\BannedToStrikeThrough.cs" />
     <Compile Include="Toolbox\BindableStaticResource.cs" />
     <Compile Include="Toolbox\ComboBoxItemTemplateSelector.cs" />
@@ -187,22 +174,6 @@
     <Page Include="Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\ColourfulDarkTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\ColourfulLightTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\DarkTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\LightTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
@@ -358,6 +329,10 @@
     <ProjectReference Include="..\LuaSTGEditorSharp.Core\LuaSTGEditorSharp.Core.csproj">
       <Project>{bd1ca1e6-9e34-4098-ae65-922f23670f75}</Project>
       <Name>LuaSTGEditorSharp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LuaSTGEditorThemes\LuaSTGEditorThemes.csproj">
+      <Project>{5b636ea9-a54d-4763-8e54-19bb3fd41f47}</Project>
+      <Name>LuaSTGEditorThemes</Name>
     </ProjectReference>
     <ProjectReference Include="..\LuaSTGLib.Default\LuaSTGLib.Default.csproj">
       <Project>{6e8c559f-e090-4a96-a195-6cd8b5edd22e}</Project>

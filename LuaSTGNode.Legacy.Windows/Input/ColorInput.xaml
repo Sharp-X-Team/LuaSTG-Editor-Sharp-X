@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input;assembly=LuaSTGEditorSharp.Core.Windows"
         mc:Ignorable="d"
         Title="Color Selection" Height="337.462" Width="303.6" 
-                   Loaded="InputWindow_Loaded">
+                   Loaded="InputWindow_Loaded"
+                   Style="{StaticResource CustomWindowStyle}">
+    <local:InputWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </local:InputWindow.Resources>
     <Grid>
         <WrapPanel>
             <Button Click="Color_Click" Tag="COLOR_RED">

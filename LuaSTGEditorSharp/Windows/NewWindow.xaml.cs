@@ -12,7 +12,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static REghZyFramework.Themes.ThemesController;
 
 namespace LuaSTGEditorSharp.Windows
 {
@@ -110,9 +109,6 @@ namespace LuaSTGEditorSharp.Windows
             catch { }
             TextName.Focus();
             TextName.SelectAll();
-
-            SetTheme(Properties.Settings.Default.Editortheme);
-            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         private void ListTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)

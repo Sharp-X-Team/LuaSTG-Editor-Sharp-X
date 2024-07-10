@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input;assembly=LuaSTGEditorSharp.Core.Windows"
         mc:Ignorable="d"
         Title="Input Parameter" Height="347.888" Width="552.812" MinHeight="100" MinWidth="100" MaxHeight="800"
-                   Loaded="InputWindow_Loaded">
+                   Loaded="InputWindow_Loaded"
+                   Style="{StaticResource CustomWindowStyle}">
+    <local:InputWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </local:InputWindow.Resources>
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">

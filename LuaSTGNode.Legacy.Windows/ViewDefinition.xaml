@@ -6,7 +6,15 @@
         xmlns:w="clr-namespace:LuaSTGEditorSharp.Windows;assembly=LuaSTGEditorSharp.Core.Windows"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
         mc:Ignorable="d"
-        Title="Definition" Height="450" Width="800">
+        Title="Definition" Height="450" Width="800"
+        Style="{StaticResource CustomWindowStyle}">
+    <w:ViewDefinitionBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </w:ViewDefinitionBase.Resources>
     <Grid>
         <TreeView x:Name="AllDef">
             <TreeView.ItemTemplate>

@@ -283,6 +283,10 @@
       <Project>{bd1ca1e6-9e34-4098-ae65-922f23670f75}</Project>
       <Name>LuaSTGEditorSharp.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LuaSTGEditorThemes\LuaSTGEditorThemes.csproj">
+      <Project>{5b636ea9-a54d-4763-8e54-19bb3fd41f47}</Project>
+      <Name>LuaSTGEditorThemes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LuaSTGNode.Legacy\LuaSTGNode.Legacy.csproj">
       <Project>{06f198ea-762c-4b34-84da-b58a6c3e6a79}</Project>
       <Name>LuaSTGNode.Legacy</Name>

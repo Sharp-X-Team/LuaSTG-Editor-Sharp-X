@@ -7,7 +7,15 @@
         xmlns:avalon="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit"
         mc:Ignorable="d"
         Title="Input Code" Height="450" Width="800" MinHeight="200" MinWidth="200"
-                   Loaded="InputWindow_Loaded">
+                   Loaded="InputWindow_Loaded"
+                   Style="{StaticResource CustomWindowStyle}">
+    <local:InputWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </local:InputWindow.Resources>
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">

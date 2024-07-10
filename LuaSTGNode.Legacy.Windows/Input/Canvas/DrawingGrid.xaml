@@ -13,9 +13,6 @@
                             <LineGeometry StartPoint="0,0" EndPoint="50,0" />
                         </GeometryGroup>
                     </GeometryDrawing.Geometry>
-                    <GeometryDrawing.Pen>
-                        <Pen Thickness="3" Brush="White"/>
-                    </GeometryDrawing.Pen>
                 </GeometryDrawing>
                 <GeometryDrawing>
                     <GeometryDrawing.Geometry>
@@ -30,9 +27,6 @@
                             <LineGeometry StartPoint="0,40" EndPoint="50,40" />
                         </GeometryGroup>
                     </GeometryDrawing.Geometry>
-                    <GeometryDrawing.Pen>
-                        <Pen Thickness="0.5" Brush="White"/>
-                    </GeometryDrawing.Pen>
                 </GeometryDrawing>
             </DrawingGroup>
         </DrawingBrush.Drawing>

@@ -13,7 +13,8 @@
         Height="679.6"
         Width="800"
         WindowState="Maximized"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        Style="{StaticResource CustomWindowStyle}">
     <Window.CommandBindings>
         <!--#region File -->
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommandExecuted"/>
@@ -92,7 +93,7 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </DataTemplate>
-        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+        <Style x:Key="DataGridStyle" TargetType="DataGrid" BasedOn="{StaticResource {x:Type DataGrid}}">
             <Setter Property="HorizontalGridLinesBrush" Value="Gray"/>
             <Setter Property="VerticalGridLinesBrush" Value="Gray"/>
         </Style>
@@ -287,9 +288,9 @@
                                      Value="true">
                                 <Setter TargetName="Bd"
                                         Property="Background"
-                                        Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                        Value="{StaticResource TreeViewItem.Selected.Inactive.Background}"/>
                                 <Setter Property="Foreground"
-                                        Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                                        Value="{StaticResource TreeViewItem.Selected.Inactive.Border}"/>
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -300,14 +301,14 @@
                                 </MultiTrigger.Conditions>
                                 <Setter TargetName="Bd"
                                         Property="Background"
-                                        Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                        Value="{StaticResource TreeViewItem.Selected.Background}"/>
                                 <Setter Property="Foreground"
-                                        Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                        Value="{StaticResource TreeViewItem.Selected.Border}"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled"
                                      Value="false">
                                 <Setter Property="Foreground"
-                                        Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                        Value="{StaticResource TreeViewItem.Static.Background}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -789,30 +790,8 @@
                       Grid.Column="0" ItemsSource="{Binding ContentTemplate.VisualTree, ElementName=docTabs}" 
                       VerticalScrollBarVisibility="Visible" Style="{StaticResource ResourceKey=DataGridStyle}"
                       DataGridCell.Selected="DataGrid_GotFocus">
-                <DataGrid.CellStyle>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="BorderBrush" Value="White"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="true">
-                                <Setter Property="BorderBrush" Value="White"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.CellStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Properties" Binding="{Binding Path=AttrCap}" IsReadOnly="True">
-                        <DataGridTextColumn.CellStyle>
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="Background" Value="#FFDDDDDD"/>
-                                <Setter Property="BorderBrush" Value="#FFDDDDDD"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="true">
-                                        <Setter Property="Foreground" Value="Black"/>
-                                        <Setter Property="FontWeight" Value="Bold"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGridTextColumn.CellStyle>
                     </DataGridTextColumn>
                     <DataGridTemplateColumn Header="Parameters" Width="100">
                         <DataGridTemplateColumn.CellTemplate>
@@ -831,16 +810,6 @@
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn CanUserResize="False" IsReadOnly="True">
-                        <DataGridTemplateColumn.CellStyle>
-                            <Style TargetType="DataGridCell">
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="true">
-                                        <Setter Property="Background" Value="White"/>
-                                        <Setter Property="BorderBrush" Value="White"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGridTemplateColumn.CellStyle>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="..." Width="20" 
@@ -894,7 +863,7 @@
                 <TabControl Margin="1,0,9.8,4.4" x:Name="docTabs" Grid.Row="0"
                         ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="2">
                     <TabControl.ItemContainerStyle>
-                        <Style TargetType="{x:Type TabItem}">
+                        <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
                             <Setter Property="IsSelected"
                                         Value="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </Style>

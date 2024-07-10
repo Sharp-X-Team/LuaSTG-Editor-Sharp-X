@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input.Canvas"
         mc:Ignorable="d"
-        Title="Vector Editor" Height="637.22" Width="665" ResizeMode="NoResize">
+        Title="Vector Editor" Height="637.22" Width="665" ResizeMode="NoResize"
+        Style="{StaticResource CustomWindowStyle}">
     <Window.Resources>
-        <ResourceDictionary Source="DrawingGrid.xaml">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DrawingGrid.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel>

@@ -15,8 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
-using REghZyFramework.Themes;
-using static REghZyFramework.Themes.ThemesController;
 
 namespace LuaSTGEditorSharp.Windows
 {
@@ -31,6 +29,8 @@ namespace LuaSTGEditorSharp.Windows
         static readonly int[] resX = { 640, 960, 1280 };
         static readonly int[] resY = { 480, 720, 960 };
         readonly ObservableCollection<string> pluginPaths = new ObservableCollection<string>();
+
+        public Array ThemeArray => new List<string>() { "DarkGreyTheme", "DeepDark", "GreyTheme", "LightTheme", "RedBlackTheme", "SoftDark" }.ToArray();
 
 
         private bool ignoreTHLibWarn;
@@ -141,13 +141,6 @@ namespace LuaSTGEditorSharp.Windows
                 }
             }
         }
-
-        /*public Uri ThemeDictionaryGet
-        {
-            get => ThemeDictionary.Source;
-        }*/
-
-        public Uri ThemePath = new Uri($"Themes/DarkTheme.xaml", UriKind.Relative);
 
         public int IndexedReso
         {
@@ -338,17 +331,6 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
-        private string editortheme;
-        public string Editortheme
-        {
-            get => editortheme;
-            set
-            {
-                editortheme = value;
-                RaiseProertyChanged("Editortheme");
-            }
-        }
-
         private bool dynamicDebugReporting;
         public bool DynamicDebugReporting
         {
@@ -379,6 +361,17 @@ namespace LuaSTGEditorSharp.Windows
             {
                 autoSaveTimer = value;
                 RaiseProertyChanged("AutoSaveTimer");
+            }
+        }
+
+        private string currentTheme;
+        public string CurrentTheme
+        {
+            get => currentTheme;
+            set
+            {
+                currentTheme = value;
+                RaiseProertyChanged("CurrentTheme");
             }
         }
 
@@ -530,6 +523,12 @@ namespace LuaSTGEditorSharp.Windows
             set => mainApp.AutoSaveTimer = value;
         }
 
+        public string CurrentThemeSettings
+        {
+            get => mainApp.CurrentTheme;
+            set => mainApp.CurrentTheme = value;
+        }
+
         #endregion
 
         public string TargetVersion
@@ -589,10 +588,10 @@ namespace LuaSTGEditorSharp.Windows
             EditorOutputNameSettings = EditorOutputName;
             SpaceIndentationSettings = SpaceIndentation;
             IndentationSpaceLengthSettings = IndentationSpaceLength;
-            EditorthemeSettings = Editortheme;
             SubLogWindowSettings = SubLogWindow;
             AutoSaveTimerSettings = AutoSaveTimer;
             UseAutoSaveSettings = UseAutoSave;
+            CurrentThemeSettings = CurrentTheme;
         }
 
         private void ReadSettings()
@@ -617,10 +616,10 @@ namespace LuaSTGEditorSharp.Windows
             EditorOutputName = EditorOutputNameSettings;
             SpaceIndentation = SpaceIndentationSettings;
             IndentationSpaceLength = IndentationSpaceLengthSettings;
-            Editortheme = EditorthemeSettings;
             SubLogWindow = SubLogWindowSettings;
             AutoSaveTimer = AutoSaveTimerSettings;
             UseAutoSave = UseAutoSaveSettings;
+            CurrentTheme = CurrentThemeSettings;
         }
 
         public SettingsWindow()
@@ -649,9 +648,6 @@ namespace LuaSTGEditorSharp.Windows
                 select Path.GetFileName(s)
                 );
             //PluginList.ItemsSource = pluginPaths;
-
-            SetTheme(Editortheme);
-            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         public SettingsWindow(int i) : this()
@@ -750,18 +746,10 @@ namespace LuaSTGEditorSharp.Windows
             catch { }
         }
 
-        public string CurrentEditorTheme
-        {
-            get => Editortheme;
-            set => Editortheme = value;
-        }
-
         private void ThemeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             System.Windows.Controls.ComboBox box = (System.Windows.Controls.ComboBox)sender;
             ComboBoxItem selectedItem = (ComboBoxItem)box.SelectedItem;
-            SetTheme((string)selectedItem.Content);
-            //ThemeDictionaryRes.Source = ThemeDictionary.Source;
         }
 
         private void FolderPackingCheck_Checked(object sender, RoutedEventArgs e)

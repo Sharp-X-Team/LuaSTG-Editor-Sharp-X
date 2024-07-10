@@ -6,8 +6,15 @@
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input;assembly=LuaSTGEditorSharp.Core.Windows"
         mc:Ignorable="d"
         Title="Bubble Style Selection" Height="262.618" Width="339.002" 
-                   Loaded="InputWindow_Loaded">
+                   Loaded="InputWindow_Loaded"
+                   Style="{StaticResource CustomWindowStyle}">
     <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
         <Style x:Key="SelectionImg" TargetType="Image">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>

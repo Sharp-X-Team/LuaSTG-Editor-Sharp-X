@@ -9,7 +9,15 @@
         xmlns:m="clr-namespace:LuaSTGEditorSharp.Windows.Input.MediaPlayer"
         mc:Ignorable="d"
         Title="Choose SE" Height="475.012" Width="840.879" MinHeight="100" MinWidth="200"
-                   Loaded="InputWindow_Loaded">
+                   Loaded="InputWindow_Loaded"
+                   Style="{StaticResource CustomWindowStyle}">
+    <local:InputWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </local:InputWindow.Resources>
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">

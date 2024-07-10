@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
         mc:Ignorable="d"
-        Title="Help Window" Height="639.333" Width="1000.667" ResizeMode="NoResize" OpacityMask="#FF7C5353" BorderBrush="#FF340202" Background="White">
+        Title="Help Window"
+        Height="639.333"
+        Width="1000.667"
+        ResizeMode="NoResize"
+        Style="{StaticResource CustomWindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="591" Margin="10,10,0,0" VerticalAlignment="Top" Width="974">
             <TabItem x:Name="Abouttab" Header="About">
-                <Grid Background="#FFE5E5E5">
+                <Grid>
                     <Image Height="198" Margin="210,10,210,165" Width="348" Source="SplashScreen.png" StretchDirection="DownOnly" VerticalAlignment="Center"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="948"><Run Text="LuaSTG Sharp Editor © "/><Run Text="czh098tom (Github) (https://github.com/czh098tom/LuaSTG-Editor-Sharp)"/><LineBreak/><Run Text="LuaSTG Sharp Editor X "/><Run Text="©"/><Run Text=" zinoLath &amp; RyannThi (Github) (https://github.com/zinoLath/LuaSTG-Editor-Sharp-X)"/><LineBreak/><Run/><LineBreak/><Run Text="This is a clone of the LuaSTG Editor Sharp repository with making more features that are compatible with LuaSTG-x"/><Run Text=" and other alterations"/><Run Text="."/><LineBreak/><Run Text="You can check the changes we've made already at our wiki page!"/><Run Text=" "/><Run Text="("/><Run Text="https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki"/><Run Text=")"/><LineBreak/><Run/><LineBreak/><Run Text="LuaSTG Editor Sharp is a unoffical LuaSTG Editor. Aim of the LuaSTG Editor Sharp is to develop a user-friendly, high extensive editor with higher eff"/><Run Text="i"/><Run Text="ciency. User interface is similar with offical one which is easy to master if user is familiar with old one. However, old projects are not supported due to different file format."/><LineBreak/><Run Text=""/></TextBlock>
                     <Image x:Name="zinoimg" HorizontalAlignment="Left" Height="82" Margin="115,115,0,0" VerticalAlignment="Top" Width="76" Source="zinopfp.png"/>
@@ -18,7 +29,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="Pageink" Header="Help" Margin="-2,-2,-2,0">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-1">
+                <Grid Margin="0,0,0,-1">
                     <WebBrowser HorizontalAlignment="Left" Height="564" VerticalAlignment="Top" Width="968" Source="https://ryannthi.github.io/LuaSTG-Editor-Sharp-X/"/>
                 </Grid>
             </TabItem>

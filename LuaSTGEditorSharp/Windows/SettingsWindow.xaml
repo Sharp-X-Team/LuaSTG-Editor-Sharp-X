@@ -10,7 +10,8 @@
         Height="498.433"
         Width="700.178"
         ResizeMode="NoResize"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        Style="{StaticResource CustomWindowStyle}">
     <!--<Window.Resources>
         <ResourceDictionary x:Name="ThemeDictionaryRes"/>
     </Window.Resources>-->
@@ -29,6 +30,15 @@
                     </Grid.ColumnDefinitions>
                     <Button Content="Register .lstges File Extension" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click" Grid.ColumnSpan="2"/>
                     <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,50,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}" Grid.ColumnSpan="2"/>
+
+                    <Label Content="Editor Color Theme" HorizontalAlignment="Left" Margin="10,80,0,0"
+                           VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Height="26"/>
+                    <ComboBox IsEditable="True" ItemsSource="{Binding ThemeArray, ElementName=window}"
+                              HorizontalAlignment="Left" Height="26" Margin="50,80,0,0" VerticalAlignment="Top"
+                              Width="160" Grid.Column="2"
+                              Text="{Binding CurrentTheme, ElementName=window}"/>
+                    <Label Content="(Require restarting the editor)" HorizontalAlignment="Left" Margin="220,80,0,0"
+                           VerticalAlignment="Top" Width="333" Grid.Column="2" Height="26"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="CompilerTab" Header="Compiler">
