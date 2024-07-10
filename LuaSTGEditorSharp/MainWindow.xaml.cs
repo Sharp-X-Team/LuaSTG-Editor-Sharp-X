@@ -364,9 +364,21 @@ namespace LuaSTGEditorSharp
             // Copy the project files and treat them as the backup, then, save all the opened documents.
             foreach (DocumentData doc in Documents)
             {
-                FileInfo fi = new FileInfo(doc.DocPath);
-                fi.CopyTo(doc.DocPath + ".backup", true);
-                SaveDoc(doc);
+                try
+                {
+                    FileInfo fi = new FileInfo(doc.DocPath);
+                    fi.CopyTo(doc.DocPath + ".backup", true);
+                    SaveDoc(doc);
+                }
+                catch (Exception ex)
+                {
+                    // If the autosave/backup failed, skip it and try for the next loaded project.
+                    // Should only happen if FileInfo failed to initialize (most likely because of a file access violation)
+#if DEBUG
+                    Console.WriteLine(ex.Message);
+#endif
+                    continue;
+                }
             }
         }
 
