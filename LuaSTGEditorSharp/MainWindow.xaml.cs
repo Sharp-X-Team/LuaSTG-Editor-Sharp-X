@@ -790,7 +790,7 @@ namespace LuaSTGEditorSharp
                     Assets = new Assets()
                     {
                         LargeImageKey = "sharpxicon",
-                        LargeImageText = ActivatedWorkSpaceData.RawDocName,
+                        SmallImageText = ActivatedWorkSpaceData.RawDocName,
                         SmallImageKey = "icon"
                     }
                 });
