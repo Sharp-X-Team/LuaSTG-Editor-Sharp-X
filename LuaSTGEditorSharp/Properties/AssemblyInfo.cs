@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("LuaSTGEditorSharpX")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("RyannThi")]
 [assembly: AssemblyProduct("LuaSTGEditorSharpX")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]

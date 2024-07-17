@@ -9,11 +9,13 @@
         Height="450"
         Width="800"
         MinHeight="400"
-        MinWidth="200"
-        Style="{StaticResource CustomWindowStyle}">
+        MinWidth="200">
     <!--<Window.Resources>
         <ResourceDictionary x:Name="ThemeDictionaryRes"/>
     </Window.Resources>-->
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>

@@ -9,11 +9,13 @@
         Height="498.433"
         Width="700.178"
         ResizeMode="NoResize"
-        Closing="Window_Closing"
-        Style="{StaticResource CustomWindowStyle}">
+        Closing="Window_Closing">
     <!--<Window.Resources>
         <ResourceDictionary x:Name="ThemeDictionaryRes"/>
     </Window.Resources>-->
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
             <Button Content="OK" Margin="5,5" Height="32" Width="96" Click="ButtonOK_Click"/>

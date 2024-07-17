@@ -38,6 +38,8 @@ using Newtonsoft.Json;
 using Path = System.IO.Path;
 using System.Windows.Threading;
 using LuaSTGEditorSharp.Properties;
+using NetSparkleUpdater;
+using NetSparkleUpdater.SignatureVerifiers;
 
 namespace LuaSTGEditorSharp
 {
@@ -105,7 +107,7 @@ namespace LuaSTGEditorSharp
 
         private BackgroundWorker CompileWorker;
 
-        //private Process lstgInstance;
+        public SparkleUpdater Sparkle;
 
         public MainWindow()
         {
@@ -121,6 +123,18 @@ namespace LuaSTGEditorSharp
             presetsMenu.ItemsSource = PresetsGetList;
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
 
+            Sparkle = new SparkleUpdater(
+                "url du cast sur github",
+                new Ed25519Checker(NetSparkleUpdater.Enums.SecurityMode.Unsafe,
+                "remplace ça Runa fait pas la conne")
+            ) {
+                UIFactory = new NetSparkleUpdater.UI.WPF.UIFactory(Icon),
+                RelaunchAfterUpdate = true,
+                CustomInstallerArguments = "",
+                ShowsUIOnMainThread = true
+            };
+            Sparkle.PreparingToExit += SparkleCloseFiles;
+
             if ((App.Current as App).UseAutoSave)
             {
                 var autoSaveTimer = new DispatcherTimer
@@ -133,6 +147,14 @@ namespace LuaSTGEditorSharp
                 };
                 autoSaveTimer.Start();
             }
+
+            Sparkle.StartLoop(true, true); // Remplace with "Check update on launch" setting.
+        }
+
+        private void SparkleCloseFiles(object sender, CancelEventArgs e)
+        {
+            foreach (DocumentData doc in Documents)
+                CloseFile(doc);
         }
 
         private bool CloseFile(DocumentData DocumentToRemove)
@@ -887,6 +909,11 @@ namespace LuaSTGEditorSharp
                 };
                 log.Start();
             }
+        }
+
+        protected void CheckForUpdates_Click(object sender, RoutedEventArgs e)
+        {
+            Sparkle.CheckForUpdatesAtUserRequest();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)

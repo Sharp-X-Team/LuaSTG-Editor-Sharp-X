@@ -30,7 +30,7 @@ namespace LuaSTGEditorSharp.Windows
         static readonly int[] resY = { 480, 720, 960 };
         readonly ObservableCollection<string> pluginPaths = new ObservableCollection<string>();
 
-        public Array ThemeArray => new List<string>() { "DarkGreyTheme", "DeepDark", "GreyTheme", "LightTheme", "RedBlackTheme", "SoftDark" }.ToArray();
+        public Array ThemeArray => new List<string>() { "LightTheme", "DarkTheme" }.ToArray();
 
 
         private bool ignoreTHLibWarn;

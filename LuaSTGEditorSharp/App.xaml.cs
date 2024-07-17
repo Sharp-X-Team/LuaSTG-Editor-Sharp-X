@@ -52,6 +52,7 @@ namespace LuaSTGEditorSharp
             ResourceDictionary r1 = new ResourceDictionary();
             r1.Source = new Uri($"pack://application:,,,/LuaSTGEditorThemes;component/{CurrentTheme}.xaml");
             Resources.MergedDictionaries.Add(r1);
+
             // End of the fuckery.
 
             FileStream fs = null;

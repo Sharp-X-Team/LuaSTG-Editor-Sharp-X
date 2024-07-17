@@ -13,8 +13,10 @@
         Height="679.6"
         Width="800"
         WindowState="Maximized"
-        Closing="Window_Closing"
-        Style="{StaticResource CustomWindowStyle}">
+        Closing="Window_Closing">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Window.CommandBindings>
         <!--#region File -->
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommandExecuted"/>
@@ -501,6 +503,7 @@
                 <MenuItem Header="_Help">
                     <MenuItem Header="_Nodes" Command="local:EditorRoutedCommands.AboutNode"/>
                     <MenuItem Header="_Update Log" Click="UpdateLog_Click"/>
+                    <MenuItem Header="_Check for Updates" Click="CheckForUpdates_Click"/>
                 </MenuItem>
             </Menu>
         </Border>
@@ -786,7 +789,8 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="3.8*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="propData" Margin="10,10,4,11.2" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserAddRows="False"
+            <DataGrid x:Name="propData" Margin="10,10,4,11.2" AutoGenerateColumns="False"
+                      CanUserResizeRows="False" CanUserAddRows="False"
                       Grid.Column="0" ItemsSource="{Binding ContentTemplate.VisualTree, ElementName=docTabs}" 
                       VerticalScrollBarVisibility="Visible" Style="{StaticResource ResourceKey=DataGridStyle}"
                       DataGridCell.Selected="DataGrid_GotFocus">
