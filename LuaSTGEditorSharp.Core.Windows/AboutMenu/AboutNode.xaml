@@ -8,15 +8,10 @@
         Title="Help Window"
         Height="639.333"
         Width="1000.667"
-        ResizeMode="NoResize"
-        Style="{StaticResource CustomWindowStyle}">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+        ResizeMode="NoResize">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="591" Margin="10,10,0,0" VerticalAlignment="Top" Width="974">
             <TabItem x:Name="Abouttab" Header="About">
