@@ -375,6 +375,17 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private bool checkUpdateAtLaunch;
+        public bool CheckUpdateAtLaunch
+        {
+            get => checkUpdateAtLaunch;
+            set
+            {
+                checkUpdateAtLaunch = value;
+                RaiseProertyChanged("CheckUpdateAtLaunch");
+            }
+        }
+
         #region InSettings
 
         public bool IgnoreTHLibWarnSettings
@@ -529,6 +540,12 @@ namespace LuaSTGEditorSharp.Windows
             set => mainApp.CurrentTheme = value;
         }
 
+        public bool CheckUpdateAtLaunchSettings
+        {
+            get => mainApp.CheckUpdateAtLaunch;
+            set => mainApp.CheckUpdateAtLaunch = value;
+        }
+
         #endregion
         #region Integer box integration
 
@@ -618,6 +635,7 @@ namespace LuaSTGEditorSharp.Windows
             AutoSaveTimerSettings = AutoSaveTimer;
             UseAutoSaveSettings = UseAutoSave;
             CurrentThemeSettings = CurrentTheme;
+            CheckUpdateAtLaunchSettings = CheckUpdateAtLaunch;
         }
 
         private void ReadSettings()
@@ -646,6 +664,7 @@ namespace LuaSTGEditorSharp.Windows
             AutoSaveTimer = AutoSaveTimerSettings;
             UseAutoSave = UseAutoSaveSettings;
             CurrentTheme = CurrentThemeSettings;
+            CheckUpdateAtLaunch = CheckUpdateAtLaunchSettings;
         }
 
         public SettingsWindow()

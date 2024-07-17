@@ -127,6 +127,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ToastNotifications, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.5.1\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -143,6 +146,23 @@
     <Compile Include="EditorData\Commands\Factory\ParentFac.cs" />
     <Compile Include="EditorData\Message\EXEPathNotSetMessage.cs" />
     <Compile Include="EditorRoutedCommands.cs" />
+    <Compile Include="Notifications\SuccessDisplayPart.xaml.cs">
+      <DependentUpon>SuccessDisplayPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\InfoDisplayPart.xaml.cs">
+      <DependentUpon>InfoDisplayPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\SuccessMessage.cs" />
+    <Compile Include="Notifications\InfoMessage.cs" />
+    <Compile Include="Notifications\WarningMessage.cs" />
+    <Compile Include="Notifications\WarningDisplayPart.xaml.cs">
+      <DependentUpon>WarningDisplayPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\ErrorDisplayPart.xaml.cs">
+      <DependentUpon>ErrorDisplayPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\ErrorMessage.cs" />
+    <Compile Include="Notifications\MessageBase.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SingleInstanceWrapper.cs" />
     <Compile Include="Startup.cs" />
@@ -163,6 +183,26 @@
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Notifications\SuccessDisplayPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Notifications\InfoDisplayPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Notifications\WarningDisplayPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Notifications\ErrorDisplayPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Notifications\Theme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

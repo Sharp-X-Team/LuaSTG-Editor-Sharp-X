@@ -407,6 +407,12 @@ namespace LuaSTGEditorSharp
             set => Settings.Default.CurrentTheme = value;
         }
 
+        public bool CheckUpdateAtLaunch
+        {
+            get => Settings.Default.CheckUpdateAtLaunch;
+            set => Settings.Default.CheckUpdateAtLaunch = value;
+        }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Settings.Default.Save();

@@ -346,5 +346,17 @@ namespace LuaSTGEditorSharp.Properties {
                 this["CurrentTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckUpdateAtLaunch {
+            get {
+                return ((bool)(this["CheckUpdateAtLaunch"]));
+            }
+            set {
+                this["CheckUpdateAtLaunch"] = value;
+            }
+        }
     }
 }
