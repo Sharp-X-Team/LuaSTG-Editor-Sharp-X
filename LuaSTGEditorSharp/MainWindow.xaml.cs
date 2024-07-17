@@ -151,7 +151,7 @@ namespace LuaSTGEditorSharp
         private void StartSparkle()
         {
             Sparkle = new SparkleUpdater(
-                "url du cast sur github",
+                "https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/AppCast.xaml",
                 new Ed25519Checker(NetSparkleUpdater.Enums.SecurityMode.Unsafe)
             )
             {

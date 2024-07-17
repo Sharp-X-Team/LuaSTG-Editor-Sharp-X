@@ -1,0 +1,10 @@
+﻿# LuaSTG Editor Sharp X - 0.76.0
+
+## Features
+* Fixed a bug introduced in the last version that crashes the editor when closing a project.
+* Added auto updates support (and settings to check updates on startup).
+* Added auto saves for projects.
+* Added dark/light modes for the (almost) whole editor.
+* Added toast notifications.
+* TODO : New Keybind: Shift+N to add a node using a search bar.
+* TODO : Added macro keybinds support for presets: Bind a preset to a keybind to insert it directly.
