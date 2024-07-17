@@ -16,6 +16,11 @@
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Padding" Value="5,0"/>
+        </Style>
+    </Window.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>

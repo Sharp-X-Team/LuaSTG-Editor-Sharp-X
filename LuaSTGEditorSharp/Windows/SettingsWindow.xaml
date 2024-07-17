@@ -20,6 +20,9 @@
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
             <Setter Property="FontWeight" Value="Normal"/>
         </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Padding" Value="5,0"/>
+        </Style>
     </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
