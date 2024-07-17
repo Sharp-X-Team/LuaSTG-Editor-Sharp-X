@@ -27,14 +27,14 @@
             <Button Content="Cancel" Margin="5,5" Height="32" Width="96" Click="ButtonCancel_Click"/>
             <Button Content="Apply" Margin="5,5" Height="32" Width="96" Click="ButtonApply_Click"/>
         </StackPanel>
-        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Padding="0">
             <TabItem x:Name="GeneralTab" Header="General">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="83*"/>
                         <ColumnDefinition Width="612*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Register .lstges File Extension" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="668" Height="30" Click="ButtonRegisterExt_Click" Grid.ColumnSpan="2"/>
+                    <Button Content="Register .lstges File Extension" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="650" Height="30" Click="ButtonRegisterExt_Click" Grid.ColumnSpan="2"/>
                     <CheckBox Content="Ignore Wrong THLib Messages" HorizontalAlignment="Left" Height="26" Margin="10,50,0,0" VerticalAlignment="Top" Width="250" IsChecked="{Binding IgnoreTHLibWarn, ElementName=window}" Grid.ColumnSpan="2"/>
 
                     <Label Content="Editor Color Theme" HorizontalAlignment="Left" Margin="10,80,0,0"
@@ -64,17 +64,17 @@
                     <Label Content="Zip Executable Path" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
                     <Label Content="LuaSTG Executable Path" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
                     <Label Content="Temp Path" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,33,0,0" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Top" Width="450" 
                              Text="{Binding ZipExecutablePath, ElementName=window}" IsEnabled="{Binding IsChecked, ElementName=BatchPackingCheck}" Grid.Column="2"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,64,0,0" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Top" Width="450" 
                              Text="{Binding LuaSTGExecutablePath, ElementName=window}" Grid.Column="2"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,127,0,0" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Top" Width="450" 
                              Text="{Binding TempPath, ElementName=window}" Grid.Column="2"/>
                     <Label Content="Target Version:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150" Height="26" Grid.ColumnSpan="3"/>
                     <Label Content="{Binding TargetVersion, ElementName=window}" HorizontalAlignment="Left" Margin="138,96,0,0" VerticalAlignment="Top" Width="501" Height="26" Grid.Column="2"/>
-                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="613,34,0,0" VerticalAlignment="Top" Width="26" Click="ButtonZipExecutablePath_Click" 
+                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="593,34,0,0" VerticalAlignment="Top" Width="26" Click="ButtonZipExecutablePath_Click" 
                             IsEnabled="{Binding IsChecked, ElementName=BatchPackingCheck}" Grid.Column="2"/>
-                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="613,65,0,0" VerticalAlignment="Top" Width="26" Click="ButtonLuaSTGExecutablePath_Click" Grid.Column="2"/>
+                    <Button Content="..." HorizontalAlignment="Left" Height="26" Margin="593,65,0,0" VerticalAlignment="Top" Width="26" Click="ButtonLuaSTGExecutablePath_Click" Grid.Column="2"/>
                     <CheckBox Content="Update Thlib before running" HorizontalAlignment="Left" Height="26" Margin="10,158,0,0" VerticalAlignment="Top" Width="250" 
                               IsChecked="{Binding DebugUpdateLib, ElementName=window}" Grid.ColumnSpan="3"/>
                     <CheckBox Content="Save project before running" HorizontalAlignment="Left" Height="26" Margin="10,189,0,0" VerticalAlignment="Top" Width="250" 
@@ -84,7 +84,7 @@
                     <CheckBox Content="Use MD5 resource check in packing" HorizontalAlignment="Left" Height="26" Margin="10,251,0,0" VerticalAlignment="Top" Width="250" 
                               IsChecked="{Binding MD5Check, ElementName=window}" Grid.ColumnSpan="3"/>
                     <Label Content="Editor Output File Name" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" 
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="138,280,0,0" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Top" Width="450" 
                              Text="{Binding EditorOutputName, ElementName=window}" Grid.Column="2"/>
                     <CheckBox x:Name="FolderPackingCheck" Content="Use Folder Packing" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="669" Height="26" 
                         IsChecked="{Binding UseFolderPacking, ElementName=window}" Checked="FolderPackingCheck_Checked" Grid.ColumnSpan="3"/>
