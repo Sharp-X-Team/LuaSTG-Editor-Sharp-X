@@ -12,7 +12,7 @@
 			</sparkle:releaseNotesLink>
 			<pubDate>Thu, 1 Jan 2025 00:01:10 +0000</pubDate>
 			<enclosure url="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases/download/0.76.0/LuaSTG.Editor.Sharp.X.v0.76.0.exe"
-                       sparkle:version="76.0"
+                       sparkle:version="0.76.0"
                        sparkle:os="windows"
                        type="application/octet-stream"/>
 		</item>
@@ -23,7 +23,7 @@
 			</sparkle:releaseNotesLink>
 			<pubDate>Sun, 7 Jul 2024 16:45:00 +0000</pubDate>
 			<enclosure url="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases/download/0.75.2/LuaSTG.Editor.Sharp.X.v0.75.2.exe"
-                       sparkle:version="75.0"
+                       sparkle:version="0.75.2"
                        sparkle:os="windows"
                        type="application/octet-stream"/>
 		</item>
