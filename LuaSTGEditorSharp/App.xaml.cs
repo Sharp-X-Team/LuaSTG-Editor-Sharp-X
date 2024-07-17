@@ -413,6 +413,12 @@ namespace LuaSTGEditorSharp
             set => Settings.Default.CheckUpdateAtLaunch = value;
         }
 
+        public bool UseDiscordRpc
+        {
+            get => Settings.Default.UseDiscordRpc;
+            set => Settings.Default.UseDiscordRpc = value;
+        }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Settings.Default.Save();

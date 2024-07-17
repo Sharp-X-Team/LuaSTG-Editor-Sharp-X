@@ -133,6 +133,11 @@ namespace LuaSTGEditorSharp.EditorData
         public WorkTree TreeNodes { get; set; } = new WorkTree();
 
         /// <summary>
+        /// Stores the DateTime at which the document was opened. Used for DiscordRpc only.
+        /// </summary>
+        public DateTime StartedTimestamp { get; set; }
+
+        /// <summary>
         /// Initializes document by ID
         /// </summary>
         /// <param name="hash">ID of document. Unique.</param>
@@ -219,7 +224,8 @@ namespace LuaSTGEditorSharp.EditorData
                 {
                     DocName = name,
                     DocPath = path,
-                    IsSelected = true
+                    IsSelected = true,
+                    StartedTimestamp = DateTime.UtcNow
                 };
             }
             else
@@ -228,7 +234,8 @@ namespace LuaSTGEditorSharp.EditorData
                 {
                     DocName = name,
                     DocPath = path,
-                    IsSelected = true
+                    IsSelected = true,
+                    StartedTimestamp = DateTime.UtcNow
                 };
             }
         }

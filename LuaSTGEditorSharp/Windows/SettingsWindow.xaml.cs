@@ -386,6 +386,17 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private bool useDiscordRpc;
+        public bool UseDiscordRpc
+        {
+            get => useDiscordRpc;
+            set
+            {
+                useDiscordRpc = value;
+                RaiseProertyChanged("UseDiscordRpc");
+            }
+        }
+
         #region InSettings
 
         public bool IgnoreTHLibWarnSettings
@@ -546,6 +557,12 @@ namespace LuaSTGEditorSharp.Windows
             set => mainApp.CheckUpdateAtLaunch = value;
         }
 
+        public bool UseDiscordRpcSettings
+        {
+            get => mainApp.UseDiscordRpc;
+            set => mainApp.UseDiscordRpc = value;
+        }
+
         #endregion
         #region Integer box integration
 
@@ -636,6 +653,7 @@ namespace LuaSTGEditorSharp.Windows
             UseAutoSaveSettings = UseAutoSave;
             CurrentThemeSettings = CurrentTheme;
             CheckUpdateAtLaunchSettings = CheckUpdateAtLaunch;
+            UseDiscordRpcSettings = UseDiscordRpc;
         }
 
         private void ReadSettings()
@@ -665,6 +683,7 @@ namespace LuaSTGEditorSharp.Windows
             UseAutoSave = UseAutoSaveSettings;
             CurrentTheme = CurrentThemeSettings;
             CheckUpdateAtLaunch = CheckUpdateAtLaunchSettings;
+            UseDiscordRpc = UseDiscordRpcSettings;
         }
 
         public SettingsWindow()

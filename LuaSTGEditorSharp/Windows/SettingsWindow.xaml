@@ -49,10 +49,15 @@
                     <Label Content="(Require restarting the editor)" HorizontalAlignment="Left" Margin="220,80,0,0"
                            VerticalAlignment="Top" Width="333" Grid.Column="2" Height="26"/>
 
-                    <CheckBox Content="Check for updates on startup" HorizontalAlignment="Left" Height="26"
-                              Margin="10,120,0,0" VerticalAlignment="Top" Width="250"
+                    <CheckBox Content="Check for updates on startup (Require restarting the editor)" HorizontalAlignment="Left" Height="26"
+                              Margin="10,120,0,0" VerticalAlignment="Top" Width="350"
                               Grid.ColumnSpan="2"
                               IsChecked="{Binding CheckUpdateAtLaunch, ElementName=window}"/>
+
+                    <CheckBox Content="Use Discord Rich Presence (Require restarting the editor)" HorizontalAlignment="Left" Height="26"
+                              Margin="10,160,0,0" VerticalAlignment="Top" Width="350"
+                              Grid.ColumnSpan="2"
+                              IsChecked="{Binding UseDiscordRpc, ElementName=window}"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="CompilerTab" Header="Compiler">

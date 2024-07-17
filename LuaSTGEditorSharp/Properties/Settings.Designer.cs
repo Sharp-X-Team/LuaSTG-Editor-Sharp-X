@@ -358,5 +358,17 @@ namespace LuaSTGEditorSharp.Properties {
                 this["CheckUpdateAtLaunch"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseDiscordRpc {
+            get {
+                return ((bool)(this["UseDiscordRpc"]));
+            }
+            set {
+                this["UseDiscordRpc"] = value;
+            }
+        }
     }
 }

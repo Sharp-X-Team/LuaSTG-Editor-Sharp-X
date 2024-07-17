@@ -45,6 +45,9 @@ using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 using LuaSTGEditorSharp.Notifications;
+using DiscordRPC;
+using DiscordRPC.Logging;
+using Button = System.Windows.Controls.Button;
 
 namespace LuaSTGEditorSharp
 {
@@ -116,6 +119,8 @@ namespace LuaSTGEditorSharp
 
         public Notifier _Notifier;
 
+        public DiscordRpcClient DiscordClient;
+
         public MainWindow()
         {
             toolbox = PluginHandler.Plugin.GetToolbox(this);
@@ -130,6 +135,7 @@ namespace LuaSTGEditorSharp
             presetsMenu.ItemsSource = PresetsGetList;
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
 
+            SetupDiscordRpc();
             SetupNotifier();
             StartSparkle();
             SetupAutoSave();
@@ -139,14 +145,37 @@ namespace LuaSTGEditorSharp
 
         ~MainWindow()
         {
-            try
-            {
-                _Notifier.Dispose();
-            }
-            catch { }
+            _Notifier?.Dispose();
+            DiscordClient?.Dispose();
         }
 
         #region Editor Initialization
+
+        private void SetupDiscordRpc()
+        {
+            if (!(App.Current as App).UseDiscordRpc)
+                return;
+
+            DiscordClient = new DiscordRpcClient("1263260551153319996");
+
+            DiscordClient.Initialize();
+
+            DiscordRpcReset();
+        }
+
+        public void DiscordRpcReset()
+        {
+            DiscordClient?.SetPresence(new RichPresence()
+            {
+                State = "Idle",
+                Timestamps = Timestamps.Now,
+                Assets = new Assets()
+                {
+                    LargeImageKey = "sharpxicon",
+                    LargeImageText = "Not doing anything"
+                }
+            });
+        }
 
         private void StartSparkle()
         {
@@ -751,9 +780,26 @@ namespace LuaSTGEditorSharp
             // I really don't want this to crash. So fuck it: try/catch.
             string version = "LuaSTG Editor Sharp X v0.76.0";
             if (ActivatedWorkSpaceData != null)
+            {
                 Title = $"{version} - {ActivatedWorkSpaceData.RawDocName}";
+                DiscordClient?.SetPresence(new RichPresence()
+                {
+                    Details = ActivatedWorkSpaceData.RawDocName,
+                    State = "Editing Project",
+                    Timestamps = new Timestamps(ActivatedWorkSpaceData.StartedTimestamp),
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "sharpxicon",
+                        LargeImageText = ActivatedWorkSpaceData.RawDocName,
+                        SmallImageKey = "icon"
+                    }
+                });
+            }
             else
+            {
                 Title = version;
+                DiscordRpcReset();
+            }
             //EditorConsole.Text = selectedNode.ToLua(0);
         }
 

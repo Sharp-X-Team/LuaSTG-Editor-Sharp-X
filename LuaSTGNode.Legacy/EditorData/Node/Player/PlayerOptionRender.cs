@@ -21,13 +21,14 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerOptionRender() : base() { }
 
         public PlayerOptionRender(DocumentData workSpaceData)
-            : this(workSpaceData, "\"leaf\"", "self.timer * 3") { }
+            : this(workSpaceData, "\"leaf\"", "self.timer * 3", "1,1") { }
 
-        public PlayerOptionRender(DocumentData workSpaceData, string img, string ang)
+        public PlayerOptionRender(DocumentData workSpaceData, string img, string ang, string size)
             : base(workSpaceData)
         {
             Image = img;
             AngleVal = ang;
+            Size = size;
             //attributes.Add(new AttrItem("Time", code, this, "yield"));
         }
 
@@ -45,6 +46,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             set => DoubleCheckAttr(1, name: "Angle").attrInput = value;
         }
 
+        [JsonIgnore, NodeAttribute]
+        public string Size
+        {
+            get => DoubleCheckAttr(2, "size", "Scale").attrInput;
+            set => DoubleCheckAttr(2, "size", "Scale").attrInput = value;
+        }
+
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
@@ -52,7 +60,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string help = "" +
                 sp + "for i = 1, 4 do\n" +
                 sp + s1 + "if self.sp[i] and self.sp[i][3] > 0.5 then\n" +
-                sp + s1 + s1 + "Render(" + Macrolize(0) + ", self.supportx + self.sp[i][1], self.supporty + self.sp[i][2], " + Macrolize(1) + ")\n" +
+                sp + s1 + s1 + $"Render(" + Macrolize(0) + ", self.supportx + self.sp[i][1], self.supporty + self.sp[i][2], " + Macrolize(1) + ", " + Macrolize(2) + ")\n" +
                 sp + s1 + "end\n" +
                 sp + "end\n";
             yield return sp + help;
@@ -65,7 +73,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "Render player options with image " + NonMacrolize(0) + " at angle \"" + NonMacrolize(1) + "\"";
+            return "Render player options with image " + NonMacrolize(0) + " at angle \"" + NonMacrolize(1) + "\" with size (" + NonMacrolize(2) + ")";
         }
 
         public override object Clone()
