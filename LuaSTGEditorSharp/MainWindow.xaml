@@ -76,7 +76,7 @@
             <Separator Margin="5,2"/>
         </DataTemplate>
         <DataTemplate x:Key="ToolboxButton" DataType="{x:Type tb:ToolboxItemData}">
-            <Button Tag="{Binding Tag}" Click="ButtonAdd_Click">
+            <Button Tag="{Binding Tag}" Click="ButtonAdd_Click" Padding="4">
                 <Button.Content>
                     <Image Source="{tool:BindableStaticResource {Binding Image}}" Stretch="Fill" Width="24" Height="24"/>
                 </Button.Content>
@@ -88,7 +88,8 @@
             </Button>
         </DataTemplate>
         <DataTemplate x:Key="ToolboxContent">
-            <ItemsControl ItemsSource="{Binding Data}" ItemTemplateSelector="{StaticResource ToolboxContentTemplateSelector}">
+            <ItemsControl ItemsSource="{Binding Data}" ItemTemplateSelector="{StaticResource ToolboxContentTemplateSelector}"
+                          Margin="-7, -8, -7, -7">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
@@ -281,10 +282,9 @@
                             <Trigger Property="IsSelected"
                                      Value="True">
                                 <Setter TargetName="Bd"
-                                        Property="Background"
-                                        Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
-                                <Setter Property="Foreground"
-                                        Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+                                        Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -294,10 +294,9 @@
                                                Value="false"/>
                                 </MultiTrigger.Conditions>
                                 <Setter TargetName="Bd"
-                                        Property="Background"
-                                        Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
-                                <Setter Property="Foreground"
-                                        Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+                                        Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled"
                                      Value="false">
@@ -777,6 +776,9 @@
             <TabControl ContentTemplateSelector="{StaticResource ToolboxTemplateSelector}">
                 <TabControl.Resources>
                     <CollectionViewSource x:Key="ToolboxData" Source="{Binding ToolboxData, ElementName=window}"/>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
                 </TabControl.Resources>
                 <TabControl.ItemsSource>
                     <CompositeCollection>
