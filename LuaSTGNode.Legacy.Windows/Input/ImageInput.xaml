@@ -9,6 +9,9 @@
         mc:Ignorable="d"
         Title="Choose Image" Height="475.012" Width="840.879" MinHeight="100" MinWidth="200"
                    Loaded="InputWindow_Loaded">
+    <local:InputWindow.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </local:InputWindow.Style>
     <Window.Resources>
         <DrawingBrush x:Key="TransparentBrushW" Viewport="0,0,16,16" ViewportUnits="Absolute" TileMode="Tile">
             <DrawingBrush.Drawing>

@@ -10,7 +10,7 @@
         xmlns:om="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
         mc:Ignorable="d"
-        Title="LuaSTG Editor Sharp X v0.75.2"
+        Title="LuaSTG Editor Sharp X v0.76.0"
         Height="679.6"
         Width="800"
         WindowState="Maximized"
@@ -216,8 +216,8 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Rectangle x:Name="HorLn" Height="1" VerticalAlignment="Center" StrokeDashArray="4 4"
-                                       HorizontalAlignment="Stretch" Stroke="#8888" Margin="9,0,0,0"
+                            <Rectangle x:Name="HorLn" Height="1" VerticalAlignment="Top" StrokeDashArray="4 4"
+                                       HorizontalAlignment="Stretch" Stroke="#8888" Margin="9,9,0,0"
                                        SnapsToDevicePixels="True"/>
                             <Rectangle x:Name="VerLn" Width="1" VerticalAlignment="Stretch" StrokeDashArray="4 4"
                                        HorizontalAlignment="Center" Stroke="#8888" Grid.RowSpan="2"

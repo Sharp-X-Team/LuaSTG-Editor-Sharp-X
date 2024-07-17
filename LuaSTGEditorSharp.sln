@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Advanced Repeat Design.md = Advanced Repeat Design.md
 		AppCast.xaml = AppCast.xaml
 		README.md = README.md
+		setupscript.iss = setupscript.iss
 		Unfinished Nodes.md = Unfinished Nodes.md
 		User Manual.md = User Manual.md
 	EndProjectSection

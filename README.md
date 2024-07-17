@@ -1,6 +1,6 @@
 LuaSTG Editor Sharp X
 ====
-![](https://cdn.discordapp.com/emojis/871436538087624805.png?v=1) (Current version (in dev/released): 0.75.2)
+![](https://cdn.discordapp.com/emojis/871436538087624805.png?v=1) (Current version (in dev/released): 0.76.0)
 
 This is a clone of the [LuaSTG Editor Sharp](https://github.com/czh098tom/LuaSTG-Editor-Sharp) repository with the aim of further expanding the editor's functionality.
 

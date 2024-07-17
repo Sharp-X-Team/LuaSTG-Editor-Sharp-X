@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Window1" Height="523.385" Width="665">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Window.Resources>
         <ResourceDictionary Source="DrawingGrid.xaml">
         </ResourceDictionary>

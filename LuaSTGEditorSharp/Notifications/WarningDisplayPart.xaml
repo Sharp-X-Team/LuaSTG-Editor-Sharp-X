@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:LuaSTGEditorSharp.Notifications"
              xmlns:core="clr-namespace:ToastNotifications.Core;assembly=ToastNotifications"
              mc:Ignorable="d"
-             d:DesignHeight="32" d:DesignWidth="150"
+             d:DesignHeight="20" d:DesignWidth="150"
              Background="{DynamicResource WarningColorBrush}">
     <core:NotificationDisplayPart.Resources>
         <ResourceDictionary>

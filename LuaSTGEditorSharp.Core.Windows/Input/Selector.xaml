@@ -6,15 +6,10 @@
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input"
         mc:Ignorable="d"
         Title="Input Bool Value" Height="105.215" Width="330.8" ResizeMode="NoResize" 
-                   Loaded="InputWindow_Loaded"
-                   Style="{StaticResource CustomWindowStyle}">
-    <local:InputWindow.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </local:InputWindow.Resources>
+                   Loaded="InputWindow_Loaded">
+    <local:InputWindow.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </local:InputWindow.Style>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

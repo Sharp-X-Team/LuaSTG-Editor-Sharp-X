@@ -134,7 +134,7 @@ namespace LuaSTGEditorSharp
             StartSparkle();
             SetupAutoSave();
 
-            Sparkle.StartLoop(true, true); // Replace both with "Check update on launch" setting.
+            Sparkle.StartLoop((App.Current as App).CheckUpdateAtLaunch, (App.Current as App).CheckUpdateAtLaunch); // Replace both with "Check update on launch" setting.
         }
 
         ~MainWindow()
@@ -186,8 +186,8 @@ namespace LuaSTGEditorSharp
                 cfg.PositionProvider = new WindowPositionProvider(
                     parentWindow: Application.Current.MainWindow,
                     corner: Corner.TopRight,
-                    offsetX: 10,
-                    offsetY: 150
+                    offsetX: 20,
+                    offsetY: 180
                 );
 
                 cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
@@ -284,12 +284,14 @@ namespace LuaSTGEditorSharp
             clipBoard = (TreeNode)selectedNode.Clone();
             TreeNode prev = selectedNode.GetNearestEdited();
             ActivatedWorkSpaceData.AddAndExecuteCommand(new DeleteCommand(selectedNode));
+            _Notifier.ShowInfo("Node cut!");
             if (prev != null) Reveal(prev);
         }
 
         private void CopyNode()
         {
             clipBoard = (TreeNode)selectedNode.Clone();
+            _Notifier.ShowInfo("Node copied!");
         }
 
         private void PasteNode()
@@ -299,6 +301,7 @@ namespace LuaSTGEditorSharp
                 TreeNode node = (TreeNode)clipBoard.Clone();
                 node.FixParentDoc(ActivatedWorkSpaceData);
                 Insert(node, false);
+                _Notifier.ShowInfo("Node pasted!");
             }
             catch { }
         }
@@ -537,13 +540,17 @@ namespace LuaSTGEditorSharp
         private bool SaveDoc(DocumentData doc)
         {
             propData.CommitEdit();
-            return doc.Save(App.Current as App);
+            bool success = doc.Save(App.Current as App);
+            if (success)
+                _Notifier.ShowSuccess("Project saved!");
+            return success;
         }
 
         private void SaveActiveFileAs()
         {
             propData.CommitEdit();
-            ActivatedWorkSpaceData.Save(App.Current as App, true);
+            if (ActivatedWorkSpaceData.Save(App.Current as App, true))
+                _Notifier.ShowSuccess("Project saved!");
         }
 
         /// <summary>
@@ -556,9 +563,11 @@ namespace LuaSTGEditorSharp
             {
                 try
                 {
+                    _Notifier.ShowInfo("Auto saving...");
                     FileInfo fi = new FileInfo(doc.DocPath);
                     fi.CopyTo(doc.DocPath + ".backup", true);
                     SaveDoc(doc);
+                    _Notifier.ShowSuccess("Auto save successful.");
                 }
                 catch (Exception ex)
                 {
@@ -567,6 +576,7 @@ namespace LuaSTGEditorSharp
 #if DEBUG
                     Console.WriteLine(ex.Message);
 #endif
+                    _Notifier.ShowError("Auto save failed.");
                     continue;
                 }
             }
@@ -738,8 +748,12 @@ namespace LuaSTGEditorSharp
             workSpace = sender as TreeView;
             SelectedNode = ((TreeNode)(workSpace.SelectedItem));
             if (selectedNode != null) this.propData.ItemsSource = selectedNode.attributes;
+            // I really don't want this to crash. So fuck it: try/catch.
+            string version = "LuaSTG Editor Sharp X v0.76.0";
             if (ActivatedWorkSpaceData != null)
-                Title = $"LuaSTG Editor Sharp X v0.75.2 - {ActivatedWorkSpaceData.RawDocName}";
+                Title = $"{version} - {ActivatedWorkSpaceData.RawDocName}";
+            else
+                Title = version;
             //EditorConsole.Text = selectedNode.ToLua(0);
         }
 

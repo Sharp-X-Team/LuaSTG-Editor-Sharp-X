@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows.Input.Canvas"
         mc:Ignorable="d"
-        Title="Position Editor" Height="581.385" Width="665" ResizeMode="NoResize"
-        Style="{StaticResource CustomWindowStyle}">
+        Title="Position Editor" Height="581.385" Width="665" ResizeMode="NoResize">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="DrawingGrid.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/LuaSTGEditorThemes;component/SoftDark.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

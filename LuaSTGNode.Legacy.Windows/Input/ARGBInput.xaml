@@ -9,6 +9,9 @@
                    Title="Input ARGB Color" 
                    Height="380" Width="600" MinHeight="380" MinWidth="600" MaxHeight="380" MaxWidth="600"
                    Loaded="InputWindow_Loaded">
+    <local:InputWindow.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </local:InputWindow.Style>
     <Window.Resources>
 
         <DrawingBrush x:Key="TransparentBrush" Stretch="None" TileMode="Tile"
