@@ -21,7 +21,7 @@
                 <Button Content="Cancel" Margin="2,10,10,10" Padding="3" Click="ButtonCancel_Click"/>
             </StackPanel>
             <avalon:TextEditor x:Name="codeText" FontFamily="{StaticResource JBMono}" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"
-                               KeyDown="CodeText_KeyDown" KeyUp="CodeText_KeyUp" Text="Voix ambiguë d'un coeur qui au "/>
+                               KeyDown="CodeText_KeyDown" KeyUp="CodeText_KeyUp"/>
         </DockPanel>
     </Grid>
 </local:InputWindow>
