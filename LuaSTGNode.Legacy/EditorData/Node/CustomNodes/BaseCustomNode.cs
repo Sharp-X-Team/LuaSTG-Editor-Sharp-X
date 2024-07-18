@@ -18,7 +18,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.CustomNodes
     [Serializable, NodeIcon("basecustomnode.png")]
     [CustomNode]
     [IgnoreValidation]
-    [CreateInvoke(0)]
+    //[CreateInvoke(0)]
     [IgnoreAttributesParityCheck]
     public class BaseCustomNode : TreeNode
     {

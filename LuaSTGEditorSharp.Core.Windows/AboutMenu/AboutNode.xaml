@@ -17,7 +17,24 @@
             <TabItem x:Name="Abouttab" Header="About">
                 <Grid>
                     <Image Height="198" Margin="210,10,210,165" Width="348" Source="SplashScreen.png" StretchDirection="DownOnly" VerticalAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="948"><Run Text="LuaSTG Sharp Editor © "/><Run Text="czh098tom (Github) (https://github.com/czh098tom/LuaSTG-Editor-Sharp)"/><LineBreak/><Run Text="LuaSTG Sharp Editor X "/><Run Text="©"/><Run Text=" zinoLath &amp; RyannThi (Github) (https://github.com/zinoLath/LuaSTG-Editor-Sharp-X)"/><LineBreak/><Run/><LineBreak/><Run Text="This is a clone of the LuaSTG Editor Sharp repository with making more features that are compatible with LuaSTG-x"/><Run Text=" and other alterations"/><Run Text="."/><LineBreak/><Run Text="You can check the changes we've made already at our wiki page!"/><Run Text=" "/><Run Text="("/><Run Text="https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki"/><Run Text=")"/><LineBreak/><Run/><LineBreak/><Run Text="LuaSTG Editor Sharp is a unoffical LuaSTG Editor. Aim of the LuaSTG Editor Sharp is to develop a user-friendly, high extensive editor with higher eff"/><Run Text="i"/><Run Text="ciency. User interface is similar with offical one which is easy to master if user is familiar with old one. However, old projects are not supported due to different file format."/><LineBreak/><Run Text=""/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="948">
+                        <Run Text="LuaSTG Sharp Editor © "/>
+                        <Run Text="czh098tom (Github) (https://github.com/czh098tom/LuaSTG-Editor-Sharp)"/>
+                        <LineBreak/>
+                        <Run Text="LuaSTG Sharp Editor X "/>
+                        <Run Text="©"/>
+                        <Run Text=" zinoLath &amp; RyannThi (Github) &amp; Tania Anehina (https://github.com/zinoLath/LuaSTG-Editor-Sharp-X)"/>
+                        <LineBreak/>
+                        <Run/><LineBreak/>
+                        <Run Text="This is a clone of the LuaSTG Editor Sharp repository with making more features that are compatible with LuaSTG-x"/>
+                        <Run Text=" and other alterations."/>
+                        <LineBreak/><Run Text="You can check the changes we've made already at our wiki page!"/>
+                        <Run Text=" "/><Run Text="("/><Run Text="https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki"/>
+                        <Run Text=")"/><LineBreak/><Run/><LineBreak/>
+                        <Run Text="LuaSTG Editor Sharp is a unoffical LuaSTG Editor. Aim of the LuaSTG Editor Sharp is to develop a user-friendly, high extensive editor with higher"/>
+                        <Run Text="effciency. User interface is similar with offical one which is easy to master if user is familiar with old one. However, old projects are not supported due to different file format."/>
+                        <LineBreak/><Run Text=""/></TextBlock>
+                    <Image x:Name="taniaanehina" HorizontalAlignment="Left" Height="82" Margin="202,156,0,0" VerticalAlignment="Top" Width="76" Source="taniapfp.png"/>
                     <Image x:Name="zinoimg" HorizontalAlignment="Left" Height="82" Margin="115,115,0,0" VerticalAlignment="Top" Width="76" Source="zinopfp.png"/>
                     <Image x:Name="ryannimg" HorizontalAlignment="Left" Height="82" Margin="115,202,0,0" VerticalAlignment="Top" Width="76" Source="ryannthipfp.png"/>
                     <Image x:Name="tomimg" HorizontalAlignment="Left" Height="82" Margin="782,166,0,0" VerticalAlignment="Top" Width="76" Source="tompfp.png"/>

@@ -150,5 +150,8 @@
   <ItemGroup>
     <Resource Include="images\search.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AboutMenu\taniapfp.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
