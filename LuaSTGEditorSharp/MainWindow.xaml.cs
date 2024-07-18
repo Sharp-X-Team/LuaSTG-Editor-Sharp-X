@@ -48,6 +48,7 @@ using LuaSTGEditorSharp.Notifications;
 using DiscordRPC;
 using DiscordRPC.Logging;
 using Button = System.Windows.Controls.Button;
+using ToastNotifications.Lifetime.Clear;
 
 namespace LuaSTGEditorSharp
 {
@@ -117,7 +118,7 @@ namespace LuaSTGEditorSharp
 
         public SparkleUpdater Sparkle;
 
-        public Notifier _Notifier;
+        //public Notifier _Notifier;
 
         public DiscordRpcClient DiscordClient;
 
@@ -136,18 +137,13 @@ namespace LuaSTGEditorSharp
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
 
             SetupDiscordRpc();
-            SetupNotifier();
+            //SetupNotifier();
             StartSparkle();
             SetupAutoSave();
 
             Sparkle.StartLoop((App.Current as App).CheckUpdateAtLaunch, (App.Current as App).CheckUpdateAtLaunch); // Replace both with "Check update on launch" setting.
         }
 
-        ~MainWindow()
-        {
-            _Notifier?.Dispose();
-            DiscordClient?.Dispose();
-        }
 
         #region Editor Initialization
 
@@ -208,7 +204,7 @@ namespace LuaSTGEditorSharp
             }
         }
 
-        private void SetupNotifier()
+        /*private void SetupNotifier()
         {
             _Notifier = new Notifier(cfg =>
             {
@@ -226,7 +222,7 @@ namespace LuaSTGEditorSharp
 
                 cfg.Dispatcher = Application.Current.Dispatcher;
             });
-        }
+        }*/
 
         private void SparkleCloseFiles(object sender, CancelEventArgs e)
         {
@@ -313,14 +309,14 @@ namespace LuaSTGEditorSharp
             clipBoard = (TreeNode)selectedNode.Clone();
             TreeNode prev = selectedNode.GetNearestEdited();
             ActivatedWorkSpaceData.AddAndExecuteCommand(new DeleteCommand(selectedNode));
-            _Notifier.ShowInfo("Node cut!");
+            //_Notifier.ShowInfo("Node cut!");
             if (prev != null) Reveal(prev);
         }
 
         private void CopyNode()
         {
             clipBoard = (TreeNode)selectedNode.Clone();
-            _Notifier.ShowInfo("Node copied!");
+            //_Notifier.ShowInfo("Node copied!");
         }
 
         private void PasteNode()
@@ -330,7 +326,7 @@ namespace LuaSTGEditorSharp
                 TreeNode node = (TreeNode)clipBoard.Clone();
                 node.FixParentDoc(ActivatedWorkSpaceData);
                 Insert(node, false);
-                _Notifier.ShowInfo("Node pasted!");
+                //_Notifier.ShowInfo("Node pasted!");
             }
             catch { }
         }
@@ -570,16 +566,16 @@ namespace LuaSTGEditorSharp
         {
             propData.CommitEdit();
             bool success = doc.Save(App.Current as App);
-            if (success)
-                _Notifier.ShowSuccess("Project saved!");
+            //if (success)
+            //    _Notifier.ShowSuccess("Project saved!");
             return success;
         }
 
         private void SaveActiveFileAs()
         {
             propData.CommitEdit();
-            if (ActivatedWorkSpaceData.Save(App.Current as App, true))
-                _Notifier.ShowSuccess("Project saved!");
+            ActivatedWorkSpaceData.Save(App.Current as App, true);
+                //_Notifier.ShowSuccess("Project saved!");
         }
 
         /// <summary>
@@ -592,11 +588,11 @@ namespace LuaSTGEditorSharp
             {
                 try
                 {
-                    _Notifier.ShowInfo("Auto saving...");
+                    //_Notifier.ShowInfo("Auto saving...");
                     FileInfo fi = new FileInfo(doc.DocPath);
                     fi.CopyTo(doc.DocPath + ".backup", true);
                     SaveDoc(doc);
-                    _Notifier.ShowSuccess("Auto save successful.");
+                    //_Notifier.ShowSuccess("Auto save successful.");
                 }
                 catch (Exception ex)
                 {
@@ -605,7 +601,7 @@ namespace LuaSTGEditorSharp
 #if DEBUG
                     Console.WriteLine(ex.Message);
 #endif
-                    _Notifier.ShowError("Auto save failed.");
+                    //_Notifier.ShowError("Auto save failed.");
                     continue;
                 }
             }
@@ -843,7 +839,14 @@ namespace LuaSTGEditorSharp
                     break;
                 }
             }
-            if (!e.Cancel) App.Current.Shutdown();
+
+            if (!e.Cancel)
+            {
+                //_Notifier?.ClearMessages(new ClearAll());
+                //_Notifier?.Dispose();
+                DiscordClient?.Dispose();
+                App.Current.Shutdown();
+            }
         }
 
         private void ButtonCloseFile_Click(object sender, RoutedEventArgs e)
