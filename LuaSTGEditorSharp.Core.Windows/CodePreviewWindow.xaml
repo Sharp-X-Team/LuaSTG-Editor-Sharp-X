@@ -10,8 +10,11 @@
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
+    <local:InputWindow.Resources>
+        <FontFamily x:Key="JBMono">/LuaSTGEditorSharp.Core.Windows;component/#JetBrains Mono Regular</FontFamily>
+    </local:InputWindow.Resources>
     <Grid>
-        <avalon:TextEditor x:Name="codeText" FontFamily="JetBrains Mono" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"/>
+        <avalon:TextEditor x:Name="codeText" FontFamily="{StaticResource JBMono}" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"/>
         <!--<TextBox x:Name="codeText" AcceptsReturn="True" FontFamily="Courier New" VerticalScrollBarVisibility="Visible"/>-->
     </Grid>
 </Window>

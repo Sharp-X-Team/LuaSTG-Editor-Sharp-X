@@ -11,14 +11,17 @@
     <local:InputWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </local:InputWindow.Style>
+    <local:InputWindow.Resources>
+        <FontFamily x:Key="JBMono">/LuaSTGEditorSharp.Core.Windows;component/#JetBrains Mono Regular</FontFamily>
+    </local:InputWindow.Resources>
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Content="OK" Margin="10,10,2,10" Padding="3" Click="ButtonOK_Click"/>
                 <Button Content="Cancel" Margin="2,10,10,10" Padding="3" Click="ButtonCancel_Click"/>
             </StackPanel>
-            <avalon:TextEditor x:Name="codeText" FontFamily="JetBrains Mono" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"
-                               KeyDown="CodeText_KeyDown" KeyUp="CodeText_KeyUp"/>
+            <avalon:TextEditor x:Name="codeText" FontFamily="{StaticResource JBMono}" FontSize="13" SyntaxHighlighting="Lua" ShowLineNumbers="True"
+                               KeyDown="CodeText_KeyDown" KeyUp="CodeText_KeyUp" Text="Voix ambiguë d'un coeur qui au "/>
         </DockPanel>
     </Grid>
 </local:InputWindow>
