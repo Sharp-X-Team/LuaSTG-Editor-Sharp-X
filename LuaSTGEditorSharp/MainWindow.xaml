@@ -16,7 +16,10 @@
         WindowState="Maximized"
         Closing="Window_Closing">
     <Window.Style>
-        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
+        </Style>
     </Window.Style>
     <Window.CommandBindings>
         <!--#region File -->
@@ -338,6 +341,14 @@
         </Style>
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Padding" Value="5,0"/>
+        </Style>
+        <Style x:Key="DataGridFix" TargetType="DataGrid">
+            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"/>
+        </Style>
+        <Style TargetType="TabControl" BasedOn="{StaticResource {x:Type TabControl}}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
         </Style>
         <!--#endregion-->
     </Window.Resources>
@@ -826,11 +837,31 @@
                       CanUserResizeRows="False" CanUserAddRows="False"
                       Grid.Column="0" ItemsSource="{Binding ContentTemplate.VisualTree, ElementName=docTabs}" 
                       VerticalScrollBarVisibility="Visible"
-                      DataGridCell.Selected="DataGrid_GotFocus">
+                      DataGridCell.Selected="DataGrid_GotFocus"
+                      Style="{StaticResource DataGridFix}"
+                      HorizontalGridLinesBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"
+                      VerticalGridLinesBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}">
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </DataGrid.CellStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Properties" Binding="{Binding Path=AttrCap}" IsReadOnly="True">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
                     </DataGridTextColumn>
                     <DataGridTemplateColumn Header="Parameters" Width="100">
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Background"
+                                        Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"/>
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=AttrInput_InvokeCommand, UpdateSourceTrigger=Default, Mode=TwoWay}"/>
@@ -868,10 +899,12 @@
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="1.2*" MinHeight="50"/>
                 </Grid.RowDefinitions>
-                <TabControl Grid.Row="2" Margin="0.6,4,9.6,10">
+                <TabControl Grid.Row="2" Margin="0.6,4,9.6,10"
+                            Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}">
                     <TabItem x:Name="tabMessage" Header="Message">
                         <DataGrid x:Name="EditorConsole" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False"
-                              IsReadOnly="True" CanUserAddRows="False">
+                                  IsReadOnly="True" CanUserAddRows="False"
+                                  Style="{StaticResource DataGridFix}">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn CanUserResize="False">
                                     <DataGridTemplateColumn.CellTemplate>
