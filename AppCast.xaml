@@ -2,16 +2,16 @@
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 	<channel>
 		<title>LuaSTG Editor Sharp X</title>
-		<link>https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/AppCast.xaml</link>
+		<link>https://raw.githubusercontent.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/main/AppCast.xaml</link>
 		<description>LuaSTG Editor Sharp X is a clone/fork of LuaSTG Editor Sharp aimed towards improving the original with new functions and altered behaviour.</description>
 		<language>en</language>
 		<item>
 			<title>Version 0.76.0</title>
 			<sparkle:releaseNotesLink>
-				https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/Changelogs/0.76.0_changelog.md
+				https://raw.githubusercontent.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/Changelogs/0.76.0_changelog.md
 			</sparkle:releaseNotesLink>
 			<pubDate>Thu, 1 Jan 2025 00:01:10 +0000</pubDate>
-			<enclosure url="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases/download/0.76.0/LuaSTG.Editor.Sharp.X.v0.76.0.exe"
+			<enclosure url="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/releases/download/0.76.0/LuaSTG.Editor.Sharp.X.v0.76.0.exe"
                        sparkle:version="0.76.0"
                        sparkle:os="windows"
                        type="application/octet-stream"/>
@@ -19,10 +19,10 @@
 		<item>
 			<title>Version 0.75.2</title>
 			<sparkle:releaseNotesLink>
-				https://raw.githubusercontent.com/RyannThi/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/Update%20Log.txt
+				https://raw.githubusercontent.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/Update%20Log.txt
 			</sparkle:releaseNotesLink>
 			<pubDate>Sun, 7 Jul 2024 16:45:00 +0000</pubDate>
-			<enclosure url="https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases/download/0.75.2/LuaSTG.Editor.Sharp.X.v0.75.2.exe"
+			<enclosure url="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/releases/download/0.75.2/LuaSTG.Editor.Sharp.X.v0.75.2.exe"
                        sparkle:version="0.75.2"
                        sparkle:os="windows"
                        type="application/octet-stream"/>

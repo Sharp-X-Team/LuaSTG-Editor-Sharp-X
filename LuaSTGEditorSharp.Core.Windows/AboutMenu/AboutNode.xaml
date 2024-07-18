@@ -31,9 +31,8 @@
                         <LineBreak/><Run Text="You can check the changes we've made already at our wiki page!"/>
                         <Run Text=" "/><Run Text="("/><Run Text="https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki"/>
                         <Run Text=")"/><LineBreak/><Run/><LineBreak/>
-                        <Run Text="LuaSTG Editor Sharp is a unoffical LuaSTG Editor. Aim of the LuaSTG Editor Sharp is to develop a user-friendly, high extensive editor with higher"/>
-                        <Run Text="effciency. User interface is similar with offical one which is easy to master if user is familiar with old one. However, old projects are not supported due to different file format."/>
-                        <LineBreak/><Run Text=""/></TextBlock>
+                        <Run Text="LuaSTG Editor Sharp X is a clone/fork of LuaSTG Editor Sharp aimed towards improvingthe original with new functions and altered behaviour, providing more ease of support for LuaSTG ExPlus, -x and Sub and in active development, open to feedback and suggestions"/>
+                    </TextBlock>
                     <Image x:Name="taniaanehina" HorizontalAlignment="Left" Height="82" Margin="202,156,0,0" VerticalAlignment="Top" Width="76" Source="taniapfp.png"/>
                     <Image x:Name="zinoimg" HorizontalAlignment="Left" Height="82" Margin="115,115,0,0" VerticalAlignment="Top" Width="76" Source="zinopfp.png"/>
                     <Image x:Name="ryannimg" HorizontalAlignment="Left" Height="82" Margin="115,202,0,0" VerticalAlignment="Top" Width="76" Source="ryannthipfp.png"/>
