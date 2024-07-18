@@ -324,11 +324,12 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}"/>
-                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer0BorderBrush}}"/>
+                                <Setter TargetName="border" Property="Background" Value="#446C9CF6"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#446C9CF6"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Cursor" Value="Hand"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#446C9CF6"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
