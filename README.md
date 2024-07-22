@@ -60,24 +60,10 @@ Of course, that's just a fraction of all the things the editor is capable of.
     <img width="100%" src="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/blob/main/EditorPreview.png">
 </p>
 
-
-<br><br>
+<h3>Importing from Editor Sharp</h3>
+Projects are mostly compatible when bringing them from Sharp to Sharp X. There are exceptions, though, which can all be fixed. Some nodes had their parameter list changed, so you'll need to replace those in your project. These errors will be exhibited in the error list at the bottom, of which you can analyze and see what nodes need to be adjusted.
 <br>
-
-
-This is a clone of the [LuaSTG Editor Sharp](https://github.com/czh098tom/LuaSTG-Editor-Sharp) repository with the aim of further expanding the editor's functionality.
-
-You can check the changes for each version made at our [releases page](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases)!
-
-*Join our Discord server for more information and other content:* https://discord.gg/bhM599npvd
-
-
-LuaSTG Editor Sharp X is an unoffical LuaSTG Editor.
-The aim of LuaSTG Editor Sharp X is to develop an user-friendly, high extensive editor with higher efficiency.
-The user interface is similar to the offical one, so it's easy to master if the user is familiar with the old one.
-However, old projects are not supported due to different file format.
-
+<br>
 For further information:
 
-* Click [HERE](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/User%20Manual.md) to see the user manual. (unfinished)
 * Click [HERE](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/blob/main/LuaSTGEditorSharp/Update%20Log.txt) to see the update log.
