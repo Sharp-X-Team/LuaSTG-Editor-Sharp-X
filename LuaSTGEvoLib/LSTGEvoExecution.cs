@@ -20,8 +20,6 @@ namespace LuaSTGEditorSharp
                 + config.ModName + "\'\" ";
             UseShellExecute = false;
             CreateNoWindow = true;
-            RedirectStandardError = !currentApp.SubLogWindow;
-            RedirectStandardOutput = !currentApp.SubLogWindow;
         }
 
         protected override string LogFileName => "engine.log";
