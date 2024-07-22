@@ -49,6 +49,7 @@ namespace LuaSTGEditorSharp
         #endregion
         public static RoutedUICommand Settings { get; }
         public static RoutedUICommand AboutNode { get; }
+        public static RoutedUICommand OpenMarketplace { get; }
 
         #region used to take parameters
         public static RoutedUICommand AdjustProp { get; }
@@ -144,6 +145,7 @@ namespace LuaSTGEditorSharp
             ViewModFolder = new RoutedUICommand("View Mod Folder", "ViewModFolder", typeof(EditorRoutedCommands));
             ViewDefinition = new RoutedUICommand("View Definition", "ViewDefination", typeof(EditorRoutedCommands));
             Settings = new RoutedUICommand("Settings", "Settings", typeof(EditorRoutedCommands));
+            OpenMarketplace = new RoutedUICommand("Marketplace", "Marketplace", typeof(EditorRoutedCommands));
             AboutNode = new RoutedUICommand("About Node", "AboutNode", typeof(EditorRoutedCommands));
             AdjustProp = new RoutedUICommand("Adjust Properties", "AdjustProperties", typeof(EditorRoutedCommands));
         }

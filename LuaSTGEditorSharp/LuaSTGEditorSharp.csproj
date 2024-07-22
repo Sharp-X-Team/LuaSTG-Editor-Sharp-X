@@ -99,6 +99,9 @@
     <Reference Include="DiscordRPC, Version=1.2.1.24, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DiscordRichPresence.1.2.1.24\lib\net45\DiscordRPC.dll</HintPath>
     </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
     <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
       <HintPath>..\packages\Irony.0.9.1\lib\net40\Irony.dll</HintPath>
     </Reference>
@@ -142,6 +145,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Addons\NodeInfo.cs" />
     <Compile Include="EditorData\Commands\Factory\AfterFac.cs" />
     <Compile Include="EditorData\Commands\Factory\BeforeFac.cs" />
     <Compile Include="EditorData\Commands\Factory\ChildFac.cs" />
@@ -149,6 +153,8 @@
     <Compile Include="EditorData\Commands\Factory\ParentFac.cs" />
     <Compile Include="EditorData\Message\EXEPathNotSetMessage.cs" />
     <Compile Include="EditorRoutedCommands.cs" />
+    <Compile Include="Addons\AddonObjectInfo.cs" />
+    <Compile Include="Addons\PresetInfo.cs" />
     <Compile Include="Notifications\SuccessDisplayPart.xaml.cs">
       <DependentUpon>SuccessDisplayPart.xaml</DependentUpon>
     </Compile>
@@ -178,6 +184,9 @@
     <Compile Include="Toolbox\TreeViewLineConverter.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddonsWindow.xaml.cs">
+      <DependentUpon>AddonsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>
@@ -226,6 +235,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\AddonsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\NewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

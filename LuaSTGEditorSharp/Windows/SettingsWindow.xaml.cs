@@ -618,6 +618,8 @@ namespace LuaSTGEditorSharp.Windows
                 PluginNameInte = "lib\\LuaSTGSubLib.dll";
             else if (LuaSTGExecutableInfos.ProductName.Contains("-x"))
                 PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
+            else if (LuaSTGExecutableInfos.ProductName.Contains("Evo"))
+                PluginNameInte = "lib\\LuaSTGEvoLib.dll";
             else
                 PluginNameInte = "lib\\LuaSTGLib.Default.dll";
 

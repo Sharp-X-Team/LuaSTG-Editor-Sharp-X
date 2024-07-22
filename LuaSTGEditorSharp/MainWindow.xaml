@@ -69,6 +69,7 @@
         <CommandBinding Command="local:EditorRoutedCommands.ViewDefinition" Executed="ViewDefinitionCommandExecuted" CanExecute="ViewDefinitionCommand_CanExecute"/>
         <!--#endregion-->
         <CommandBinding Command="local:EditorRoutedCommands.Settings" Executed="SettingsCommandExecuted"/>
+        <CommandBinding Command="local:EditorRoutedCommands.OpenMarketplace" Executed="OpenMarketplaceExecuted"/>
         <CommandBinding Command="local:EditorRoutedCommands.AboutNode" Executed="AboutNodeCommandExecuted"/>
     </Window.CommandBindings>
     <Window.Resources>
@@ -522,6 +523,10 @@
                     <MenuItem Header="_Export all code" Command="local:EditorRoutedCommands.ExportCode"/>
                     <Separator/>
                     <MenuItem Header="_Definitions" Command="local:EditorRoutedCommands.ViewDefinition"/>
+                </MenuItem>
+                <MenuItem Header="_Marketplace">
+                    <MenuItem Header="_Presets" Command="local:EditorRoutedCommands.OpenMarketplace" CommandParameter="0"/>
+                    <MenuItem Header="_Nodes" Command="local:EditorRoutedCommands.OpenMarketplace" CommandParameter="1"/>
                 </MenuItem>
                 <MenuItem Header="_Settings">
                     <MenuItem Header="_General settings" Command="local:EditorRoutedCommands.Settings" CommandParameter="0">

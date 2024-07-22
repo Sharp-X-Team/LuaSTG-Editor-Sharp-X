@@ -1512,6 +1512,18 @@ namespace LuaSTGEditorSharp
             //catch { }
         }
 
+        private void OpenMarketplaceExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (int.TryParse(e.Parameter?.ToString(), out int i))
+            {
+                new AddonsWindow(i).ShowDialog();
+            }
+            else
+            {
+                new AddonsWindow().ShowDialog();
+            }
+        }
+
         private void EditNodeCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             ShowEditWindow();
