@@ -16,7 +16,11 @@
 **LuaSTG Editor Sharp X** is a *code generator* for the LuaSTG engine, based on the *THlib* library. It is based on and forked from [**czh098tom**](https://github.com/czh098tom)'s original [**Editor Sharp**](https://github.com/czh098tom/LuaSTG-Editor-Sharp).
 
 <h3>Usage</h3>
-to be written
+Games can be created for LuaSTG without the use of direct lua coding by using the editor. There are multiple nodes that equate to functions and code groups that can be placed within a hierarchy to generate compatible lua output code. This is the main way of producing content within the editor, but direct coding is permitted as well.
+<br><br>
+<p align="center" width="50%">
+    <img width="100%" src="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/blob/main/CodeGenerationExample.png">
+</p>
 
 <h3>Compatibility</h3>
 The editor is designed to fit many variants of the LuaSTG engine. New versions can be added within the source via a plugin system, which can change runtime arguments between versions.
