@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuaSTGEditorSharp.Windows"
+        xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
         mc:Ignorable="d"
-        Title="Addon marketplace"
+        Title="Addons"
         Height="450"
-        Width="800">
+        Width="700">
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
@@ -18,6 +19,63 @@
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Padding" Value="5,0"/>
         </Style>
+
+        <ControlTemplate x:Key="AddonListListBoxTemplate" TargetType="ListBox">
+            <Border BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}">
+                <ScrollViewer Margin="0" Focusable="False">
+                    <ItemsPresenter/>
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+
+        <Style x:Key="AddonListListBoxStyle" TargetType="ListBox">
+            <Setter Property="SelectionMode" Value="Multiple"/>
+            <Setter Property="Template" Value="{StaticResource AddonListListBoxTemplate}"/>
+            <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border BorderThickness="1"
+                                BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer0BorderBrush}}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Text="{Binding Author}" FontSize="10"/>
+                                </StackPanel>
+                            </Grid>
+                            <Border.ContextMenu>
+                                <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+                                    <ContextMenu.ItemsSource>
+                                        <CompositeCollection>
+                                            <MenuItem Header="_Install" IsEnabled="{Binding CanInstall}"/>
+                                            <MenuItem Header="_Uninstall" IsEnabled="{Binding IsInstalled}"/>
+                                            <Separator/>
+                                            <MenuItem Header="_Eat Pant"/>
+                                        </CompositeCollection>
+                                    </ContextMenu.ItemsSource>
+                                </ContextMenu>
+                            </Border.ContextMenu>
+                        </Border>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
@@ -25,33 +83,29 @@
             <Button Content="{Binding SelectedToUninstall, ElementName=window}" Margin="5,5" Height="32" Width="96"/>
             <Button Content="Close" Margin="5,5" Height="32" Width="96" Click="ButtonClose_Click"/>
         </StackPanel>
-        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Padding="0">
-            <TabItem x:Name="PresetTab" Header="Presets">
-                <ListBox x:Name="PresetList" Grid.IsSharedSizeScope="True"
-                         SelectionChanged="PresetList_SelectionChanged"
-                         ItemsSource="{Binding ListPreset, ElementName=window}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Orientation="Horizontal">
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Padding="0"
+                    x:Name="TabControls">
+            <TabItem x:Name="AddonsTab" Header="Manage Addons">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <CheckBox Content="Enable Addons" IsChecked="{Binding AreAddonsEnabled, ElementName=window}"/>
+                    <ListView>
 
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="PresetTab" Header="Presets">
+                <ListBox x:Name="PresetList"
+                         SelectionChanged="ItemList_SelectionChanged"
+                         ItemsSource="{Binding ListPresets, ElementName=window}"
+                         Style="{StaticResource AddonListListBoxStyle}">
                 </ListBox>
             </TabItem>
             <TabItem x:Name="NodesTab" Header="Nodes">
-                
+                <ListBox x:Name="NodeList"
+                         SelectionChanged="ItemList_SelectionChanged"
+                         ItemsSource="{Binding ListNodes, ElementName=window}"
+                         Style="{StaticResource AddonListListBoxStyle}">
+                </ListBox>
             </TabItem>
         </TabControl>
     </DockPanel>

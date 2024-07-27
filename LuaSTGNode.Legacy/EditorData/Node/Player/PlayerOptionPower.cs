@@ -39,7 +39,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "Create options in power level " + Children.Count.ToString();
+            return $"Set options in power level {Children.Count}";
         }
 
         public override object Clone()

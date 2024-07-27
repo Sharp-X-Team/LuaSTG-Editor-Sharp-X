@@ -9,6 +9,7 @@
     <RootNamespace>LuaSTGEditorSharp</RootNamespace>
     <AssemblyName>LuaSTGEditorSharp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>preview</LangVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -145,7 +146,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Addons\NodeInfo.cs" />
     <Compile Include="EditorData\Commands\Factory\AfterFac.cs" />
     <Compile Include="EditorData\Commands\Factory\BeforeFac.cs" />
     <Compile Include="EditorData\Commands\Factory\ChildFac.cs" />
@@ -154,7 +154,6 @@
     <Compile Include="EditorData\Message\EXEPathNotSetMessage.cs" />
     <Compile Include="EditorRoutedCommands.cs" />
     <Compile Include="Addons\AddonObjectInfo.cs" />
-    <Compile Include="Addons\PresetInfo.cs" />
     <Compile Include="Notifications\SuccessDisplayPart.xaml.cs">
       <DependentUpon>SuccessDisplayPart.xaml</DependentUpon>
     </Compile>
@@ -262,6 +261,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Addons\AddonsConfig.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Changelogs\0.76.0_changelog.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
