@@ -18,6 +18,7 @@ using LuaSTGEditorSharp.Plugin;
 using LuaSTGEditorSharp.Plugin.Default;
 using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.Windows;
+using LuaSTGEditorSharp.Addons;
 
 namespace LuaSTGEditorSharp
 {
@@ -38,21 +39,9 @@ namespace LuaSTGEditorSharp
         protected override void OnStartup(StartupEventArgs e)
         {
             // Don't ask. I don't know. It just works. Start of the fuckery.
-            /*
-            ResourceDictionary r1 = new ResourceDictionary();
-            r1.Source = new Uri($"Themes/ColourDictionaries/{CurrentTheme}.xaml", UriKind.Relative);
-            ResourceDictionary r2 = new ResourceDictionary();
-            r2.Source = new Uri($"Themes/ControlColours.xaml", UriKind.Relative);
-            ResourceDictionary r3 = new ResourceDictionary();
-            r3.Source = new Uri($"Themes/Controls.xaml", UriKind.Relative);
-            Resources.MergedDictionaries.Add(r1);
-            Resources.MergedDictionaries.Add(r2);
-            Resources.MergedDictionaries.Add(r3);
-            */
             ResourceDictionary r1 = new ResourceDictionary();
             r1.Source = new Uri($"pack://application:,,,/LuaSTGEditorThemes;component/{CurrentTheme}.xaml");
             Resources.MergedDictionaries.Add(r1);
-
             // End of the fuckery.
 
             FileStream fs = null;
@@ -67,6 +56,12 @@ namespace LuaSTGEditorSharp
                 sw = new StreamWriter(fs);
                 Console.SetOut(sw);
                 base.OnStartup(e);
+
+                bool addonsLoadedCorrectly = true;
+                if (!AddonManager.TryLoadAddons())
+                {
+                    addonsLoadedCorrectly = false;
+                }
 
                 bool isPluginLoadedCorrectly = true;
                 PluginHandler.DefaultPlugin = new DefaultPluginEntry();

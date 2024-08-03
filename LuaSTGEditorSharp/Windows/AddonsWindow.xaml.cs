@@ -16,271 +16,288 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Collections.Specialized;
 using System.IO;
 using IniParser;
+using System.IO.Compression;
+using System.Text.RegularExpressions;
 
-namespace LuaSTGEditorSharp.Windows
+namespace LuaSTGEditorSharp.Windows;
+
+public partial class AddonsWindow : Window, INotifyPropertyChanged
 {
-    public partial class AddonsWindow : Window, INotifyPropertyChanged
+    public static readonly string PathToZip = $"{Directory.GetCurrentDirectory()}/Addons/AddonList.zip";
+    
+    public bool AreAddonsEnabled
     {
-        public static readonly string PathToConfig = $"{Directory.GetCurrentDirectory()}/Addons/AddonsConfig.ini";
-        public IniData AddonConfigData;
-        public bool AreAddonsEnabled
+        get => bool.Parse(AddonManager.AddonConfigData["Core_Common"]["EnableAddons"]);
+        set => AddonManager.AddonConfigData["Core_Common"]["EnableAddons"] = value.ToString();
+    }
+
+    public string SelectedToInstall => $"Install ({AddonsToDownload.Count})";
+    public string SelectedToUninstall => $"Uninstall ({AddonsToUninstall.Count})";
+
+    public ObservableCollection<MetaAddonInfo> allAddonList;
+
+    private ObservableCollection<MetaAddonInfo> _listPresets;
+    public ObservableCollection<MetaAddonInfo> ListPresets
+    {
+        get => _listPresets;
+        set
         {
-            get => bool.Parse(AddonConfigData["Core_Common"]["EnableAddons"]);
-            set => AddonConfigData["Core_Common"]["EnableAddons"] = value.ToString();
+            _listPresets = value;
+            RaisePropertyChanged("ListPresets");
         }
+    }
 
-        public string SelectedToInstall => $"Install ({AddonsToDownload.Count})"; // temp
-        public string SelectedToUninstall => $"Uninstall ({0})"; // temp
-
-        private ObservableCollection<AddonObjectInfo> listPresets = new ObservableCollection<AddonObjectInfo>();
-        public ObservableCollection<AddonObjectInfo> ListPresets
+    private ObservableCollection<MetaAddonInfo> _listNodes;
+    public ObservableCollection<MetaAddonInfo> ListNodes
+    {
+        get => _listNodes;
+        set
         {
-            get => listPresets;
-            set
-            {
-                if (value == null)
-                {
-                    listPresets = new ObservableCollection<AddonObjectInfo>();
-                    //listPresets.CollectionChanged += new NotifyCollectionChangedEventHandler(this.AttributesChanged);
-                }
-                else
-                {
-                    throw new InvalidOperationException();
-                }
-            }
+            _listNodes = value;
+            RaisePropertyChanged("ListNodes");
         }
+    }
 
-        private ObservableCollection<AddonObjectInfo> listNodes = new ObservableCollection<AddonObjectInfo>();
-        public ObservableCollection<AddonObjectInfo> ListNodes
+    public ObservableCollection<MetaAddonInfo> AddonsToDownload { get; set; } = [];
+    public ObservableCollection<MetaAddonInfo> AddonsToUninstall { get; set; } = [];
+
+    // Warning: Fuckery. I don't want to use too much memory, so I have to do this. Sorry lmao <3
+    // (But I did end up creating two Lists inside of here each call so uhhhh that may defeat the purpose?? If it works, it works ¯\_(ツ)_/¯.
+    private ObservableCollection<MetaAddonInfo> GetNodeAddons(AddonType type, ObservableCollection<MetaAddonInfo> queryList)
+    {
+        List<string> existingNames = [];
+        foreach (var item in AddonManager.InstalledAddons)
+            existingNames.Add(item.Meta.Name);
+        // This will check if the type is the matching one and if the addon is already installed.
+        List<MetaAddonInfo> filteredList = queryList.Where(a => a.Type == type && !existingNames.Contains(a.Name)).ToList();
+        return new ObservableCollection<MetaAddonInfo>(filteredList);
+    }
+
+    // Help
+    public AddonsWindow()
+    {
+        allAddonList = [];
+        bool initialized = false;
+        if (AddonManager.TryLoadAddons())
         {
-            get => listNodes;
-            set
-            {
-                if (value == null)
-                {
-                    listNodes = new ObservableCollection<AddonObjectInfo>();
-                    //listNodes.CollectionChanged += new NotifyCollectionChangedEventHandler(this.AttributesChanged);
-                }
-                else
-                {
-                    throw new InvalidOperationException();
-                }
-            }
+#pragma warning disable CS4014
+            TryGetAddonsList();
+#pragma warning restore CS4014
+            initialized = true;
         }
+        InitializeComponent();
+        if (!initialized)
+            TabControls.IsEnabled = false;
+    }
 
-        public List<AddonObjectInfo> InstalledAddons = new List<AddonObjectInfo>();
-        public List<AddonObjectInfo> AddonsToDownload = new List<AddonObjectInfo>();
-
-        // Help
-        public AddonsWindow()
+    public AddonsWindow(int i)
+        : this()
+    {
+        switch (i)
         {
-            ListPresets = null;
-            ListNodes = null;
-            bool initialized = false;
-            if (TryReadConfig())
-            {
-                TryGetAddonsList();
-                initialized = true;
-            }
-            InitializeComponent();
-            if (!initialized)
-                TabControls.IsEnabled = false;
+            case 0:
+            default:
+                AddonsTab.IsSelected = true;
+                break;
+            case 1:
+                PresetTab.IsSelected = true;
+                break;
+            case 2:
+                NodesTab.IsSelected = true;
+                break;
         }
+    }
 
-        public AddonsWindow(int i)
-            : this()
+    #region Install
+
+    /// <summary>
+    /// This ideally should not be used to install multiple addons at once but inside <see cref="InstallAllSelected"/> bulk method.<br/>
+    /// This is because the bulk method creates a single zip instance for all of this method's calls.<br/>
+    /// I'm not even sure if calling it by itself is safe.
+    /// </summary>
+    /// <param name="selected"></param>
+    /// <param name="installingBulk"></param>
+    public async Task InstallSelected(MetaAddonInfo selected, ZipArchive zipArc = null)
+    {
+        bool installingBulk = false;
+        if (zipArc == null)
+            installingBulk = true;
+
+        using (zipArc ??= ZipFile.OpenRead(PathToZip))
         {
-            switch (i)
-            {
-                case 0:
-                default:
-                    AddonsTab.IsSelected = true;
-                    break;
-                case 1:
-                    PresetTab.IsSelected = true;
-                    break;
-                case 2:
-                    NodesTab.IsSelected = true;
-                    break;
-            }
-        }
-
-        #region Install
-
-        public void InstallSelected(AddonObjectInfo selected, bool installingBulk = false)
-        {
-            SectionData newSection = selected.ToSectionData();
-            AddonConfigData.Sections.Add(newSection);
+            if (!await selected.ExtractAddonFiles(zipArc))
+                return; // Something went wrong.
+            AddonObjectInfo addon = AddonObjectInfo.FromMeta(selected);
+            SectionData newSection = addon.ToSectionData();
+            AddonManager.AddonConfigData.Sections.Add(newSection);
 
             // Avoid possible file access violations. If installing in bulk, doesn't save until all addons are installed.
             if (!installingBulk)
             {
-                FileIniDataParser parser = new FileIniDataParser();
-                parser.WriteFile(PathToConfig, AddonConfigData);
+                FileIniDataParser parser = new();
+                parser.WriteFile(AddonManager.PathToConfig, AddonManager.AddonConfigData);
             }
         }
+    }
 
-        public void InstallAllSelected()
+    /// <summary>
+    /// This is the prefered way.
+    /// </summary>
+    public async Task InstallAllSelected()
+    {
+        using (ZipArchive zipArc = ZipFile.OpenRead(PathToZip))
         {
-            foreach (AddonObjectInfo addon in AddonsToDownload)
-                InstallSelected(addon, true);
-            FileIniDataParser parser = new FileIniDataParser();
-            parser.WriteFile(PathToConfig, AddonConfigData);
+            foreach (MetaAddonInfo addon in AddonsToDownload)
+                await InstallSelected(addon, zipArc);
         }
+        FileIniDataParser parser = new();
+        parser.WriteFile(AddonManager.PathToConfig, AddonManager.AddonConfigData);
+        MessageBox.Show("Downloaded???");
+    }
 
-        #endregion
-        #region Uninstall
+    #endregion
+    #region Uninstall
 
-        public void UninstallSelected(AddonObjectInfo selected)
+    public void UninstallSelected(AddonObjectInfo selected)
+    {
+
+    }
+
+    public void UninstallAllSelected()
+    {
+        //foreach (AddonObjectInfo addon in AddonsToUninstall)
+        //    UninstallSelected(addon);
+    }
+
+    #endregion
+    #region Manage Addons
+
+    /// <summary>
+    /// Try to find an update for a given addon.
+    /// </summary>
+    /// <returns>True if update is found; false if there is no updates.</returns>
+    public bool TryFindUpdate()
+    {
+        return false;
+    }
+
+    #endregion
+    #region TryGets
+
+    private async Task TryGetAddonsList()
+    {
+        IsEnabled = false;
+        if (!await DownloadAddonZip()) // help
+            return;
+
+        try
         {
-
-        }
-
-        public void UninstallAllSelected()
-        {
-            //foreach (AddonObjectInfo addon in AddonsToUninstall)
-            //    UninstallSelected(addon);
-        }
-
-        #endregion
-        #region Manage Addons
-
-        public bool TryReadConfig()
-        {
-            try
+            using (ZipArchive arc = ZipFile.OpenRead(PathToZip))
             {
-                if (!File.Exists(PathToConfig))
-                    return false; // Something is very wrong here
-
-                FileIniDataParser parser = new FileIniDataParser();
-                AddonConfigData = parser.ReadFile(PathToConfig);
-                if (!bool.Parse(AddonConfigData["Core_Common"]["EnableAddons"]))
-                    return false; // Addons aren't enabled, skipping.
-
-                foreach (SectionData section in AddonConfigData.Sections)
+                allAddonList.Clear();
+                // Extract manifest and create AddonObjectInfo.
+                string baseFolderPath = Path.Combine(MetaAddonInfo.GetFirstFolderName(arc), "Addons");
+                foreach (ZipArchiveEntry entry in arc.Entries)
                 {
-                    if (section.SectionName == "Core_Common")
-                        continue; // This is definitely not a fucking addon.
-                    AddonObjectInfo addon = new AddonObjectInfo(section.Keys);
-                    InstalledAddons.Add(addon);
+                    
+                    if (entry.FullName.StartsWith(baseFolderPath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        string relativePath = entry.FullName.Substring(baseFolderPath.Length);
+                        if (!Regex.IsMatch(relativePath, @"^/[^/]+/$"))
+                            continue;
+                        MetaAddonInfo? addon = await MetaAddonInfo.ExtractManifest(arc, relativePath);
+                        if (addon == null)
+                            continue;
+                        addon.FolderName = relativePath;
+                        allAddonList.Add(addon);
+                    }
                 }
+                ListPresets = GetNodeAddons(AddonType.Preset, allAddonList);
+                ListNodes = GetNodeAddons(AddonType.Node, allAddonList);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.ToString());
+        }
 
+        IsEnabled = true;
+    }
+
+    private async Task<bool> DownloadAddonZip()
+    {
+        string url = $"https://api.github.com/repos/Sharp-X-Team/Sharp-X-Addons/zipball/main";
+
+        try
+        {
+            using (HttpClient client = new())
+            {
+                client.DefaultRequestHeaders.Add("User-Agent", "CSharpApp");
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                byte[] zipData = await response.Content.ReadAsByteArrayAsync();
+                using (FileStream fs = new FileStream(PathToZip, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
+                {
+                    await fs.WriteAsync(zipData, 0, zipData.Length);
+                }
                 return true;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"There was a problem trying to read AddonsConfig.ini. Aborting initialization.\nError: {ex.Message}");
-                return false;
-            }
         }
-
-        /// <summary>
-        /// Try to find an update for a given addon.
-        /// </summary>
-        /// <returns>True if update is found; false if there is no updates.</returns>
-        public bool TryFindUpdate()
+        catch (Exception ex)
         {
+            MessageBox.Show($"Something went wrong with refreshing the addon list.\n{ex}");
             return false;
         }
-
-        #endregion
-        #region TryGets
-
-        private async Task TryGetAddonsList()
-        {
-            try
-            {
-                var httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.UserAgent.Add(
-                    new ProductInfoHeaderValue("LuaSTG_Editor_Sharp_X", "1"));
-                var repo = "Sharp-X-Team/Sharp-X-Addons";
-                var contentsUrl = $"https://api.github.com/repos/{repo}/contents/Addons";
-                var contentsJson = await httpClient.GetStringAsync(contentsUrl);
-                var contents = (JArray)JsonConvert.DeserializeObject(contentsJson);
-                foreach (var item in contents)
-                {
-                    AddonObjectInfo addonInfo = GetAddonInfo((string)item["name"]);
-                    if ((string)item["type"] != "dir" || addonInfo == null)
-                        continue;
-                    if (addonInfo.Type == AddonType.Node)
-                        listNodes.Add(addonInfo);
-                    else if (addonInfo.Type == AddonType.Preset)
-                        listPresets.Add(addonInfo);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private AddonObjectInfo GetAddonInfo(string folderPath)
-        {
-            string linkToManifest = $"https://raw.githubusercontent.com/Sharp-X-Team/Sharp-X-Addons/main/Addons/{folderPath}/manifest.ini";
-            try
-            {
-                string manifestContent;
-                using (WebClient client = new WebClient())
-                    manifestContent = client.DownloadString(linkToManifest);
-                IniDataParser parser = new IniDataParser();
-                IniData data = parser.Parse(manifestContent);
-
-                AddonObjectInfo addon = null;
-                if (data["node"].Count != 0)
-                    addon = new AddonObjectInfo(AddonType.Node, data["node"]);
-                else
-                    addon = new AddonObjectInfo(AddonType.Preset, data["preset"]);
-                return addon;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        #endregion
-        #region Events
-
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void ItemList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems != null)
-            {
-                foreach (var item in e.AddedItems)
-                    AddonsToDownload.Add(item as AddonObjectInfo);
-            }
-            if (e.RemovedItems != null)
-            {
-                foreach (var item in e.RemovedItems)
-                    AddonsToDownload.Remove(item as AddonObjectInfo);
-            }
-            RaisePropertyChanged("AddonsToDownload");
-            RaisePropertyChanged("SelectedToInstall");
-        }
-
-        #endregion
-        #region Property Changed
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged([CallerMemberName] string propName = default)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-
-        #endregion
     }
+
+    #endregion
+    #region Events
+
+    private async void DownloadAddonZip_Click(object sender, RoutedEventArgs e)
+    {
+        IsEnabled = false;
+        await TryGetAddonsList();
+        IsEnabled = true;
+    }
+
+    private async void DownloadSelectedAddons_Click(object sender, RoutedEventArgs e)
+    {
+        await InstallAllSelected();
+    }
+
+    private void ButtonClose_Click(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void ItemList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.AddedItems != null)
+        {
+            foreach (var item in e.AddedItems)
+                AddonsToDownload.Add((MetaAddonInfo)item);
+        }
+        if (e.RemovedItems != null)
+        {
+            foreach (var item in e.RemovedItems)
+                AddonsToDownload.Remove((MetaAddonInfo)item);
+        }
+        RaisePropertyChanged("AddonsToDownload");
+        RaisePropertyChanged("SelectedToInstall");
+    }
+
+    #endregion
+    #region Property Changed
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void RaisePropertyChanged([CallerMemberName] string propName = default!)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+    }
+
+    #endregion
 }

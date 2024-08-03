@@ -1,72 +1,74 @@
 ﻿using IniParser;
 using IniParser.Model;
 using IniParser.Parser;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.IO.Compression;
+using System.IO;
 
-namespace LuaSTGEditorSharp.Addons
+namespace LuaSTGEditorSharp.Addons;
+
+public enum AddonType
 {
-    public enum AddonType
+    Preset,
+    Node
+}
+
+public sealed class AddonObjectInfo
+{
+    public MetaAddonInfo Meta = new();
+
+    public bool IsEnabled { get; set; } = true;
+
+    /// <summary>
+    /// Don't use this for proper initialization alone. Only use with manual setting of <see cref="Meta"/>.
+    /// </summary>
+    public AddonObjectInfo() { }
+
+    /// <summary>
+    /// The correct initializer.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="data"></param>
+    public AddonObjectInfo(AddonType? type, KeyDataCollection data)
     {
-        Preset,
-        Node
+        Meta = new(type, data)
+        {
+            RepoLink = GetRepoLink()
+        };
+
+        IsEnabled = bool.Parse(AddonManager.AddonConfigData[Meta.Name]["Enabled"]);
     }
 
-    public sealed class AddonObjectInfo
+    public string GetRepoLink()
     {
-        public AddonType? Type { get; set; }
+        return $"https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/Addons/{Meta.Name}";
+    }
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string PathToIcon { get; set; } = string.Empty;
-        public string Author { get; set; }
-        public string ChangeLog { get; set; }
-        public string RepoLink { get; set; }
-        public int Version { get; set; }
-
-        public bool IsInstalled { get => false; }
-        public bool CanInstall { get => true; }
-
-        public bool IsEnabled { get; set; }
-
-        public AddonObjectInfo(AddonType? type, KeyDataCollection data)
+    public static AddonObjectInfo FromMeta(MetaAddonInfo meta)
+    {
+        AddonObjectInfo addon = new()
         {
-            Type = type;
-            Name = data["Name"];
-            Description = data["Description"];
-            Author = data["Owner"];
-            ChangeLog = data["Changelog"];
-            Version = int.Parse(data["Version"]);
-            PathToIcon = data["Icon"];
+            Meta = meta
+        };
+        return addon;
+    }
 
-            RepoLink = GetRepoLink();
-        }
-
-        public AddonObjectInfo(KeyDataCollection data)
-            : this(null, data) { }
-
-        public string GetRepoLink()
-        {
-            return $"https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/Addons/{Name}";
-        }
-
-        public SectionData ToSectionData()
-        {
-            SectionData section = new SectionData(Name);
-            section.Keys.AddKey("Description", Description);
-            section.Keys.AddKey("CurrentVersion", Version.ToString());
-            section.Keys.AddKey("Author", Author);
-            section.Keys.AddKey("Icon", PathToIcon);
-            return section;
-        }
-
-        public bool DownloadAddonFiles()
-        {
-            return true;
-        }
+    public SectionData ToSectionData()
+    {
+        SectionData section = new(Meta.Name);
+        section.Keys.AddKey("Type", Meta.Type.ToString());
+        section.Keys.AddKey("PathToManifest", Path.Combine(Directory.GetCurrentDirectory(), $"Addons{Meta.FolderName}/manifest.ini"));
+        section.Keys.AddKey("Enabled", IsEnabled.ToString());
+        return section;
     }
 }

@@ -60,7 +60,7 @@
                                 </StackPanel>
                             </Grid>
                             <Border.ContextMenu>
-                                <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+                                <ContextMenu>
                                     <ContextMenu.ItemsSource>
                                         <CompositeCollection>
                                             <MenuItem Header="_Install" IsEnabled="{Binding CanInstall}"/>
@@ -79,18 +79,34 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
-            <Button Content="{Binding SelectedToInstall, ElementName=window}" Margin="5,5" Height="32" Width="96"/>
-            <Button Content="{Binding SelectedToUninstall, ElementName=window}" Margin="5,5" Height="32" Width="96"/>
+            <Button Content="Refresh Addon List" Margin="5,5" Height="32" Width="115"
+                    Click="DownloadAddonZip_Click"
+                    ToolTip="Downloads a zip file from github. Please don't spam this button."/>
+            <Button Content="{Binding SelectedToInstall, ElementName=window}"
+                    Margin="5,5" Height="32" Width="96" Click="DownloadSelectedAddons_Click"/>
+            <Button Content="{Binding SelectedToUninstall, ElementName=window}"
+                    Margin="5,5" Height="32" Width="96"/>
             <Button Content="Close" Margin="5,5" Height="32" Width="96" Click="ButtonClose_Click"/>
         </StackPanel>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Padding="0"
                     x:Name="TabControls">
             <TabItem x:Name="AddonsTab" Header="Manage Addons">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <CheckBox Content="Enable Addons" IsChecked="{Binding AreAddonsEnabled, ElementName=window}"/>
-                    <ListView>
-
-                    </ListView>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MinWidth="100"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*" MinWidth="100"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <CheckBox Content="Enable Addons" Grid.Column="0"
+                                  IsChecked="{Binding AreAddonsEnabled, ElementName=window}"/>
+                    </ScrollViewer>
+                    <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+                    <ListBox x:Name="InstalledAddonsList" Grid.Column="2"
+                             ItemsSource="{Binding InstalledAddons, ElementName=window}"
+                             Style="{StaticResource AddonListListBoxStyle}">
+                    </ListBox>
                 </Grid>
             </TabItem>
             <TabItem x:Name="PresetTab" Header="Presets">
