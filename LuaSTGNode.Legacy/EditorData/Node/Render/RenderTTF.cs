@@ -82,8 +82,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         [JsonIgnore, NodeAttribute]
         public string Fmat
         {
-            get => DoubleCheckAttr(6, name: "Format").attrInput;
-            set => DoubleCheckAttr(6, name: "Format").attrInput = value;
+            get => DoubleCheckAttr(6, "alignInput", "Format").attrInput;
+            set => DoubleCheckAttr(6, "alignInput", "Format").attrInput = value;
         }
 
         [JsonIgnore, NodeAttribute]

@@ -65,7 +65,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
 
         public override IEnumerable<string> ToLua(int spacing)
         {
-            string sk = "font" + "\\\\" + GetRawPath(0);
+            string sk = "font" + "/" + GetRawPath(0);
             string sp = Indent(spacing);
             //string sk2 = sk.Replace("fnt", "bmp");
             //string skpng = "_LoadImageFromFile(\'" + NonMacrolize(1) + "\',\'" + sk2 + "\', " + NonMacrolize(2) + ", 0, 0, false, 0)";
@@ -89,7 +89,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             //    parentWorkSpace.CompileProcess.resourceFilePath.Add(skc, attributes[0].AttrInput);
             //}
             
-            string sk = "font\\" + System.IO.Path.GetFileName(NonMacrolize(0));
+            string sk = "font/" + System.IO.Path.GetFileName(NonMacrolize(0));
             if (!parentWorkSpace.CompileProcess.resourceFilePath.ContainsKey(NonMacrolize(0)))
             {
                 parentWorkSpace.CompileProcess.resourceFilePath.Add(sk, attributes[0].AttrInput);
