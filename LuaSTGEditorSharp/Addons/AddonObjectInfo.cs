@@ -71,4 +71,25 @@ public sealed class AddonObjectInfo
         section.Keys.AddKey("Enabled", IsEnabled.ToString());
         return section;
     }
+
+    /// <summary>
+    /// Adds a Node Preset to a toolbox.<br/>
+    /// This supports entire toolbox tabs or single nodes since it reads the manifest.
+    /// </summary>
+    public void AddToToolbox()
+    {
+        if (Meta.Type != AddonType.Node)
+            return; // Wrong type.
+        // I don't want to deal with this for the moment. Definitely the hardest of the two.
+    }
+
+    /// <summary>
+    /// Adds all the presets located in the manifest folder to the preset list.
+    /// </summary>
+    public void AddToPresetList()
+    {
+        if (Meta.Type != AddonType.Preset)
+            return; // Wrong type.
+
+    }
 }

@@ -589,8 +589,10 @@ namespace LuaSTGEditorSharp
                 try
                 {
                     //_Notifier.ShowInfo("Auto saving...");
-                    FileInfo fi = new FileInfo(doc.DocPath);
-                    fi.CopyTo(doc.DocPath + ".backup", true);
+                    FileInfo fiDoc = new(doc.DocPath); // Auto Save Proj
+                    fiDoc.CopyTo(doc.DocPath + ".backup", true);
+                    FileInfo fiMeta = new(doc.DocPath + ".meta"); // Auto Save Proj Meta (imported files)
+                    fiMeta.CopyTo(doc.DocPath + ".meta.backup", true);
                     SaveDoc(doc);
                     //_Notifier.ShowSuccess("Auto save successful.");
                 }

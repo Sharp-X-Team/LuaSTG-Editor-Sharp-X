@@ -20,12 +20,15 @@ public static class AddonManager
 
     public static ObservableCollection<AddonObjectInfo> InstalledAddons { get; set; } = [];
 
+    // Warning: Don't set this manually outside of the indended usage on the AddonsWindow.
+    public static bool DownloadUpdatedListOnOpen { get; set; } = true;
+
     public static bool ReadAreAddonsEnabled()
     {
         try
         {
             if (!File.Exists(PathToConfig))
-                return false; // Something is very wrong here (ಠ_ಠ) (yes)
+                return false; // Something is very wrong here ಠ_ಠ
 
             FileIniDataParser parser = new();
             AddonConfigData = parser.ReadFile(PathToConfig);
@@ -38,6 +41,7 @@ public static class AddonManager
         }
     }
 
+    // TODO: Have multiple custom errors for when the addon doesn't exist in the specified file access
     public static bool TryLoadAddons()
     {
         try
@@ -57,7 +61,7 @@ public static class AddonManager
                 else
                     InstalledAddons.Add(new AddonObjectInfo(AddonType.Preset, content["preset"]));
             }
-
+            BuildAddons();
             return true;
         }
         catch (Exception ex)
@@ -65,5 +69,12 @@ public static class AddonManager
             MessageBox.Show($"There was a problem trying to read AddonsConfig.ini. Aborting initialization.\nError: {ex}");
             return false;
         }
+    }
+
+    // This is the method called after loading addons. This will add nodes to the toolboxes and presets to the preset list.
+    private static void BuildAddons()
+    {
+        // Foreach addon, check the type and call the corresponding method on AddonObjectInfo.<whatever> to "build" them.
+        return;
     }
 }

@@ -119,8 +119,8 @@ public partial class AddonsWindow : Window, INotifyPropertyChanged
     /// I'm not even sure if calling it by itself is safe.
     /// </summary>
     /// <param name="selected"></param>
-    /// <param name="installingBulk"></param>
-    public async Task InstallSelected(MetaAddonInfo selected, ZipArchive zipArc = null)
+    /// <param name="zipArc"></param>
+    public async Task<bool> InstallSelected(MetaAddonInfo selected, ZipArchive zipArc = null)
     {
         bool installingBulk = false;
         if (zipArc == null)
@@ -129,33 +129,45 @@ public partial class AddonsWindow : Window, INotifyPropertyChanged
         using (zipArc ??= ZipFile.OpenRead(PathToZip))
         {
             if (!await selected.ExtractAddonFiles(zipArc))
-                return; // Something went wrong.
+                return false; // Something went wrong.
             AddonObjectInfo addon = AddonObjectInfo.FromMeta(selected);
             SectionData newSection = addon.ToSectionData();
             AddonManager.AddonConfigData.Sections.Add(newSection);
 
             // Avoid possible file access violations. If installing in bulk, doesn't save until all addons are installed.
+            // This is very probably useless, but we never know what can happen with file access.
             if (!installingBulk)
             {
                 FileIniDataParser parser = new();
                 parser.WriteFile(AddonManager.PathToConfig, AddonManager.AddonConfigData);
+                ListPresets = GetNodeAddons(AddonType.Preset, allAddonList);
+                ListNodes = GetNodeAddons(AddonType.Node, allAddonList);
             }
+            return true;
         }
     }
 
     /// <summary>
-    /// This is the prefered way.
+    /// This is the prefered way to install addons.<br/>
+    /// Calls <see cref="InstallSelected(MetaAddonInfo, ZipArchive)"/> with an existing <see cref="ZipArchive"/> instance.
     /// </summary>
     public async Task InstallAllSelected()
     {
+        int addonsInstalledCount = 0;
+        int addonsToInstallCount = AddonsToDownload.Count;
         using (ZipArchive zipArc = ZipFile.OpenRead(PathToZip))
         {
             foreach (MetaAddonInfo addon in AddonsToDownload)
-                await InstallSelected(addon, zipArc);
+                if (await InstallSelected(addon, zipArc))
+                    addonsInstalledCount++;
         }
         FileIniDataParser parser = new();
         parser.WriteFile(AddonManager.PathToConfig, AddonManager.AddonConfigData);
-        MessageBox.Show("Downloaded???");
+        ListPresets = GetNodeAddons(AddonType.Preset, allAddonList);
+        ListNodes = GetNodeAddons(AddonType.Node, allAddonList);
+
+        MessageBox.Show($"Installed {addonsInstalledCount} of {addonsToInstallCount} addons!" +
+            ((addonsInstalledCount != addonsToInstallCount) ? $"\nThere was a problem installing {addonsToInstallCount - addonsInstalledCount} addons." : ""));
     }
 
     #endregion
@@ -229,6 +241,11 @@ public partial class AddonsWindow : Window, INotifyPropertyChanged
 
     private async Task<bool> DownloadAddonZip()
     {
+        // Skip downloading the addon zip if this window has already been opened on this SharpX instance (=launch).
+        // Return true if the zip already exists.
+        if (!AddonManager.DownloadUpdatedListOnOpen)
+            return File.Exists(PathToZip);
+
         string url = $"https://api.github.com/repos/Sharp-X-Team/Sharp-X-Addons/zipball/main";
 
         try
@@ -239,10 +256,12 @@ public partial class AddonsWindow : Window, INotifyPropertyChanged
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 byte[] zipData = await response.Content.ReadAsByteArrayAsync();
-                using (FileStream fs = new FileStream(PathToZip, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
+                using (FileStream fs = new(PathToZip, FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
                 {
                     await fs.WriteAsync(zipData, 0, zipData.Length);
                 }
+                // Should be called only once and only here. Will not update this zip if the window is re-opened on the same SharpX instance (=launch).
+                AddonManager.DownloadUpdatedListOnOpen = false;
                 return true;
             }
         }
