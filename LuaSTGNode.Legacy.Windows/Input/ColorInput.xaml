@@ -12,82 +12,82 @@
     </local:InputWindow.Style>
     <Grid>
         <WrapPanel>
-            <Button Click="Color_Click" Tag="COLOR_RED">
+            <Button Click="Color_Click" Tag="COLOR_RED" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_RED.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_DEEP_RED">
+            <Button Click="Color_Click" Tag="COLOR_DEEP_RED" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_DEEP_RED.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_PURPLE">
+            <Button Click="Color_Click" Tag="COLOR_PURPLE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_PURPLE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_DEEP_PURPLE">
+            <Button Click="Color_Click" Tag="COLOR_DEEP_PURPLE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_DEEP_PURPLE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_BLUE">
+            <Button Click="Color_Click" Tag="COLOR_BLUE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_BLUE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_DEEP_BLUE">
+            <Button Click="Color_Click" Tag="COLOR_DEEP_BLUE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_DEEP_BLUE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_ROYAL_BLUE">
+            <Button Click="Color_Click" Tag="COLOR_ROYAL_BLUE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_ROYAL_BLUE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_CYAN">
+            <Button Click="Color_Click" Tag="COLOR_CYAN" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_CYAN.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_DEEP_GREEN">
+            <Button Click="Color_Click" Tag="COLOR_DEEP_GREEN" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_DEEP_GREEN.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_GREEN">
+            <Button Click="Color_Click" Tag="COLOR_GREEN" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_GREEN.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_CHARTREUSE">
+            <Button Click="Color_Click" Tag="COLOR_CHARTREUSE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_CHARTREUSE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_YELLOW">
+            <Button Click="Color_Click" Tag="COLOR_YELLOW" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_YELLOW.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_GOLDEN_YELLOW">
+            <Button Click="Color_Click" Tag="COLOR_GOLDEN_YELLOW" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_GOLDEN_YELLOW.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_ORANGE">
+            <Button Click="Color_Click" Tag="COLOR_ORANGE" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_ORANGE.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_DEEP_GRAY">
+            <Button Click="Color_Click" Tag="COLOR_DEEP_GRAY" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_DEEP_GRAY.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="COLOR_GRAY">
+            <Button Click="Color_Click" Tag="COLOR_GRAY" Padding="0">
                 <Button.Content>
                     <Image Source="/LuaSTGNode.Legacy;component/images/color/COLOR_GRAY.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>

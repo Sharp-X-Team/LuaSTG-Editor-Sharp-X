@@ -12,7 +12,7 @@
     </local:InputWindow.Style>
     <Grid>
         <WrapPanel>
-            <Button Click="Color_Click" Tag="0">
+            <Button Click="Color_Click" Tag="0" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -26,7 +26,7 @@
                     </Image>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="1">
+            <Button Click="Color_Click" Tag="1" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -40,7 +40,7 @@
                     </Image>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="2">
+            <Button Click="Color_Click" Tag="2" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -54,7 +54,7 @@
                     </Image>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="4">
+            <Button Click="Color_Click" Tag="4" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -68,12 +68,12 @@
                     </Image>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="5">
+            <Button Click="Color_Click" Tag="5" Padding="0">
                 <Button.Content>
                     <Image x:Name="middle" Source="nodir.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="6">
+            <Button Click="Color_Click" Tag="6" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -87,7 +87,7 @@
                     </Image>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="8">
+            <Button Click="Color_Click" Tag="8" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
@@ -101,12 +101,12 @@
                     </Image>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="9">
+            <Button Click="Color_Click" Tag="9" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64"/>
                 </Button.Content>
             </Button>
-            <Button Click="Color_Click" Tag="10">
+            <Button Click="Color_Click" Tag="10" Padding="0">
                 <Button.Content>
                     <Image Source="down.png" Stretch="Fill" Width="64" Height="64" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
