@@ -27,172 +27,172 @@
         </Style>
     </Window.Resources>
     <WrapPanel ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.CanContentScroll="True">
-        <Button Click="Style_Click" Tag="1">
+        <Button Click="Style_Click" Tag="1" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy1.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="2">
+        <Button Click="Style_Click" Tag="2" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy2.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="3">
+        <Button Click="Style_Click" Tag="3" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy3.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="4">
+        <Button Click="Style_Click" Tag="4" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy4.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="5">
+        <Button Click="Style_Click" Tag="5" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy5.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="6">
+        <Button Click="Style_Click" Tag="6" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy6.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="7">
+        <Button Click="Style_Click" Tag="7" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy7.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="8">
+        <Button Click="Style_Click" Tag="8" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy8.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="10">
+        <Button Click="Style_Click" Tag="10" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy10.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="11">
+        <Button Click="Style_Click" Tag="11" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy11.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="12">
+        <Button Click="Style_Click" Tag="12" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy12.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="13">
+        <Button Click="Style_Click" Tag="13" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy13.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="15">
+        <Button Click="Style_Click" Tag="15" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy15.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="16">
+        <Button Click="Style_Click" Tag="16" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy16.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="17">
+        <Button Click="Style_Click" Tag="17" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy17.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="18">
+        <Button Click="Style_Click" Tag="18" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy18.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="19">
+        <Button Click="Style_Click" Tag="19" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy19.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="20">
+        <Button Click="Style_Click" Tag="20" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy20.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="20">
+        <Button Click="Style_Click" Tag="20" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy21.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="22">
+        <Button Click="Style_Click" Tag="22" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy22.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="23">
+        <Button Click="Style_Click" Tag="23" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy23.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="24">
+        <Button Click="Style_Click" Tag="24" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy24.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="25">
+        <Button Click="Style_Click" Tag="25" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy25.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="26">
+        <Button Click="Style_Click" Tag="26" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy26.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="27">
+        <Button Click="Style_Click" Tag="27" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy27.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="28">
+        <Button Click="Style_Click" Tag="28" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy28.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="29">
+        <Button Click="Style_Click" Tag="29" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy29.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="30">
+        <Button Click="Style_Click" Tag="30" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy30.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="31">
+        <Button Click="Style_Click" Tag="31" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy31.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="32">
+        <Button Click="Style_Click" Tag="32" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy32.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="33">
+        <Button Click="Style_Click" Tag="33" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy33.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="34">
+        <Button Click="Style_Click" Tag="34" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy34.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="9">
+        <Button Click="Style_Click" Tag="9" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy9.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="14">
+        <Button Click="Style_Click" Tag="14" Padding="0">
             <Button.Content>
                 <Image Source="/LuaSTGNode.Legacy;component/images/enemy/enemy14.png" Style="{StaticResource SelectionImg}"/>
             </Button.Content>

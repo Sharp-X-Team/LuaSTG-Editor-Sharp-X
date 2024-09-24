@@ -99,22 +99,30 @@
                                 <RowDefinition Height="3*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="0" Tag="lstg.world.t" Click="InsertButton_Click">
+                            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="0"
+                                    Tag="lstg.world.t" Click="InsertButton_Click"
+                                    Padding="0">
                                 <Button.Content>
                                     <Image Width="16" Height="16" Source="/LuaSTGNode.Legacy;component/images/up.png"/>
                                 </Button.Content>
                             </Button>
-                            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="2" Tag="lstg.world.b" Click="InsertButton_Click">
+                            <Button Grid.Column="1" Margin="10,0,10,0" Grid.Row="2"
+                                    Tag="lstg.world.b" Click="InsertButton_Click"
+                                    Padding="0">
                                 <Button.Content>
                                     <Image Width="16" Height="16" Source="/LuaSTGNode.Legacy;component/images/down.png"/>
                                 </Button.Content>
                             </Button>
-                            <Button Grid.Column="0" Margin="0,10,0,10" Grid.Row="1" Tag="lstg.world.l" Click="InsertButton_Click">
+                            <Button Grid.Column="0" Margin="0,10,0,10" Grid.Row="1"
+                                    Tag="lstg.world.l" Click="InsertButton_Click"
+                                    Padding="0">
                                 <Button.Content>
                                     <Image Width="16" Height="16" Source="/LuaSTGNode.Legacy;component/images/parent.png"/>
                                 </Button.Content>
                             </Button>
-                            <Button Grid.Column="2" Margin="0,10,0,10" Grid.Row="1" Tag="lstg.world.r" Click="InsertButton_Click">
+                            <Button Grid.Column="2" Margin="0,10,0,10" Grid.Row="1"
+                                    Tag="lstg.world.r" Click="InsertButton_Click"
+                                    Padding="0">
                                 <Button.Content>
                                     <Image Width="16" Height="16" Source="/LuaSTGNode.Legacy;component/images/child.png"/>
                                 </Button.Content>
