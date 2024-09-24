@@ -6,13 +6,13 @@
 		<description>LuaSTG Editor Sharp X is a clone/fork of LuaSTG Editor Sharp aimed towards improving the original with new functions and altered behaviour.</description>
 		<language>en</language>
 		<item>
-			<title>Version 0.76.1</title>
+			<title>Version 0.77.0</title>
 			<sparkle:releaseNotesLink>
 				https://raw.githubusercontent.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/main/LuaSTGEditorSharp/Changelogs/0.76.0_changelog.md
 			</sparkle:releaseNotesLink>
 			<pubDate>Thu, 1 Jan 2025 00:01:10 +0000</pubDate>
 			<enclosure url="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/releases/download/0.76.0/LuaSTG.Editor.Sharp.X.v0.76.0.exe"
-                       sparkle:version="0.76.1"
+                       sparkle:version="0.77.0"
                        sparkle:os="windows"
                        type="application/octet-stream"/>
 		</item>

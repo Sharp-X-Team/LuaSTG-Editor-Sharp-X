@@ -266,7 +266,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Addons\AddonsConfig.ini" />
-    <None Include="Changelogs\0.76.1_changelog.md">
+    <None Include="Changelogs\0.77.0_changelog.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Changelogs\0.76.0_changelog.md">
