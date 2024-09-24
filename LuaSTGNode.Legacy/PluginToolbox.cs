@@ -734,11 +734,11 @@ namespace LuaSTGEditorSharp
 
         private void AddSetSignal()
         {
-            parent.Insert(new SetSignal(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
+            parent.Insert(new SetSignal(parent.ActivatedWorkSpaceData), true, ["LuaSTG ExPlus", "LuaSTG Evo", "LuaSTG Sub"]);
         }
         private void AddWaitSignal()
         {
-            parent.Insert(new WaitForSignal(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
+            parent.Insert(new WaitForSignal(parent.ActivatedWorkSpaceData), true, ["LuaSTG ExPlus", "LuaSTG Evo", "LuaSTG Sub"]);
         }
 
         private void AddSetFPS()
@@ -878,7 +878,7 @@ namespace LuaSTGEditorSharp
 
         private void AddChargeballNode()
         {
-            parent.Insert(new Chargeball(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
+            parent.Insert(new Chargeball(parent.ActivatedWorkSpaceData), true, ["LuaSTG ExPlus", "LuaSTG Evo", "LuaSTG Sub"]);
         }
 
         private void AddBossExplodeNode()
@@ -1323,7 +1323,7 @@ namespace LuaSTGEditorSharp
 
         private void AddSetPaceNode()
         {
-            parent.Insert(new SetPace(parent.ActivatedWorkSpaceData), true, "LuaSTG ExPlus");
+            parent.Insert(new SetPace(parent.ActivatedWorkSpaceData), true, ["LuaSTG ExPlus", "LuaSTG Sub"]);
         }
 
         private void AddFadeOutBGM()

@@ -1,5 +1,19 @@
 ﻿-- Update Log（July 7th, 2024）
 
+v0.77.0
+- Support for compilation in LuaSTG Evo.
+- Added the project meta file to the auto backup.
+- Added the alignment window to the format input on the RenderTTF node.
+- Re-arranged a lot of code output of nodes (correct indentation and new lines).
+- Changed some nodes descriptions.
+- Removed the "beta" attribute for Sub support.
+- Made the "Set/Wait for signal", "Add chargeball" and "Set Pace" not trigger THlib compat. errors for Evo and Sub.
+- Fixed display errors in all main Input Windows.
+- Fixed a problem with selecting the arrow on the nodes attributes' dropdowns (the mouse wouldn't select it).
+- Fixed comment double new-line code output.
+- The editor won't throw an error when the LuaSTG executable path isn't the same as the target compile version.
+- Replaced font file paths with "/" instead of "\\" in order to improve other platforms' compatibility.
+
 v0.76.0
 -Fixed a bug introduced in the last version that crashes the editor when closing a project.
 -Added auto updates support (and settings to check updates on startup).

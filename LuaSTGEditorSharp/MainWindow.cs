@@ -15,6 +15,7 @@ using LuaSTGEditorSharp.EditorData.Node;
 using LuaSTGEditorSharp.EditorData.Node.General;
 using LuaSTGEditorSharp.EditorData.Node.Advanced;
 using LuaSTGEditorSharp.EditorData.Node.Project;
+using System.Linq;
 
 namespace LuaSTGEditorSharp
 {
@@ -57,7 +58,7 @@ namespace LuaSTGEditorSharp
                 MessageBox.Show(e.ToString());
             }
         }
-        public void Insert(TreeNode node, bool isInvoke, string rightVer)
+        public void Insert(TreeNode node, bool isInvoke, string[] supportedVers)
         {
             try
             {
@@ -66,7 +67,7 @@ namespace LuaSTGEditorSharp
                 App curApp = Application.Current as App;
                 bool move = curApp.AutoMoveToNew;
                 bool showWindow = !curApp.IgnoreTHLibWarn;
-                showWindow = showWindow & (rightVer != PluginHandler.Plugin.TargetLSTGVersion);
+                showWindow &= !supportedVers.Contains(PluginHandler.Plugin.TargetLSTGVersion);
                 Command c = insertState.ValidateAndNewInsert(selectedNode, node);
                 if (ActivatedWorkSpaceData.AddAndExecuteCommand(c))
                 {

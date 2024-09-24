@@ -776,7 +776,7 @@ namespace LuaSTGEditorSharp
             SelectedNode = ((TreeNode)(workSpace.SelectedItem));
             if (selectedNode != null) this.propData.ItemsSource = selectedNode.attributes;
             // I really don't want this to crash. So fuck it: try/catch.
-            string version = "LuaSTG Editor Sharp X v0.76.0";
+            string version = "LuaSTG Editor Sharp X v0.77.0";
             if (ActivatedWorkSpaceData != null)
             {
                 Title = $"{version} - {ActivatedWorkSpaceData.RawDocName}";

@@ -3,7 +3,7 @@
 </p><h1 align="center">LuaSTG Editor Sharp X</h1>
 <h4 align="center">
 
-(Current release: [0.76.0](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases))
+(Current release: [0.77.0](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases))
 
 </h4>
 
@@ -30,7 +30,7 @@ The editor is designed to fit many variants of the LuaSTG engine. New versions c
   
 ex+ (ExPlus) | -x | aex+ (Sub) | Evo | Others
 :---: | :---: | :---: | :---: | :---:
-:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :hourglass: (next release) | As long as THlib is present
+:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | As long as THlib is present
 
 </div>
 

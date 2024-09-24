@@ -10,7 +10,7 @@
         xmlns:om="clr-namespace:System.Collections.Generic;assembly=mscorlib"
         xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
         mc:Ignorable="d"
-        Title="LuaSTG Editor Sharp X v0.76.0"
+        Title="LuaSTG Editor Sharp X v0.77.0"
         Height="679.6"
         Width="800"
         WindowState="Maximized"
