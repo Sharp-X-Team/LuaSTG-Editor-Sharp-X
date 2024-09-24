@@ -28,22 +28,22 @@
         </Style>
     </Window.Resources>
     <WrapPanel ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.CanContentScroll="True" Margin="0,0,3.6,-0.4">
-        <Button Click="Style_Click" Tag="1">
+        <Button Click="Style_Click" Tag="1" Padding="0">
             <Button.Content>
                 <Image Source="bubble_1.png" Style="{StaticResource SelectionImg}" Stretch="Uniform"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="2">
+        <Button Click="Style_Click" Tag="2" Padding="0">
             <Button.Content>
                 <Image Source="bubble_2.png" Style="{StaticResource SelectionImg}" Stretch="Uniform"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="3">
+        <Button Click="Style_Click" Tag="3" Padding="0">
             <Button.Content>
                 <Image Source="bubble_3.png" Style="{StaticResource SelectionImg}" Stretch="Uniform"/>
             </Button.Content>
         </Button>
-        <Button Click="Style_Click" Tag="4">
+        <Button Click="Style_Click" Tag="4" Padding="0">
             <Button.Content>
                 <Image Source="bubble_4.png" Style="{StaticResource SelectionImg}" Stretch="Uniform"/>
             </Button.Content>
