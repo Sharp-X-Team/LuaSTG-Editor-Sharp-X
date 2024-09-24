@@ -23,6 +23,5 @@ namespace LuaSTGEditorSharp
         }
 
         protected override string LogFileName => "engine.log";
-        public override string ExecutableName => "LuaSTG.exe";
     }
 }

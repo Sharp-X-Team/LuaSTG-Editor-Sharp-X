@@ -125,7 +125,7 @@ namespace LuaSTGEditorSharp
         public List<MessageBase> GetMessage()
         {
             var a = new List<MessageBase>();
-            if (!File.Exists(LuaSTGExecutablePath) || Path.GetFileName(LuaSTGExecutablePath) != PluginHandler.Plugin.Execution.ExecutableName)
+            if (!File.Exists(LuaSTGExecutablePath))
             {
                 a.Add(new EXEPathNotSetMessage(LuaSTGExecutablePath, "LuaSTG Path", 0, this));
             }

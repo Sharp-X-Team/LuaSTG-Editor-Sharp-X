@@ -47,7 +47,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
             var i = GetLogicalChildren().OrderBy((s) => (s as IIfChild)?.Priority ?? 0);
             List<TreeNode> t = new List<TreeNode>(i);
 
-            yield return sp + "while " + Macrolize(0) + " do\n";
+            yield return $"{sp}while {Macrolize(0)} do\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -67,7 +67,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override string ToString()
         {
-            return "while (" + NonMacrolize(0) + ")";
+            return $"While ({NonMacrolize(0)})";
         }
 
         public override object Clone()

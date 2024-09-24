@@ -145,10 +145,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             attr7 = string.IsNullOrEmpty(attr7) ? "nil" : attr7;
             string attr9 = Macrolize(9);
             attr9 = string.IsNullOrEmpty(attr9) ? "nil" : attr9;
-            yield return sp + "boss.dialog.sentence(self," + Macrolize(0) + "," + Macrolize(1) + ",[===[" 
-                + NonMacrolize(2) + "]===]," + attr3 + "," + attr4 + "," + Macrolize(5) + "," + Macrolize(6) +
-                "," + attr7 + "," + Macrolize(8) + "," + attr9 + "," + Macrolize(10) + "," + Macrolize(11) +
-                "," + Macrolize(12) + ")\n";
+            yield return sp + "boss.dialog.sentence(self, " + Macrolize(0) + ", " + Macrolize(1) + ", [===[" 
+                + NonMacrolize(2) + "]===], " + attr3 + ", " + attr4 + ", " + Macrolize(5) + ", " + Macrolize(6) +
+                ", " + attr7 + ", " + Macrolize(8) + ", " + attr9 + ", " + Macrolize(10) + ", " + Macrolize(11) +
+                ", " + Macrolize(12) + ")\n";
         }
 
         public override string ToString()
@@ -172,7 +172,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             int i = 1;
             foreach (char c in s)
             {
-                if (c == '\n') i++;
+                if (c == '\n')
+                    i++;
             }
             yield return new Tuple<int, TreeNode>(i, this);
         }

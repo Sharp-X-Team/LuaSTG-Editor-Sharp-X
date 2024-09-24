@@ -29,7 +29,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "last=New(camera_setter)\n";
+            yield return sp + "last = New(camera_setter)\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

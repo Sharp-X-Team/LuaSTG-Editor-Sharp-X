@@ -72,19 +72,19 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
                 {
                     if (!first)
                     {
-                        bres += ",";
-                        mres += ",";
+                        bres += ", ";
+                        mres += ", ";
                         eres += " ";
                     }
-                    bres += NonMacrolize(i) + ",_d_" + NonMacrolize(i);
-                    mres += "(" + Macrolize(i + 1) + "),(" + Macrolize(i + 2) + ")";
-                    eres += NonMacrolize(i) + "=" + NonMacrolize(i) + "+_d_" + NonMacrolize(i);
+                    bres += $"{NonMacrolize(i)}, _d_{NonMacrolize(i)}";
+                    mres += $"({Macrolize(i + 1)}), ({Macrolize(i + 2)})";
+                    eres += $"{NonMacrolize(i)} = {NonMacrolize(i)} + _d_{NonMacrolize(i)}";
                     first = false;
                 }
             }
-            if(first)
+            if (first)
             {
-                yield return sp + "for _=1," + Macrolize(0) + " do\n";
+                yield return $"{sp}for _ = 1, {Macrolize(0)} do\n";
                 foreach (var a in base.ToLua(spacing + 1))
                 {
                     yield return a;

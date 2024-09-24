@@ -41,7 +41,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override string ToString()
         {
-            return "else";
+            return "Else";
         }
 
         public override object Clone()

@@ -37,13 +37,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Background warp effect (\"" + NonMacrolize(0) + "\")";
+            return $"Background warp effect (\"{NonMacrolize(0)}\")";
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "background.WarpEffect" + Macrolize(0) + "()\n";
+            yield return sp + $"background.WarpEffect{Macrolize(0)}()\n";
         }
 
         public override object Clone()

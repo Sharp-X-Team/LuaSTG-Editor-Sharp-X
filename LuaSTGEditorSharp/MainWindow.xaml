@@ -524,11 +524,12 @@
                     <Separator/>
                     <MenuItem Header="_Definitions" Command="local:EditorRoutedCommands.ViewDefinition"/>
                 </MenuItem>
+                <!--
                 <MenuItem Header="_Addons">
                     <MenuItem Header="_Manage Addons" Command="local:EditorRoutedCommands.OpenMarketplace" CommandParameter="0"/>
                     <MenuItem Header="_Presets" Command="local:EditorRoutedCommands.OpenMarketplace" CommandParameter="1"/>
                     <MenuItem Header="_Nodes" Command="local:EditorRoutedCommands.OpenMarketplace" CommandParameter="2"/>
-                </MenuItem>
+                </MenuItem>-->
                 <MenuItem Header="_Settings">
                     <MenuItem Header="_General settings" Command="local:EditorRoutedCommands.Settings" CommandParameter="0">
                         <MenuItem.Icon>

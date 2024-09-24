@@ -95,9 +95,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
             return $"{NonMacrolize(0)} : {NonMacrolize(1)} => {NonMacrolize(2)} {offchar}, following sine interpolation, {mode}";
         }
 
-        public override Tuple<string, string> GetInformation(string times)
+        public override Tuple<string, string> GetInformation(string sp, string times)
         {
-            string offchar = Precisely == "true" ? "-1" : "";
+            string offchar = Precisely == "true" ? " - 1" : "";
             string beg = $"_beg_{NonMacrolize(0)}";
             string end = $"_end_{NonMacrolize(0)}";
             string begPhase, phaseDiff, ampChar, center;
@@ -118,15 +118,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
                 default:
                     begPhase = "-90";
                     phaseDiff = "180";
-                    ampChar = "/2";
-                    center = $"({end}+{beg})/2";
+                    ampChar = " / 2";
+                    center = $"({end} + {beg}) / 2";
                     break;
             }
-            string begin = $"local _beg_{NonMacrolize(0)}={Macrolize(1)} local {NonMacrolize(0)}={beg} "
-                + $" local _w_{NonMacrolize(0)}={begPhase} local _end_{NonMacrolize(0)}={Macrolize(2)}"
-                + $" local _d_w_{NonMacrolize(0)}={phaseDiff}/({times}{offchar})\n";
-            string repeat = $"_w_{NonMacrolize(0)}=_w_{NonMacrolize(0)}+_d_w_{NonMacrolize(0)}"
-                + $" {NonMacrolize(0)}=({end}-{beg}){ampChar}*sin(_w_{NonMacrolize(0)})+({center})\n";
+            string begin = $"{sp}local _beg_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                + $"{sp}local {NonMacrolize(0)} = {beg}\n"
+                + $"{sp}local _w_{NonMacrolize(0)} = {begPhase}\n"
+                + $"{sp}local _end_{NonMacrolize(0)} = {Macrolize(2)}\n"
+                + $"{sp}local _d_w_{NonMacrolize(0)} = {phaseDiff} / ({times}{offchar})\n";
+            string repeat = $"{sp}{sp}_w_{NonMacrolize(0)} = _w_{NonMacrolize(0)} + _d_w_{NonMacrolize(0)}\n"
+                + $"{sp}{sp}{NonMacrolize(0)} = ({end} - {beg}){ampChar} * sin(_w_{NonMacrolize(0)}) + ({center})\n";
             return new Tuple<string, string>(begin, repeat);
         }
 

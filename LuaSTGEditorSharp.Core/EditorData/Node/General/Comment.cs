@@ -51,22 +51,23 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            bool incomm = false;
+            bool insideComment = false;
             TreeNode t = Parent;
             while (t != null)
             {
-                incomm = t is Comment;
-                if (incomm)
+                insideComment = t is Comment;
+                if (insideComment)
                 {
-                    if(t.attributes[1].AttrInput=="true") break;
+                    if (t.attributes[1].AttrInput == "true")
+                        break;
                 }
                 t = t.Parent;
             }
-            if (!incomm) 
+            if (!insideComment) 
             {
                 if (NonMacrolize(1) == "true")
                 {
-                    yield return sp + "--[[ " + NonMacrolize(0) + "\n";
+                    yield return $"{sp}--[[ {NonMacrolize(0)}\n";
                     foreach (var a in base.ToLua(spacing + 1))
                     {
                         yield return a;
@@ -75,12 +76,11 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
                 }
                 else
                 {
-                    yield return sp + "--[[ " + NonMacrolize(0) + "]]\n";
+                    yield return $"{sp}--[[ {NonMacrolize(0)} ]]\n";
                     foreach (var a in base.ToLua(spacing + 1))
                     {
                         yield return a;
                     }
-                    yield return sp + "\n";
                 }
             }
             else
@@ -90,7 +90,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
                 {
                     yield return a;
                 }
-                yield return sp + "\n";
             }
         }
 

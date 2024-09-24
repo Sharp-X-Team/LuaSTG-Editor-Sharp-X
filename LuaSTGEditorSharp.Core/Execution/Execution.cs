@@ -30,7 +30,6 @@ namespace LuaSTGEditorSharp.Execution
         protected virtual string LuaSTGPath { get => (Application.Current as IAppSettings)?.LuaSTGExecutablePath; }
 
         protected abstract string LogFileName { get; }
-        public abstract string ExecutableName { get; }
 
         public abstract void BeforeRun(ExecutionConfig config);
 

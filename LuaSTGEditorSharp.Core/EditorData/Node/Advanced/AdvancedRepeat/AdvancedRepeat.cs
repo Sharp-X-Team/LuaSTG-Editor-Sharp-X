@@ -35,7 +35,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
 
         public override string ToString()
         {
-            return "repeat " + NonMacrolize(0) + " times";
+            return $"Repeat {NonMacrolize(0)} times";
         }
 
         public override object Clone()
@@ -49,27 +49,26 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
         {
             string sp = Indent(spacing);
             string sp1 = Indent(spacing + 1);
-            string sp2 = Indent(spacing + 2);
             string times = Macrolize(0);
             VariableCollection vc = GetVariableCollection();
-            List<Tuple<string, string>> info = new List<Tuple<string, string>>();
+            List<Tuple<string, string>> info = [];
             foreach(VariableTransformation vt in vc.GetVariableTransformations())
             {
-                info.Add(vt.GetInformation(times));
+                info.Add(vt.GetInformation(sp1, times)); // Use the normal sp in both infos.
             }
             yield return sp + "do\n";
             foreach(Tuple<string,string> t in info)
             {
-                yield return sp1 + t.Item1;
+                yield return t.Item1; // sp1 - Without + 1 sp
             }
-            yield return sp1 + "for _=1," + times + " do\n";
+            yield return $"{sp1}for _ = 1, {times} do\n";
             foreach (var a in base.ToLua(spacing + 2))
             {
                 yield return a;
             }
             foreach (Tuple<string, string> t in info)
             {
-                yield return sp2 + t.Item2;
+                yield return t.Item2; // sp2 - With + 2 sp.
             }
             yield return sp1 + "end\n";
             yield return sp + "end\n";
@@ -78,7 +77,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
             VariableCollection vc = GetVariableCollection();
-            List<IEnumerator<Tuple<int, TreeNode>>> lines = new List<IEnumerator<Tuple<int, TreeNode>>>();
+            List<IEnumerator<Tuple<int, TreeNode>>> lines = [];
             foreach (VariableTransformation transformation in vc.GetVariableTransformations())
             {
                 lines.Add(transformation.GetLines().GetEnumerator());

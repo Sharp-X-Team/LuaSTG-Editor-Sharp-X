@@ -45,7 +45,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
         {
             string sp = Indent(spacing);
             var i = GetLogicalChildren().OrderBy((s) => (s as IIfChild)?.Priority ?? 0);
-            List<TreeNode> t = new List<TreeNode>(i);
+            List<TreeNode> t = new(i);
 
             yield return sp + "if " + Macrolize(0);
             foreach (var a in BaseToLua(spacing, i))
@@ -67,7 +67,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override string ToString()
         {
-            return "if (" + NonMacrolize(0) + ")";
+            return $"If ({NonMacrolize(0)})";
         }
 
         public override object Clone()

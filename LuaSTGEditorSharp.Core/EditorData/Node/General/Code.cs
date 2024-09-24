@@ -26,7 +26,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public Code(DocumentData workSpaceData, string code) : base(workSpaceData)
         {
-            //attributes.Add(new AttrItem("Code", this, "code") { AttrInput = code });
             CodeContent = code;
         }
 

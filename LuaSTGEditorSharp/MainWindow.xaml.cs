@@ -141,7 +141,7 @@ namespace LuaSTGEditorSharp
             StartSparkle();
             SetupAutoSave();
 
-            Sparkle.StartLoop((App.Current as App).CheckUpdateAtLaunch, (App.Current as App).CheckUpdateAtLaunch); // Replace both with "Check update on launch" setting.
+            Sparkle.StartLoop((App.Current as App).CheckUpdateAtLaunch, (App.Current as App).CheckUpdateAtLaunch);
         }
 
 

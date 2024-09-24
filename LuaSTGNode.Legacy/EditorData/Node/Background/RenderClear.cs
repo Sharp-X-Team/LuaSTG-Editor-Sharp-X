@@ -27,7 +27,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
             : base(workSpaceData)
         {
             Color = col;
-            //attributes.Add(new AttrItem("Time", code, this, "yield"));
         }
 
         [JsonIgnore, NodeAttribute]
@@ -40,7 +39,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "RenderClear(" + Macrolize(0) + ")" + "\n";
+            yield return sp + $"RenderClear({Macrolize(0)})\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -50,7 +49,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Render clear with color (" + NonMacrolize(0) + ")";
+            return $"Render clear with color ({NonMacrolize(0)})";
         }
 
         public override object Clone()

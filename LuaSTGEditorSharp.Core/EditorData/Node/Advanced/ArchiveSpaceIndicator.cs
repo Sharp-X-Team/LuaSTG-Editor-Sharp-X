@@ -66,7 +66,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 
         public override List<MessageBase> GetMessage()
         {
-            List<MessageBase> messages = new List<MessageBase>();
+            List<MessageBase> messages = [];
             string s = NonMacrolize(0);
             if (s != "")
             {

@@ -24,10 +24,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 
         public DefineMacro(DocumentData workSpaceData) : base(workSpaceData)
         {
-            /*
-            attributes.Add(new AttrItem("Replace", this));
-            attributes.Add(new AttrItem("By", this));
-            */
             Replace = "";
             By = "";
         }
@@ -59,7 +55,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 
         public override string ToString()
         {
-            return "Macro: Replace " + attributes[0].AttrInput + " by " + attributes[1].AttrInput + " in compile process";
+            return $"Macro: Replace ({attributes[0].AttrInput}) by ({attributes[1].AttrInput}) in compile process";
         }
 
         protected override void AddCompileSettings()
@@ -78,7 +74,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 
         public override List<MessageBase> GetMessage()
         {
-            List<MessageBase> messages = new List<MessageBase>();
+            List<MessageBase> messages = [];
             if (string.IsNullOrEmpty(NonMacrolize(0)))
                 messages.Add(new ArgNotNullMessage(attributes[0].AttrCap, 0, this));
             return messages;

@@ -96,40 +96,51 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
             return $"{NonMacrolize(0)} : {NonMacrolize(1)} => {NonMacrolize(2)} {offchar} {interp}";
         }
 
-        public override Tuple<string, string> GetInformation(string times)
+        public override Tuple<string, string> GetInformation(string sp, string times)
         {
-            string offchar = Precisely == "true" ? "-1" : "";
+            string offchar = Precisely == "true" ? " - 1" : "";
             string beg = $"_beg_{NonMacrolize(0)}";
             string end = $"_end_{NonMacrolize(0)}";
             string begin, repeat;
             switch (NonMacrolize(4))
             {
                 case "MOVE_ACCEL":
-                    begin = $"local _beg_{NonMacrolize(0)}={Macrolize(1)} local {NonMacrolize(0)}={beg}"
-                        + $" local _end_{NonMacrolize(0)}={Macrolize(2)} local _w_{NonMacrolize(0)}=0 "
-                        + $" local _d_w_{NonMacrolize(0)}=1/({times}{offchar})\n";
-                    repeat = $"_w_{NonMacrolize(0)}=_w_{NonMacrolize(0)}+_d_w_{NonMacrolize(0)}" 
-                        + $" {NonMacrolize(0)}=({end}-{beg})*_w_{NonMacrolize(0)}^2+{beg}\n";
+                    begin = $"{sp}local _beg_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                        + $"{sp}local {NonMacrolize(0)} = {beg}\n"
+                        + $"{sp}local _end_{NonMacrolize(0)} = {Macrolize(2)}\n"
+                        + $"{sp}local _w_{NonMacrolize(0)} = 0\n"
+                        + $"{sp}local _d_w_{NonMacrolize(0)} = 1 / ({times}{offchar})\n";
+                    repeat = $"{sp}{sp}_w_{NonMacrolize(0)} = _w_{NonMacrolize(0)} + _d_w_{NonMacrolize(0)}\n" 
+                        + $"{sp}{sp}{NonMacrolize(0)} = ({end} - {beg}) * _w_{NonMacrolize(0)} ^ 2 + {beg}\n";
                     break;
                 case "MOVE_DECEL":
-                    begin = $"local _beg_{NonMacrolize(0)}={Macrolize(1)} local {NonMacrolize(0)}={beg}"
-                        + $" local _end_{NonMacrolize(0)}={Macrolize(2)} local _w_{NonMacrolize(0)}=0"
-                        + $" local _d_w_{NonMacrolize(0)}=1/({times}{offchar})\n";
-                    repeat = $"_w_{NonMacrolize(0)}=_w_{NonMacrolize(0)}+_d_w_{NonMacrolize(0)}" 
-                        + $" {NonMacrolize(0)}=({beg}-{end})*(_w_{NonMacrolize(0)}-1)^2+{end}\n";
+                    begin = $"{sp}local _beg_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                        + $"{sp}local {NonMacrolize(0)} = {beg}\n"
+                        + $"{sp}local _end_{NonMacrolize(0)} = {Macrolize(2)}\n"
+                        + $"{sp}local _w_{NonMacrolize(0)} = 0\n"
+                        + $"{sp}local _d_w_{NonMacrolize(0)} = 1 / ({times}{offchar})\n";
+                    repeat = $"{sp}{sp}_w_{NonMacrolize(0)} = _w_{NonMacrolize(0)} + _d_w_{NonMacrolize(0)}\n" 
+                        + $"{sp}{sp}{NonMacrolize(0)} = ({beg} - {end}) * (_w_{NonMacrolize(0)} - 1) ^ 2 + {end}\n";
                     break;
                 case "MOVE_ACC_DEC":
-                    begin = $"local _beg_{NonMacrolize(0)}={Macrolize(1)} local {NonMacrolize(0)}={beg}"
-                        + $" local _end_{NonMacrolize(0)}={Macrolize(2)} local _w_{NonMacrolize(0)}=0"
-                        + $" local _d_w_{NonMacrolize(0)}=1/({times}{offchar})\n";
-                    repeat = $"_w_{NonMacrolize(0)}=_w_{NonMacrolize(0)}+_d_w_{NonMacrolize(0)}" 
-                        + $" if _w_{NonMacrolize(0)}<0.5 then {NonMacrolize(0)}=2*({end}-{beg})*_w_{NonMacrolize(0)}^2+{beg} else"
-                        + $" {NonMacrolize(0)}=({end}-{beg})*(-2*_w_{NonMacrolize(0)}^2+4*_w_{NonMacrolize(0)}-1)+{beg} end\n";
+                    begin = $"{sp}local _beg_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                        + $"{sp}local {NonMacrolize(0)} = {beg}\n"
+                        + $"{sp}local _end_{NonMacrolize(0)} = {Macrolize(2)}\n"
+                        + $"{sp}local _w_{NonMacrolize(0)} = 0\n"
+                        + $"{sp}local _d_w_{NonMacrolize(0)} = 1 / ({times}{offchar})\n";
+                    repeat = $"{sp}{sp}_w_{NonMacrolize(0)} = _w_{NonMacrolize(0)} + _d_w_{NonMacrolize(0)}\n" 
+                        + $"{sp}{sp}if _w_{NonMacrolize(0)} < 0.5 then\n"
+                        + $"{sp}{sp}{sp}{NonMacrolize(0)} = 2 * ({end} - {beg}) * _w_{NonMacrolize(0)} ^ 2 + {beg}\n"
+                        + $"{sp}{sp}else\n"
+                        + $"{sp}{sp}{sp}{NonMacrolize(0)} = ({end} - {beg}) * (-2 * _w_{NonMacrolize(0)} ^ 2 + 4 * _w_{NonMacrolize(0)} - 1) + {beg}\n"
+                        + $"{sp}{sp}end\n";
                     break;
                 default:
-                    begin = $"local _beg_{NonMacrolize(0)}={Macrolize(1)} local {NonMacrolize(0)}={beg}"
-                        + $" local _end_{NonMacrolize(0)}={Macrolize(2)} local _d_{NonMacrolize(0)}=({end}-{beg})/({times}{offchar})\n";
-                    repeat = $"{NonMacrolize(0)}={NonMacrolize(0)}+_d_{NonMacrolize(0)}\n";
+                    begin = $"{sp}local _beg_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                        + $"{sp}local {NonMacrolize(0)} = {beg}\n"
+                        + $"{sp}local _end_{NonMacrolize(0)} = {Macrolize(2)}\n"
+                        + $"{sp}local _d_{NonMacrolize(0)} = ({end} - {beg}) / ({times}{offchar})\n";
+                    repeat = $"{sp}{sp}{NonMacrolize(0)} = {NonMacrolize(0)} + _d_{NonMacrolize(0)}\n";
                     break;
             }
             return new Tuple<string, string>(begin, repeat);

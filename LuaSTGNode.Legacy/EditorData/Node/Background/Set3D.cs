@@ -48,7 +48,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "Set3D(" + Macrolize(0) + "," + Macrolize(1) + ")" + "\n";
+            yield return sp + $"Set3D({Macrolize(0)}, {Macrolize(1)})\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -58,7 +58,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Set 3D viewpoint " + NonMacrolize(0) + " to value(s) (" + NonMacrolize(1) + ")";
+            return $"Set 3D viewpoint {NonMacrolize(0)} to value(s) ({NonMacrolize(1)})";
         }
 
         public override object Clone()

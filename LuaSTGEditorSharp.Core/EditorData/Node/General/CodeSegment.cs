@@ -27,10 +27,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
         public CodeSegment(DocumentData workSpaceData, string head, string tail) 
             : base(workSpaceData)
         {
-            /*
-            attributes.Add(new AttrItem("Head", head, this, "code"));
-            attributes.Add(new AttrItem("Tail", tail, this, "code"));
-            */
             Head = head;
             Tail = tail;
         }

@@ -11,6 +11,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
         public VariableTransformation() : base() { }
         public VariableTransformation(DocumentData workSpaceData) : base(workSpaceData) { }
 
-        public abstract Tuple<string, string> GetInformation(string times);
+        public abstract Tuple<string, string> GetInformation(string sp, string times);
     }
 }

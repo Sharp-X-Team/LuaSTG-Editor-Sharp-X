@@ -38,13 +38,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
         {
             string sp = Indent(spacing);
             string s = Macrolize(0);
-            yield return string.IsNullOrEmpty(s) ? sp + "break\n" : sp + "if " + s + " then break end\n";
+            yield return string.IsNullOrEmpty(s)
+                ? $"{sp}break\n"
+                : $"{sp}if {s} then\n"
+                + $"{sp}{sp}break\n"
+                + $"{sp}end\n";
         }
 
         public override string ToString()
         {
             string s = NonMacrolize(0);
-            return string.IsNullOrEmpty(s) ? "break" : "break if " + s;
+            return string.IsNullOrEmpty(s) ? "Break" : "Break if " + s;
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

@@ -24,7 +24,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
 
         public Region(DocumentData workSpaceData, string code) : base(workSpaceData)
         {
-            //attributes.Add(new AttrItem("Name", this) { AttrInput = code });
             Name = code;
         }
 

@@ -40,7 +40,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override string ToString()
         {
-            return "then";
+            return "Then";
         }
 
         public override object Clone()

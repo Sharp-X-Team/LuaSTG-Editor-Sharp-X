@@ -84,18 +84,20 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
                 + $", interpolate by: {shortTerm}";
         }
 
-        public override Tuple<string, string> GetInformation(string times)
+        public override Tuple<string, string> GetInformation(string sp, string times)
         {
-            string offchar = Precisely == "true" ? "-1" : "";
+            string offchar = Precisely == "true" ? " - 1" : "";
             string beg = $"_beg_{NonMacrolize(0)}";
             string end = $"_end_{NonMacrolize(0)}";
             string func = $"_func_{NonMacrolize(0)}";
-            string begin = $"local _beg_{NonMacrolize(0)}={Macrolize(1)}"
-                + $" local _func_{NonMacrolize(0)}={Macrolize(4)}"
-                + $" local _w_{NonMacrolize(0)}=0 local _end_{NonMacrolize(0)}={Macrolize(2)}"
-                + $" local _d_w_{NonMacrolize(0)}=1/({times}{offchar}) local {NonMacrolize(0)}=({end}-{beg})*{func}(0)+{beg} \n";
-            string repeat = $"_w_{NonMacrolize(0)}=_w_{NonMacrolize(0)}+_d_w_{NonMacrolize(0)}"
-                + $" {NonMacrolize(0)}=({end}-{beg})*{func}(_w_{NonMacrolize(0)})+{beg}\n";
+            string begin = $"{sp}local _beg_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                + $"{sp}local _func_{NonMacrolize(0)} = {Macrolize(4)}\n"
+                + $"{sp}local _w_{NonMacrolize(0)} = 0\n"
+                + $"{sp}local _end_{NonMacrolize(0)} = {Macrolize(2)}\n"
+                + $"{sp}local _d_w_{NonMacrolize(0)} = 1 / ({times}{offchar})\n"
+                + $"{sp}local {NonMacrolize(0)} = ({end} - {beg}) * {func}(0) + {beg}\n";
+            string repeat = $"{sp}{sp}_w_{NonMacrolize(0)} = _w_{NonMacrolize(0)} + _d_w_{NonMacrolize(0)}\n"
+                + $"{sp}{sp}{NonMacrolize(0)} = ({end} - {beg}) * {func}(_w_{NonMacrolize(0)}) + {beg}\n";
             return new Tuple<string, string>(begin, repeat);
         }
 

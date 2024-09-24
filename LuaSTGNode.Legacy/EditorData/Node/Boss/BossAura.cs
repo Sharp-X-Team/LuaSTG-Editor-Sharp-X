@@ -38,13 +38,15 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "boss.show_aura(self," + Macrolize(0) + ")\n";
+            yield return sp + $"boss.show_aura(self, {Macrolize(0)})\n";
         }
 
         public override string ToString()
         {
-            if (NonMacrolize(0) == "true") return "Show aura";
-            else if (NonMacrolize(0) == "false") return "Hide aura";
+            if (NonMacrolize(0) == "true")
+                return "Show aura";
+            else if (NonMacrolize(0) == "false")
+                return "Hide aura";
             return "Show/Hide aura";
         }
 

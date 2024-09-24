@@ -91,18 +91,18 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
                 + $" with initial phase {NonMacrolize(1)}, for {NonMacrolize(4)} period(s) {offchar}";
         }
 
-        public override Tuple<string, string> GetInformation(string times)
+        public override Tuple<string, string> GetInformation(string sp, string times)
         {
-            string offchar = Precisely == "true" ? "-1" : "";
-            string sineTokenHead = $"_h_{NonMacrolize(0)}*sin";
-            string sineTokenTail = $"+_t_{NonMacrolize(0)}";
-            string begin = $"local _h_{NonMacrolize(0)}=({Macrolize(3)}-({Macrolize(2)}))/2"
-                + $" local _t_{NonMacrolize(0)}=({Macrolize(3)}+({Macrolize(2)}))/2"
-                + $" local {NonMacrolize(0)}={sineTokenHead}({Macrolize(1)}){sineTokenTail}"
-                + $" local _w_{NonMacrolize(0)}={Macrolize(1)}"
-                + $" local _d_w_{NonMacrolize(0)}={Macrolize(4)}*360/({times}{offchar})\n";
-            string repeat = $"_w_{NonMacrolize(0)}=_w_{NonMacrolize(0)}+_d_w_{NonMacrolize(0)}"
-                + $" {NonMacrolize(0)}={sineTokenHead}(_w_{NonMacrolize(0)}){sineTokenTail}\n";
+            string offchar = Precisely == "true" ? " - 1" : "";
+            string sineTokenHead = $"_h_{NonMacrolize(0)} * sin";
+            string sineTokenTail = $"+ _t_{NonMacrolize(0)}";
+            string begin = $"{sp}local _h_{NonMacrolize(0)} = ({Macrolize(3)} - ({Macrolize(2)})) / 2\n"
+                + $"{sp}local _t_{NonMacrolize(0)} = ({Macrolize(3)} + ({Macrolize(2)})) / 2\n"
+                + $"{sp}local {NonMacrolize(0)} = {sineTokenHead}({Macrolize(1)}) {sineTokenTail}\n"
+                + $"{sp}local _w_{NonMacrolize(0)} = {Macrolize(1)}\n"
+                + $"{sp}local _d_w_{NonMacrolize(0)} = {Macrolize(4)} * 360 / ({times}{offchar})\n";
+            string repeat = $"{sp}{sp}_w_{NonMacrolize(0)} = _w_{NonMacrolize(0)} + _d_w_{NonMacrolize(0)}\n"
+                + $"{sp}{sp}{NonMacrolize(0)} = {sineTokenHead}(_w_{NonMacrolize(0)}) {sineTokenTail}\n";
             return new Tuple<string, string>(begin, repeat);
         }
 
