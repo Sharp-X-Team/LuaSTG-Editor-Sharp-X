@@ -183,7 +183,8 @@ namespace LuaSTGEditorSharp
                 UIFactory = new NetSparkleUpdater.UI.WPF.UIFactory(Icon),
                 RelaunchAfterUpdate = true,
                 CustomInstallerArguments = "",
-                ShowsUIOnMainThread = true
+                ShowsUIOnMainThread = true,
+                CheckServerFileName = false // Why was that not in the docs
             };
             Sparkle.PreparingToExit += SparkleCloseFiles;
         }
