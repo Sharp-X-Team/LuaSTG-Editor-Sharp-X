@@ -109,7 +109,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
         {
             if (relatedAttrItem.AttrInput != args.originalValue) 
             {
-                attributes[1].AttrInput = System.IO.Path.GetFileNameWithoutExtension(attributes[0].AttrInput);
+                attributes[1].AttrInput = System.IO.Path.GetFileNameWithoutExtension(NonMacrolize(0));
             }
         }
 
