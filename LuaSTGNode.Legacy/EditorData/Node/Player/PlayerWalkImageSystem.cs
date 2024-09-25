@@ -93,8 +93,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         protected override void AddCompileSettings()
         {
             string sk = parentWorkSpace.CompileProcess.archiveSpace + Path.GetFileName(NonMacrolize(0));
-            if (!string.IsNullOrEmpty(NonMacrolize(0))
-                && !parentWorkSpace.CompileProcess.resourceFilePath.ContainsKey(sk))
+            if (!string.IsNullOrEmpty(NonMacrolize(0)) && !parentWorkSpace.CompileProcess.resourceFilePath.ContainsKey(sk))
                 parentWorkSpace.CompileProcess.resourceFilePath.Add(sk, NonMacrolize(0));
         }
 
