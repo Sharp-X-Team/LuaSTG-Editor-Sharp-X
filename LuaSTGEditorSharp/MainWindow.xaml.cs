@@ -236,6 +236,22 @@ namespace LuaSTGEditorSharp
 
         private bool TestError()
         {
+            App currentApp = Application.Current as App;
+            if (ActivatedWorkSpaceData != null)
+            {
+                var docDir = Path.GetDirectoryName(ActivatedWorkSpaceData.DocPath);
+                ActivatedWorkSpaceData.GatherCompileInfo(currentApp);
+                if (currentApp.UseFolderPacking)
+                {
+                    if (docDir == ActivatedWorkSpaceData.CompileProcess.targetZipPath)
+                    {
+                        MessageBox.Show("Project files are under output directory.\n" +
+                            "The output directory will be deleted before build. DO NOT save project files in the output directory!",
+                            "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return true;
+                    }
+                }
+            }
             if (!MessageContainer.IsNoError())
             {
                 tabMessage.IsSelected = true;
