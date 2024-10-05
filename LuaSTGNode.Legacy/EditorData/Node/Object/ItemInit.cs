@@ -102,7 +102,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override object Clone()
         {
-            var n = new ObjectInit(parentWorkSpace);
+            var n = new ItemInit(parentWorkSpace);
             n.DeepCopyFrom(this);
             return n;
         }
