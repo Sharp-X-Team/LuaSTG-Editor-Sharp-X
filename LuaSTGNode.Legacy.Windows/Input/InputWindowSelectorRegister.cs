@@ -34,8 +34,13 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("nullabletarget"
                 , new string[] { "", "self", "last", "unit", "player", "_boss" });
             target.Add("blend"
-                , new string[] { "\"\"", "\"mul+add\"", "\"mul+alpha\"", "\"add+add\"", "\"add+alpha\""
-                        , "\"mul+sub\"", "\"mul+rev\"", "\"add+sub\"", "\"add+rev\"", "\"alpha+bal\"" });
+                , new string[] { "\"\"",
+                    "\"mul+alpha\"", "\"mul+add\"", "\"mul+rev\"", "\"mul+sub\"",
+                    "\"add+alpha\"", "\"add+add\"", "\"add+rev\"", "\"add+sub\"",
+                    "\"alpha+bal\"",
+                    "\"mul+min\"", "\"mul+max\"", "\"mul+mul\"", "\"mul+screen\"",
+                    "\"add+min\"", "\"add+max\"", "\"add+mul\"", "\"add+screen\"",
+                    "one" });
             target.Add("event"
                 , new string[] { "frame", "kill", "del", "colli" });//, "render" });
             target.Add("interpolation"
