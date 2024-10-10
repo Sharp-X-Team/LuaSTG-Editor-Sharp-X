@@ -1,5 +1,13 @@
 ﻿-- Update Log（July 7th, 2024）
 
+v0.77.1
+- When compiling in plain files, the editor now checks if you're trying to compile in the same folder as your project file and will throw an error if that's the case.
+- The "LoadBGM" node now starts with arguments loop end and loop length at 0.
+- Added new blend modes options.
+- The editor won't throw an error when trying to compile if the same file name with the same scope is used twice.
+- Cloned (copied) item definitions where bugged, the init function was cloning itself incorrectly.
+- Hopefully fixed Auto Updates for good.
+
 v0.77.0
 - Support for compilation in LuaSTG Evo.
 - Added the project meta file to the auto backup.
