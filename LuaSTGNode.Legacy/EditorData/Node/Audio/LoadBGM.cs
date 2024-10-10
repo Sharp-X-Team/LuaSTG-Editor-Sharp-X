@@ -24,7 +24,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         private LoadBGM() : base() { }
 
         public LoadBGM(DocumentData workSpaceData)
-            : this(workSpaceData, "", "", "", "") { }
+            : this(workSpaceData, "", "", "0", "0") { }
 
         public LoadBGM(DocumentData workSpaceData, string path, string name, string lend, string llen)
             : base(workSpaceData)
