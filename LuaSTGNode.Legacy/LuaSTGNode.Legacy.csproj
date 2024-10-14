@@ -1634,6 +1634,8 @@
     <Content Include="CustomNodes\Example.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\16x16\lasersimple.png" />
+    <Resource Include="images\lasersimple.png" />
     <Resource Include="images\16x16\basecustomnode.png" />
     <Resource Include="images\basecustomnode.png" />
     <Content Include="CustomNodes\Example 2.lua">
