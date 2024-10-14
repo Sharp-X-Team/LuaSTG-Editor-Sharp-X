@@ -58,18 +58,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
             {
                 if(local) yield return "local ";
             }
-            yield return $"function {NonMacrolize(0)}({NonMacrolize(1)})";
-            yield return NonMacrolize(0);
-            yield return "(";
-            yield return NonMacrolize(1);
-            yield return ")\n";
-            yield return sp;
+            yield return $"function {NonMacrolize(0)}({NonMacrolize(1)})\n";
             foreach(string s in base.ToLua(spacing + 1))
             {
                 yield return s;
             }
-            yield return sp;
-            yield return "end\n";
+            yield return sp + "end\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
