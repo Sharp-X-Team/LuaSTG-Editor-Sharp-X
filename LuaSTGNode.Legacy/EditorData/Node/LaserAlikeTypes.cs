@@ -10,7 +10,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
     public class LaserAlikeTypes : ITypeEnumerable
     {
         private static readonly Type[] types =
-            { typeof(Object.CallBackFunc), typeof(Laser.LaserInit), typeof(Data.Function), typeof(Task.TaskDefine) };
+            { typeof(Object.CallBackFunc), typeof(Laser.LaserInit), typeof(Data.Function), typeof(Task.TaskDefine), typeof(Laser.CreateSimpleLaser) };
 
         public IEnumerator<Type> GetEnumerator()
         {

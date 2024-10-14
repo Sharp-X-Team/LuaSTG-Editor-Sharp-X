@@ -212,6 +212,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddDefineLaserNode));
             laser.Add(new ToolboxItemData("createlaser", "/LuaSTGNode.Legacy;component/images/lasercreate.png", "Create Laser")
                 , new AddNode(AddCreateLaserNode));
+            laser.Add(new ToolboxItemData("createsimplelaser", "/LuaSTGNode.Legacy;component/images/lasersimple.png", "Create Simple Laser")
+                , new AddNode(AddCreateSimpleLaserNode));
             laser.Add(new ToolboxItemData(true), null);
             laser.Add(new ToolboxItemData("defbentlaser", "/LuaSTGNode.Legacy;component/images/laserbentdefine.png", "Define Bent Laser")
                 , new AddNode(AddDefineBentLaserNode));
@@ -964,6 +966,11 @@ namespace LuaSTGEditorSharp
         private void AddCreateLaserNode()
         {
             parent.Insert(new CreateLaser(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddCreateSimpleLaserNode()
+        {
+            parent.Insert(new CreateSimpleLaser(parent.ActivatedWorkSpaceData));
         }
 
         private void AddDefineBentLaserNode()

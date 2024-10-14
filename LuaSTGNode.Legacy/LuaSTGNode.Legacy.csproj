@@ -208,6 +208,7 @@
     <Compile Include="EditorData\Node\Laser\BentLaserInit.cs" />
     <Compile Include="EditorData\Node\Laser\CreateBentLaser.cs" />
     <Compile Include="EditorData\Node\Laser\CreateLaser.cs" />
+    <Compile Include="EditorData\Node\Laser\CreateSimpleLaser.cs" />
     <Compile Include="EditorData\Node\Laser\LaserChangeStyle.cs" />
     <Compile Include="EditorData\Node\Laser\LaserDefine.cs" />
     <Compile Include="EditorData\Node\Laser\LaserGrow.cs" />
