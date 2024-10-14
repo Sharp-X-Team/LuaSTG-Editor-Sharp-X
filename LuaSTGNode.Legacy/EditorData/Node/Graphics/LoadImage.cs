@@ -92,7 +92,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             string sp = Indent(spacing);
             yield return sp + "_LoadImageFromFile(\'image:\'..\'" + Lua.StringParser.ParseLua(NonMacrolize(1))
                 + "\', \'" + sk
-                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ",  " + Macrolize(5) + ")\n";
+                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ", " + Macrolize(5) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

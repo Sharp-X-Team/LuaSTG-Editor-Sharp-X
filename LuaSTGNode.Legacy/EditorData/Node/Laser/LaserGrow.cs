@@ -71,7 +71,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
         {
             string sp = Indent(spacing);
             yield return sp + "laser.grow(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2)
-                + ",  " + Macrolize(3) + ")\n";
+                + ", " + Macrolize(3) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
