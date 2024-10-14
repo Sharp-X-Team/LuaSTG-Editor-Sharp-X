@@ -44,7 +44,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
         public override string ToString()
         {
             bool hasChildren = Children.Count > 0;
-            return $"Create simple laser {(hasChildren ? "with task" : "")} at ({NonMacrolize(0)})";
+            return $"Create simple laser{(hasChildren ? " with task" : "")} at ({NonMacrolize(0)})";
         }
 
         #region Attr

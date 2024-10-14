@@ -11,7 +11,8 @@ namespace LuaSTGEditorSharp.EditorData.Node
     {
         private static readonly Type[] types =
             { typeof(Task.TaskNode), typeof(Task.TaskForObject), typeof(Task.TaskDefine), typeof(Data.Function), typeof(Task.Tasker),
-              typeof(Enemy.CreateSimpleEnemy), // "create simple enemy with task"
+              typeof(Enemy.CreateSimpleEnemy), // "Create simple enemy with task"
+              typeof(Laser.CreateSimpleLaser), // "Create simple laser with task"
               typeof(Boss.BossSCBeforeStart), typeof(Boss.BossSCBeforeFinish), typeof(Boss.BossSCAfter)};
 
         public IEnumerator<Type> GetEnumerator()
