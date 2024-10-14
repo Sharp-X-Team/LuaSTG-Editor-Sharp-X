@@ -57,6 +57,12 @@
                                 <TextBlock FontFamily="Courier New" Text="{Binding Path=Display}"/>
                             </HierarchicalDataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                 </Grid>
                 <DockPanel Margin="10,10,10,10" Grid.Column="1">
