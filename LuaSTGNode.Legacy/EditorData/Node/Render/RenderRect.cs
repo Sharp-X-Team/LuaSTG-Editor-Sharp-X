@@ -72,7 +72,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "RenderRect(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + ")" + "\n";
+            yield return sp + "RenderRect(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ")" + "\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -82,7 +82,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "Render Rect image " + NonMacrolize(0) + " at (" + NonMacrolize(1) + "," + NonMacrolize(2) + "," + NonMacrolize(3) + "," + NonMacrolize(4) + ")";
+            return "Render Rect image " + NonMacrolize(0) + " at (" + NonMacrolize(1) + ", " + NonMacrolize(2) + ", " + NonMacrolize(3) + ", " + NonMacrolize(4) + ")";
         }
 
         public override object Clone()

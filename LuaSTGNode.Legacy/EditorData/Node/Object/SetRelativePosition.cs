@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         [JsonConstructor]
         public SetRelativePosition() : base() { }
 
-        public SetRelativePosition(DocumentData workSpaceData) : this(workSpaceData, "0,0", "self.rot", "false") { }
+        public SetRelativePosition(DocumentData workSpaceData) : this(workSpaceData, "0, 0", "self.rot", "false") { }
 
         public SetRelativePosition(DocumentData workSpaceData, string pos, string rot, string follow) : base(workSpaceData)
         {
@@ -53,7 +53,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "_set_rel_pos(self," + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + ")\n";
+            yield return sp + "_set_rel_pos(self, " + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ")\n";
         }
 
         public override string ToString()

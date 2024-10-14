@@ -86,10 +86,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                         + sp + s1 + "player_bullet_straight.init(self," + Macrolize(1) + ",_x,_y," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + ")\n"
+            yield return sp + "_editor_class[\"" + parentName + "\"].init = function(self, _x, _y, " + p + ")\n"
+                         + sp + s1 + "player_bullet_straight.init(self, " + Macrolize(1) + ", _x, _y, " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ")\n"
                          + sp + s1 + "self.hp = 10\n"
-                         + sp + s1 + "self._blend, self._a, self._r, self._g, self._b = \"\", 255, 255, 255, 255\n"
+                         + sp + s1 + "self._blend, self._a, self._r, self._g, self._b = '', 255, 255, 255, 255\n"
                          + sp + s1 + "self._servants = {}\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
@@ -110,7 +110,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return "On init(" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()

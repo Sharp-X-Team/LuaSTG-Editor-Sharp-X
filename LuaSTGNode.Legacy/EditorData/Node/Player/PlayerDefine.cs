@@ -74,14 +74,14 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "" + NonMacrolize(0) + "=Class(player_class)\n";
+            yield return sp + NonMacrolize(0) + " = Class(player_class)\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;
             }
             if (NonMacrolize(1) == "true")
             {
-                yield return "table.insert(player_list, {'" + Macrolize(2) + "','" + Macrolize(0) + "','" + Macrolize(3) + "'})";
+                yield return "table.insert(player_list, {'" + Macrolize(2) + "', '" + Macrolize(0) + "', '" + Macrolize(3) + "'})";
             }
         }
 

@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
         [JsonConstructor]
         public PositionAssignment() : base() { }
 
-        public PositionAssignment(DocumentData workSpaceData) : this(workSpaceData, "self", "0,0") { }
+        public PositionAssignment(DocumentData workSpaceData) : this(workSpaceData, "self", "0, 0") { }
 
         public PositionAssignment(DocumentData workSpaceData, string target, string pos) : base(workSpaceData)
         {
@@ -45,7 +45,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + Macrolize(0) + ".x," + Macrolize(0) + ".y=" + Macrolize(1) + "\n";
+            yield return sp + Macrolize(0) + ".x," + Macrolize(0) + ".y = " + Macrolize(1) + "\n";
         }
 
         public override string ToString()

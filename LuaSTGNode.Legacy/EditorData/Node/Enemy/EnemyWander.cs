@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         public EnemyWander() : base() { }
 
         public EnemyWander(DocumentData workspaceData) 
-            : this(workspaceData,"30", "-96,96,112,144", "16,32,8,16", "MOVE_NORMAL", "MOVE_X_TOWARDS_PLAYER") { }
+            : this(workspaceData, "30", "-96, 96, 112, 144", "16, 32, 8, 16", "MOVE_NORMAL", "MOVE_X_TOWARDS_PLAYER") { }
 
         public EnemyWander(DocumentData workSpaceData, string time, string range, string amp,
             string movem, string dirm) : base(workSpaceData)
@@ -71,18 +71,18 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "task.MoveToPlayer(" + NullOrDefault(Macrolize(0), "1") + ","
-                + NullOrDefault(Macrolize(1), "-96,96,112,144") + ","
-                + NullOrDefault(Macrolize(2), "16,32,8,16") + ","
-                + NullOrDefault(Macrolize(3), "MOVE_NORMAL") + ","
+            yield return sp + "task.MoveToPlayer(" + NullOrDefault(Macrolize(0), "1") + ", "
+                + NullOrDefault(Macrolize(1), " -96, 96, 112, 144") + ", "
+                + NullOrDefault(Macrolize(2), "16, 32, 8, 16") + ", "
+                + NullOrDefault(Macrolize(3), "MOVE_NORMAL") + ", "
                 + NullOrDefault(Macrolize(4), "MOVE_X_TOWARDS_PLAYER") + ")\n";
         }
 
         public override string ToString()
         {
             return "Wander in " + NullOrDefault(NonMacrolize(0), "1")
-                + " frame(s), in range (" + NullOrDefault(NonMacrolize(1), "-96,96,112,144")
-                + ") and amplitude (" + NullOrDefault(NonMacrolize(2), "16,32,8,16")
+                + " frame(s), in range (" + NullOrDefault(NonMacrolize(1), "-96, 96, 112, 144")
+                + ") and amplitude (" + NullOrDefault(NonMacrolize(2), "16, 32, 8, 16")
                 + "), " + NullOrDefault(NonMacrolize(4), "MOVE_X_TOWARDS_PLAYER");
         }
 

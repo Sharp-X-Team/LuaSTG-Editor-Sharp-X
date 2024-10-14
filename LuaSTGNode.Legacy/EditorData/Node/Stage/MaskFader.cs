@@ -37,7 +37,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "New(mask_fader," + Macrolize(0) + ")\n";
+            yield return sp + "New(mask_fader, " + Macrolize(0) + ")\n";
         }
 
         public override string ToString()

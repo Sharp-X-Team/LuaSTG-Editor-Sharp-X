@@ -37,7 +37,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "boss.cast(self," + Macrolize(0) + ")\n";
+            yield return sp + "boss.cast(self, " + Macrolize(0) + ")\n";
         }
 
         public override string ToString()

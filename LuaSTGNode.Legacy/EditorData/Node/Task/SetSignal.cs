@@ -47,7 +47,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         {
             string sp = Indent(spacing);
             string sig_name = "\"" + Lua.StringParser.ParseLua(NonMacrolize(0)) + "\"";
-            yield return sp + "ex.SetSignal(" + sig_name + "," + Macrolize(1) + ")\n";
+            yield return sp + "ex.SetSignal(" + sig_name + ", " + Macrolize(1) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

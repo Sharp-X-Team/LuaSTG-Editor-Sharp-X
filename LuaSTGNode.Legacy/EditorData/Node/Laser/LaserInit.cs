@@ -124,15 +124,15 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
                     (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                         + s1 + "laser.init(self," + Macrolize(1) + ",_x,_y,0," + Macrolize(3) + ","
-                         + Macrolize(4) + "," + Macrolize(5) + "," + Macrolize(6) + "," + Macrolize(7) 
-                         + "," + Macrolize(8) + ")\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].init = function(self, _x, _y, " + p + ")\n"
+                         + s1 + "laser.init(self, " + Macrolize(1) + ", _x, _y, 0, " + Macrolize(3) + ", "
+                         + Macrolize(4) + ", " + Macrolize(5) + ", " + Macrolize(6) + ", " + Macrolize(7) 
+                         + ", " + Macrolize(8) + ")\n";
             string style = Macrolize(2);
             if (string.IsNullOrEmpty(style)) style = "1";
             if (style != "1")
             {
-                yield return sp + s1 + "laser.ChangeImage(self," + style + ")\n";
+                yield return sp + s1 + "laser.ChangeImage(self, " + style + ")\n";
             }
             else
             {
@@ -157,7 +157,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return "On init(" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()

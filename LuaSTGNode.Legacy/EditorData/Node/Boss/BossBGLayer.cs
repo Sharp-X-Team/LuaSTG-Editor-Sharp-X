@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         private BossBGLayer() : base() { }
 
         public BossBGLayer(DocumentData workSpaceData)
-            : this(workSpaceData, "", "false","0,0","0","0,0","0","\"\"","1,1") { }
+            : this(workSpaceData, "", "false", "0, 0", "0", "0, 0", "0", "\"\"", "1, 1") { }
 
         public BossBGLayer(DocumentData workSpaceData, string img, string tile, string pos, string rot, string v
             , string omega, string blend, string scale)
@@ -105,10 +105,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            string s = sp + "_spellcard_background.AddLayer(self,";
+            string s = sp + "_spellcard_background.AddLayer(self, ";
             foreach(AttrItem item in attributes)
             {
-                s += Macrolize(item) + ",";
+                s += Macrolize(item) + ", ";
             }
             yield return s + "\n";
             foreach (var a in base.ToLua(spacing + 1))

@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private SetImageState() : base() { }
 
         public SetImageState(DocumentData workSpaceData)
-            : this(workSpaceData, "", "\"\"", "255,255,255,255") { }
+            : this(workSpaceData, "", "\"\"", "255, 255, 255, 255") { }
 
         public SetImageState(DocumentData workSpaceData, string tar, string blend, string color)
             : base(workSpaceData)
@@ -60,7 +60,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "SetImageState(" + Macrolize(0) + "," + Macrolize(1) + ",Color(" + Macrolize(2) + "))\n";
+            yield return sp + "SetImageState(" + Macrolize(0) + ", " + Macrolize(1) + ", Color(" + Macrolize(2) + "))\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

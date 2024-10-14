@@ -33,7 +33,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
             TreeNode Parent = GetLogicalParent();
             string parentName = "";
             parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
-            yield return sp + "_editor_class[\"" + parentName + "\"].render=function(self)\n"
+            yield return sp + "_editor_class[\"" + parentName + "\"].render = function(self)\n"
                         + sp + s1 + "if self.y > lstg.world.t then\n"
                         + sp + s1 + s1 + "Render(self.imgup, self.x, lstg.world.t - 8)\n"
                         + sp + s1 + "else\n";
@@ -47,7 +47,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "(Item) on render()";
+            return "(Item) On render()";
         }
 
         public override object Clone()

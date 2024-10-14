@@ -22,7 +22,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
         public LoadAnimation() : base() { }
 
         public LoadAnimation(DocumentData workSpaceData)
-            : this(workSpaceData, "", "", "true", "1,1", "4", "0,0", "false") { }
+            : this(workSpaceData, "", "", "true", "1, 1", "4", "0, 0", "false") { }
 
         public LoadAnimation(DocumentData workSpaceData, string path, string resName, string mipMap
             , string colRow, string animI, string colliSize, string rect) : base(workSpaceData)
@@ -90,8 +90,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             string sk = GetPath(0);
             string sp = Indent(spacing);
             yield return sp + "LoadAniFromFile(\'ani:\'..\'" + Lua.StringParser.ParseLua(NonMacrolize(1))
-                + "\',\'" + sk
-                + "\'," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + "," + Macrolize(6) + ")\n";
+                + "\', \'" + sk
+                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ", " + Macrolize(5) + ", " + Macrolize(6) + ")\n";
         }
 
         public override string ToString()

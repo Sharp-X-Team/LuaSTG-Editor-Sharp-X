@@ -51,9 +51,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "local _boss_wait=" + Macrolize(1) + "\n"
-                       + sp + "local _ref=New(_editor_class[" + Macrolize(0) + "],_editor_class[" + Macrolize(0) + "].cards)\n"
-                       + sp + "last=_ref\n"
+            yield return sp + "local _boss_wait = " + Macrolize(1) + "\n"
+                       + sp + "local _ref = New(_editor_class[" + Macrolize(0) + "], _editor_class[" + Macrolize(0) + "].cards)\n"
+                       + sp + "last = _ref\n"
                        + sp + "if _boss_wait then while IsValid(_ref) do task.Wait() end end\n";
         }
 
@@ -64,7 +64,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
 
         public override string ToString()
         {
-            return "Create boss " + NonMacrolize(0) + (NonMacrolize(1)=="true"?", wait":"");
+            return "Create boss " + NonMacrolize(0) + (NonMacrolize(1)=="true" ? ", wait" : "");
         }
 
         public override object Clone()

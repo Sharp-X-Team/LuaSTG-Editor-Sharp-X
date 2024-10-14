@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerSpellMask() : base() { }
 
         public PlayerSpellMask(DocumentData workSpaceData)
-            : this(workSpaceData, "255,255,255", "30", "60", "30") { }
+            : this(workSpaceData, "255, 255, 255", "30", "60", "30") { }
 
         public PlayerSpellMask(DocumentData workSpaceData, string col, string starttime, string staytime, string fadetime)
             : base(workSpaceData)
@@ -64,7 +64,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "New(player_spell_mask," + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + ")\n";
+            yield return sp + "New(player_spell_mask, " + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3) + ")\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

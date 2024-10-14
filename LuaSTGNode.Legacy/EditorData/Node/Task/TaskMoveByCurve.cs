@@ -87,7 +87,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
             fr = string.IsNullOrEmpty(fr) ? "1" : fr;
             string mode = Macrolize(2);
             mode = string.IsNullOrEmpty(mode) ? "MOVE_NORMAL" : mode;
-            yield return sp + $"task.{NonMacrolize(1)}MoveToEx({fr},{mode},{Macrolize(3)})\n";
+            yield return sp + $"task.{NonMacrolize(1)}MoveToEx({fr}, {mode}, {Macrolize(3)})\n";
         }
 
         public override object Clone()

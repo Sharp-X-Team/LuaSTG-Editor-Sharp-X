@@ -52,17 +52,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0) +
                     (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
-            yield return sp + "_tmp_sc=boss.dialog.New(" + Macrolize(0) + ")\n";
+            yield return sp + "_tmp_sc = boss.dialog.New(" + Macrolize(0) + ")\n";
             yield return sp + "function _tmp_sc:init()\n";
-            yield return sp + s1 + "lstg.player.dialog=" + Macrolize(1) + "\n";
-            yield return sp + s1 + "_dialog_can_skip=" + Macrolize(0) + "\n";
-            yield return sp + s1 + "self.dialog_displayer=New(dialog_displayer)\n";
+            yield return sp + s1 + "lstg.player.dialog = " + Macrolize(1) + "\n";
+            yield return sp + s1 + "_dialog_can_skip = " + Macrolize(0) + "\n";
+            yield return sp + s1 + "self.dialog_displayer = New(dialog_displayer)\n";
             foreach (string s in base.ToLua(spacing + 1))
             {
                 yield return s;
             }
             yield return sp + "end\n";
-            yield return sp + "table.insert(_editor_class[\"" + parentName + "\"].cards,_tmp_sc)\n";
+            yield return sp + "table.insert(_editor_class[\"" + parentName + "\"].cards, _tmp_sc)\n";
         }
 
         public override string ToString()

@@ -78,8 +78,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "SetV2(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," 
-                + Macrolize(4) + "," + Macrolize(3) + ")\n";
+            yield return sp + "SetV2(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " 
+                + Macrolize(4) + ", " + Macrolize(3) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

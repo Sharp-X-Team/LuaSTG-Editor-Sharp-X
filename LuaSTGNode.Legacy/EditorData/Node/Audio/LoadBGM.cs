@@ -73,9 +73,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         {
             string sk = GetPath(0);
             string sp = Indent(spacing);
-            yield return sp + "MusicRecord(\'bgm:\'..\'" + StringParser.ParseLua(NonMacrolize(1)) + "\',\'" 
+            yield return sp + "MusicRecord(\'bgm:\'..\'" + StringParser.ParseLua(NonMacrolize(1)) + "\', \'" 
                 + sk
-                + "\'," + Macrolize(2) + "," + Macrolize(3) + ")\n";
+                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerSimpleBullet() : base() { }
 
         public PlayerSimpleBullet(DocumentData workSpaceData)
-            : this(workSpaceData, "\"leaf\"", "self.x,self.y", "9", "90", "2", "0") { }
+            : this(workSpaceData, "\"leaf\"", "self.x, self.y", "9", "90", "2", "0") { }
 
         public PlayerSimpleBullet(DocumentData workSpaceData, string img, string pos, string spd, string ang, string dmg, string home)
             : base(workSpaceData)
@@ -80,8 +80,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "last=New(player_bullet_trail," + Macrolize(0) + "," + Macrolize(1) + "," +
-                               Macrolize(2) + "," + Macrolize(3) + ",player.target," + Macrolize(5) + "," + Macrolize(4) + ")\n";
+            yield return sp + "last = New(player_bullet_trail, " + Macrolize(0) + ", " + Macrolize(1) + ", " +
+                               Macrolize(2) + ", " + Macrolize(3) + ", player.target, " + Macrolize(5) + ", " + Macrolize(4) + ")\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

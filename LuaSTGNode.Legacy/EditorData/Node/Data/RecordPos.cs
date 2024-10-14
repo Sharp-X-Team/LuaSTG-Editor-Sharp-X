@@ -42,17 +42,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
                 {
                     if (!first)
                     {
-                        bres += ",";
-                        mres += ",";
+                        bres += ", ";
+                        mres += ", ";
                     }
                     bres += NonMacrolize(i);
-                    mres += "{ x=" + NonMacrolize(i + 1) + ".x ,y=" + NonMacrolize(i + 1) + ".y }";
+                    mres += "{ x = " + NonMacrolize(i + 1) + ".x , y = " + NonMacrolize(i + 1) + ".y }";
                     first = false;
                 }
             }
             if(!first)
             {
-                yield return sp + "local " + bres + "=" + mres + "\n";
+                yield return sp + "local " + bres + " = " + mres + "\n";
             }
             else
             {

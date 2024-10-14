@@ -31,7 +31,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
         {
             string sp = Indent(spacing);
             yield return
-                  sp + "New(mask_fader,'close')" + "\n"
+                  sp + "New(mask_fader, 'close')" + "\n"
                 + sp + "_stop_music()" + "\n"
                 + sp + "task.Wait(30)" + "\n"
                 + sp + "stage.group.FinishGroup()" + "\n";

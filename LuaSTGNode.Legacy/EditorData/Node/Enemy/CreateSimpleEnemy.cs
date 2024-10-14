@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
 
         public override string ToString()
         {
-            return $"create simple enemy with task at ({NonMacrolize(2)})";
+            return $"Create simple enemy with task at ({NonMacrolize(2)})";
         }
 
         #region Attr
@@ -125,10 +125,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         {
             string sp = Indent(spacing);
             string sp1 = Indent(spacing + 1);
-            yield return sp + $"last=New(EnemySimple,{Macrolize(0)},{Macrolize(1)},{Macrolize(2)},"
-                            + "{" + $"{Macrolize(3)},{Macrolize(4)},{Macrolize(5)}" + "},"
-                            + $"{Macrolize(6)},{Macrolize(7)},{Macrolize(8)},{Macrolize(9)},function(self)\n";
-            yield return sp1 + "task.New(self,function()\n";
+            yield return sp + $"last = New(EnemySimple, {Macrolize(0)}, {Macrolize(1)}, {Macrolize(2)}, "
+                            + "{" + $"{Macrolize(3)}, {Macrolize(4)}, {Macrolize(5)}" + "}, "
+                            + $"{Macrolize(6)}, {Macrolize(7)}, {Macrolize(8)}, {Macrolize(9)}, function(self)\n";
+            yield return sp1 + "task.New(self, function()\n";
             foreach (var a in base.ToLua(spacing + 2))
             {
                 yield return a;

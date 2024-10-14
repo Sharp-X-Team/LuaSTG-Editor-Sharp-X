@@ -55,7 +55,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         {
             string sk = GetPath(0);
             string sp = Indent(spacing);
-            yield return sp + "LoadSound(\'se:\'..\'" + StringParser.ParseLua(NonMacrolize(1)) + "\',\'" 
+            yield return sp + "LoadSound(\'se:\'..\'" + StringParser.ParseLua(NonMacrolize(1)) + "\', \'" 
                 + sk + "\')\n";
         }
 

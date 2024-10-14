@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         {
             string sp = Indent(spacing);
             string met = NonMacrolize(1) == "true" ? "ipairs" : "pairs";
-            yield return sp + "for _,unit in " + met + "(" + Macrolize(0) + ") do\n";
+            yield return sp + "for _, unit in " + met + "(" + Macrolize(0) + ") do\n";
             foreach (var i in base.ToLua(spacing + 1))
             {
                 yield return i;

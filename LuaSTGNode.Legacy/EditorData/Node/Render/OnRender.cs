@@ -31,7 +31,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0) +
                    (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
-            yield return sp + "_editor_class[\"" + parentName + "\"].render=function(self)\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].render = function(self)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -41,7 +41,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override string ToString()
         {
-            return "on render()";
+            return "On render()";
         }
 
         public override object Clone()

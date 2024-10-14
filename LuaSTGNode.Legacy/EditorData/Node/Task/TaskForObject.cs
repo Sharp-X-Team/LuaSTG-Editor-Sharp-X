@@ -42,8 +42,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + $"lasttask=task.New({Macrolize(0)},function()\n"
-                + (attributes[1].AttrInput == "true" ? Indent(spacing + 1) + "local self=task.GetSelf()\n" : "");
+            yield return sp + $"lasttask = task.New({Macrolize(0)}, function()\n"
+                + (attributes[1].AttrInput == "true" ? Indent(spacing + 1) + "local self = task.GetSelf()\n" : "");
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;

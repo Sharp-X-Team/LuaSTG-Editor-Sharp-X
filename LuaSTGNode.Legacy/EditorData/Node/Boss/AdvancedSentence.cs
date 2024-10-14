@@ -23,7 +23,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public AdvancedSentence() : base() { }
 
         public AdvancedSentence(DocumentData workSpaceData) 
-            : this(workSpaceData, "\"img_void\"", "\"left\"", "", "600", "1,1", "1", "1", "nil", "128", "nil", "230", "1", "false") { }
+            : this(workSpaceData, "\"img_void\"", "\"left\"", "", "600", "1, 1", "1", "1", "nil", "128", "nil", "230", "1", "false") { }
 
         public AdvancedSentence(DocumentData workSpaceData, string img, string lr, string txt, string time, string scale, string tpics, string nums, string pxs, string pys, string txs, string tys, string tns, string stays) 
             : base(workSpaceData)

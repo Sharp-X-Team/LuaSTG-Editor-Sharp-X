@@ -47,8 +47,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0) +
                    (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
-            string other = NonMacrolize(0) == "colli" ? ",other" : "";
-            yield return sp + "_editor_class[\"" + parentName + "\"]." + NonMacrolize(0) + "=function(self" + other + ")\n";
+            string other = NonMacrolize(0) == "colli" ? ", other" : "";
+            yield return sp + "_editor_class[\"" + parentName + "\"]." + NonMacrolize(0) + " = function(self" + other + ")\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -68,7 +68,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "on " + NonMacrolize(0) + "()";
+            return "On " + NonMacrolize(0) + "()";
         }
 
         public override object Clone()

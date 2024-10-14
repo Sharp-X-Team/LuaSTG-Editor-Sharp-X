@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         [JsonConstructor]
         public PlaySE() : base() { }
 
-        public PlaySE(DocumentData workSpaceData) : this(workSpaceData, "\"tan00\"", "0.1", "self.x/256", "false") { }
+        public PlaySE(DocumentData workSpaceData) : this(workSpaceData, "\"tan00\"", "0.1", "self.x / 256", "false") { }
 
         public PlaySE(DocumentData workSpaceData, string name, string vol
             , string pan, string ignoredef) : base(workSpaceData)
@@ -63,7 +63,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "PlaySound(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + ")\n";
+            yield return sp + "PlaySound(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3) + ")\n";
         }
 
         public override string ToString()

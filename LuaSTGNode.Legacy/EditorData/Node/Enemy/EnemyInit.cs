@@ -122,12 +122,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
                     (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                         + sp + s1 + "enemy.init(self," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(7) 
-                            + "," + Macrolize(8) + "," + Macrolize(9) + ")\n"
-                         + sp + s1 + "self.x,self.y=_x,_y\n"
-                         + sp + s1 + "self.drop={" + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + "}\n"
-                         + sp + s1 + "task.New(self,function() self.protect=true task.Wait(" + Macrolize(6) + ") self.protect=false end)\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].init = function(self, _x, _y, " + p + ")\n"
+                         + sp + s1 + "enemy.init(self, " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(7) 
+                            + ", " + Macrolize(8) + ", " + Macrolize(9) + ")\n"
+                         + sp + s1 + "self.x, self.y = _x, _y\n"
+                         + sp + s1 + "self.drop = {" + Macrolize(3) + ", " + Macrolize(4) + ", " + Macrolize(5) + "}\n"
+                         + sp + s1 + "task.New(self, function() self.protect = true task.Wait(" + Macrolize(6) + ") self.protect = false end)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -144,7 +144,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return "On init(" + NonMacrolize(0) + ")";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         private Set3D() : base() { }
 
         public Set3D(DocumentData workSpaceData)
-            : this(workSpaceData, "\"eye\"", "0,0,0") { }
+            : this(workSpaceData, "\"eye\"", "0, 0, 0") { }
 
         public Set3D(DocumentData workSpaceData, string td, string val)
             : base(workSpaceData)

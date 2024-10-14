@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private SetAnimationCenter() : base() { }
 
         public SetAnimationCenter(DocumentData workSpaceData)
-            : this(workSpaceData, "", "0,0") { }
+            : this(workSpaceData, "", "0, 0") { }
 
         public SetAnimationCenter(DocumentData workSpaceData, string tar, string pos)
             : base(workSpaceData)
@@ -51,7 +51,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "SetAnimationCenter(" + Macrolize(0) + "," + Macrolize(1) + ")\n";
+            yield return sp + "SetAnimationCenter(" + Macrolize(0) + ", " + Macrolize(1) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

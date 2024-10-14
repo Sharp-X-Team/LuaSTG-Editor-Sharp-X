@@ -44,7 +44,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
 
         public override string ToString()
         {
-            return "on start";
+            return "On start";
         }
 
         public override object Clone()

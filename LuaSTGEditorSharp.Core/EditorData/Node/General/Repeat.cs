@@ -93,7 +93,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
             }
             else
             {
-                yield return sp + "do local " + bres + "=" + mres + " for _=1," + Macrolize(0) + " do\n";
+                yield return sp + "do local " + bres + " = " + mres + " for _ = 1, " + Macrolize(0) + " do\n";
                 foreach (var a in base.ToLua(spacing + 1))
                 {
                     yield return a;
@@ -125,7 +125,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
                 {
                     if (!first)
                     {
-                        bres += ",";
+                        bres += ", ";
                     }
                     bres += "(" + attributes[i].AttrInput + " = " + attributes[i + 1].AttrInput
                         + ", increment " + attributes[i + 2].AttrInput + ")";

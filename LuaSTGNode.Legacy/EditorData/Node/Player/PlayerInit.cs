@@ -56,7 +56,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             {
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
-            yield return sp + "" + parentName + ".init=function(self)\n" +
+            yield return sp + "" + parentName + ".init = function(self)\n" +
                 s1 + "player_class.init(" + NonMacrolize(0) + ")\n" +
                 s1 + "self.name = \"" + Parent.NonMacrolize(0) +"\"\n";
             foreach (var a in base.ToLua(spacing + 1))
@@ -78,7 +78,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return "On init(" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()

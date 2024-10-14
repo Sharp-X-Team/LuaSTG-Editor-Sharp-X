@@ -24,7 +24,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
         private LoadImageGroup() : base() { }
 
         public LoadImageGroup(DocumentData workSpaceData)
-            : this(workSpaceData, "", "", "true", "0,0", "0,0", "false") { }
+            : this(workSpaceData, "", "", "true", "0, 0", "0, 0", "false") { }
 
         public LoadImageGroup(DocumentData workSpaceData, string path, string name, string mipmap, string cr, string collis, string rect)
             : base(workSpaceData)
@@ -93,8 +93,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             string sp = Indent(spacing);
             //Data Layer: Please add an additional character before numbers so that file name ended with numbers can be splitted correctly
             yield return sp + "_LoadImageGroupFromFile(\'image:\'..\'" + Lua.StringParser.ParseLua(NonMacrolize(1))
-                + "\',\'" + sk
-                + "\'," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + ")\n";
+                + "\', \'" + sk
+                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ", " + Macrolize(5) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

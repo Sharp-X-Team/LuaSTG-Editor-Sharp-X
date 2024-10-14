@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private SetBlend() : base() { }
 
         public SetBlend(DocumentData workSpaceData)
-            : this(workSpaceData, "self", "\"\"", "255,255,255,255") { }
+            : this(workSpaceData, "self", "\"\"", "255, 255, 255, 255") { }
 
         public SetBlend(DocumentData workSpaceData, string tar, string blend, string color)
             : base(workSpaceData)
@@ -60,7 +60,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "_object.set_color(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + ")\n";
+            yield return sp + "_object.set_color(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private DropItem() : base() { }
 
         public DropItem(DocumentData workSpaceData)
-            : this(workSpaceData, "item_extend", "1", "self.x,self.y") { }
+            : this(workSpaceData, "item_extend", "1", "self.x, self.y") { }
 
         public DropItem(DocumentData workSpaceData, string item, string number, string position)
             : base(workSpaceData)
@@ -60,7 +60,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + $"_drop_item({Macrolize(0)},{Macrolize(1)},{Macrolize(2)})\n";
+            yield return sp + $"_drop_item({Macrolize(0)}, {Macrolize(1)}, {Macrolize(2)})\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

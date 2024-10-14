@@ -44,7 +44,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
 
         public override string ToString()
         {
-            return "task after finish";
+            return "Task after finish";
         }
 
         public override object Clone()

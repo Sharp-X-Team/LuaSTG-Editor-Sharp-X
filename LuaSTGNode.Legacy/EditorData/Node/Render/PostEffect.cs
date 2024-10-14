@@ -77,11 +77,11 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
             string s = Macrolize(0);
             if (string.IsNullOrEmpty(s))
             {
-                yield return sp + $"PostEffectApply({Macrolize(1)},{Macrolize(2)},{{{Macrolize(3)}}})\n";
+                yield return sp + $"PostEffectApply({Macrolize(1)}, {Macrolize(2)}, {{{Macrolize(3)}}})\n";
             }
             else
             {
-                yield return sp + $"PostEffect({s},{Macrolize(1)},{Macrolize(2)},{{{Macrolize(3)}}})\n";
+                yield return sp + $"PostEffect({s}, {Macrolize(1)}, {Macrolize(2)}, {{{Macrolize(3)}}})\n";
             }
         }
 

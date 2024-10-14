@@ -23,7 +23,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public Sentence() : base() { }
 
         public Sentence(DocumentData workSpaceData) 
-            : this(workSpaceData, "\"img_void\"", "\"left\"","","", "") { }
+            : this(workSpaceData, "\"img_void\"", "\"left\"", "", "", "") { }
 
         public Sentence(DocumentData workSpaceData, string img, string lr, string txt, string time, string scale) 
             : base(workSpaceData)
@@ -76,9 +76,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             string attr3 = Macrolize(3);
             attr3 = string.IsNullOrEmpty(attr3) ? "nil" : attr3;
             string attr4 = Macrolize(4);
-            attr4 = string.IsNullOrEmpty(attr4) ? "nil,nil" : attr4;
-            yield return sp + "boss.dialog.sentence(self," + Macrolize(0) + "," + Macrolize(1) + ",[===[" 
-                + NonMacrolize(2) + "]===]," + attr3 + "," + attr4 + ")\n";
+            attr4 = string.IsNullOrEmpty(attr4) ? "nil, nil" : attr4;
+            yield return sp + "boss.dialog.sentence(self, " + Macrolize(0) + ", " + Macrolize(1) + ", [===[" 
+                + NonMacrolize(2) + "]===], " + attr3 + ", " + attr4 + ")\n";
         }
 
         public override string ToString()

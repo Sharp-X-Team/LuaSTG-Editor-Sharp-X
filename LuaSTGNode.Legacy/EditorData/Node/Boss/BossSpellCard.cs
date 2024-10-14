@@ -145,19 +145,19 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             string a = "";
             if(!string.IsNullOrEmpty(Macrolize(10)))
             {
-                a = sp + "_editor_cards." + Macrolize(10) + "=_tmp_sc\n";
+                a = sp + "_editor_cards." + Macrolize(10) + " = _tmp_sc\n";
             }
-            yield return sp + "_tmp_sc=boss.card.New(\"" + cardName + "\"," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + ","
-                       + Macrolize(4) + ",{" + Macrolize(5) + "," + Macrolize(6) + "," + Macrolize(7) + "}," + Macrolize(8) + ")\n";
+            yield return sp + "_tmp_sc = boss.card.New(\"" + cardName + "\", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3) + ", "
+                       + Macrolize(4) + ", {" + Macrolize(5) + ", " + Macrolize(6) + ", " + Macrolize(7) + "}, " + Macrolize(8) + ")\n";
             foreach (var m in base.ToLua(spacing))
             {
                 yield return m;
             }
             yield return sp + "_tmp_sc.perform=" + Macrolize(9) + "\n";
             yield return a 
-                      + sp + "table.insert(_editor_class[" + className + "].cards,_tmp_sc)\n"
-                      + sp + (!string.IsNullOrEmpty(NonMacrolize(0)) ? "table.insert(_sc_table,{" + className + ",\"" + cardName
-                      + "\",_tmp_sc,#_editor_class[" + className + "].cards," + Macrolize(9) + "})\n" : "\n");
+                      + sp + "table.insert(_editor_class[" + className + "].cards, _tmp_sc)\n"
+                      + sp + (!string.IsNullOrEmpty(NonMacrolize(0)) ? "table.insert(_sc_table, {" + className + ", \"" + cardName
+                      + "\", _tmp_sc, #_editor_class[" + className + "].cards, " + Macrolize(9) + "})\n" : "\n");
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

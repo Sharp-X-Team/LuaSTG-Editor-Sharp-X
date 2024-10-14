@@ -106,9 +106,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
                     (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                         + sp + s1 + "laser_bent.init(self," + Macrolize(1) + ",_x,_y," + Macrolize(2) + ","
-                         + Macrolize(3) + "," + sampling + "," + Macrolize(5) + ")\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].init = function(self, _x, _y, " + p + ")\n"
+                         + sp + s1 + "laser_bent.init(self, " + Macrolize(1) + ", _x, _y, " + Macrolize(2) + ", "
+                         + Macrolize(3) + ", " + sampling + ", " + Macrolize(5) + ")\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -128,7 +128,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return "On init(" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()

@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private CreateItem() : base() { }
 
         public CreateItem(DocumentData workSpaceData)
-            : this(workSpaceData, "", "self.x,self.y", "false", "")
+            : this(workSpaceData, "", "self.x, self.y", "false", "")
         { }
 
         public CreateItem(DocumentData workSpaceData, string name, string pos, string animate, string param)
@@ -69,14 +69,14 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             if (string.IsNullOrEmpty(p)) p = "_";
             if (Macrolize(2) == "false")
             {
-                yield return sp + "last=New(_editor_class[" + Macrolize(0) + "]," + Macrolize(1) + "," + p + ")\n";
+                yield return sp + "last = New(_editor_class[" + Macrolize(0) + "], " + Macrolize(1) + ", " + p + ")\n";
             }
             else
             {
                 pos = Macrolize(1).Split(new string[] { ", ", "," }, StringSplitOptions.None);
                 yield return sp + "local r2 = sqrt(ran:Float(1, 4)) * sqrt(0) * 5\n"
                             + sp + "local a = ran:Float(0, 360)\n"
-                            + sp + "last=New(_editor_class[" + Macrolize(0) + $"],{pos[0]}+r2*cos(a),{pos[1]}+r2*sin(a)," + p + ")\n";
+                            + sp + "last = New(_editor_class[" + Macrolize(0) + $"], {pos[0]} + r2 * cos(a), {pos[1]} + r2 * sin(a), " + p + ")\n";
             }
         }
 

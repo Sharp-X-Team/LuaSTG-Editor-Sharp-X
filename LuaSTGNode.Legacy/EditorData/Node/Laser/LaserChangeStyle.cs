@@ -70,7 +70,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
             {
                 target = "," + Macrolize(1);
             }
-            yield return sp + "laser.ChangeImage(" + Macrolize(0) + "," + Macrolize(2) + target + ")\n";
+            yield return sp + "laser.ChangeImage(" + Macrolize(0) + ", " + Macrolize(2) + target + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

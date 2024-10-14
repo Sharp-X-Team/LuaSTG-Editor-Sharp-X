@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         private RenderText() : base() { }
 
         public RenderText(DocumentData workSpaceData)
-            : this(workSpaceData, "", "\"\"", "self.x,self.y", "1", "0") { }
+            : this(workSpaceData, "", "\"\"", "self.x, self.y", "1", "0") { }
 
         public RenderText(DocumentData workSpaceData, string font, string strn, string posit, string sizez, string aline)
             : base(workSpaceData)
@@ -71,7 +71,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "lstg.RenderText(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + ")\n";
+            yield return sp + "lstg.RenderText(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ")\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

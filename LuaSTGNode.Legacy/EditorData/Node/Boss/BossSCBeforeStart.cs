@@ -44,7 +44,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
 
         public override string ToString()
         {
-            return "task before start";
+            return "Task before start";
         }
 
         public override object Clone()

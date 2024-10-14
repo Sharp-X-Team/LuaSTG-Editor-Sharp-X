@@ -45,7 +45,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             {
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
-            yield return sp + "" + parentName + ".spell=function(self)\n";
+            yield return sp + "" + parentName + ".spell = function(self)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -55,7 +55,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(13, this);
+            yield return new Tuple<int, TreeNode>(1, this);
             foreach(Tuple<int,TreeNode> t in GetChildLines())
             {
                 yield return t;
@@ -65,7 +65,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "on spell(" + NonMacrolize(0) + ")";
+            return "On spell(" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()

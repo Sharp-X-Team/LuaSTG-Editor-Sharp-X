@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public BossMoveTo() : base() { }
 
         public BossMoveTo(DocumentData workSpaceData)
-            : this(workSpaceData, "self.x,self.y", "60", "MOVE_NORMAL") { }
+            : this(workSpaceData, "self.x, self.y", "60", "MOVE_NORMAL") { }
 
         public BossMoveTo(DocumentData workSpaceData, string destination, string time, string mode) : base(workSpaceData)
         {
@@ -66,8 +66,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             fr = string.IsNullOrEmpty(fr) ? "1" : fr;
             string mode = Macrolize(2);
             mode = string.IsNullOrEmpty(mode) ? "MOVE_NORMAL" : mode;
-            yield return sp + "table.insert(_editor_class[\"" + parentName + "\"].cards,boss.move.New(" 
-                + Macrolize(0) + "," + fr + "," + mode + "))\n";
+            yield return sp + "table.insert(_editor_class[\"" + parentName + "\"].cards, boss.move.New(" 
+                + Macrolize(0) + ", " + fr + ", " + mode + "))\n";
         }
 
         public override string ToString()

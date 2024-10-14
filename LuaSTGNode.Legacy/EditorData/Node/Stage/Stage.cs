@@ -99,31 +99,31 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
                 parentStageGroupName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
             string stageName = Lua.StringParser.ParseLua(NonMacrolize(0));
-            yield return sp + "stage.group.AddStage(\'" + parentStageGroupName + "\',\'" 
+            yield return sp + "stage.group.AddStage(\'" + parentStageGroupName + "\', \'" 
                        + stageName
-                       + "@" + parentStageGroupName + "\',{lifeleft=" + Macrolize(1) + ",power="
-                       + Macrolize(2) + ",faith=" + Macrolize(3) + ",bomb=" + Macrolize(4) + "},"
+                       + "@" + parentStageGroupName + "\', {lifeleft = " + Macrolize(1) + ", power = "
+                       + Macrolize(2) + ", faith = " + Macrolize(3) + ", bomb = " + Macrolize(4) + "}, "
                        + Macrolize(5) + ")\n"
                        + sp + "stage.group.DefStageFunc(\'" + stageName + "@" + parentStageGroupName
-                       + "\',\'init\',function(self)\n"
+                       + "\', \'init\', function(self)\n"
                        + sp + s1 + "_init_item(self)\n"
-                       + sp + s1 + "difficulty=self.group.difficulty\n"
-                       + sp + s1 + "New(mask_fader,'open')\n"
+                       + sp + s1 + "difficulty = self.group.difficulty\n"
+                       + sp + s1 + "New(mask_fader, 'open')\n"
                        + sp + s1 + "if jstg then jstg.CreatePlayers() else New(_G[lstg.var.player_name]) end\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
             }
-            yield return sp + s1 + "task.New(self,function()\n"
-                       + sp + s1 + s1 + "while coroutine.status(self.task[1])~=\'dead\' do task.Wait() end\n"
+            yield return sp + s1 + "task.New(self, function()\n"
+                       + sp + s1 + s1 + "while coroutine.status(self.task[1]) ~= \'dead\' do task.Wait() end\n"
                        + sp + s1 + s1 + "stage.group.FinishReplay()\n"
-                       + sp + s1 + s1 + "New(mask_fader,\'close\')\n"
-                       + sp + s1 + s1 + "task.New(self,function()\n"
-                       + sp + s1 + s1 + s1 + "local _,bgm=EnumRes(\'bgm\')\n"
-                       + sp + s1 + s1 + s1 + "for i=1,30 do\n"
-                       + sp + s1 + s1 + s1 + s1 + "for _,v in pairs(bgm) do\n"
-                       + sp + s1 + s1 + s1 + s1 + s1 + "if GetMusicState(v)=='playing' then\n"
-                       + sp + s1 + s1 + s1 + s1 + s1 + s1 + "SetBGMVolume(v,1-i/30)\n"
+                       + sp + s1 + s1 + "New(mask_fader, \'close\')\n"
+                       + sp + s1 + s1 + "task.New(self, function()\n"
+                       + sp + s1 + s1 + s1 + "local _, bgm = EnumRes(\'bgm\')\n"
+                       + sp + s1 + s1 + s1 + "for i = 1, 30 do\n"
+                       + sp + s1 + s1 + s1 + s1 + "for _, v in pairs(bgm) do\n"
+                       + sp + s1 + s1 + s1 + s1 + s1 + "if GetMusicState(v) == 'playing' then\n"
+                       + sp + s1 + s1 + s1 + s1 + s1 + s1 + "SetBGMVolume(v, 1 - i/30)\n"
                        + sp + s1 + s1 + s1 + s1 + s1 + "end\n"
                        + sp + s1 + s1 + s1 + s1 + "end\n"
                        + sp + s1 + s1 + s1 + s1 + "task.Wait()\n"

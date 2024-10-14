@@ -25,7 +25,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "boss.explode(self,true)\n";
+            yield return sp + "boss.explode(self, true)\n";
         }
 
         public override string ToString()

@@ -66,8 +66,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         {
             string sp = Indent(spacing);
             string def = "\'original\'";
-            yield return sp + "_forbid_v(" + Macrolize(0) + "," + NullToDefault(Macrolize(1),def) 
-                + "," + NullToDefault(Macrolize(2), def) + "," + NullToDefault(Macrolize(3), def) + ")\n";
+            yield return sp + "_forbid_v(" + Macrolize(0) + ", " + NullToDefault(Macrolize(1),def) 
+                + ", " + NullToDefault(Macrolize(2), def) + ", " + NullToDefault(Macrolize(3), def) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

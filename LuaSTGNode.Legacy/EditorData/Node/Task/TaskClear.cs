@@ -44,7 +44,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
             }
             else
             {
-                yield return sp + "task.Clear(self," + Macrolize(0) + ")\n";
+                yield return sp + "task.Clear(self, " + Macrolize(0) + ")\n";
             }
         }
 

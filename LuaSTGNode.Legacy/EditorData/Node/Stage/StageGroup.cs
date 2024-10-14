@@ -101,9 +101,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "stage.group.New('menu',{},\"" + Lua.StringParser.ParseLua(NonMacrolize(0))
-                + "\",{lifeleft=" + Macrolize(1) + ",power=" + Macrolize(2) + ",faith=" + Macrolize(3) 
-                + ",bomb=" + Macrolize(4) + "}," + Macrolize(5) + "," + Macrolize(6) + ")\n";
+            yield return sp + "stage.group.New('menu', {}, \"" + Lua.StringParser.ParseLua(NonMacrolize(0))
+                + "\", {lifeleft = " + Macrolize(1) + ", power = " + Macrolize(2) + ", faith = " + Macrolize(3) 
+                + ", bomb = " + Macrolize(4) + "}, " + Macrolize(5) + ", " + Macrolize(6) + ")\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;

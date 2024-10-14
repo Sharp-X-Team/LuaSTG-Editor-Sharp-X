@@ -40,7 +40,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
                 {
                     if (!string.IsNullOrEmpty(attributes[i + 1].AttrInput))
                     {
-                        yield return sp + "local " + NonMacrolize(i) + "=(" + Macrolize(i + 1) + ")\n";
+                        yield return sp + "local " + NonMacrolize(i) + " = (" + Macrolize(i + 1) + ")\n";
                     }
                     else
                     {
@@ -68,7 +68,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
 
         public override string ToString()
         {
-            string bres = "local:";
+            string bres = "Local:";
             if (!int.TryParse(attributes[0].AttrInput, out int nAttr)) nAttr = 0;
             nAttr = nAttr > AppConstants.mxUAttr ? AppConstants.mxUAttr : nAttr;
             nAttr = nAttr < 0 ? 0 : nAttr;

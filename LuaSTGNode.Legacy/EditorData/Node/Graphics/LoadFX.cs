@@ -51,7 +51,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
         {
             string sk = GetPath(0);
             string sp = Indent(spacing);
-            yield return sp + $"LoadFX(\'fx:\'..\'{Lua.StringParser.ParseLua(NonMacrolize(1))}\',\'{sk}\')\n";
+            yield return sp + $"LoadFX(\'fx:\'..\'{Lua.StringParser.ParseLua(NonMacrolize(1))}\', \'{sk}\')\n";
         }
 
         public override void ReflectAttr(DependencyAttrItem relatedAttrItem, DependencyAttributeChangedEventArgs args)

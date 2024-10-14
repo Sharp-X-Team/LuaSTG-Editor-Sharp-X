@@ -96,7 +96,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced
                 bool first = true;
                 for (int i = 0; i < n; i++)
                 {
-                    if (!first) s += ",";
+                    if (!first) s += ", ";
                     s += "\"" + NonMacrolize(i) + "\"";
                     first = false;
                 }

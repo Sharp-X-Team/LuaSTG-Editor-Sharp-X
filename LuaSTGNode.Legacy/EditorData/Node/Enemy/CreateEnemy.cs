@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         private CreateEnemy() : base() { }
 
         public CreateEnemy(DocumentData workSpaceData)
-            : this(workSpaceData, "", "self.x,self.y", "")
+            : this(workSpaceData, "", "self.x, self.y", "")
         { }
 
         public CreateEnemy(DocumentData workSpaceData, string name, string pos, string param)
@@ -62,7 +62,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
             string sp = Indent(spacing);
             string p = Macrolize(2);
             if (string.IsNullOrEmpty(p)) p = "_";
-            yield return sp + "last=New(_editor_class[" + Macrolize(0) + "]," + Macrolize(1) + "," + p + ")\n";
+            yield return sp + "last = New(_editor_class[" + Macrolize(0) + "], " + Macrolize(1) + ", " + p + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

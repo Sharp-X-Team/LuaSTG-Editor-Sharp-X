@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerSpeed() : base() { }
 
         public PlayerSpeed(DocumentData workSpaceData)
-            : this(workSpaceData, "4,2") { }
+            : this(workSpaceData, "4, 2") { }
 
         public PlayerSpeed(DocumentData workSpaceData, string code)
             : base(workSpaceData)

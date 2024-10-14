@@ -59,8 +59,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             string sk = GetPath(0);
             string sp = Indent(spacing);
             yield return sp + "LoadTexture(\'texture:\'..\'" + Lua.StringParser.ParseLua(NonMacrolize(1))
-                + "\',\'" + sk
-                + "\'," + Macrolize(2) + ")\n";
+                + "\', \'" + sk
+                + "\', " + Macrolize(2) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

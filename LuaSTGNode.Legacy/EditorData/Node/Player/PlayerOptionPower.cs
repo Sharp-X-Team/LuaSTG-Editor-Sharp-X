@@ -30,7 +30,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             int i = 0;
             foreach(TreeNode node in Children)
             {
-                pos[i] = "{" + node.NonMacrolize(0) + "," + node.NonMacrolize(1) + " }";
+                pos[i] = "{" + node.NonMacrolize(0) + ", " + node.NonMacrolize(1) + " }";
                 i++;
             }
             

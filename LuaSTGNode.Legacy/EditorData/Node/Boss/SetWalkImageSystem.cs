@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         private SetBossWalkImageSystem() : base() { }
 
         public SetBossWalkImageSystem(DocumentData workSpaceData)
-            : this(workSpaceData, "", "4,3", "4,4,4", "1,1", "6", "16,16") { }
+            : this(workSpaceData, "", "4, 3", "4, 4, 4", "1, 1", "6", "16, 16") { }
 
         public SetBossWalkImageSystem(DocumentData workSpaceData, string imgpath, string colrow,
             string noi, string noa, string animintv, string collisize) : base(workSpaceData)
@@ -85,8 +85,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         {
             string sp = Indent(spacing);
             yield return sp + "self._wisys = BossWalkImageSystem(self)\n"
-                + sp + "self._wisys:SetImage(\"" + GetPath(0) + "\"," + InverseFromColRow(Macrolize(1))
-                + ",{" + Macrolize(2) + "},{" + Macrolize(3) + "}," + Macrolize(4) + "," + Macrolize(5) + ")\n";
+                + sp + "self._wisys:SetImage(\"" + GetPath(0) + "\", " + InverseFromColRow(Macrolize(1))
+                + ", {" + Macrolize(2) + "}, {" + Macrolize(3) + "}, " + Macrolize(4) + ", " + Macrolize(5) + ")\n";
         }
 
         public override string ToString()

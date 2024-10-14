@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Stage
             string sp = Indent(spacing);
             string s1 = Indent(1);
             yield return
-              sp + "New(mask_fader,'close')" + "\n"
+              sp + "New(mask_fader, 'close')" + "\n"
             + sp + "task.New(self, function()" + "\n"
             + sp + s1 + "local _, bgm = EnumRes('bgm')" + "\n"
             + sp + s1 + "for i = 1, 30 do" + "\n"

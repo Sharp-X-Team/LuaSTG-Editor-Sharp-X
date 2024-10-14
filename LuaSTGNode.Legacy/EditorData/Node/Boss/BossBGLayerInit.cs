@@ -26,7 +26,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             string sp = Indent(spacing);
             string s1 = Indent(1);
             yield return sp + "function(self)\n" 
-                + sp + s1 + "self.task={}\n";
+                + sp + s1 + "self.task = {}\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
 
         public override string ToString()
         {
-            return "on init";
+            return "On init()";
         }
 
         public override object Clone()

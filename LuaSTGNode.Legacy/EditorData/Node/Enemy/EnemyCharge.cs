@@ -19,7 +19,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         [JsonConstructor]
         public EnemyCharge() : base() { }
 
-        public EnemyCharge(DocumentData workSpaceData) : this(workSpaceData, "self.x,self.y", "360", "255,0,0", "60", "2", "false") { }
+        public EnemyCharge(DocumentData workSpaceData) : this(workSpaceData, "self.x, self.y", "360", "255, 0, 0", "60", "2", "false") { }
 
         public EnemyCharge(DocumentData workSpaceData, string pos, string rad, string col, string time, string _mode, string _snd) : base(workSpaceData)
         {
@@ -84,12 +84,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
                     macarray[i] = "";
                 }
                 else {
-                    macarray[i] = Macrolize(i) + ((i == 5 || string.IsNullOrEmpty(NonMacrolize(i+1))) ? "" : ",");
+                    macarray[i] = Macrolize(i) + ((i == 5 || string.IsNullOrEmpty(NonMacrolize(i + 1))) ? "" : ", ");
                 }
             }
             //
 
-            yield return sp + "New(boss_cast_ef," + macarray[0] + macarray[1] + macarray[2] + macarray[3] + macarray[4] + macarray[5] + ")\n";
+            yield return sp + "New(boss_cast_ef, " + macarray[0] + macarray[1] + macarray[2] + macarray[3] + macarray[4] + macarray[5] + ")\n";
        
         }
 

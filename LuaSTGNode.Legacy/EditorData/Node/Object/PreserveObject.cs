@@ -50,7 +50,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            return "Preserve " + attributes[0].AttrInput + "";
+            return "Preserve " + NonMacrolize(0) + "";
         }
 
         public override object Clone()

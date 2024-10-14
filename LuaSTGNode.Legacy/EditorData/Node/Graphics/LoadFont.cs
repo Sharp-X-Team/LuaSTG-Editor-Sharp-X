@@ -70,7 +70,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             //string sk2 = sk.Replace("fnt", "bmp");
             //string skpng = "_LoadImageFromFile(\'" + NonMacrolize(1) + "\',\'" + sk2 + "\', " + NonMacrolize(2) + ", 0, 0, false, 0)";
             yield return sp + "" + "" + "" +
-                $"lstg.LoadFont(\'font:\'..\'{Lua.StringParser.ParseLua(NonMacrolize(1))}\',\'{sk}\'," + Macrolize(2) + ")\n";
+                $"lstg.LoadFont(\'font:\'..\'{Lua.StringParser.ParseLua(NonMacrolize(1))}\', \'{sk}\', " + Macrolize(2) + ")\n";
         }
 
         public override void ReflectAttr(DependencyAttrItem relatedAttrItem, DependencyAttributeChangedEventArgs args)

@@ -34,7 +34,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             TreeNode Parent = GetLogicalParent();
             string parentName = "";
             parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
-            yield return sp + "_editor_class[\"" + parentName + "\"].frame" + "=function(self)\n"
+            yield return sp + "_editor_class[\"" + parentName + "\"].frame = function(self)\n"
                 + sp + s1 + "local player = self.target\n"
                 + sp + s1 + "if self.timer < 24 then\n"
                 + sp + s1 + s1 + "self.rot = self.rot + 45\n"
@@ -76,7 +76,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "(Item) on frame()";
+            return "(Item) On frame()";
         }
 
         public override object Clone()

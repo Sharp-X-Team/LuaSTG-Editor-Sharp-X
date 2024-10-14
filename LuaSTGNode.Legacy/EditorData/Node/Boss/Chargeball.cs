@@ -19,7 +19,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         [JsonConstructor]
         public Chargeball() : base() { }
 
-        public Chargeball(DocumentData workSpaceData) : this(workSpaceData, "self.x,self.y", "60", "80", "360", "1", "300", "255,64,64", "1.5") { }
+        public Chargeball(DocumentData workSpaceData) : this(workSpaceData, "self.x, self.y", "60", "80", "360", "1", "300", "255, 64, 64", "1.5") { }
 
         public Chargeball(DocumentData workSpaceData, string pos, string ktime, string ctime, string rad, string way, string ang, string col, string rotv) : base(workSpaceData)
         {
@@ -93,8 +93,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "New(boss_cast_darkball," + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3)
-                + "," + Macrolize(4) + "," + Macrolize(5) + "," + Macrolize(6) + "," + Macrolize(7) + ")\n";
+            yield return sp + "New(boss_cast_darkball, " + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3)
+                + ", " + Macrolize(4) + ", " + Macrolize(5) + ", " + Macrolize(6) + ", " + Macrolize(7) + ")\n";
         }
 
         public override string ToString()

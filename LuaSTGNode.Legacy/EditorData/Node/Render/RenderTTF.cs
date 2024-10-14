@@ -103,7 +103,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "lstg.RenderTTF(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + "," + Macrolize(6) + ",Color(" + Macrolize(7) + ")," + Macrolize(8) + ")\n";
+            yield return sp + "lstg.RenderTTF(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ", " + Macrolize(3) + ", "
+                + Macrolize(4) + ", " + Macrolize(5) + ", " + Macrolize(6) + ", Color(" + Macrolize(7) + "), " + Macrolize(8) + ")\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -114,7 +115,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         public override string ToString()
         {
             return "Render TTF " + NonMacrolize(1) + " with font " + NonMacrolize(0) + "\n" +
-                "Position = (" + NonMacrolize(2) + "," + NonMacrolize(3) + "," + NonMacrolize(4) + "," + NonMacrolize(5) + ")" +
+                "Position = (" + NonMacrolize(2) + ", " + NonMacrolize(3) + ", " + NonMacrolize(4) + ", " + NonMacrolize(5) + ")" +
                 " Format = (" + NonMacrolize(6) + ") Color = (" + NonMacrolize(7) + "), Scale = (" + NonMacrolize(8) + ")";
         }
 

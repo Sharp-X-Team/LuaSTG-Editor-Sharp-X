@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         [JsonConstructor]
         public Render4V3D() : base() { }
 
-        public Render4V3D(DocumentData workSpaceData) : this(workSpaceData, "","0, 0, 0","0, 0, 0","0, 0, 0","0, 0, 0") { }
+        public Render4V3D(DocumentData workSpaceData) : this(workSpaceData, "", "0, 0, 0", "0, 0, 0", "0, 0, 0", "0, 0, 0") { }
 
         public Render4V3D(DocumentData workSpaceData, string img, string p1, string p2, string p3, string p4) 
             : base(workSpaceData) 

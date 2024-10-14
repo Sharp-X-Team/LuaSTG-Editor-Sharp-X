@@ -42,7 +42,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].colli=function(self)\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].colli = function(self)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -62,7 +62,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
 
         public override string ToString()
         {
-            return "on colli()";
+            return "On colli()";
         }
 
         public override object Clone()

@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
         [JsonConstructor]
         public LoadParticle() : base() { }
 
-        public LoadParticle(DocumentData workSpaceData) : this(workSpaceData, "", "", "", "0,0", "false") { }
+        public LoadParticle(DocumentData workSpaceData) : this(workSpaceData, "", "", "", "0, 0", "false") { }
 
         public LoadParticle(DocumentData workSpaceData, string path, string resName, string img, string colli, string rect)
             : base(workSpaceData)
@@ -97,8 +97,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             string sk = GetPath(0);
             string sp = Indent(spacing);
             yield return sp + "LoadPS(\'particle:\'..\'" + Lua.StringParser.ParseLua(NonMacrolize(1))
-                + "\',\'" + sk
-                + "\'," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + ")\n";
+                + "\', \'" + sk
+                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ")\n";
         }
 
         public override MetaInfo GetMeta()

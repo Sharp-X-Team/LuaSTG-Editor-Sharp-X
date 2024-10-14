@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerOptionPosition() : base() { }
 
         public PlayerOptionPosition(DocumentData workSpaceData)
-            : this(workSpaceData, "0,0",  "0,0") { }
+            : this(workSpaceData, "0, 0",  "0, 0") { }
 
         public PlayerOptionPosition(DocumentData workSpaceData, string unfpos, string focpos)
             : base(workSpaceData)

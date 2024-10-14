@@ -63,21 +63,21 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
                 parentName = Lua.StringParser.ParseLua(Parent.NonMacrolize(0));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
+            yield return sp + "_editor_class[\"" + parentName + "\"].init = function(self, _x, _y, " + p + ")\n"
                         + sp + s1 + "x = min(max(_x, lstg.world.l + 8), lstg.world.r - 8)\n"
-                        + sp + s1 + "self.x,self.y=x,_y\n"
+                        + sp + s1 + "self.x, self.y = x, _y\n"
                         + sp + s1 + "angle = angle or 90\n"
                         + sp + s1 + "v = v or 1.5\n"
                         + sp + s1 + "SetV(self, v, angle)\n"
                         + sp + s1 + "self.v = v\n"
-                        + sp + s1 + "self.group=GROUP_ITEM\n"
-                        + sp + s1 + "self.layer=LAYER_ITEM\n"
-                        + sp + s1 + "self.bound=false\n"
-                        + sp + s1 + "self.img=" + Macrolize(1) + "\n"
-                        + sp + s1 + "self.imgup=" + Macrolize(2) + "\n"
-                        + sp + s1 + "self.servants={}\n"
-                        + sp + s1 + "self.attract=0\n"
-                        + sp + s1 + "self._blend,self._a,self._r,self._g,self._b='',255,255,255,255\n";
+                        + sp + s1 + "self.group = GROUP_ITEM\n"
+                        + sp + s1 + "self.layer = LAYER_ITEM\n"
+                        + sp + s1 + "self.bound = false\n"
+                        + sp + s1 + "self.img = " + Macrolize(1) + "\n"
+                        + sp + s1 + "self.imgup = " + Macrolize(2) + "\n"
+                        + sp + s1 + "self.servants = {}\n"
+                        + sp + s1 + "self.attract = 0\n"
+                        + sp + s1 + "self._blend, self._a, self._r, self._g, self._b= '', 255, 255, 255, 255\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;

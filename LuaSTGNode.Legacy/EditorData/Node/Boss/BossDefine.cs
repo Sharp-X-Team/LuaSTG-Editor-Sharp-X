@@ -94,12 +94,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             string difficultyString = Lua.StringParser.ParseLua(NonMacrolize(1));
             string bg = Macrolize(3);
             bg = string.IsNullOrEmpty(bg) ? "nil" : bg;
-            yield return sp + "_editor_class[" + fullName + "]=Class(boss)\n"
-                + sp + "_editor_class[" + fullName + "].cards={}\n"
-                + sp + "_editor_class[" + fullName + "].name=\"" + displayedName + "\"\n"
-                + sp + "_editor_class[" + fullName + "].bgm=" + Macrolize(4) + "\n"
-                + sp + "_editor_class[" + fullName + "]._bg=" + bg + "\n"
-                + sp + "_editor_class[" + fullName + "].difficulty=\"" + difficultyString + "\"\n";
+            yield return sp + "_editor_class[" + fullName + "] = Class(boss)\n"
+                + sp + "_editor_class[" + fullName + "].cards = {}\n"
+                + sp + "_editor_class[" + fullName + "].name = \"" + displayedName + "\"\n"
+                + sp + "_editor_class[" + fullName + "].bgm = " + Macrolize(4) + "\n"
+                + sp + "_editor_class[" + fullName + "]._bg = " + bg + "\n"
+                + sp + "_editor_class[" + fullName + "].difficulty = \"" + difficultyString + "\"\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;

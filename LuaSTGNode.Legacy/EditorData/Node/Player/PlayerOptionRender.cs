@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private PlayerOptionRender() : base() { }
 
         public PlayerOptionRender(DocumentData workSpaceData)
-            : this(workSpaceData, "\"leaf\"", "self.timer * 3", "1,1") { }
+            : this(workSpaceData, "\"leaf\"", "self.timer * 3", "1, 1") { }
 
         public PlayerOptionRender(DocumentData workSpaceData, string img, string ang, string size)
             : base(workSpaceData)

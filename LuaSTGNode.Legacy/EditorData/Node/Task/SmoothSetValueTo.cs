@@ -56,9 +56,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
                     valT = Macrolize(i + 1);
                     if (!string.IsNullOrEmpty(valT))
                     {
-                        yield return "lasttask=task.New(" + tar + ",function () ex.SmoothSetValueTo(\""
-                            + Lua.StringParser.ParseLua(NonMacrolize(i)) + "\"," + valT + "," + dur
-                            + "," + Macrolize(i + 2) + ",nil," + wt + "," + Macrolize(i + 3) + ") end )\n";
+                        yield return "lasttask = task.New(" + tar + ", function () ex.SmoothSetValueTo(\""
+                            + Lua.StringParser.ParseLua(NonMacrolize(i)) + "\", " + valT + ", " + dur
+                            + ", " + Macrolize(i + 2) + ", nil, " + wt + ", " + Macrolize(i + 3) + ") end )\n";
                     }
                 }
             }
@@ -71,9 +71,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
                     if (!string.IsNullOrEmpty(valT))
                     {
                         valN = Macrolize(i);
-                        yield return "lasttask=task.New(self,function () ex.SmoothSetValueTo(function() return "
-                            + valN + " end," + valT + "," + dur + "," + Macrolize(i + 2) + ",function(___) " 
-                            + valN + "=___ end," + wt + "," + Macrolize(i + 3) + ") end )\n";
+                        yield return "lasttask = task.New(self, function () ex.SmoothSetValueTo(function() return "
+                            + valN + " end, " + valT + ", " + dur + ", " + Macrolize(i + 2) + ", function(___) " 
+                            + valN + "=___ end, " + wt + ", " + Macrolize(i + 3) + ") end )\n";
                     }
                 }
             }

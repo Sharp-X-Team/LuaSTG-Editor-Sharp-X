@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         private TaskMoveBy() : base() { }
 
         public TaskMoveBy(DocumentData workSpaceData)
-            : this(workSpaceData, "0,0", "60", "MOVE_NORMAL") { }
+            : this(workSpaceData, "0, 0", "60", "MOVE_NORMAL") { }
 
         public TaskMoveBy(DocumentData workSpaceData, string dest, string frame, string mode)
             : base(workSpaceData)
@@ -64,7 +64,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
             fr = string.IsNullOrEmpty(fr) ? "1" : fr;
             string mode = Macrolize(2);
             mode = string.IsNullOrEmpty(mode) ? "MOVE_NORMAL" : mode;
-            yield return sp + "task.MoveToEx(" + Macrolize(0) + "," + fr + "," + mode + ")\n";
+            yield return sp + "task.MoveToEx(" + Macrolize(0) + ", " + fr + ", " + mode + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

@@ -30,7 +30,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string sp = Indent(spacing);
             string s1 = Indent(1);
             yield return 
-                sp + "for i=1,4 do\n" +
+                sp + "for i = 1, 4 do\n" +
                 sp + s1 + "if self.sp[i] and self.sp[i][3] > 0.5 then\n" +
                 sp + s1 + s1 + "local option = { x = self.supportx + self.sp[i][1], y = self.supporty + self.sp[i][2]}\n";
             foreach (var a in base.ToLua(spacing + 2))

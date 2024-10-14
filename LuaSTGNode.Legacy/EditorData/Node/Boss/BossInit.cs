@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         private BossInit() : base() { }
 
         public BossInit(DocumentData workSpaceData)
-            : this(workSpaceData, "240,384", "") { }
+            : this(workSpaceData, "240, 384", "") { }
 
         public BossInit(DocumentData workSpaceData, string pos, string scbg)
             : base(workSpaceData)
@@ -57,8 +57,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             string parentStr = "_editor_class[\"" + parentName + "\"]";
             string scbg = Macrolize(1);
             scbg = string.IsNullOrEmpty(scbg) || scbg == "\"\"" ? "spellcard_background" : "_editor_class[" + scbg + "]";
-            yield return sp + parentStr + ".init=function(self,cards)\n"
-                         + sp + s1 + "boss.init(self," + Macrolize(0) + "," + parentStr + ".name,cards,New(" + scbg + ")," 
+            yield return sp + parentStr + ".init = function(self,cards)\n"
+                         + sp + s1 + "boss.init(self, " + Macrolize(0) + ", " + parentStr + ".name, cards, New(" + scbg + "), " 
                          + parentStr + ".difficulty)\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
@@ -79,7 +79,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
 
         public override string ToString()
         {
-            return "on init()";
+            return "On init()";
         }
 
         public override object Clone()

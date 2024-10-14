@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
         [JsonConstructor]
         public Render4V() : base() { }
 
-        public Render4V(DocumentData workSpaceData) : this(workSpaceData, "","0,0","0,0","0,0","0,0") { }
+        public Render4V(DocumentData workSpaceData) : this(workSpaceData, "", "0, 0", "0, 0", "0, 0", "0, 0") { }
 
         public Render4V(DocumentData workSpaceData, string img, string p1, string p2, string p3, string p4) 
             : base(workSpaceData) 
@@ -73,10 +73,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
             string sp = Indent(spacing);
             string p1 = $"Render4V({Macrolize(0)}";
             string sn = "".PadLeft(p1.Length);
-            yield return sp + p1 + $",{Macrolize(1)},0.5\n";
-            yield return sp + sn + $",{Macrolize(2)},0.5\n";
-            yield return sp + sn + $",{Macrolize(3)},0.5\n";
-            yield return sp + sn + $",{Macrolize(4)},0.5)\n";
+            yield return sp + p1 + $", {Macrolize(1)}, 0.5\n";
+            yield return sp + sn + $", {Macrolize(2)}, 0.5\n";
+            yield return sp + sn + $", {Macrolize(3)}, 0.5\n";
+            yield return sp + sn + $", {Macrolize(4)}, 0.5)\n";
         }
 
         public override string ToString()

@@ -125,19 +125,19 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
                     (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                         + sp + s1 + "self.x,self.y=_x,_y\n"
-                         + sp + s1 + "self.img=" + Macrolize(1) + "\n"
-                         + sp + s1 + "self.layer=" + Macrolize(2) + "\n"
-                         + sp + s1 + "self.group=" + Macrolize(3) + "\n"
-                         + sp + s1 + "self.hide=" + Macrolize(4) + "\n"
-                         + sp + s1 + "self.bound=" + Macrolize(5) + "\n"
-                         + sp + s1 + "self.navi=" + Macrolize(6) + "\n"
-                         + sp + s1 + "self.hp=" + Macrolize(7) + "\n"
-                         + sp + s1 + "self.maxhp=" + Macrolize(7) + "\n"
-                         + sp + s1 + "self.colli=" + Macrolize(8) + "\n"
-                         + sp + s1 + "self._servants={}\n"
-                         + sp + s1 + "self._blend,self._a,self._r,self._g,self._b='',255,255,255,255\n";
+            yield return sp + "_editor_class[\"" + parentName + "\"].init = function(self, _x, _y, " + p + ")\n"
+                         + sp + s1 + "self.x, self.y = _x,_y\n"
+                         + sp + s1 + "self.img = " + Macrolize(1) + "\n"
+                         + sp + s1 + "self.layer = " + Macrolize(2) + "\n"
+                         + sp + s1 + "self.group = " + Macrolize(3) + "\n"
+                         + sp + s1 + "self.hide = " + Macrolize(4) + "\n"
+                         + sp + s1 + "self.bound = " + Macrolize(5) + "\n"
+                         + sp + s1 + "self.navi = " + Macrolize(6) + "\n"
+                         + sp + s1 + "self.hp = " + Macrolize(7) + "\n"
+                         + sp + s1 + "self.maxhp = " + Macrolize(7) + "\n"
+                         + sp + s1 + "self.colli = " + Macrolize(8) + "\n"
+                         + sp + s1 + "self._servants = {}\n"
+                         + sp + s1 + "self._blend, self._a, self._r, self._g, self._b = '', 255, 255, 255, 255\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;

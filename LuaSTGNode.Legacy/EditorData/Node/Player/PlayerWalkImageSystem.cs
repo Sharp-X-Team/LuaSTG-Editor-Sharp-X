@@ -21,7 +21,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private SetPlayerWalkImageSystem() : base() { }
 
         public SetPlayerWalkImageSystem(DocumentData workSpaceData)
-            : this(workSpaceData, "", "", "0.5,0.5", "true") { }
+            : this(workSpaceData, "", "", "0.5, 0.5", "true") { }
 
         public SetPlayerWalkImageSystem(DocumentData workSpaceData, string imgpath, string resn, string collisize, string defsize) : base(workSpaceData)
         {
@@ -64,12 +64,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string sk = GetPath(0);
             string sp = Indent(spacing);
             string load_method = Macrolize(3) == "false" ? "_LoadImageGroupFromFile(\'" + Macrolize(1) + "\', \'" + sk + "\', false, 8, 3, 0.5, 0.5, false)\n" :
-                                                           "LoadTexture('" + Macrolize(1) + "','" + sk + "')\n" +
-                                                           sp + "LoadImageGroup('" + Macrolize(1) + "','" + Macrolize(1) + "',0,0,32,48,8,3," + Macrolize(2) + ")\n";
+                                                           "LoadTexture('" + Macrolize(1) + "', '" + sk + "')\n" +
+                                                           sp + "LoadImageGroup('" + Macrolize(1) + "', '" + Macrolize(1) + "', 0, 0, 32, 48, 8, 3, " + Macrolize(2) + ")\n";
             yield return sp + load_method +
                          sp + "self.imgs = {}\n" +
                          sp + "self.A, self.B = " + Macrolize(2) + "\n" +
-                         sp + "for i = 1, 24 do self.imgs[i]='" + Macrolize(1) + "'..i end\n";
+                         sp + "for i = 1, 24 do self.imgs[i] = '" + Macrolize(1) + "' .. i end\n";
             //yield return sp + "LoadTexture('" + Macrolize(1) + "','" + sk + "')\n" +
                          //sp + "LoadImageGroup('" + Macrolize(1) + "','" + Macrolize(1) + "',0,0,32,48,8,3," + Macrolize(2) + ")\n" +
                          //sp + "self.imgs = {}\n" +

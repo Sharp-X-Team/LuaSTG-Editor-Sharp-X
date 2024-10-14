@@ -55,7 +55,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Audio
         {
             string sp = Indent(spacing);
             if (!string.IsNullOrEmpty(Macrolize(1))) {
-                yield return sp + "SetBGMVolume(" + Macrolize(1) + "," + Macrolize(0) + ")\n";
+                yield return sp + "SetBGMVolume(" + Macrolize(1) + ", " + Macrolize(0) + ")\n";
             } 
             else
             {

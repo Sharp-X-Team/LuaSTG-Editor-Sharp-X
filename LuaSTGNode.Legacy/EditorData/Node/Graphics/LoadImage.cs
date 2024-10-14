@@ -23,7 +23,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
         private LoadImage() : base() { }
 
         public LoadImage(DocumentData workSpaceData)
-            : this(workSpaceData, "", "", "true", "0,0", "false", "0") { }
+            : this(workSpaceData, "", "", "true", "0, 0", "false", "0") { }
 
         public LoadImage(DocumentData workSpaceData, string path, string name, string mipmap, string collis, string rect, string edge)
             : base(workSpaceData)
@@ -91,8 +91,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Graphics
             string sk = GetPath(0);
             string sp = Indent(spacing);
             yield return sp + "_LoadImageFromFile(\'image:\'..\'" + Lua.StringParser.ParseLua(NonMacrolize(1))
-                + "\',\'" + sk
-                + "\'," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + "," + Macrolize(5) + ")\n";
+                + "\', \'" + sk
+                + "\', " + Macrolize(2) + ", " + Macrolize(3) + ", " + Macrolize(4) + ",  " + Macrolize(5) + ")\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

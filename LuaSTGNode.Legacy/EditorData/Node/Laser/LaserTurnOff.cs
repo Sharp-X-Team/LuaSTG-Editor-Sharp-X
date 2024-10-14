@@ -61,7 +61,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "laser._TurnOff(" + Macrolize(0) + "," + Macrolize(1) + "," + Macrolize(2) + ")\n";
+            yield return sp + "laser._TurnOff(" + Macrolize(0) + ", " + Macrolize(1) + ", " + Macrolize(2) + ")\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
