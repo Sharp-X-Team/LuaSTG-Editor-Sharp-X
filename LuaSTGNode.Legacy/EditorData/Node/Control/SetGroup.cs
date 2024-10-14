@@ -47,7 +47,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "" + Macrolize(0) + ".group = " + Macrolize(1) + "\n";
+            yield return sp + $"{Macrolize(0)}.group = {Macrolize(1)}\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
@@ -57,7 +57,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            return "Set " + NonMacrolize(0) + "\'s group to " + NonMacrolize(1) + "";
+            return $"Set {NonMacrolize(0)}\'s group to {NonMacrolize(1)}";
         }
 
         public override object Clone()

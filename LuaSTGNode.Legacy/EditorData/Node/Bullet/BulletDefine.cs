@@ -57,7 +57,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
         {
             string sp = Indent(spacing);
             string difficultyS = NonMacrolize(1) == "All" ? "" : ":" + NonMacrolize(1);
-            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS) + "\"]=Class(bullet)\n";
+            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS) + "\"] = Class(bullet)\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;

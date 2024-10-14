@@ -47,7 +47,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "" + Macrolize(0) + ".hscale, " + Macrolize(0) + ".vscale = " + Macrolize(1) + "\n";
+            yield return sp + $"{Macrolize(0)}.hscale, {Macrolize(0)}.vscale = {Macrolize(1)}\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

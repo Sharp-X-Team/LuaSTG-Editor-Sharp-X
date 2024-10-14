@@ -58,7 +58,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
             {
                 if(local) yield return "local ";
             }
-            yield return "function ";
+            yield return $"function {NonMacrolize(0)}({NonMacrolize(1)})";
             yield return NonMacrolize(0);
             yield return "(";
             yield return NonMacrolize(1);
@@ -84,7 +84,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
 
         public override string ToString()
         {
-            string s = "define";
+            string s = "Define";
             if (bool.TryParse(NonMacrolize(2), out bool local))
             {
                 if (local)
@@ -92,7 +92,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
                     s += " local";
                 }
             }
-            return s + " function " + NonMacrolize(0) + "(" + NonMacrolize(1) + ")";
+            return s + $" function {NonMacrolize(0)}({NonMacrolize(1)})";
         }
 
         public override object Clone()

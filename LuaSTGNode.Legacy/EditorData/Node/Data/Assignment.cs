@@ -43,17 +43,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
                 {
                     if (!first)
                     {
-                        bres += ",";
-                        mres += ",";
+                        bres += ", ";
+                        mres += ", ";
                     }
                     bres += NonMacrolize(i);
-                    mres += "(" + Macrolize(i + 1) + ")";
+                    mres += $"({Macrolize(i + 1)})";
                     first = false;
                 }
             }
             if(!first)
             {
-                yield return sp + bres + "=" + mres + "\n";
+                yield return sp + bres + " = " + mres + "\n";
             }
             else
             {
@@ -76,7 +76,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
             {
                 if (attributes[i].AttrInput != "")
                 {
-                    bres += "\n" + NonMacrolize(i) + " = " + NonMacrolize(i + 1);
+                    bres += $"\n{NonMacrolize(i)} = {NonMacrolize(i + 1)}";
                 }
             }
             return bres;
@@ -94,8 +94,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Data
                 {
                     for (int i = n + 1; i <= nAttr; i++)
                     {
-                        attributes.Add(new AttrItem("Var " + i + " name", this));
-                        attributes.Add(new AttrItem("Var " + i + " value", this, "target"));
+                        attributes.Add(new AttrItem($"Var {i} name", this));
+                        attributes.Add(new AttrItem($"Var {i} value", this, "target"));
                     }
                 }
                 else

@@ -10,7 +10,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
 {
     [Serializable, NodeIcon("lasersimple.png")]
     [RequireAncestor(typeof(CodeAlikeTypes))]
-    [RCInvoke(2)]
+    [RCInvoke(0)]
     class CreateSimpleLaser : TreeNode
     {
         [JsonConstructor]
@@ -43,7 +43,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
 
         public override string ToString()
         {
-            return $"create simple laser with task at ({NonMacrolize(0)})";
+            bool hasChildren = Children.Count > 0;
+            return $"Create simple laser {(hasChildren ? "with task" : "")} at ({NonMacrolize(0)})";
         }
 
         #region Attr

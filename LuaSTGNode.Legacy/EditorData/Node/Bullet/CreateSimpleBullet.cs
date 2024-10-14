@@ -174,9 +174,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
             string s = "";
             foreach(AttrItem at in attributes)
             {
-                s += "," + Macrolize(at);
+                s += $", {Macrolize(at)}";
             }
-            yield return sp + "last=New(_straight" + s + ")\n";
+            yield return sp + $"last = New(_straight{s})\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

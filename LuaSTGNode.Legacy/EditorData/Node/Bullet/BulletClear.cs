@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "_clear_bullet(" + Macrolize(0) + "," + Macrolize(1) + ")\n";
+            yield return sp + $"_clear_bullet({Macrolize(0)}, {Macrolize(1)})\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

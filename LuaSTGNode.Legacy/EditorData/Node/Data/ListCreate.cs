@@ -63,7 +63,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            return "Create a list of name \"" + NonMacrolize(0) + "\"";
+            return $"Create a list of name \"{NonMacrolize(0)}\"";
         }
 
         public override object Clone()
@@ -75,7 +75,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override List<MessageBase> GetMessage()
         {
-            List<MessageBase> messages = new List<MessageBase>();
+            List<MessageBase> messages = [];
             if (string.IsNullOrEmpty(NonMacrolize(0)))
                 messages.Add(new ArgNotNullMessage(attributes[0].AttrCap, 0, this));
             return messages;

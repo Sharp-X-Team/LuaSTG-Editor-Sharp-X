@@ -90,9 +90,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
             string s = "";
             foreach (AttrItem ai in attributes)
             {
-                s += "," + Macrolize(ai);
+                s += $", {Macrolize(ai)}";
             }
-            yield return sp + "New(bullet_cleaner" + s + ")\n";
+            yield return sp + $"New(bullet_cleaner{s})\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

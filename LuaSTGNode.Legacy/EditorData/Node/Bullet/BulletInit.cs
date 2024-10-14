@@ -87,9 +87,9 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
                     (Parent.NonMacrolize(1) == "All" ? "" : ":" + Parent.NonMacrolize(1)));
             }
             string p = (!string.IsNullOrEmpty(NonMacrolize(0)) ? NonMacrolize(0) : "_");
-            yield return sp + "_editor_class[\"" + parentName + "\"].init=function(self,_x,_y," + p + ")\n"
-                         + sp + s1 + "bullet.init(self," + Macrolize(1) + "," + Macrolize(2) + "," + Macrolize(3) + "," + Macrolize(4) + ")\n"
-                         + sp + s1 + "self.x,self.y=_x,_y\n";
+            yield return sp + $"_editor_class[\"{parentName}\"].init = function(self, _x, _y, {p})\n"
+                         + sp + s1 + $"bullet.init(self, {Macrolize(1)}, {Macrolize(2)}, {Macrolize(3)}, {Macrolize(4)})\n"
+                         + sp + s1 + "self.x, self.y = _x, _y\n";
             foreach (var a in base.ToLua(spacing + 1))
             {
                 yield return a;
@@ -109,7 +109,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return $"On init({NonMacrolize(0)})";
         }
 
         public override object Clone()

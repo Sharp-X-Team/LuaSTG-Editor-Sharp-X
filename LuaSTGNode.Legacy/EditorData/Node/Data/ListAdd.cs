@@ -72,7 +72,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override string ToString()
         {
-            string returnstring = "Insert " + NonMacrolize(2) + " to list " + NonMacrolize(0);
+            string returnstring = $"Insert {NonMacrolize(2)} to list {NonMacrolize(0)}";
             if (NonMacrolize(1) != "last")
                 returnstring += $" at position {NonMacrolize(1)}";
             return returnstring;

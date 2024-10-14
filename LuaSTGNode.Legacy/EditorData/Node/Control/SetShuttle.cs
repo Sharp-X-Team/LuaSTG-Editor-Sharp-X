@@ -41,7 +41,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         {
             string sp = Indent(spacing);
             string s1 = Indent(1);
-            yield return sp + "lasttask=task.New(self,function()\n" +
+            yield return sp + "lasttask = task.New(self, function()\n" +
                          sp + s1 + "local w = lstg.world\n" +
                          sp + s1 + "self.tshuttle, self.tshuttlemax = 0, " + Macrolize(0) + "\n" +
                          sp + s1 + "for _=1, _infinite do\n" +
