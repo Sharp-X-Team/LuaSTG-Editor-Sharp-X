@@ -63,7 +63,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
                 }
                 t = t.Parent;
             }
-            if (!insideComment) 
+            if (!insideComment)
             {
                 if (NonMacrolize(1) == "true")
                 {
@@ -100,7 +100,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
             {
                 yield return t;
             }
-            yield return new Tuple<int, TreeNode>(1, this);
+            if (Parent is not Comment && NonMacrolize(1) == "true")
+                yield return new Tuple<int, TreeNode>(1, this);
         }
 
         public override string ToString()

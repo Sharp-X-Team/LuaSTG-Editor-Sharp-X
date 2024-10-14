@@ -32,7 +32,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
         {
-            foreach(Tuple<int,TreeNode> t in GetChildLines())
+            foreach (Tuple<int,TreeNode> t in GetChildLines())
             {
                 yield return t;
             }

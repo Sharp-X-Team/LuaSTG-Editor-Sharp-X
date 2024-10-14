@@ -59,7 +59,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
             yield return sp + "do\n";
             foreach(Tuple<string,string> t in info)
             {
-                yield return t.Item1; // sp1 - Without + 1 sp
+                yield return t.Item1; // sp1: Without + 1 sp
             }
             yield return $"{sp1}for _ = 1, {times} do\n";
             foreach (var a in base.ToLua(spacing + 2))
@@ -68,7 +68,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
             }
             foreach (Tuple<string, string> t in info)
             {
-                yield return t.Item2; // sp2 - With + 2 sp.
+                yield return t.Item2; // sp2: With + 2 sp.
             }
             yield return sp1 + "end\n";
             yield return sp + "end\n";

@@ -53,7 +53,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            string s = Macrolize(0);
+            yield return string.IsNullOrEmpty(s)
+                ? new Tuple<int, TreeNode>(1, this)
+                : new Tuple<int, TreeNode>(3, this);
         }
 
         public override object Clone()
