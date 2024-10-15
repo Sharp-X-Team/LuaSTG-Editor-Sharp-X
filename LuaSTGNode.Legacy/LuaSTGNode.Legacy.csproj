@@ -304,6 +304,7 @@
     <Compile Include="EditorData\Node\TaskAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Task\RaiseWarning.cs" />
     <Compile Include="EditorData\Node\Task\RaiseError.cs" />
+    <Compile Include="EditorData\Node\Task\ReturnNode.cs" />
     <Compile Include="EditorData\Node\Task\SetSignal.cs" />
     <Compile Include="EditorData\Node\Task\TaskClear.cs" />
     <Compile Include="EditorData\Node\Task\TaskFinish.cs" />
@@ -1634,6 +1635,8 @@
     <Content Include="CustomNodes\Example.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\16x16\returnnode.png" />
+    <Resource Include="images\returnnode.png" />
     <Resource Include="images\16x16\lasersimple.png" />
     <Resource Include="images\lasersimple.png" />
     <Resource Include="images\16x16\basecustomnode.png" />
