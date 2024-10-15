@@ -61,7 +61,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(16, this);
         }
 
         public override string ToString()

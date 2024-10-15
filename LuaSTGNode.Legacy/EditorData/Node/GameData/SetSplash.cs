@@ -38,7 +38,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + $"SetSplash({Macrolize(0)})";
+            yield return sp + $"SetSplash({Macrolize(0)})\n";
         }
 
         public override string ToString()

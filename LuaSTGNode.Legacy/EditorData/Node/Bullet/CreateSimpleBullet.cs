@@ -44,23 +44,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
             AccelAngle = arot;
             MaxVelocity = maxv;
             Shuttle = shuttle;
-            /*
-            attributes.Add(new AttrItem("Style", style, this, "bulletStyle"));
-            attributes.Add(new AttrItem("Color", color, this, "color"));
-            attributes.Add(new AttrItem("Position", pos, this, "position"));
-            attributes.Add(new AttrItem("Velocity", v, this, "velocity"));
-            attributes.Add(new AttrItem("Angle", r, this, "rotation"));
-            attributes.Add(new AttrItem("Aim to player", aim, this, "bool"));
-            attributes.Add(new AttrItem("Rotation velocity", rotv, this));
-            attributes.Add(new AttrItem("Stay on create", stay, this, "bool"));
-            attributes.Add(new AttrItem("Destroyable", destroyable, this, "bool"));
-            attributes.Add(new AttrItem("Time", time, this));
-            attributes.Add(new AttrItem("Rebound", rebound, this, "bool"));
-            attributes.Add(new AttrItem("Acceleration", a, this));
-            attributes.Add(new AttrItem("Accel Angle", arot, this, "rotation"));
-            attributes.Add(new AttrItem("Max Velocity", maxv, this, "velocity"));
-            attributes.Add(new AttrItem("Shuttle", shuttle, this, "bool"));
-            */
         }
 
         [JsonIgnore, NodeAttribute]

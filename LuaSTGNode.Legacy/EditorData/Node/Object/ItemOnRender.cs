@@ -59,12 +59,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Render
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(4, this);
             foreach (Tuple<int, TreeNode> t in base.GetChildLines())
             {
                 yield return t;
             }
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(2, this);
         }
 
         [JsonIgnore]

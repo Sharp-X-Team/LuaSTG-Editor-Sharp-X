@@ -36,17 +36,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
             Width = width;
             NodeSize = nsize;
             HeadSize = hsize;
-            /*
-            attributes.Add(new AttrItem("Parameter List", para, this));
-            attributes.Add(new AttrItem("Color", color, this, "color"));
-            attributes.Add(new AttrItem("Style", style, this, "laserStyle"));
-            attributes.Add(new AttrItem("Head Length", hlength, this, "length"));
-            attributes.Add(new AttrItem("Body Length", blength, this, "length"));
-            attributes.Add(new AttrItem("Tail Length", tlength, this, "length"));
-            attributes.Add(new AttrItem("Width", width, this, "length"));
-            attributes.Add(new AttrItem("Node size", nsize, this));
-            attributes.Add(new AttrItem("Head size", hsize, this));
-            */
         }
 
         [JsonIgnore, NodeAttribute]

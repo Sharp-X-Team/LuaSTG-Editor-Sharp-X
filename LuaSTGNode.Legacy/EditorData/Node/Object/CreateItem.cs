@@ -65,7 +65,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string sp = Indent(spacing);
             string s1 = Indent(1);
             string p = Macrolize(3);
-            string[] pos = new string[] { null, null };
+            string[] pos = [null, null];
             if (string.IsNullOrEmpty(p)) p = "_";
             if (Macrolize(2) == "false")
             {
@@ -82,7 +82,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            if (Macrolize(2) == "false")
+                yield return new Tuple<int, TreeNode>(1, this);
+            else
+                yield return new Tuple<int, TreeNode>(3, this);
         }
 
         public override string ToString()

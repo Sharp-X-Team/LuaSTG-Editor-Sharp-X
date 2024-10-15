@@ -100,7 +100,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(3, this);
+            yield return new Tuple<int, TreeNode>(5, this);
             foreach(Tuple<int,TreeNode> t in GetChildLines())
             {
                 yield return t;

@@ -125,23 +125,28 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
             {
                 yield return sp + $"lasttask = task.New(last, function()\n";
                 yield return sp1 + "local self = task.GetSelf()\n";
-            }
-            foreach (var a in base.ToLua(spacing + 1))
-            {
-                yield return a;
-            }
-            if (hasChildren)
+                foreach (var a in base.ToLua(spacing + 1))
+                {
+                    yield return a;
+                }
                 yield return sp + "end)\n";
+            }
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
-            foreach (Tuple<int, TreeNode> t in GetChildLines())
+            bool hasChildren = Children.Count > 0;
+            if (hasChildren)
             {
-                yield return t;
+                yield return new Tuple<int, TreeNode>(3, this);
+                foreach (Tuple<int, TreeNode> t in GetChildLines())
+                {
+                    yield return t;
+                }
+                yield return new Tuple<int, TreeNode>(1, this);
             }
-            yield return new Tuple<int, TreeNode>(1, this);
+            else
+                yield return new Tuple<int, TreeNode>(1, this);
         }
     }
 }

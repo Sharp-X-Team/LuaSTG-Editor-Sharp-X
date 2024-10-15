@@ -54,6 +54,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
             yield return new Tuple<int, TreeNode>(1, this);
+            if (attributes[1].AttrInput == "true")
+                yield return new Tuple<int, TreeNode>(1, this);
             foreach (Tuple<int, TreeNode> t in GetChildLines())
             {
                 yield return t;

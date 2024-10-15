@@ -30,7 +30,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "player.death = 100";
+            yield return sp + "player.death = 100\n";
         }
         
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()

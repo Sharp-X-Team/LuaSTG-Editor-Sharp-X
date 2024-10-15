@@ -103,8 +103,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(6, this);
+            yield return new Tuple<int, TreeNode>(2, this);
         }
     }
 }

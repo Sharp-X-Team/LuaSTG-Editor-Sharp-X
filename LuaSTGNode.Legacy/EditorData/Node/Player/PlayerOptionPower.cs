@@ -26,7 +26,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            string[] pos = { "nil", "nil", "nil", "nil" };
+            string[] pos = ["nil", "nil", "nil", "nil"];
             int i = 0;
             foreach(TreeNode node in Children)
             {
@@ -51,7 +51,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(2, this);
+            yield return new Tuple<int, TreeNode>(1, this);
         }
     }
 }

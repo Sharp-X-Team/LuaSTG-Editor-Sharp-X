@@ -58,7 +58,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
                     string other = func.FuncName == "colli" ? ", other" : "";
                     yield return sp + "self.class.base." + func.FuncName + "(self" + other + ")\n";
                 }
-                else
+                else // Keep this for GetLines or it becomes fucky.
                 {
                     yield return "\n";
                 }
@@ -67,7 +67,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(2, this);
         }
 
         public override string ToString()

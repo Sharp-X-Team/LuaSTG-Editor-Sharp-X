@@ -37,17 +37,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             AutoRotation = autorot;
             HP = hp;
             Collision = colli;
-            /*
-            attributes.Add(new AttrItem("Parameter List", para, this));
-            attributes.Add(new AttrItem("Image", image, this, "image"));
-            attributes.Add(new AttrItem("Layer", layer, this, "layer"));
-            attributes.Add(new AttrItem("Group", group, this, "group"));
-            attributes.Add(new AttrItem("Hide", hide, this, "bool"));
-            attributes.Add(new AttrItem("Bound", bound, this, "bool"));
-            attributes.Add(new AttrItem("Auto Rotation", autorot, this, "bool"));
-            attributes.Add(new AttrItem("HP", hp, this));
-            attributes.Add(new AttrItem("Collision", colli, this, "bool"));
-            */
         }
 
         [JsonIgnore, NodeAttribute]

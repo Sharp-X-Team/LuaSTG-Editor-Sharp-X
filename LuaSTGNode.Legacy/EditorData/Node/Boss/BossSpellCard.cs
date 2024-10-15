@@ -163,7 +163,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
         {
             int i = 1;
-            if (!string.IsNullOrEmpty(Macrolize(10))) i++;
+            if (!string.IsNullOrEmpty(Macrolize(10)))
+                i++;
             yield return new Tuple<int, TreeNode>(i, this);
             foreach(Tuple<int,TreeNode> t in GetChildLines())
             {

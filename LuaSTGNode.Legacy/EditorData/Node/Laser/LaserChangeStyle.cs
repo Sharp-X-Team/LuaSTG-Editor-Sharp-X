@@ -68,7 +68,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
             }
             else
             {
-                target = "," + Macrolize(1);
+                target = ", " + Macrolize(1);
             }
             yield return sp + "laser.ChangeImage(" + Macrolize(0) + ", " + Macrolize(2) + target + ")\n";
         }

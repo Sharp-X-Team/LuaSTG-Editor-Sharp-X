@@ -148,8 +148,35 @@ namespace LuaSTGEditorSharp.EditorData.Node.Advanced.AdvancedRepeat
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
-            yield return new Tuple<int, TreeNode>(1, this);
+            int i = 0;
+            switch (NonMacrolize(4))
+            {
+                case "MOVE_ACCEL":
+                case "MOVE_DECEL":
+                case "MOVE_ACC_DEC":
+                    i = 5;
+                    break;
+                default:
+                    i = 4;
+                    break;
+            }
+            yield return new Tuple<int, TreeNode>(i, this);
+
+            int j = 0;
+            switch (NonMacrolize(4))
+            {
+                case "MOVE_ACCEL":
+                case "MOVE_DECEL":
+                    j = 2;
+                    break;
+                case "MOVE_ACC_DEC":
+                    j = 6;
+                    break;
+                default:
+                    j = 1;
+                    break;
+            }
+            yield return new Tuple<int, TreeNode>(j, this);
         }
     }
 }

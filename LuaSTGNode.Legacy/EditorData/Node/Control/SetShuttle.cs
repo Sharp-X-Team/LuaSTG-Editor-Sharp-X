@@ -56,12 +56,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Task
                          sp + s1 + s1 + "if self.tshuttle >= self.tshuttlemax then break end\n" +
                          sp + s1 + s1 + "task._Wait(1)\n" +
                          sp + s1 + "end\n" +
-                         sp + "end)\n"; 
+                         sp + "end)\n";
         }
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(16, this);
         }
 
         public override string ToString()

@@ -19,7 +19,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
         public CreateSimpleEnemy() : base() { }
 
         public CreateSimpleEnemy(DocumentData workSpaceData)
-            : this(workSpaceData, "1", "10", "self.x,self.y", "0", "0", "0", "1", "false", "true", "true") { }
+            : this(workSpaceData, "1", "10", "self.x, self.y", "0", "0", "0", "1", "false", "true", "true") { }
 
         public CreateSimpleEnemy(DocumentData workSpaceData, string style, string hp, string pos, string droppow
             , string dropf, string droppoi, string protect, string clrbullet, string offcremove, string contactdmg)
@@ -139,12 +139,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Enemy
 
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(2, this);
             foreach (Tuple<int, TreeNode> t in GetChildLines())
             {
                 yield return t;
             }
-            yield return new Tuple<int, TreeNode>(1, this);
+            yield return new Tuple<int, TreeNode>(2, this);
         }
     }
 }

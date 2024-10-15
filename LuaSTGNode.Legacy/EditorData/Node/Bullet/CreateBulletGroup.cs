@@ -43,23 +43,6 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
             Destroyable = destroyable;
             Time = time;
             Rebound = rebound;
-            /*
-            attributes.Add(new AttrItem("Style", style, this, "bulletStyle"));
-            attributes.Add(new AttrItem("Color", color, this, "color"));
-            attributes.Add(new AttrItem("Position", pos, this, "position"));
-            attributes.Add(new AttrItem("Number", num, this));
-            attributes.Add(new AttrItem("Interval", intv, this));
-            attributes.Add(new AttrItem("Velocity begin", vb, this, "velocity"));
-            attributes.Add(new AttrItem("Velocity end", ve, this, "velocity"));
-            attributes.Add(new AttrItem("Angle", r, this, "rotation"));
-            attributes.Add(new AttrItem("Angle spread", rs, this));
-            attributes.Add(new AttrItem("Aim to player", aim, this, "bool"));
-            attributes.Add(new AttrItem("Rotation velocity", rotv, this, "omega"));
-            attributes.Add(new AttrItem("Stay on create", stay, this, "bool"));
-            attributes.Add(new AttrItem("Destroyable", destroyable, this, "bool"));
-            attributes.Add(new AttrItem("Time", time, this));
-            attributes.Add(new AttrItem("Rebound", rebound, this, "bool"));
-            */
         }
 
         [JsonIgnore, NodeAttribute]

@@ -19,7 +19,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
         private BulletClearRange() : base() { }
 
         public BulletClearRange(DocumentData workSpaceData)
-            : this(workSpaceData, "player.x,player.y", "48", "15", "45", "true", "true", "0")
+            : this(workSpaceData, "player.x, player.y", "48", "15", "45", "true", "true", "0")
         { }
 
         public BulletClearRange(DocumentData workSpaceData, string pos, string radius, string expTime, string dur

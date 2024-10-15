@@ -81,7 +81,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             }
             if (NonMacrolize(1) == "true")
             {
-                yield return "table.insert(player_list, {'" + Macrolize(2) + "', '" + Macrolize(0) + "', '" + Macrolize(3) + "'})";
+                yield return "table.insert(player_list, {'" + Macrolize(2) + "', '" + Macrolize(0) + "', '" + Macrolize(3) + "'})\n";
             }
         }
 
@@ -92,6 +92,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             {
                 yield return t;
             }
+            if (NonMacrolize(1) == "true")
+                yield return new Tuple<int, TreeNode>(1, this);
         }
 
         public override string ToString()

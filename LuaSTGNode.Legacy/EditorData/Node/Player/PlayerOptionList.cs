@@ -46,7 +46,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             {
                 yield return a;
             }
-            foreach (var housama in Children[Children.Count - 1].ToLua(spacing + 1)) yield return housama;
+            foreach (var housama in Children[Children.Count - 1].ToLua(spacing + 1))
+                yield return housama;
             yield return sp + "}\n";
         }
 
@@ -65,6 +66,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<Tuple<int, TreeNode>> GetLines()
         {
             yield return new Tuple<int, TreeNode>(2, this);
+            foreach (Tuple<int, TreeNode> t in GetChildLines())
+            {
+                yield return t;
+            }
+            foreach (var housama in Children[Children.Count - 1].GetLines())
+                yield return housama;
+            yield return new Tuple<int, TreeNode>(1, this);
         }
     }
 }
