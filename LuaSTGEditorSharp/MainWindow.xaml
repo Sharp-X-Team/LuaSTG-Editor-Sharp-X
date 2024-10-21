@@ -845,6 +845,7 @@
                       Grid.Column="0" ItemsSource="{Binding ContentTemplate.VisualTree, ElementName=docTabs}" 
                       VerticalScrollBarVisibility="Visible"
                       DataGridCell.Selected="DataGrid_GotFocus"
+                      CanUserDeleteRows="False"
                       Style="{StaticResource DataGridFix}"
                       HorizontalGridLinesBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}"
                       VerticalGridLinesBrush="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}">
