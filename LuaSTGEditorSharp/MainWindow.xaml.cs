@@ -984,6 +984,7 @@ namespace LuaSTGEditorSharp
                     {
                         nodes.Enqueue(tn);
                     }
+                    n.CheckMessage(null, new(""));
                 }
             }
             catch (JsonException e)
