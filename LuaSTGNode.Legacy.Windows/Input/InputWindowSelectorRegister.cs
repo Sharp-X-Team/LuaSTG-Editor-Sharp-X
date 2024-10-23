@@ -40,7 +40,7 @@ namespace LuaSTGEditorSharp.Windows.Input
                     "\"alpha+bal\"",
                     "\"mul+min\"", "\"mul+max\"", "\"mul+mul\"", "\"mul+screen\"",
                     "\"add+min\"", "\"add+max\"", "\"add+mul\"", "\"add+screen\"",
-                    "one" });
+                    "\"one\"" });
             target.Add("event"
                 , new string[] { "frame", "kill", "del", "colli" });//, "render" });
             target.Add("interpolation"

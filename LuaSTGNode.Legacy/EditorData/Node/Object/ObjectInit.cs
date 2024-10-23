@@ -146,7 +146,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         public override string ToString()
         {
-            return "on init(" + NonMacrolize(0) + ")";
+            return "On init(" + NonMacrolize(0) + ")";
         }
 
         public override object Clone()
