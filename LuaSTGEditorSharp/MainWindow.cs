@@ -156,6 +156,28 @@ namespace LuaSTGEditorSharp
             if (!Directory.Exists(s)) Directory.CreateDirectory(s);
             GetDirInfo(new DirectoryInfo(s), PresetsGetList);
         }
+
+        public void AddRecentlyOpened(string path)
+        {
+            try
+            {
+                RecentlyOpenedList.Add(path);
+                RecentlyOpenedMenu.ItemsSource = RecentlyOpenedList;
+                RaiseProertyChanged("RecentlyOpenedList");
+                (Application.Current as App).RecentlyOpened = RecentlyOpenedList;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                // Doesn't work? Fuck you, apparently.
+            }
+        }
+
+        public void GetRecentlyOpened()
+        {
+            RecentlyOpenedList.Clear();
+            RecentlyOpenedList = (Application.Current as App).RecentlyOpened ?? [];
+        }
         
         private void GetDirInfo(DirectoryInfo path, ObservableCollection<FileDirectoryModel> input)
         {

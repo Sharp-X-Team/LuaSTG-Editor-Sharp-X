@@ -19,6 +19,7 @@ using LuaSTGEditorSharp.Plugin.Default;
 using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.Windows;
 using LuaSTGEditorSharp.Addons;
+using System.Collections.Specialized;
 
 namespace LuaSTGEditorSharp
 {
@@ -412,6 +413,12 @@ namespace LuaSTGEditorSharp
         {
             get => Settings.Default.UseDiscordRpc;
             set => Settings.Default.UseDiscordRpc = value;
+        }
+
+        public StringCollection RecentlyOpened
+        {
+            get => Settings.Default.RecentlyOpened;
+            set => Settings.Default.RecentlyOpened = value;
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)

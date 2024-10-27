@@ -47,6 +47,7 @@ namespace LuaSTGEditorSharp
         public static RoutedUICommand ViewModFolder { get; }
         public static RoutedUICommand ViewDefinition { get; }
         #endregion
+        public static RoutedUICommand OpenRecent { get; }
         public static RoutedUICommand Settings { get; }
         public static RoutedUICommand AboutNode { get; }
         public static RoutedUICommand OpenMarketplace { get; }
@@ -121,6 +122,7 @@ namespace LuaSTGEditorSharp
             InsertPreset = new RoutedUICommand("Insert Preset", "InsertPreset", typeof(EditorRoutedCommands));
             SavePreset = new RoutedUICommand("Save Preset", "SavePreset", typeof(EditorRoutedCommands));
             RefreshPreset = new RoutedUICommand("Refresh Preset", "RefreshPreset", typeof(EditorRoutedCommands));
+            OpenRecent = new RoutedUICommand("Open Recent", "OpenRecent", typeof(EditorRoutedCommands));
             inputs = new InputGestureCollection
             {
                 new KeyGesture(Key.Up, ModifierKeys.Alt, "Alt+Up")

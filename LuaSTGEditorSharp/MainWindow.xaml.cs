@@ -49,6 +49,7 @@ using DiscordRPC;
 using DiscordRPC.Logging;
 using Button = System.Windows.Controls.Button;
 using ToastNotifications.Lifetime.Clear;
+using System.Collections.Specialized;
 
 namespace LuaSTGEditorSharp
 {
@@ -65,6 +66,7 @@ namespace LuaSTGEditorSharp
         public ObservableCollection<ToolboxTab> ToolboxData { get => toolboxData; }
 
         ObservableCollection<FileDirectoryModel> PresetsGetList { get; } = new ObservableCollection<FileDirectoryModel>();
+        StringCollection RecentlyOpenedList { get; set; } = [];
         ObservableCollection<PluginTool> PluginTools { get; } = new ObservableCollection<PluginTool>();
 
         private CommandTypeFac insertState = new AfterFac();
@@ -132,8 +134,10 @@ namespace LuaSTGEditorSharp
             this.docTabs.ItemsSource = Documents;
             EditorConsole.ItemsSource = Messages;
             GetPresets();
+            GetRecentlyOpened();
             GetPluginTools();
             presetsMenu.ItemsSource = PresetsGetList;
+            RecentlyOpenedMenu.ItemsSource = RecentlyOpenedList;
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
 
             SetupDiscordRpc();
@@ -526,6 +530,7 @@ namespace LuaSTGEditorSharp
                 newDoc.OnOpening();
                 //newDoc.TreeNodes[0].FixBan();
                 newDoc.OriginalMeta.PropertyChanged += newDoc.OnEditing;
+                AddRecentlyOpened(path);
             }
             catch (JsonException e)
             {
@@ -1266,6 +1271,13 @@ namespace LuaSTGEditorSharp
         private void OpenCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             OpenDoc();
+        }
+
+        private void OpenRecentCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string path = e.Parameter?.ToString();
+            if (!string.IsNullOrEmpty(path))
+                OpenDocByFile(path);
         }
 
         private void SaveCommandExecuted(object sender, ExecutedRoutedEventArgs e)

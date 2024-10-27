@@ -370,5 +370,16 @@ namespace LuaSTGEditorSharp.Properties {
                 this["UseDiscordRpc"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection RecentlyOpened {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RecentlyOpened"]));
+            }
+            set {
+                this["RecentlyOpened"] = value;
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@
         <!--#region File -->
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommandExecuted"/>
         <CommandBinding Command="ApplicationCommands.Open" Executed="OpenCommandExecuted"/>
+        <CommandBinding Command="local:EditorRoutedCommands.OpenRecent" Executed="OpenRecentCommandExecuted"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="SaveCommandExecuted" CanExecute="SaveCommand_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveAsCommandExecuted" CanExecute="SaveAsCommand_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandExecuted" CanExecute="CloseCommand_CanExecute"/>
@@ -366,6 +367,22 @@
                         <MenuItem.Icon>
                             <Image Source="images/open.png"/>
                         </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Open Recent" x:Name="RecentlyOpenedMenu" Command="local:EditorRoutedCommands.OpenRecent">
+                        <MenuItem.Icon>
+                            <Image Source="images/open.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"/>
+                            </DataTemplate>
+                        </MenuItem.ItemTemplate>
+                        <MenuItem.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Command" Value="local:EditorRoutedCommands.OpenRecent"/>
+                                <Setter Property="CommandParameter" Value="{Binding}"/>
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
                     </MenuItem>
                     <Separator/>
                     <MenuItem Header="_Save" Command="ApplicationCommands.Save">
