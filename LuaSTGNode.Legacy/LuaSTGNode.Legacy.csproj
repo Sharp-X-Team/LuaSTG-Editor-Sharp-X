@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="CustomNodes\CustomNodeSyntaxError.cs" />
     <Compile Include="CustomNodes\CustomNodeRuntimeError.cs" />
+    <Compile Include="EditorData\Document\Meta\ModelLoadMetaInfo.cs" />
     <Compile Include="EditorData\Node\CustomNodes\BaseCustomNode.cs" />
     <Compile Include="CustomNodes\CustomNodeLoader.cs" />
     <Compile Include="EditorData\Document\MetaData.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="EditorData\Node\GameData\SetGameLifePiece.cs" />
     <Compile Include="EditorData\Node\GameData\SetGameLife.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadAnimation.cs" />
+    <Compile Include="EditorData\Node\Graphics\LoadModel.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadTTF.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadFont.cs" />
     <Compile Include="EditorData\Node\Graphics\LoadFX.cs" />
@@ -208,6 +210,7 @@
     <Compile Include="EditorData\Node\Laser\BentLaserInit.cs" />
     <Compile Include="EditorData\Node\Laser\CreateBentLaser.cs" />
     <Compile Include="EditorData\Node\Laser\CreateLaser.cs" />
+    <Compile Include="EditorData\Node\Laser\CreateSimpleBentLaser.cs" />
     <Compile Include="EditorData\Node\Laser\CreateSimpleLaser.cs" />
     <Compile Include="EditorData\Node\Laser\LaserChangeStyle.cs" />
     <Compile Include="EditorData\Node\Laser\LaserDefine.cs" />
@@ -284,6 +287,7 @@
     <Compile Include="EditorData\Node\Render\PostEffectCapture.cs" />
     <Compile Include="EditorData\Node\Render\Render4V.cs" />
     <Compile Include="EditorData\Node\Background\Set3D.cs" />
+    <Compile Include="EditorData\Node\Render\RenderModel.cs" />
     <Compile Include="EditorData\Node\Render\RenderRect.cs" />
     <Compile Include="EditorData\Node\Render\RenderTarget.cs" />
     <Compile Include="EditorData\Node\Render\RenderTTF.cs" />
@@ -1635,6 +1639,12 @@
     <Content Include="CustomNodes\Example.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\16x16\rendermodel3d.png" />
+    <Resource Include="images\rendermodel3d.png" />
+    <Resource Include="images\16x16\loadmodel3d.png" />
+    <Resource Include="images\loadmodel3d.png" />
+    <Resource Include="images\16x16\laserbentsimple.png" />
+    <Resource Include="images\laserbentsimple.png" />
     <Resource Include="images\16x16\returnnode.png" />
     <Resource Include="images\returnnode.png" />
     <Resource Include="images\16x16\lasersimple.png" />

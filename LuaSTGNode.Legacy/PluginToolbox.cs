@@ -221,6 +221,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddDefineBentLaserNode));
             laser.Add(new ToolboxItemData("createbentlaser", "/LuaSTGNode.Legacy;component/images/laserbentcreate.png", "Create Bent Laser")
                 , new AddNode(AddCreateBentLaserNode));
+            laser.Add(new ToolboxItemData("createsimplebentlaser", "/LuaSTGNode.Legacy;component/images/laserbentsimple.png", "Create Simple Bent Laser")
+                , new AddNode(AddCreateSimpleBentLaserNode));
             laser.Add(new ToolboxItemData(true), null);
             laser.Add(new ToolboxItemData("laserturnhalfon", "/LuaSTGNode.Legacy;component/images/laserturnhalfon.png", "Turn Half On Laser")
                 , new AddNode(AddLaserTurnHalfOnNode));
@@ -348,6 +350,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddLoadFXNode));
             graphics.Add(new ToolboxItemData("loadtexture", "/LuaSTGNode.Legacy;component/images/loadtexture.png", "Load Texture")
                 , new AddNode(AddLoadTextureNode));
+            graphics.Add(new ToolboxItemData("loadmodel", "/LuaSTGNode.Legacy;component/images/loadmodel3d.png", "Load Model")
+                , new AddNode(AddLoadModelNode));
             graphics.Add(new ToolboxItemData(true), null);
             graphics.Add(new ToolboxItemData("loadfont", "/LuaSTGNode.Legacy;component/images/loadfont.png", "Load Font")
                 , new AddNode(AddLoadFontNode));
@@ -412,6 +416,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddRenderRectNode));
             render.Add(new ToolboxItemData("r4v", "/LuaSTGNode.Legacy;component/images/render4v.png", "Render4V")
                 , new AddNode(AddR4VNode));
+            render.Add(new ToolboxItemData("rendermodel", "/LuaSTGNode.Legacy;component/images/rendermodel3d.png", "Render Model")
+                , new AddNode(AddRenderModelNode));
             render.Add(new ToolboxItemData(true), null);
             render.Add(new ToolboxItemData("creatertar", "/LuaSTGNode.Legacy;component/images/CreateRenderTarget.png", "Create Render Target")
                 , new AddNode(AddCreateRenderTargetNode));
@@ -992,6 +998,11 @@ namespace LuaSTGEditorSharp
             parent.Insert(new CreateBentLaser(parent.ActivatedWorkSpaceData));
         }
 
+        private void AddCreateSimpleBentLaserNode()
+        {
+            parent.Insert(new CreateSimpleBentLaser(parent.ActivatedWorkSpaceData));
+        }
+
         private void AddLaserTurnHalfOnNode()
         {
             parent.Insert(new LaserTurnHalfOn(parent.ActivatedWorkSpaceData));
@@ -1258,6 +1269,11 @@ namespace LuaSTGEditorSharp
             parent.Insert(new LoadTexture(parent.ActivatedWorkSpaceData));
         }
 
+        private void AddLoadModelNode()
+        {
+            parent.Insert(new LoadModel(parent.ActivatedWorkSpaceData));
+        }
+
         private void AddLoadFontNode()
         {
             parent.Insert(new LoadFont(parent.ActivatedWorkSpaceData));
@@ -1293,6 +1309,7 @@ namespace LuaSTGEditorSharp
         {
             parent.Insert(new SetAnimationCenter(parent.ActivatedWorkSpaceData));
         }
+
         #endregion
         #region audio
         private void AddLoadSENode()
@@ -1371,6 +1388,11 @@ namespace LuaSTGEditorSharp
         private void AddR4VNode()
         {
             parent.Insert(new Render4V(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRenderModelNode()
+        {
+            parent.Insert(new RenderModel(parent.ActivatedWorkSpaceData));
         }
 
         private void AddCreateRenderTargetNode()

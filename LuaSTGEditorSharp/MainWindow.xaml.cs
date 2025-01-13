@@ -795,7 +795,7 @@ namespace LuaSTGEditorSharp
             SelectedNode = ((TreeNode)(workSpace.SelectedItem));
             if (selectedNode != null) this.propData.ItemsSource = selectedNode.attributes;
             // I really don't want this to crash. So fuck it: try/catch.
-            string version = "LuaSTG Editor Sharp X v0.77.1";
+            string version = "LuaSTG Editor Sharp X v0.77.2";
             if (ActivatedWorkSpaceData != null)
             {
                 Title = $"{version} - {ActivatedWorkSpaceData.RawDocName}";
@@ -1276,7 +1276,7 @@ namespace LuaSTGEditorSharp
         private void OpenRecentCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             string path = e.Parameter?.ToString();
-            if (!string.IsNullOrEmpty(path))
+            if (!string.IsNullOrEmpty(path) && File.Exists(path))
                 OpenDocByFile(path);
         }
 

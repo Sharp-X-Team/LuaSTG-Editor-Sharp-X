@@ -1,6 +1,6 @@
 ﻿0,{"$type":".RootFolder, LuaSTGEditorSharp","Attributes":[{"attrCap":"Name","attrInput":"File","EditWindow":""}],"AttributeCount":1}
 1,{"$type":".ProjSettings, LuaSTGEditorSharp","Attributes":[{"attrCap":"Output Name","attrInput":"","EditWindow":""},{"attrCap":"Author","attrInput":"LuaSTG User","EditWindow":""},{"attrCap":"Allow practice","attrInput":"true","EditWindow":"bool"},{"attrCap":"Allow sc practice","attrInput":"true","EditWindow":"bool"},{"attrCap":"Mod version","attrInput":"true","EditWindow":""}],"AttributeCount":4}
-1,{"$type":".EditorVersion, LuaSTGEditorSharp","Attributes":[{"attrCap":"Editor version","attrInput":"0.77.1","EditWindow":""}],"AttributeCount":1}
+1,{"$type":".EditorVersion, LuaSTGEditorSharp","Attributes":[{"attrCap":"Editor version","attrInput":"0.77.2","EditWindow":""}],"AttributeCount":1}
 1,{"$type":".General.Folder, LuaSTGEditorSharp","Attributes":[{"attrCap":"Name","attrInput":"Resources","EditWindow":""}],"AttributeCount":1}
 1,{"$type":".General.Folder, LuaSTGEditorSharp","Attributes":[{"attrCap":"Name","attrInput":"Classes","EditWindow":""}],"AttributeCount":1}
 2,{"$type":".Boss.BossDefine, ","Attributes":[{"attrCap":"Name","attrInput":"Boss","EditWindow":""},{"attrCap":"Difficulty","attrInput":"All","EditWindow":"objDifficulty"},{"attrCap":"Displayed name","attrInput":"Name","EditWindow":""},{"attrCap":"Background","attrInput":"","EditWindow":"BG"},{"attrCap":"Background Music","attrInput":"\"\"","EditWindow":"BGM"}],"AttributeCount":5}

@@ -120,6 +120,9 @@
     <Compile Include="Input\EnemyInput.xaml.cs">
       <DependentUpon>EnemyInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Input\ModelInput.xaml.cs">
+      <DependentUpon>ModelInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Input\TTFInput.xaml.cs">
       <DependentUpon>TTFInput.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Input\EnemyInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Input\ModelInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

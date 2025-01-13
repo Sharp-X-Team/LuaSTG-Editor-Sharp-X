@@ -1,4 +1,17 @@
-﻿-- Update Log（July 7th, 2024）
+﻿-- Update Log（January 13th, 2025）
+
+v0.77.2
+- New node: "Create Simple Laser". A plain laser supporting tasking. (Exactly like "Simple Enemies").
+- New node: "Create Simple Bent Laser". A plain bent laser supporting tasking.
+- New node: "Return".
+- New node: "Load Model".
+- New node: "Render Model".
+- Added a "Open Recent" menu option on the "File" menu.
+- Fixed some nodes' displayed description (capital letters)
+- Cleaned generated code for all nodes.
+- Fixed a display error on the "Input Point Set" input window.
+- Fixed a lot of node's GetLines.
+- Fixed a near-fatal bug where you could delete node attributes on the parameters window. (still amazes me how nobody found this before)
 
 v0.77.1
 - When compiling in plain files, the editor now checks if you're trying to compile in the same folder as your project file and will throw an error if that's the case.
