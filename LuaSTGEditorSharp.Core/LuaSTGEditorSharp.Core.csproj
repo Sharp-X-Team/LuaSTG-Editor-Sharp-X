@@ -146,6 +146,7 @@
     <Compile Include="EditorData\Node\General\Folder.cs" />
     <Compile Include="EditorData\Node\General\IfElse.cs" />
     <Compile Include="EditorData\Node\General\IfElseIf.cs" />
+    <Compile Include="EditorData\Node\General\PCall.cs" />
     <Compile Include="EditorData\Node\General\WhileNode.cs" />
     <Compile Include="EditorData\Node\General\IfNode.cs" />
     <Compile Include="EditorData\Node\General\IfThen.cs" />
@@ -624,6 +625,8 @@
     <Resource Include="images\16x16\while.png" />
     <Resource Include="images\CustomInterpolationVariable.png" />
     <Resource Include="images\16x16\CustomInterpolationVariable.png" />
+    <Resource Include="images\pcall.png" />
+    <Resource Include="images\16x16\pcall.png" />
     <Content Include="SplashScreen.png" />
   </ItemGroup>
   <ItemGroup>

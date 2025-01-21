@@ -76,6 +76,8 @@ namespace LuaSTGEditorSharp.Plugin
             gen.Add(new ToolboxItemData(true), null);
             gen.Add(new ToolboxItemData("userdef", "/LuaSTGEditorSharp.Core;component/images/userdefinednode.png", "User Defined Node"), new AddNode(AddUserDefinedNode));
             gen.Add(new ToolboxItemData("unidentified", "/LuaSTGEditorSharp.Core;component/images/unidentifiednode.png", "Unidentified Node"), new AddNode(AddUnidentifiedNode));
+            gen.Add(new ToolboxItemData(true), null);
+            gen.Add(new ToolboxItemData("pcall", "/LuaSTGEditorSharp.Core;component/images/pcall.png", "Protected Call"), new AddNode(AddPCallNode));
             #endregion
             ToolInfo.Add("General", gen);
 
@@ -264,6 +266,11 @@ namespace LuaSTGEditorSharp.Plugin
         private void AddCodeBlockNode()
         {
             parent.Insert(new CodeBlock(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddPCallNode()
+        {
+            parent.Insert(new PCall(parent.ActivatedWorkSpaceData));
         }
         #endregion
         #region advanced
