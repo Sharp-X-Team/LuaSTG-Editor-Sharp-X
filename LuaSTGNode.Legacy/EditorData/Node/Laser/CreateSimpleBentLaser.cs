@@ -95,8 +95,18 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
             bool hasChildren = Children.Count > 0;
             string sp = Indent(spacing);
             string sp1 = Indent(spacing + 1);
+            string sampling = NonMacrolize(4);
+            if (sampling == "true")
+            {
+                sampling = "0";
+            }
+            if (sampling == "false")
+            {
+                sampling = "4";
+            }
             yield return sp + $"last = New(laser_bent, {Macrolize(1)}, {Macrolize(0)}, {Macrolize(2)}, " +
-                $"{Macrolize(3)}, {Macrolize(4)}, {Macrolize(5)})\n";
+                $"{Macrolize(3)}, {sampling}, {Macrolize(5)})\n";
+            yield return sp + $"laser_bent.init(last, {Macrolize(1)}, {Macrolize(0)}, {Macrolize(2)}, {Macrolize(3)}, {sampling}, {Macrolize(5)})\n";
             if (hasChildren)
             {
                 yield return sp + $"lasttask = task.New(last, function()\n";

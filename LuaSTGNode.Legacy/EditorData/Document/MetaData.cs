@@ -13,7 +13,7 @@ namespace LuaSTGEditorSharp.EditorData.Document
     public enum MetaType { Proj, UserDefined
             , StageGroup, Boss, Bullet, ImageLoad, ImageGroupLoad
             , BGMLoad, BossBG, Laser, BentLaser, Object, Background, Enemy, Task, Item
-            , SELoad, AnimationLoad, ParticleLoad, TextureLoad, FXLoad, FontLoad, TTFLoad, ModelLoad, Player, PlayerBullet, __max }
+            , SELoad, AnimationLoad, ParticleLoad, TextureLoad, FXLoad, FontLoad, TTFLoad, Player, PlayerBullet, ModelLoad, __max }
 
     //List version, used in non-immediate update cases
     [Serializable]
