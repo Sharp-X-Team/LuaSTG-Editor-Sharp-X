@@ -144,7 +144,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("warptarget"
                 , new string[] { "Capture", "Apply" });
             target.Add("viewmode"
-                , new string[] { "ui", "world", "3D" });
+                , new string[] { "ui", "world", "3d" });
             target.Add("viewpoint"
                 , new string[] { "\"eye\"", "\"at\"", "\"3D\"", "\"up\"", "\"z\"", "\"fovy\"", "\"fog\"" });
         }
