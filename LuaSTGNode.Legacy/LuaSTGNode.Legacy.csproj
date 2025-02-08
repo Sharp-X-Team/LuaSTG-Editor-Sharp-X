@@ -290,6 +290,7 @@
     <Compile Include="EditorData\Node\Render\RenderModel.cs" />
     <Compile Include="EditorData\Node\Render\RenderRect.cs" />
     <Compile Include="EditorData\Node\Render\RenderTarget.cs" />
+    <Compile Include="EditorData\Node\Render\RenderAnimation.cs" />
     <Compile Include="EditorData\Node\Render\RenderTTF.cs" />
     <Compile Include="EditorData\Node\Render\RenderText.cs" />
     <Compile Include="EditorData\Node\Render\RenderNode.cs" />
@@ -1639,6 +1640,8 @@
     <Content Include="CustomNodes\Example.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\16x16\renderanim.png" />
+    <Resource Include="images\renderanim.png" />
     <Resource Include="images\16x16\rendermodel3d.png" />
     <Resource Include="images\rendermodel3d.png" />
     <Resource Include="images\16x16\loadmodel3d.png" />

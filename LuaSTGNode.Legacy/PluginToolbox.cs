@@ -416,6 +416,8 @@ namespace LuaSTGEditorSharp
                 , new AddNode(AddRenderRectNode));
             render.Add(new ToolboxItemData("r4v", "/LuaSTGNode.Legacy;component/images/render4v.png", "Render4V")
                 , new AddNode(AddR4VNode));
+            render.Add(new ToolboxItemData("renderanimation", "/LuaSTGNode.Legacy;component/images/renderanim.png", "Render Animation")
+                , new AddNode(AddRenderAnimationNode));
             render.Add(new ToolboxItemData("rendermodel", "/LuaSTGNode.Legacy;component/images/rendermodel3d.png", "Render Model")
                 , new AddNode(AddRenderModelNode));
             render.Add(new ToolboxItemData(true), null);
@@ -1388,6 +1390,11 @@ namespace LuaSTGEditorSharp
         private void AddR4VNode()
         {
             parent.Insert(new Render4V(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddRenderAnimationNode()
+        {
+            parent.Insert(new RenderAnimation(parent.ActivatedWorkSpaceData));
         }
 
         private void AddRenderModelNode()
