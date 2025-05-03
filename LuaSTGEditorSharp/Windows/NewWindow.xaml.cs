@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace LuaSTGEditorSharp.Windows
 {
@@ -95,6 +96,7 @@ namespace LuaSTGEditorSharp.Windows
         List<DefS> templates;
 
         HttpClient client;
+        private Dictionary<string, string> remoteTemplateDescCache = [];
 
         public NewWindow()
         {
@@ -108,14 +110,16 @@ namespace LuaSTGEditorSharp.Windows
                     FullPath = fi.FullName,
                     Icon = "..\\images\\Icon.png" }];
 
-            if ((App.Current as App).UseRemoteTemplates)
+            try
             {
-                client = new();
-                client.DefaultRequestHeaders.UserAgent.ParseAdd("Sharp-X Editor");
+                if ((App.Current as App).UseRemoteTemplates)
+                {
+                    client = new();
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd("Sharp-X Editor");
 
-                string remoteJson = client.GetStringAsync("https://api.github.com/repos/Sharp-X-Team/Sharp-X-templates/contents").Result;
-                var remoteTemplates = JsonConvert.DeserializeObject<List<RemoteTemplate>>(remoteJson);
-                templates.AddRange([.. from RemoteTemplate rt
+                    string remoteJson = client.GetStringAsync("https://api.github.com/repos/Sharp-X-Team/Sharp-X-templates/contents/templates").Result;
+                    var remoteTemplates = JsonConvert.DeserializeObject<List<RemoteTemplate>>(remoteJson);
+                    templates.AddRange([.. from RemoteTemplate rt
                     in remoteTemplates
                     // Get all files that ends with ".lstges" and doesn't already exist in the local templates.
                     where (Path.GetExtension(rt.name) == ".lstges" || Path.GetExtension(rt.name) == "*.lstgproj")
@@ -125,7 +129,12 @@ namespace LuaSTGEditorSharp.Windows
                         FullPath = rt.download_url,
                         Icon = "..\\images\\IconRemoteTemplate.png"
                     }
-                ]);
+                    ]);
+                }
+            }
+            catch (Exception)
+            {
+                //
             }
 
             InitializeComponent();
@@ -139,21 +148,44 @@ namespace LuaSTGEditorSharp.Windows
             TextName.SelectAll();
         }
 
-        private void ListTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void ListTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DefS sel = ListTemplates.SelectedItem as DefS;
             try
             {
-                string fullPathDesc = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory
+                if (sel.FullPath.StartsWith("https://"))
+                {
+                    // Cache for avoiding to download the file each time.
+                    if (!remoteTemplateDescCache.TryGetValue(sel.Text, out string contents))
+                    {
+                        string ext = Path.ChangeExtension(sel.FullPath, "txt");
+                        // Don't replace the first occurence since we don't wanna replace the repo name.
+                        string output = Regex.Replace(ext, @"(?<=templates.*)templates", "descriptions");
+                        contents = await client.GetStringAsync(output);
+                        remoteTemplateDescCache.Add(sel.Text, contents);
+                    }
+                    
+                    TextDescription.Text = contents;
+                }
+                else
+                {
+                    string fullPathDesc = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory
                     , "Templates", sel.Text + ".txt"));
-                FileStream f = new(fullPathDesc, FileMode.Open);
-                StreamReader sr = new(f);
-                TextDescription.Text = sr.ReadLine();
-                f.Close();
+                    FileStream f = new(fullPathDesc, FileMode.Open);
+                    StreamReader sr = new(f);
+                    TextDescription.Text = sr.ReadLine();
+                    f.Close();
+                }
             }
-            catch
+            catch (FileNotFoundException)
             {
-                TextDescription.Text = $"Online template \"{sel.Text}\"";
+                TextDescription.Text = $"No description file for \"{sel.Text}\"";
+            }
+            catch (Exception ex)
+            {
+                var exc = ex;
+                var djfgklhdfg = exc;
+                TextDescription.Text = $"Couldn't get description for \"{sel.Text}\":\n{ex}";
             }
         }
 
