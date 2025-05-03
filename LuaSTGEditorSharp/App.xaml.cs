@@ -415,6 +415,12 @@ namespace LuaSTGEditorSharp
             set => Settings.Default.UseDiscordRpc = value;
         }
 
+        public bool UseRemoteTemplates
+        {
+            get => Settings.Default.UseRemoteTemplates;
+            set => Settings.Default.UseRemoteTemplates = value;
+        }
+
         public StringCollection RecentlyOpened
         {
             get => Settings.Default.RecentlyOpened;

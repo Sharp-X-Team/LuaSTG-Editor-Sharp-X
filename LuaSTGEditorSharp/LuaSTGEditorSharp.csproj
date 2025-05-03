@@ -316,6 +316,7 @@
     <Resource Include="images\viewcode.png" />
     <Resource Include="images\Warning.png" />
     <Resource Include="images\setting.png" />
+    <Resource Include="images\IconRemoteTemplate.png" />
     <Content Include="Templates\Empty Project.lstgproj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

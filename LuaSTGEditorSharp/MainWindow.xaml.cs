@@ -50,6 +50,7 @@ using DiscordRPC.Logging;
 using Button = System.Windows.Controls.Button;
 using ToastNotifications.Lifetime.Clear;
 using System.Collections.Specialized;
+using System.Net.Http;
 
 namespace LuaSTGEditorSharp
 {
@@ -474,12 +475,25 @@ namespace LuaSTGEditorSharp
             return true;
         }
 
-        private void NewDoc()
+        private async Task NewDoc()
         {
-            NewWindow nw = new NewWindow();
+            NewWindow nw = new();
             if (nw.ShowDialog() == true)
             {
-                string fullPathClone = Path.GetFullPath(nw.SelectedPath);
+                string fullPathClone;
+                if (nw.SelectedPath.StartsWith("https://"))
+                {
+                    HttpClient client = new();
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd("Sharp-X Editor");
+                    string contents = await client.GetStringAsync(nw.SelectedPath);
+                    fullPathClone = Path.Combine(Path.GetTempPath(), Path.GetFileName(nw.SelectedPath));
+                    File.WriteAllText(fullPathClone, contents);
+                }
+                else
+                {
+                    fullPathClone = Path.GetFullPath(nw.SelectedPath);
+                }
+
                 CloneDocFromPath(nw.FileName, fullPathClone,
                     new ProjSettings(ActivatedWorkSpaceData, "", nw.Author, nw.AllowPR.ToString().ToLower(), nw.AllowSCPR.ToString().ToLower(), nw.ModVersion.ToString().ToLower()));
             }

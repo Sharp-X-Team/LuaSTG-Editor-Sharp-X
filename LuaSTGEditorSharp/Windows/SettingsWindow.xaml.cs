@@ -28,10 +28,11 @@ namespace LuaSTGEditorSharp.Windows
 
         static readonly int[] resX = { 640, 960, 1280 };
         static readonly int[] resY = { 480, 720, 960 };
-        readonly ObservableCollection<string> pluginPaths = new ObservableCollection<string>();
+        readonly ObservableCollection<string> pluginPaths = [];
 
         public Array ThemeArray => new List<string>() { "LightTheme", "DarkTheme" }.ToArray();
 
+        #region Settings
 
         private bool ignoreTHLibWarn;
         public bool IgnoreTHLibWarn
@@ -397,6 +398,18 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private bool useRemoteTemplates;
+        public bool UseRemoteTemplates
+        {
+            get => useRemoteTemplates;
+            set
+            {
+                useRemoteTemplates = value;
+                RaiseProertyChanged("UseRemoteTemplates");
+            }
+        }
+
+        #endregion
         #region InSettings
 
         public bool IgnoreTHLibWarnSettings
@@ -563,6 +576,12 @@ namespace LuaSTGEditorSharp.Windows
             set => mainApp.UseDiscordRpc = value;
         }
 
+        public bool UseRemoteTemplatesSettings
+        {
+            get => mainApp.UseRemoteTemplates;
+            set => mainApp.UseRemoteTemplates = value;
+        }
+
         #endregion
         #region Integer box integration
 
@@ -656,6 +675,7 @@ namespace LuaSTGEditorSharp.Windows
             CurrentThemeSettings = CurrentTheme;
             CheckUpdateAtLaunchSettings = CheckUpdateAtLaunch;
             UseDiscordRpcSettings = UseDiscordRpc;
+            UseRemoteTemplatesSettings = UseRemoteTemplates;
         }
 
         private void ReadSettings()
@@ -686,6 +706,7 @@ namespace LuaSTGEditorSharp.Windows
             CurrentTheme = CurrentThemeSettings;
             CheckUpdateAtLaunch = CheckUpdateAtLaunchSettings;
             UseDiscordRpc = UseDiscordRpcSettings;
+            UseRemoteTemplates = UseRemoteTemplatesSettings;
         }
 
         public SettingsWindow()

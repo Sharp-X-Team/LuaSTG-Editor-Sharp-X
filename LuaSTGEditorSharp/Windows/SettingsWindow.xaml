@@ -58,6 +58,11 @@
                               Margin="10,160,0,0" VerticalAlignment="Top" Width="350"
                               Grid.ColumnSpan="2"
                               IsChecked="{Binding UseDiscordRpc, ElementName=window}"/>
+
+                    <CheckBox Content="Allow downloading remote templates (New File Window)" HorizontalAlignment="Left" Height="26"
+                              Margin="10,200,0,0" VerticalAlignment="Top" Width="350"
+                              Grid.ColumnSpan="2"
+                              IsChecked="{Binding UseRemoteTemplates, ElementName=window}"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="CompilerTab" Header="Compiler">

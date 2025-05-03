@@ -12,9 +12,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace LuaSTGEditorSharp.Windows
 {
+    public struct RemoteTemplate {
+        public string name { get; set; }
+        public string download_url { get; set; }
+    }
+
     /// <summary>
     /// NewWindow.xaml 的交互逻辑
     /// </summary>
@@ -87,19 +94,40 @@ namespace LuaSTGEditorSharp.Windows
 
         List<DefS> templates;
 
+        HttpClient client;
+
         public NewWindow()
         {
             string s = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates\\"));
-            DirectoryInfo dir = new DirectoryInfo(s);
-            List<FileInfo> fis = new List<FileInfo>(dir.GetFiles("*.lstges"));
-            fis.AddRange(dir.GetFiles("*.lstgproj"));
-            templates = new List<DefS>(
-                from FileInfo fi
+            DirectoryInfo dir = new(s);
+            List<FileInfo> fis = [.. dir.GetFiles("*.lstges"), .. dir.GetFiles("*.lstgproj")];
+            templates = [.. from FileInfo fi
                 in fis
                 select new DefS {
                     Text = Path.GetFileNameWithoutExtension(fi.Name),
-                    FullPath =fi.FullName,
-                    Icon = "..\\images\\Icon.png" });
+                    FullPath = fi.FullName,
+                    Icon = "..\\images\\Icon.png" }];
+
+            if ((App.Current as App).UseRemoteTemplates)
+            {
+                client = new();
+                client.DefaultRequestHeaders.UserAgent.ParseAdd("Sharp-X Editor");
+
+                string remoteJson = client.GetStringAsync("https://api.github.com/repos/Sharp-X-Team/Sharp-X-templates/contents").Result;
+                var remoteTemplates = JsonConvert.DeserializeObject<List<RemoteTemplate>>(remoteJson);
+                templates.AddRange([.. from RemoteTemplate rt
+                    in remoteTemplates
+                    // Get all files that ends with ".lstges" and doesn't already exist in the local templates.
+                    where (Path.GetExtension(rt.name) == ".lstges" || Path.GetExtension(rt.name) == "*.lstgproj")
+                        && !templates.Any(x => x.Text == Path.GetFileNameWithoutExtension(rt.name))
+                    select new DefS {
+                        Text = Path.GetFileNameWithoutExtension(rt.name),
+                        FullPath = rt.download_url,
+                        Icon = "..\\images\\IconRemoteTemplate.png"
+                    }
+                ]);
+            }
+
             InitializeComponent();
             ListTemplates.ItemsSource = templates;
             try
@@ -118,12 +146,15 @@ namespace LuaSTGEditorSharp.Windows
             {
                 string fullPathDesc = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory
                     , "Templates", sel.Text + ".txt"));
-                FileStream f = new FileStream(fullPathDesc, FileMode.Open);
-                StreamReader sr = new StreamReader(f);
+                FileStream f = new(fullPathDesc, FileMode.Open);
+                StreamReader sr = new(f);
                 TextDescription.Text = sr.ReadLine();
                 f.Close();
             }
-            catch { }
+            catch
+            {
+                TextDescription.Text = $"Online template \"{sel.Text}\"";
+            }
         }
 
         private void ListTemplates_MouseDoubleClick(object sender, MouseButtonEventArgs e)

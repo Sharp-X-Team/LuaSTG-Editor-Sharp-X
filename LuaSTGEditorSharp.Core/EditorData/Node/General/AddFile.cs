@@ -33,8 +33,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         [JsonIgnore, NodeAttribute]
         public string Path {
-            get => DoubleCheckAttr(0, "plainFile", isDependency: true).attrInput;
-            set => DoubleCheckAttr(0, "plainFile", isDependency: true).attrInput = value;
+            get => DoubleCheckAttr(0, "plainMultipleFiles", isDependency: true).attrInput;
+            set => DoubleCheckAttr(0, "plainMultipleFiles", isDependency: true).attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
@@ -49,15 +49,20 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
 
         public override string ToString()
         {
-            return $"Add file \"{NonMacrolize(0)}\" into pack";
+            return @$"Add following file(s) into pack: \n
+{string.Join(Environment.NewLine, NonMacrolize(0).Split('|').Select(x => $"\"{x}\""))}";
         }
 
         protected override void AddCompileSettings()
         {
-            string sk = parentWorkSpace.CompileProcess.archiveSpace + System.IO.Path.GetFileName(NonMacrolize(0));
-            if (!parentWorkSpace.CompileProcess.resourceFilePath.ContainsKey(sk))
+            var files = NonMacrolize(0).Split('|');
+            foreach (var file in files)
             {
-                parentWorkSpace.CompileProcess.resourceFilePath.Add(sk, NonMacrolize(0));
+                string sk = parentWorkSpace.CompileProcess.archiveSpace + System.IO.Path.GetFileName(file);
+                if (!parentWorkSpace.CompileProcess.resourceFilePath.ContainsKey(sk))
+                {
+                    parentWorkSpace.CompileProcess.resourceFilePath.Add(sk, file);
+                }
             }
         }
 
