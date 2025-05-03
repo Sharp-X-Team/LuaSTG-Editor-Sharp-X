@@ -18,22 +18,17 @@
                 <Grid>
                     <Image Height="198" Margin="210,10,210,165" Width="348" Source="SplashScreen.png" StretchDirection="DownOnly" VerticalAlignment="Center"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="948">
-                        <Run Text="LuaSTG Sharp Editor © "/>
-                        <Run Text="czh098tom (Github) (https://github.com/czh098tom/LuaSTG-Editor-Sharp)"/>
+                        LuaSTG Sharp Editor © czh098tom (Github) (<Hyperlink NavigateUri="https://github.com/czh098tom/LuaSTG-Editor-Sharp">https://github.com/czh098tom/LuaSTG-Editor-Sharp</Hyperlink>)
                         <LineBreak/>
-                        <Run Text="LuaSTG Sharp Editor X "/>
-                        <Run Text="©"/>
-                        <Run Text=" zinoLath &amp; RyannThi (Github) &amp; Tania Anehina (https://github.com/zinoLath/LuaSTG-Editor-Sharp-X)"/>
+                        LuaSTG Sharp Editor X © zinoLath &amp; RyannThi (Github) &amp; Rül Hölos (<Hyperlink NavigateUri="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X">https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X</Hyperlink>)
+                        <LineBreak/><LineBreak/>
+                        LuaSTG Editor Sharp X is a fork of the original LuaSTG Editor Sharp editor aimed towards improving the original with new functions, functionalities, and ease of support for LuaSTG ExPlus, -x, Sub and Evo.
+                        <LineBreak/><LineBreak/>
+                        Please check the <Hyperlink NavigateUri="https://github.com/Sharp-X-Team/LuaSTG-Editor-Sharp-X/wiki">wiki</Hyperlink> for more informations on how to use Sharp-X.
                         <LineBreak/>
-                        <Run/><LineBreak/>
-                        <Run Text="This is a clone of the LuaSTG Editor Sharp repository with making more features that are compatible with LuaSTG-x"/>
-                        <Run Text=" and other alterations."/>
-                        <LineBreak/><Run Text="You can check the changes we've made already at our wiki page!"/>
-                        <Run Text=" "/><Run Text="("/><Run Text="https://github.com/zinoLath/LuaSTG-Editor-Sharp-X/wiki"/>
-                        <Run Text=")"/><LineBreak/><Run/><LineBreak/>
-                        <Run Text="LuaSTG Editor Sharp X is a clone/fork of LuaSTG Editor Sharp aimed towards improvingthe original with new functions and altered behaviour, providing more ease of support for LuaSTG ExPlus, -x and Sub and in active development, open to feedback and suggestions"/>
+                        There is also the <Hyperlink NavigateUri="https://luastgen.miraheze.org/wiki/Main_Page">English LuaSTG wiki</Hyperlink> you can also visit for more information about LuaSTG in general.
                     </TextBlock>
-                    <Image x:Name="taniaanehina" HorizontalAlignment="Left" Height="82" Margin="202,156,0,0" VerticalAlignment="Top" Width="76" Source="taniapfp.png"/>
+                    <Image x:Name="rulholos" HorizontalAlignment="Left" Height="82" Margin="202,156,0,0" VerticalAlignment="Top" Width="76" Source="rulpfp.png"/>
                     <Image x:Name="zinoimg" HorizontalAlignment="Left" Height="82" Margin="115,115,0,0" VerticalAlignment="Top" Width="76" Source="zinopfp.png"/>
                     <Image x:Name="ryannimg" HorizontalAlignment="Left" Height="82" Margin="115,202,0,0" VerticalAlignment="Top" Width="76" Source="ryannthipfp.png"/>
                     <Image x:Name="tomimg" HorizontalAlignment="Left" Height="82" Margin="782,166,0,0" VerticalAlignment="Top" Width="76" Source="tompfp.png"/>
