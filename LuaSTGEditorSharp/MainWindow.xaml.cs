@@ -59,16 +59,16 @@ namespace LuaSTGEditorSharp
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged, IMainWindow
     {
-        DocumentCollection Documents { get; } = new DocumentCollection();
+        DocumentCollection Documents { get; } = [];
 
         private string debugString = "";
 
         public ObservableCollection<ToolboxTab> toolboxData;
         public ObservableCollection<ToolboxTab> ToolboxData { get => toolboxData; }
 
-        ObservableCollection<FileDirectoryModel> PresetsGetList { get; } = new ObservableCollection<FileDirectoryModel>();
+        ObservableCollection<FileDirectoryModel> PresetsGetList { get; } = [];
         StringCollection RecentlyOpenedList { get; set; } = [];
-        ObservableCollection<PluginTool> PluginTools { get; } = new ObservableCollection<PluginTool>();
+        ObservableCollection<PluginTool> PluginTools { get; } = [];
 
         private CommandTypeFac insertState = new AfterFac();
 
@@ -143,14 +143,14 @@ namespace LuaSTGEditorSharp
             RecentlyOpenedMenu.ItemsSource = RecentlyOpenedList;
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
 
-            EditorLogging.Initialize();
-
             SetupDiscordRpc();
-            //SetupNotifier();
+            //SetupNotifier(); // Cause a memory leak. TODO: fix
             StartSparkle();
             SetupAutoSave();
 
             Sparkle.StartLoop((App.Current as App).CheckUpdateAtLaunch, (App.Current as App).CheckUpdateAtLaunch);
+
+            Logger.Information("Main Window initialized.");
         }
 
 
@@ -401,7 +401,7 @@ namespace LuaSTGEditorSharp
             TreeNode temp = node.Parent;
             node.parentWorkSpace.IsSelected = true;
             node.parentWorkSpace.TreeNodes[0].ClearChildSelection();
-            Stack<TreeNode> sta = new Stack<TreeNode>();
+            Stack<TreeNode> sta = [];
             while (temp != null)
             {
                 sta.Push(temp);
@@ -419,7 +419,7 @@ namespace LuaSTGEditorSharp
         {
             Region beg = selectedNode as Region;
             Region end = null;
-            ObservableCollection<TreeNode> toFold = new ObservableCollection<TreeNode>();
+            ObservableCollection<TreeNode> toFold = [];
             TreeNode p = beg.Parent;
             bool inSel = false;
             for (int i = 0; i < p.Children.Count; i++)
@@ -708,6 +708,7 @@ namespace LuaSTGEditorSharp
                 CompileWorker.RunWorkerAsync(new object[] { current, SCDebugger, StageDebugger, run, saveMeta });
                 DebugString = "";
                 tabOutput.IsSelected = true;
+                Logger.Information("ExportZip successful.");
             }
             catch (Exception ex)
             {
@@ -857,7 +858,7 @@ namespace LuaSTGEditorSharp
             ComboBox comboBox = sender as ComboBox;
             foreach (string s in InputWindowSelector.SelectComboBox(comboBox.Tag?.ToString()))
             {
-                ComboBoxItem item = new ComboBoxItem() { Content = s };
+                ComboBoxItem item = new() { Content = s };
                 comboBox.Items.Add(item);
             }
             comboBox.Focus();
@@ -865,10 +866,10 @@ namespace LuaSTGEditorSharp
 
         protected void UpdateLog_Click(object sender, RoutedEventArgs e)
         {
-            string path = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Update Log.txt"));
+            string path = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Update Log.txt"));
             if (File.Exists(path))
             {
-                Process log = new Process
+                Process log = new()
                 {
                     StartInfo = new ProcessStartInfo(path)
                 };
@@ -1011,7 +1012,7 @@ namespace LuaSTGEditorSharp
                 newDoc.OriginalMeta.PropertyChanged += newDoc.OnEditing;
 
                 newDoc.DocPath = "";
-                Queue<TreeNode> nodes = new Queue<TreeNode>();
+                Queue<TreeNode> nodes = [];
                 nodes.Enqueue(newDoc.TreeNodes[0]);
                 while (nodes.Count > 0)
                 {

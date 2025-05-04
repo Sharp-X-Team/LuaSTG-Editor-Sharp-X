@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,6 +12,7 @@ namespace LuaSTGEditorSharp.Zip
     public class PlainCopy : ZipCompressor
     {
         private readonly string targetArchivePath;
+        private static ILogger Logger = EditorLogging.ForContext("PlainCopy");
 
         public PlainCopy(string targetArchivePath)
         {
@@ -37,6 +39,7 @@ namespace LuaSTGEditorSharp.Zip
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Failed to pack files. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
             }
         }

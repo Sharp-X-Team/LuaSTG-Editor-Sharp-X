@@ -12,12 +12,11 @@ namespace LuaSTGEditorSharp.Windows
 {
     public static class InputWindowSelector
     {
-        public static readonly string[] nullSelection = new string[0] { };
+        public static readonly string[] nullSelection = [];
         public static readonly Func<AttrItem, string, InputWindow> nullWindow = (e, s) => new SingleLineInput(s);
 
-        private static readonly Dictionary<string, string[]> comboBox = new Dictionary<string, string[]>();
-        private static readonly Dictionary<string, Func<AttrItem, string, IInputWindow>> windowGenerator
-            = new Dictionary<string, Func<AttrItem, string, IInputWindow>>();
+        private static readonly Dictionary<string, string[]> comboBox = [];
+        private static readonly Dictionary<string, Func<AttrItem, string, IInputWindow>> windowGenerator = [];
 
         public static void Register(IInputWindowSelectorRegister register)
         {
@@ -27,10 +26,9 @@ namespace LuaSTGEditorSharp.Windows
 
         public static void AfterRegister()
         {
-            List<string> vs = new List<string>(windowGenerator.Keys);
-            vs.Add("");
+            List<string> vs = [.. windowGenerator.Keys, ""];
             vs.Sort();
-            comboBox.Add("editWindow", vs.ToArray());
+            comboBox.Add("editWindow", [.. vs]);
             windowGenerator.Add("editWindow", (src, tar) => new Selector(tar
                  , SelectComboBox("editWindow"), "Input Edit Window"));
         }

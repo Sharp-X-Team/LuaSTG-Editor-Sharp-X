@@ -39,22 +39,22 @@ namespace LuaSTGEditorSharp
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            EditorLogging.Initialize();
+
             // Don't ask. I don't know. It just works. Start of the fuckery.
             ResourceDictionary r1 = new ResourceDictionary();
             r1.Source = new Uri($"pack://application:,,,/LuaSTGEditorThemes;component/{CurrentTheme}.xaml");
             Resources.MergedDictionaries.Add(r1);
             // End of the fuckery.
 
-            FileStream fs = null;
-            StreamWriter sw = null;
             TextWriter tw = Console.Out;
             try
             {
                 string tempPath = Path.GetFullPath(Path.Combine(Path.GetTempPath(), "LuaSTG Editor/"));
                 if (!Directory.Exists(tempPath)) Directory.CreateDirectory(tempPath);
-                fs = new FileStream(Path.GetFullPath(Path.Combine(tempPath, "log.txt"))
+                using FileStream fs = new(Path.GetFullPath(Path.Combine(tempPath, "log.txt"))
                     , FileMode.OpenOrCreate, FileAccess.Write);
-                sw = new StreamWriter(fs);
+                using StreamWriter sw = new(fs);
                 Console.SetOut(sw);
                 base.OnStartup(e);
 
@@ -104,11 +104,6 @@ namespace LuaSTGEditorSharp
             {
                 Console.WriteLine(ex.ToString());
                 Current.Shutdown();
-            }
-            finally
-            {
-                if (sw != null) sw.Close();
-                if (fs != null) fs.Close();
             }
         }
 

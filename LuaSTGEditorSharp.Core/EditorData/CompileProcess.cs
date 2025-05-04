@@ -149,6 +149,7 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Couldn't get MD5 hash. Reason:\n{e}");
                 MessageBox.Show(e.ToString());
                 return "";
             }
@@ -360,10 +361,12 @@ namespace LuaSTGEditorSharp.EditorData
                     if (string.IsNullOrEmpty(projPath))
                         throw new InvalidRelativeResPathException(resPath.Value);
                     resNeedToPack.Add(resPath.Key, Path.GetFullPath(Path.Combine(projPath, resPath.Value)));
+                    Logger.Information($"GatherAllRes: {resPath.Key} - {Path.GetFullPath(Path.Combine(projPath, resPath.Value))}");
                 }
                 else if (undcPath == false)
                 {
                     resNeedToPack.Add(resPath.Key, resPath.Value);
+                    Logger.Information($"GatherAllRes: {resPath.Key} - {resPath.Value}");
                 }
             }
         }
@@ -529,7 +532,7 @@ namespace LuaSTGEditorSharp.EditorData
                     }
                 }
                 packBat.Close();
-                Process pack = new Process
+                Process pack = new()
                 {
                     StartInfo = new ProcessStartInfo(rootZipPackPath)
                     {
@@ -547,9 +550,10 @@ namespace LuaSTGEditorSharp.EditorData
             }
             finally
             {
-                if (packBat != null) packBat.Close();
-                if (packBatS != null) packBatS.Close();
-                if (File.Exists(projLuaPath)) File.Delete(projLuaPath);
+                packBat?.Close();
+                packBatS?.Close();
+                if (File.Exists(projLuaPath))
+                    File.Delete(projLuaPath);
             }
         }
 

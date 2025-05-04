@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace LuaSTGEditorSharp.Zip
 {
@@ -13,6 +14,7 @@ namespace LuaSTGEditorSharp.Zip
         private readonly string zipExePath;
         private readonly string targetArchivePath;
         private readonly string batchTempPath;
+        private static ILogger Logger = EditorLogging.ForContext("PlainCopy");
 
         public ZipCompressorBatch(string targetArchivePath, string zipExePath, string batchTempPath)
         {
@@ -23,20 +25,18 @@ namespace LuaSTGEditorSharp.Zip
 
         public override void PackByDict(Dictionary<string, string> fileInfo, bool removeIfExists)
         {
-            FileStream packBatS = null;
-            StreamWriter packBat = null;
             if (removeIfExists && File.Exists(targetArchivePath)) File.Delete(targetArchivePath);
             try
             {
-                packBatS = new FileStream(batchTempPath, FileMode.Create);
-                packBat = new StreamWriter(packBatS, Encoding.Default);
+                using FileStream packBatS = new(batchTempPath, FileMode.Create);
+                using StreamWriter packBat = new(packBatS, Encoding.Default);
                 foreach (KeyValuePair<string, string> kvp in fileInfo)
                 {
                     packBat.WriteLine(zipExePath + " u -tzip -mcu=on \"" + targetArchivePath + "\" \"" + kvp.Value + "\"");
                 }
                 packBat.Close();
                 packBatS.Close();
-                Process pack = new Process
+                Process pack = new()
                 {
                     StartInfo = new ProcessStartInfo(batchTempPath)
                     {
@@ -49,12 +49,8 @@ namespace LuaSTGEditorSharp.Zip
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Failed to pack files. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
-            }
-            finally
-            {
-                if (packBat != null) packBat.Close();
-                if (packBatS != null) packBatS.Close();
             }
         }
 

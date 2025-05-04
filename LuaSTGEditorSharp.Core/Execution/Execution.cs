@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using Serilog;
 
 namespace LuaSTGEditorSharp.Execution
 {
@@ -13,6 +14,8 @@ namespace LuaSTGEditorSharp.Execution
 
     public abstract class LSTGExecution
     {
+
+        private static ILogger Logger = EditorLogging.ForContext("LSTGExecution");
         protected Process LSTGInstance { get; set; }
 
         protected string Parameter { get; set; }
@@ -55,16 +58,15 @@ namespace LuaSTGEditorSharp.Execution
                 if((Application.Current as IAppDebugSettings).DynamicDebugReporting) debugView.Start();
 #endif
                 logger("LuaSTG is Running.\n\n");
+                Logger.Information($"LuaSTG is Running.");
 
                 LSTGInstance.Exited += (s, e) => {
-                    FileStream fs = null;
-                    StreamReader sr = null;
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new();
                     try
                     {
-                        fs = new FileStream(Path.GetFullPath(Path.Combine(
+                        using FileStream fs = new(Path.GetFullPath(Path.Combine(
                             Path.GetDirectoryName(LuaSTGPath), LogFileName)), FileMode.Open);
-                        sr = new StreamReader(fs);
+                        using StreamReader sr = new(fs);
                         int i = 0;
                         while (!sr.EndOfStream && i < 8192)
                         {
@@ -75,14 +77,13 @@ namespace LuaSTGEditorSharp.Execution
                         logger(sb.ToString());
                         end();
                     }
-                    catch (System.Exception exc)
+                    catch (Exception exc)
                     {
-                        System.Windows.MessageBox.Show(exc.ToString());
+                        Logger.Error($"LuaSTG instance had an error. Reason:\n{exc}");
+                        MessageBox.Show(exc.ToString());
                     }
                     finally
                     {
-                        if (fs != null) fs.Close();
-                        if (sr != null) sr.Close();
 #if !DEBUG
                         if ((Application.Current as IAppDebugSettings).DynamicDebugReporting) debugView.Dispose();
 #endif
@@ -94,6 +95,7 @@ namespace LuaSTGEditorSharp.Execution
             }
             else
             {
+                Logger.Warning("LuaSTG is already running, aborting LuaSTGExecution process.");
                 MessageBox.Show("LuaSTG is already running, please exit first."
                     , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }

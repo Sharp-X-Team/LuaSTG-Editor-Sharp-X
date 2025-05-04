@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using LuaSTGEditorSharp.EditorData.Document;
 using LuaSTGEditorSharp.Plugin;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace LuaSTGEditorSharp.EditorData
 {
@@ -137,6 +138,8 @@ namespace LuaSTGEditorSharp.EditorData
         /// </summary>
         public DateTime StartedTimestamp { get; set; }
 
+        public static ILogger Logger = EditorLogging.ForContext("DocumentData");
+
         /// <summary>
         /// Initializes document by ID
         /// </summary>
@@ -199,6 +202,7 @@ namespace LuaSTGEditorSharp.EditorData
                 undoFlow = new Stack<Command>();
                 RaisePropertyChanged("DocName");
                 //OnEditing(parent);
+                Logger.Verbose($"Created command {command}");
                 return true;
             }
             else
@@ -277,16 +281,17 @@ namespace LuaSTGEditorSharp.EditorData
                 sw = new StreamWriter(s, Encoding.UTF8);
                 TreeNodes[0].SerializeFile(sw, 0);
             }
-            catch
+            catch (System.Exception ex)
             {
+                Logger.Error($"Unable to write to file \"{path}\". Reason:\n{ex}");
                 System.Windows.MessageBox.Show("Unable to write to file \"" + path + "\".", "LuaSTG Editor Sharp X"
                     , System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                 return false;
             }
             finally
             {
-                if (sw != null) sw.Close();
-                if (s != null) s.Close();
+                sw?.Close();
+                s?.Close();
             }
             return true;
         }
@@ -300,7 +305,7 @@ namespace LuaSTGEditorSharp.EditorData
         {
             TreeNode root = null;
             TreeNode prev = null;
-            TreeNode tempN = null;
+            TreeNode tempN;
             int prevLevel = -1;
             int i;
             int levelgrad;
@@ -348,11 +353,12 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Couldn't create node from file. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
             }
             finally
             {
-                if (sr != null) sr.Close();
+                sr?.Close();
             }
             return root;
         }
@@ -366,19 +372,18 @@ namespace LuaSTGEditorSharp.EditorData
         {
             TreeNode root = null;
             TreeNode prev = null;
-            TreeNode tempN = null;
+            TreeNode tempN;
             int prevLevel = -1;
             int i;
             int levelgrad;
             char[] temp;
             string des;
-            StreamReader sr = null;
             try
             {
-                sr = new StreamReader(fileName, Encoding.UTF8);
+                using StreamReader sr = new(fileName, Encoding.UTF8);
                 while (!sr.EndOfStream)
                 {
-                    temp = (sr.ReadLine()).ToCharArray();
+                    temp = sr.ReadLine().ToCharArray();
                     i = 0;
                     while (temp[i] != ',')
                     {
@@ -414,11 +419,8 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Couldn't create node from file. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
-            }
-            finally
-            {
-                if (sr != null) sr.Close();
             }
             return root;
         }
@@ -469,25 +471,17 @@ namespace LuaSTGEditorSharp.EditorData
 
         public void SaveCode(string path)
         {
-            FileStream s = null;
-            StreamWriter sw = null;
             try
             {
-                s = new FileStream(path, FileMode.Create, FileAccess.Write);
-                sw = new StreamWriter(s, Encoding.UTF8);
+                using FileStream s = new(path, FileMode.Create, FileAccess.Write);
+                using StreamWriter sw = new(s, Encoding.UTF8);
                 foreach (var a in TreeNodes[0].ToLua(0))
-                {
                     sw.Write(a);
-                }
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Couldn't save code. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
-            }
-            finally
-            {
-                if (sw != null) sw.Close();
-                if (s != null) s.Close();
             }
         }
 
@@ -497,26 +491,19 @@ namespace LuaSTGEditorSharp.EditorData
         /// <param name="path">Target path.</param>
         internal void SaveSCDebugCode(string path)
         {
-            FileStream s = null;
-            StreamWriter sw = null;
             try
             {
-                s = new FileStream(path, FileMode.Create, FileAccess.Write);
-                sw = new StreamWriter(s, Encoding.UTF8);
+                using FileStream s = new(path, FileMode.Create, FileAccess.Write);
+                using StreamWriter sw = new(s, Encoding.UTF8);
                 foreach (var a in TreeNodes[0].ToLua(0))
-                {
                     sw.Write(a);
-                }
-                sw.Write("Include \'THlib\\\\UI\\\\scdebugger.lua\'");
+
+                sw.Write(@"Include 'THlib/UI/scdebugger.lua'");
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Couldn't save SCDebug code. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
-            }
-            finally
-            {
-                if (sw != null) sw.Close();
-                if (s != null) s.Close();
             }
         }
 
@@ -526,33 +513,25 @@ namespace LuaSTGEditorSharp.EditorData
         /// <param name="path">Target path.</param>
         internal void SaveStageDebugCode(string path)
         {
-            FileStream s = null;
-            StreamWriter sw = null;
             try
             {
-                s = new FileStream(path, FileMode.Create, FileAccess.Write);
-                sw = new StreamWriter(s, Encoding.UTF8);
+                using FileStream s = new(path, FileMode.Create, FileAccess.Write);
+                using StreamWriter sw = new(s, Encoding.UTF8);
                 foreach (var a in TreeNodes[0].ToLua(0))
-                {
                     sw.Write(a);
-                }
+
                 TreeNode stage = GlobalCompileData.StageDebugger;
                 while (!PluginHandler.Plugin.MatchStageNodeTypes(stage?.GetType()))
-                {
                     stage = stage.Parent;
-                }
+
                 string parentStageGroupName = stage.Parent.attributes[0].AttrInput;
-                sw.Write("_debug_stage_name=\'" + stage.attributes[0].AttrInput + "@" + parentStageGroupName + "\'");
-                sw.Write("Include \'THlib\\\\UI\\\\debugger.lua\'");
+                sw.Write($@"_debug_stage_name = '{stage.attributes[0].AttrInput}@{parentStageGroupName}'");
+                sw.Write(@"Include 'THlib/UI/debugger.lua'");
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Couldn't save Stage Debug code. Reason:\n{e}");
                 System.Windows.MessageBox.Show(e.ToString());
-            }
-            finally
-            {
-                if (sw != null) sw.Close();
-                if (s != null) s.Close();
             }
         }
 

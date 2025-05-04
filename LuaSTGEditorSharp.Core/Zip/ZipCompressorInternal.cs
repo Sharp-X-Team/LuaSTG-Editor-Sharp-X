@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICSharpCode.SharpZipLib.Zip;
+using Serilog;
 
 namespace LuaSTGEditorSharp.Zip
 {
@@ -13,6 +14,7 @@ namespace LuaSTGEditorSharp.Zip
         private readonly string targetArchivePath;
         private FileStream targetArchiveFS;
         private ZipFile targetArchive;
+        private static ILogger Logger = EditorLogging.ForContext("PlainCopy");
 
         public ZipCompressorInternal(string targetArchivePath)
         {
@@ -30,6 +32,7 @@ namespace LuaSTGEditorSharp.Zip
             }
             catch (Exception e)
             {
+                Logger.Error($"Failed to pack files. Reason:\n{e}");
                 System.Windows.MessageBox.Show($"Packaging failed.\n{e}");
             }
         }
@@ -58,6 +61,7 @@ namespace LuaSTGEditorSharp.Zip
             }
             catch (Exception e)
             {
+                Logger.Error($"Packaging failed. Reason:\n{e}");
                 System.Windows.MessageBox.Show($"Packaging failed.\n{e}");
                 yield break;
             }
@@ -82,7 +86,9 @@ namespace LuaSTGEditorSharp.Zip
         }
 
         //Problem occurs when updating
-        public IEnumerable<string> PackByDictReporting_old(Dictionary<string, string> path, bool removeIfExists)
+        // Runa: Then why keep the code????
+        [Obsolete]
+        private IEnumerable<string> PackByDictReporting_old(Dictionary<string, string> path, bool removeIfExists)
         {
             HashSet<string> zipNames = new HashSet<string>();
             try

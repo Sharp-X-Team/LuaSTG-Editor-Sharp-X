@@ -20,7 +20,7 @@ namespace LuaSTGEditorSharp.EditorData.Compile
         /// <summary>
         /// The child <see cref="PartialProjectProcess"/> of the process need to do.
         /// </summary>
-        internal readonly List<PartialProjectProcess> fileProcess = new List<PartialProjectProcess>();
+        internal readonly List<PartialProjectProcess> fileProcess = [];
 
         /// <summary>
         /// Execute the <see cref="CompileProcess"/>.
@@ -33,8 +33,8 @@ namespace LuaSTGEditorSharp.EditorData.Compile
             WriteRoot();
 
             //Gather file need to pack
-            Dictionary<string, string> resNeedToPack = new Dictionary<string, string>();
-            Dictionary<string, Tuple<string, string>> resPathToMD5 = new Dictionary<string, Tuple<string, string>>();
+            Dictionary<string, string> resNeedToPack = [];
+            Dictionary<string, Tuple<string, string>> resPathToMD5 = [];
 
             if (appSettings.SaveResMeta)
             {
