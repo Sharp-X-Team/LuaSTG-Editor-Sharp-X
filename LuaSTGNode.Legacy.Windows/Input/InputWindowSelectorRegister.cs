@@ -158,7 +158,7 @@ namespace LuaSTGEditorSharp.Windows.Input
             target.Add("position", (src, tar) => new PositionInput(tar));
             target.Add("pointSet", (src, tar) => new PointSetInput(tar));
             target.Add("target", (src, tar) => new Selector(tar, InputWindowSelector.SelectComboBox("target"), "Input Target Object"));
-            target.Add("imageFile", (src, tar) => new PathInput(tar, "Image File (*.png;*.jpg;*.bmp)|*.png;*.jpg;*.bmp", src));
+            target.Add("imageFile", (src, tar) => new PathInput(tar, "Image File (*.png;*.jpg;*.bmp;*.qoi)|*.png;*.jpg;*.bmp;*.qoi", src));
             target.Add("particleFile", (src, tar) => new PathInput(tar, "HGE Particle File (*.psi)|*.psi", src));
             target.Add("fxFile", (src, tar) => new PathInput(tar, "Shader File (*.fx)|*.fx", src));
             target.Add("fontFile", (src, tar) => new PathInput(tar, "Font File (*.fnt)|*.fnt", src));
