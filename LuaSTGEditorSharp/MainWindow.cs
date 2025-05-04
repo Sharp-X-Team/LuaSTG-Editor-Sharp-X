@@ -163,7 +163,7 @@ namespace LuaSTGEditorSharp
             {
                 RecentlyOpenedList.Add(path);
                 RecentlyOpenedMenu.ItemsSource = RecentlyOpenedList;
-                RaiseProertyChanged("RecentlyOpenedList");
+                RaisePropertyChanged("RecentlyOpenedList");
                 (Application.Current as App).RecentlyOpened = RecentlyOpenedList;
                 Properties.Settings.Default.Save();
             }

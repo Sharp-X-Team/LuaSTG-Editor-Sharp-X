@@ -41,7 +41,7 @@ namespace LuaSTGEditorSharp.Windows.Input
                 set
                 {
                     name = value;
-                    RaiseProertyChanged("Name");
+                    RaisePropertyChanged("Name");
                 }
             }
 
@@ -51,7 +51,7 @@ namespace LuaSTGEditorSharp.Windows.Input
                 set
                 {
                     this.value = value;
-                    RaiseProertyChanged("Value");
+                    RaisePropertyChanged("Value");
                 }
             }
 
@@ -61,7 +61,7 @@ namespace LuaSTGEditorSharp.Windows.Input
                 set
                 {
                     this.value = value;
-                    RaiseProertyChanged("Value");
+                    RaisePropertyChanged("Value");
                     parent.CombineParams();
                     parent.RaisePropertyChanged("ResultTXT");
                 }
@@ -69,7 +69,7 @@ namespace LuaSTGEditorSharp.Windows.Input
 
             public event PropertyChangedEventHandler PropertyChanged;
 
-            protected void RaiseProertyChanged(string propName)
+            protected void RaisePropertyChanged(string propName)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
             }

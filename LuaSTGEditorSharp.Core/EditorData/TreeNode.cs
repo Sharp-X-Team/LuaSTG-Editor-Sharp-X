@@ -90,7 +90,7 @@ namespace LuaSTGEditorSharp.EditorData
             set
             {
                 isExpanded = value;
-                RaiseProertyChanged("IsExpanded");
+                RaisePropertyChanged("IsExpanded");
             }
         }
         /// <summary>
@@ -104,7 +104,7 @@ namespace LuaSTGEditorSharp.EditorData
             set
             {
                 isSelected = value;
-                RaiseProertyChanged("IsSelected");
+                RaisePropertyChanged("IsSelected");
             }
         }
         /// <summary>
@@ -147,7 +147,7 @@ namespace LuaSTGEditorSharp.EditorData
                 {
                     isBanned = false;
                 }
-                RaiseProertyChanged("IsBanned"); 
+                RaisePropertyChanged("IsBanned"); 
                 parentWorkSpace?.OriginalMeta.RaisePropertyChanged(GetType().ToString());
             }
         }
@@ -1156,7 +1156,7 @@ namespace LuaSTGEditorSharp.EditorData
         private void CreateMeta(OnCreateEventArgs e)
         {
             MetaInfo meta = GetMeta();
-            RaiseProertyChanged("m");
+            RaisePropertyChanged("m");
             meta?.Create(meta, parentWorkSpace.OriginalMeta);
         }
 
@@ -1209,7 +1209,7 @@ namespace LuaSTGEditorSharp.EditorData
         /// The method that raise property changed.
         /// </summary>
         /// <param name="propName">The parameter of event.</param>
-        public void RaiseProertyChanged(string propName)
+        public void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

@@ -1657,6 +1657,7 @@
     <Content Include="CustomNodes\Example 2.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <Resource Include="ResourceList\SysFont.json" />
     <Resource Include="ResourceList\SysTTF.json" />

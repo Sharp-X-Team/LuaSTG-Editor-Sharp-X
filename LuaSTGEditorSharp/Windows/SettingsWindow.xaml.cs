@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
+using Serilog;
 
 namespace LuaSTGEditorSharp.Windows
 {
@@ -32,6 +33,8 @@ namespace LuaSTGEditorSharp.Windows
 
         public Array ThemeArray => new List<string>() { "LightTheme", "DarkTheme" }.ToArray();
 
+        private static ILogger Logger = EditorLogging.ForContext("SettingsWindow");
+
         #region Settings
 
         private bool ignoreTHLibWarn;
@@ -41,7 +44,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 ignoreTHLibWarn = value;
-                RaiseProertyChanged("IgnoreTHLibWarn");
+                RaisePropertyChanged("IgnoreTHLibWarn");
             }
         }
 
@@ -52,7 +55,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 useFolderPacking = value;
-                RaiseProertyChanged("IgnoreTHLibWarn");
+                RaisePropertyChanged("IgnoreTHLibWarn");
             }
         }
 
@@ -63,7 +66,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 zipExecutablePath = value;
-                RaiseProertyChanged("ZipExecutablePath");
+                RaisePropertyChanged("ZipExecutablePath");
             }
         }
 
@@ -74,7 +77,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 luaSTGExecutablePath = value;
-                RaiseProertyChanged("LuaSTGExecutablePath");
+                RaisePropertyChanged("LuaSTGExecutablePath");
             }
         }
 
@@ -85,7 +88,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 editorOutputName = value;
-                RaiseProertyChanged("LuaSTGExecutablePath");
+                RaisePropertyChanged("LuaSTGExecutablePath");
             }
         }
 
@@ -96,7 +99,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 tempPath = value;
-                RaiseProertyChanged("TempPath");
+                RaisePropertyChanged("TempPath");
             }
         }
 
@@ -107,7 +110,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 debugResolutionX = value;
-                RaiseProertyChanged("DebugResolutionX");
+                RaisePropertyChanged("DebugResolutionX");
             }
         }
 
@@ -118,7 +121,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 debugResolutionY = value;
-                RaiseProertyChanged("DebugResolutionY");
+                RaisePropertyChanged("DebugResolutionY");
             }
         }
 
@@ -138,7 +141,7 @@ namespace LuaSTGEditorSharp.Windows
                     {
                         DebugResolutionY = y;
                     }
-                    RaiseProertyChanged("CombinedResolution");
+                    RaisePropertyChanged("CombinedResolution");
                 }
             }
         }
@@ -165,7 +168,7 @@ namespace LuaSTGEditorSharp.Windows
                 {
                     DebugResolutionX = resX[value];
                     DebugResolutionY = resY[value];
-                    RaiseProertyChanged("IndexedReso");
+                    RaisePropertyChanged("IndexedReso");
                 }
             }
         }
@@ -177,7 +180,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 debugWindowed = value;
-                RaiseProertyChanged("DebugWindowed");
+                RaisePropertyChanged("DebugWindowed");
             }
         }
 
@@ -188,7 +191,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 debugCheat = value;
-                RaiseProertyChanged("DebugCheat");
+                RaisePropertyChanged("DebugCheat");
             }
         }
         private bool subLogWindow;
@@ -198,7 +201,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 subLogWindow = value;
-                RaiseProertyChanged("SubLogWindow");
+                RaisePropertyChanged("SubLogWindow");
             }
         }
 
@@ -209,7 +212,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 debugUpdateLib = value;
-                RaiseProertyChanged("DebugUpdateLib");
+                RaisePropertyChanged("DebugUpdateLib");
             }
         }
 
@@ -220,7 +223,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 debugSaveProj = value;
-                RaiseProertyChanged("DebugSaveProj");
+                RaisePropertyChanged("DebugSaveProj");
             }
         }
 
@@ -231,7 +234,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 packProj = value;
-                RaiseProertyChanged("PackProj");
+                RaisePropertyChanged("PackProj");
             }
         }
 
@@ -242,7 +245,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 autoMoveToNew = value;
-                RaiseProertyChanged("AutoMoveToNew");
+                RaisePropertyChanged("AutoMoveToNew");
             }
         }
 
@@ -253,7 +256,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 md5Check = value;
-                RaiseProertyChanged("MD5Check");
+                RaisePropertyChanged("MD5Check");
             }
         }
 
@@ -264,7 +267,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 authorName = value;
-                RaiseProertyChanged("AuthorName");
+                RaisePropertyChanged("AuthorName");
             }
         }
 
@@ -275,7 +278,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 batchPacking = value;
-                RaiseProertyChanged("BatchPacking");
+                RaisePropertyChanged("BatchPacking");
             }
         }
 
@@ -294,7 +297,7 @@ namespace LuaSTGEditorSharp.Windows
                     pluginPath = "lib\\" + value;
                 }
                 
-                RaiseProertyChanged("PluginPath");
+                RaisePropertyChanged("PluginPath");
             }
         }
 
@@ -305,8 +308,8 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 spaceIndentation = value;
-                RaiseProertyChanged("SpaceIndentation");
-                RaiseProertyChanged("TabIndentation");
+                RaisePropertyChanged("SpaceIndentation");
+                RaisePropertyChanged("TabIndentation");
             }
         }
 
@@ -316,8 +319,8 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 spaceIndentation = !value;
-                RaiseProertyChanged("TabIndentation");
-                RaiseProertyChanged("SpaceIndentation");
+                RaisePropertyChanged("TabIndentation");
+                RaisePropertyChanged("SpaceIndentation");
             }
         }
 
@@ -328,7 +331,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 indentationSpaceLength = value;
-                RaiseProertyChanged("IndentationSpaceLength");
+                RaisePropertyChanged("IndentationSpaceLength");
             }
         }
 
@@ -339,7 +342,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 dynamicDebugReporting = value;
-                RaiseProertyChanged("DynamicDebugReporting");
+                RaisePropertyChanged("DynamicDebugReporting");
             }
         }
 
@@ -350,7 +353,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 useAutoSave = value;
-                RaiseProertyChanged("UseAutoSave");
+                RaisePropertyChanged("UseAutoSave");
             }
         }
 
@@ -361,7 +364,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 autoSaveTimer = value;
-                RaiseProertyChanged("AutoSaveTimer");
+                RaisePropertyChanged("AutoSaveTimer");
             }
         }
 
@@ -372,7 +375,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 currentTheme = value;
-                RaiseProertyChanged("CurrentTheme");
+                RaisePropertyChanged("CurrentTheme");
             }
         }
 
@@ -383,7 +386,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 checkUpdateAtLaunch = value;
-                RaiseProertyChanged("CheckUpdateAtLaunch");
+                RaisePropertyChanged("CheckUpdateAtLaunch");
             }
         }
 
@@ -394,7 +397,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 useDiscordRpc = value;
-                RaiseProertyChanged("UseDiscordRpc");
+                RaisePropertyChanged("UseDiscordRpc");
             }
         }
 
@@ -405,7 +408,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 useRemoteTemplates = value;
-                RaiseProertyChanged("UseRemoteTemplates");
+                RaisePropertyChanged("UseRemoteTemplates");
             }
         }
 
@@ -676,6 +679,8 @@ namespace LuaSTGEditorSharp.Windows
             CheckUpdateAtLaunchSettings = CheckUpdateAtLaunch;
             UseDiscordRpcSettings = UseDiscordRpc;
             UseRemoteTemplatesSettings = UseRemoteTemplates;
+
+            Logger.Information("Settings saved.");
         }
 
         private void ReadSettings()
@@ -714,7 +719,7 @@ namespace LuaSTGEditorSharp.Windows
             ReadSettings();
             InitializeComponent();
 
-            HashSet<string> names = new HashSet<string>();
+            HashSet<string> names = [];
             var dependencyFiles =
                 from string s
                 in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory)
@@ -728,12 +733,11 @@ namespace LuaSTGEditorSharp.Windows
             //new List<string>(pathIgnorance).ForEach((s)=>System.Windows.MessageBox.Show(s));
             //System.Windows.MessageBox.Show(AppDomain.CurrentDomain.BaseDirectory);
 
-            pluginPaths = new ObservableCollection<string>(
-                from string s
+            pluginPaths = [.. from string s
                 in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "\\lib")
                 where Path.GetExtension(s) == ".dll" && names.Contains(Path.GetFileNameWithoutExtension(s))
                 select Path.GetFileName(s)
-                );
+            ];
             //PluginList.ItemsSource = pluginPaths;
         }
 
@@ -761,7 +765,7 @@ namespace LuaSTGEditorSharp.Windows
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaiseProertyChanged(string propName)
+        protected void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
@@ -819,7 +823,7 @@ namespace LuaSTGEditorSharp.Windows
         {
             try
             {
-                Process p = new Process()
+                Process p = new()
                 {
                     StartInfo = new ProcessStartInfo()
                     {

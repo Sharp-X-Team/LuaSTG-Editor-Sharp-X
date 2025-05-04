@@ -46,7 +46,7 @@ namespace LuaSTGEditorSharp.EditorData
             set
             {
                 editWindow = value;
-                RaiseProertyChanged("EditWindow");
+                RaisePropertyChanged("EditWindow");
             }
         }
 
@@ -150,9 +150,9 @@ namespace LuaSTGEditorSharp.EditorData
             set
             {
                 attrInput = value;
-                RaiseProertyChanged("AttrInput");
-                RaiseProertyChanged("AttrInput_InvokeCommand");
-                _parent?.RaiseProertyChanged("ScreenString");
+                RaisePropertyChanged("AttrInput");
+                RaisePropertyChanged("AttrInput_InvokeCommand");
+                _parent?.RaisePropertyChanged("ScreenString");
                 _parent?.parentWorkSpace?.OriginalMeta.RaisePropertyChanged(_parent.GetType().ToString());
             }
         }
@@ -181,7 +181,7 @@ namespace LuaSTGEditorSharp.EditorData
         /// The method that raise property changed.
         /// </summary>
         /// <param name="propName">The parameter of event.</param>
-        protected void RaiseProertyChanged(string propName)
+        protected void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

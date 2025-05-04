@@ -72,7 +72,7 @@ namespace LuaSTGEditorSharp
                 }
                 LuaSTGEditorSharp.Windows.InputWindowSelector.Register(PluginHandler.Plugin.GetInputWindowSelectorRegister());
                 LuaSTGEditorSharp.Windows.InputWindowSelector.AfterRegister();
-                RaiseProertyChanged("m");
+                RaisePropertyChanged("m");
 
                 Lua.SyntaxHighlightLoader.LoadLuaDef();
 
@@ -118,7 +118,7 @@ namespace LuaSTGEditorSharp
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void RaiseProertyChanged(string propName)
+        public void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
@@ -175,7 +175,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 Settings.Default["ZipExecutablePath"] = value;
-                RaiseProertyChanged("ZipExecutablePath");
+                RaisePropertyChanged("ZipExecutablePath");
             }
         }
 
@@ -185,7 +185,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 Settings.Default["LuaSTGExecuteablePath"] = value;
-                RaiseProertyChanged("LuaSTGExecuteablePath");
+                RaisePropertyChanged("LuaSTGExecuteablePath");
             }
         }
         public string EditorOutputName
@@ -194,7 +194,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 Settings.Default["EditorOutputName"] = value;
-                //RaiseProertyChanged("EditorOutputName");
+                //RaisePropertyChanged("EditorOutputName");
             }
         }
 

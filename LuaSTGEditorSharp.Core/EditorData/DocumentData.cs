@@ -34,7 +34,7 @@ namespace LuaSTGEditorSharp.EditorData
             set
             {
                 RawDocName = value;
-                RaiseProertyChanged("DocName");
+                RaisePropertyChanged("DocName");
             }
         }
 
@@ -51,7 +51,7 @@ namespace LuaSTGEditorSharp.EditorData
             set
             {
                 isSelected = value;
-                RaiseProertyChanged("IsSelected");
+                RaisePropertyChanged("IsSelected");
             }
         }
 
@@ -154,7 +154,7 @@ namespace LuaSTGEditorSharp.EditorData
         {
             commandFlow.Peek().Undo();
             undoFlow.Push(commandFlow.Pop());
-            RaiseProertyChanged("DocName");
+            RaisePropertyChanged("DocName");
             //OnEditing(parent);
         }
 
@@ -165,7 +165,7 @@ namespace LuaSTGEditorSharp.EditorData
         {
             undoFlow.Peek().Execute();
             commandFlow.Push(undoFlow.Pop());
-            RaiseProertyChanged("DocName");
+            RaisePropertyChanged("DocName");
             //OnEditing(parent);
         }
 
@@ -182,7 +182,7 @@ namespace LuaSTGEditorSharp.EditorData
             {
                 savedCommand = null;
             }
-            RaiseProertyChanged("DocName");
+            RaisePropertyChanged("DocName");
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace LuaSTGEditorSharp.EditorData
                 commandFlow.Push(command);
                 commandFlow.Peek().Execute();
                 undoFlow = new Stack<Command>();
-                RaiseProertyChanged("DocName");
+                RaisePropertyChanged("DocName");
                 //OnEditing(parent);
                 return true;
             }
@@ -586,7 +586,7 @@ namespace LuaSTGEditorSharp.EditorData
         /// The method that raise property changed.
         /// </summary>
         /// <param name="propName">The parameter of event.</param>
-        public void RaiseProertyChanged(string propName)
+        public void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

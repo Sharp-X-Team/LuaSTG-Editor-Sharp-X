@@ -25,7 +25,7 @@ namespace LuaSTGEditorSharp.EditorData.Document.Meta
             set
             {
                 icon = value;
-                RaiseProertyChanged("Icon");
+                RaisePropertyChanged("Icon");
             }
         }
         [JsonProperty]
@@ -35,7 +35,7 @@ namespace LuaSTGEditorSharp.EditorData.Document.Meta
             set
             {
                 text = value;
-                RaiseProertyChanged("Text");
+                RaisePropertyChanged("Text");
             }
         }
         [JsonProperty]
@@ -76,7 +76,7 @@ namespace LuaSTGEditorSharp.EditorData.Document.Meta
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaiseProertyChanged(string propName)
+        protected void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

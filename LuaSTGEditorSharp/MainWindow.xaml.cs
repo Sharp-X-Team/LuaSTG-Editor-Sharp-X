@@ -46,11 +46,11 @@ using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 using LuaSTGEditorSharp.Notifications;
 using DiscordRPC;
-using DiscordRPC.Logging;
 using Button = System.Windows.Controls.Button;
 using ToastNotifications.Lifetime.Clear;
 using System.Collections.Specialized;
 using System.Net.Http;
+using Serilog;
 
 namespace LuaSTGEditorSharp
 {
@@ -89,7 +89,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 debugString = value;
-                RaiseProertyChanged("DebugString");
+                RaisePropertyChanged("DebugString");
             }
         }
 
@@ -103,7 +103,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 selectedNode = value;
-                RaiseProertyChanged("SelectedNode");
+                RaisePropertyChanged("SelectedNode");
             }
         }
 
@@ -125,6 +125,8 @@ namespace LuaSTGEditorSharp
 
         public DiscordRpcClient DiscordClient;
 
+        public static ILogger Logger = EditorLogging.ForContext("MainWindow");
+
         public MainWindow()
         {
             toolbox = PluginHandler.Plugin.GetToolbox(this);
@@ -140,6 +142,8 @@ namespace LuaSTGEditorSharp
             presetsMenu.ItemsSource = PresetsGetList;
             RecentlyOpenedMenu.ItemsSource = RecentlyOpenedList;
             CompileWorker = this.FindResource("CompileWorker") as BackgroundWorker;
+
+            EditorLogging.Initialize();
 
             SetupDiscordRpc();
             //SetupNotifier();
@@ -159,7 +163,10 @@ namespace LuaSTGEditorSharp
 
             DiscordClient = new DiscordRpcClient("1263260551153319996");
 
-            DiscordClient.Initialize();
+            if (DiscordClient.Initialize())
+                Logger.Information("Discord RPC Initialized.");
+            else
+                Logger.Error("Discord RPC failed to initialize.");
 
             DiscordRpcReset();
         }
@@ -192,6 +199,7 @@ namespace LuaSTGEditorSharp
                 CheckServerFileName = false // Why was that not in the docs
             };
             Sparkle.PreparingToExit += SparkleCloseFiles;
+            Logger.Information("NetSparkle initialized.");
         }
 
         private void SetupAutoSave()
@@ -269,13 +277,18 @@ namespace LuaSTGEditorSharp
             try
             {
                 propData.CommitEdit();
-                if (TestError()) return;
+                if (TestError())
+                    return;
                 ActivatedWorkSpaceData.GatherCompileInfo(App.Current as App);
                 var w = new CodePreviewWindow(string.Concat(selectedNode.ToLua(0)));
                 w.ShowDialog();
                 //SaveXML();
             }
-            catch (Exception e) { MessageBox.Show(e.ToString()); }
+            catch (Exception e)
+            {
+                Logger.Error($"Failed to compile code. Reason:\n{e}");
+                MessageBox.Show(e.ToString());
+            }
         }
 
         private void CreateInvoke(TreeNode newNode)
@@ -463,6 +476,7 @@ namespace LuaSTGEditorSharp
                         return false;
                 }
             }
+            Logger.Information($"Closing file \"{DocumentToRemove.DocName}\".");
             Documents.Remove(DocumentToRemove);
             DocumentToRemove.OnClosing();
             if (propData.ItemsSource is ObservableCollection<AttrItem> oai)
@@ -548,6 +562,7 @@ namespace LuaSTGEditorSharp
             }
             catch (JsonException e)
             {
+                Logger.Error($"Failed to open document. Reason:\n{e}");
                 MessageBox.Show("Failed to open document. Please check whether the targeted file is in current version.\n"
                     + e.ToString()
                     , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -584,6 +599,7 @@ namespace LuaSTGEditorSharp
             }
             catch (JsonException e)
             {
+                Logger.Error($"Failed to open document. Reason:\n{e}");
                 MessageBox.Show("Failed to open document. Please check whether the targeted file is in current version.\n"
                     + e
                     , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -621,22 +637,20 @@ namespace LuaSTGEditorSharp
             {
                 try
                 {
-                    //_Notifier.ShowInfo("Auto saving...");
+                    Logger.Information("Starting auto save...");
                     FileInfo fiDoc = new(doc.DocPath); // Auto Save Proj
                     fiDoc.CopyTo(doc.DocPath + ".backup", true);
                     FileInfo fiMeta = new(doc.DocPath + ".meta"); // Auto Save Proj Meta (imported files)
                     fiMeta.CopyTo(doc.DocPath + ".meta.backup", true);
                     SaveDoc(doc);
-                    //_Notifier.ShowSuccess("Auto save successful.");
+                    Logger.Information("Auto save successful.");
                 }
                 catch (Exception ex)
                 {
                     // If the autosave/backup failed, skip it and try for the next loaded project.
                     // Should only happen if FileInfo failed to initialize (most likely because of a file access violation)
-#if DEBUG
-                    Console.WriteLine(ex.Message);
-#endif
-                    //_Notifier.ShowError("Auto save failed.");
+
+                    Logger.Error($"Auto save failed. Reason:\n{ex}");
                     continue;
                 }
             }
@@ -662,7 +676,10 @@ namespace LuaSTGEditorSharp
                 ActivatedWorkSpaceData.GatherCompileInfo(App.Current as App);
                 ActivatedWorkSpaceData.SaveCode(saveFileDialog.FileName);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Logger.Error($"Exporting code failed. Reason:\n{ex}");
+            }
         }
 
         private void ExportZip(bool run, TreeNode SCDebugger = null, TreeNode StageDebugger = null)
@@ -692,22 +709,18 @@ namespace LuaSTGEditorSharp
                 DebugString = "";
                 tabOutput.IsSelected = true;
             }
-            catch (EXEPathNotSetException)
+            catch (Exception ex)
             {
-
-            }
-            catch (InvalidRelativeResPathException)
-            {
-
-            }
-            catch (InvalidOperationException)
-            {
-
+                Logger.Error($"ExportZip failed. Reason:\n{ex}");
+                if (!(ex is EXEPathNotSetException || ex is InvalidRelativeResPathException || ex is InvalidOperationException))
+                    throw;
             }
         }
 
         private void BeginPackaging(object sender, DoWorkEventArgs args)
         {
+            Logger.Information("Packing process started.");
+
             object[] arguments = args.Argument as object[];
             DocumentData current = arguments[0] as DocumentData;
             TreeNode SCDebugger = arguments[1] as TreeNode;
@@ -732,6 +745,8 @@ namespace LuaSTGEditorSharp
                 process = pdd.parentProj.CompileProcess;
             }
             args.Result = new object[] { process, arguments[3], arguments[4] };
+
+            Logger.Information("Passing results to FinishPacking");
         }
 
         private void PackageProgressReport(object sender, ProgressChangedEventArgs args)
@@ -743,6 +758,8 @@ namespace LuaSTGEditorSharp
 
         private void FinishPackaging(object sender, RunWorkerCompletedEventArgs args)
         {
+            Logger.Information("Finishing packing");
+
             packagingLocked = false;
             object[] arguments = args.Result as object[];
             CompileProcess process = arguments[0] as CompileProcess;
@@ -751,6 +768,7 @@ namespace LuaSTGEditorSharp
             App currentApp = Application.Current as App;
             if (run)
             {
+                Logger.Information("Running LuaSTG");
                 RunLuaSTG(currentApp, process);
             }
             else
@@ -777,10 +795,10 @@ namespace LuaSTGEditorSharp
 
         private void RaiseInsertStateChanged()
         {
-            RaiseProertyChanged("IsBeforeState");
-            RaiseProertyChanged("IsAfterState");
-            RaiseProertyChanged("IsParentState");
-            RaiseProertyChanged("IsChildState");
+            RaisePropertyChanged("IsBeforeState");
+            RaisePropertyChanged("IsAfterState");
+            RaisePropertyChanged("IsParentState");
+            RaisePropertyChanged("IsChildState");
         }
 
         private void ButtonUP_Click(object sender, RoutedEventArgs e)
@@ -1008,7 +1026,8 @@ namespace LuaSTGEditorSharp
             }
             catch (JsonException e)
             {
-                MessageBox.Show("Failed to open document or fix attribute. Please check whether the targeted file is in current version.\n"
+                Logger.Error($"Failed to open document or fix attributes. Reason:\n{e}");
+                MessageBox.Show("Failed to open document or fix attributes. Please check whether the targeted file is in current version.\n"
                     + e.ToString()
                     , "LuaSTG Editor Sharp X", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -1025,10 +1044,10 @@ namespace LuaSTGEditorSharp
             var dialog = new System.Windows.Forms.SaveFileDialog
             {
                 Filter = "Lua Presets|*.lstgpreset",
+                InitialDirectory = Path.GetFullPath(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                    , "LuaSTG Editor Sharp X Presets"))
             };
-            dialog.InitialDirectory = Path.GetFullPath(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                , "LuaSTG Editor Sharp X Presets"));
             string path = "";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -1041,16 +1060,18 @@ namespace LuaSTGEditorSharp
                     sw = new StreamWriter(s, Encoding.UTF8);
                     t.SerializeFile(sw, 0);
                     GetPresets();
+                    Logger.Information("Preset saved.");
                 }
                 catch (Exception e)
                 {
+                    Logger.Error($"Unable to write to file \"{path}\". Reason:\n{e}");
                     MessageBox.Show($"Unable to write to file \"{path}\".\n{e}", "LuaSTG Editor Sharp X"
                         , MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
-                    if (sw != null) sw.Close();
-                    if (s != null) s.Close();
+                    sw?.Close();
+                    s?.Close();
                 }
             }
         }
@@ -1076,6 +1097,7 @@ namespace LuaSTGEditorSharp
                 }
                 catch (Exception e)
                 {
+                    Logger.Error($"Failed to load preset. Reason:\n{e}");
                     MessageBox.Show($"Failed to load preset.\n{e}");
                 }
             }
@@ -1605,11 +1627,11 @@ namespace LuaSTGEditorSharp
         }
 
         #endregion
-        #region ProertyChanged (lol)
+        #region PropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaiseProertyChanged([CallerMemberName] string propName = default)
+        protected void RaisePropertyChanged([CallerMemberName] string propName = default)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

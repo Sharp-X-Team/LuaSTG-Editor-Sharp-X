@@ -73,7 +73,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 debugString = value;
-                RaiseProertyChanged("DebugString");
+                RaisePropertyChanged("DebugString");
             }
         }
 
@@ -87,7 +87,7 @@ namespace LuaSTGEditorSharp
             set
             {
                 selectedNode = value;
-                RaiseProertyChanged("SelectedNode");
+                RaisePropertyChanged("SelectedNode");
             }
         }
 
@@ -161,10 +161,10 @@ namespace LuaSTGEditorSharp
 
         private void RaiseInsertStateChanged()
         {
-            RaiseProertyChanged("IsBeforeState");
-            RaiseProertyChanged("IsAfterState");
-            RaiseProertyChanged("IsParentState");
-            RaiseProertyChanged("IsChildState");
+            RaisePropertyChanged("IsBeforeState");
+            RaisePropertyChanged("IsAfterState");
+            RaisePropertyChanged("IsParentState");
+            RaisePropertyChanged("IsChildState");
         }
 
         #region execution
@@ -1388,7 +1388,7 @@ namespace LuaSTGEditorSharp
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaiseProertyChanged(string propName)
+        protected void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

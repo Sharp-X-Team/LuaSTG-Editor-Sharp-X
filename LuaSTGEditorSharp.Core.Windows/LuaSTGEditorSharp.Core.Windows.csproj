@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="JBMono.ttf" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -66,8 +66,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Laser
         [JsonIgnore, NodeAttribute]
         public string Rotation
         {
-            get => DoubleCheckAttr(2, "color").attrInput;
-            set => DoubleCheckAttr(2, "color").attrInput = value;
+            get => DoubleCheckAttr(2).attrInput;
+            set => DoubleCheckAttr(2).attrInput = value;
         }
 
         [JsonIgnore, NodeAttribute]

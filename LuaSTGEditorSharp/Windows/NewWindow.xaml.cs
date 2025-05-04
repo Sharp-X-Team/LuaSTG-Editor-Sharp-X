@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using Serilog;
 
 namespace LuaSTGEditorSharp.Windows
 {
@@ -33,6 +34,7 @@ namespace LuaSTGEditorSharp.Windows
         private bool allowpr = true;
         private bool allowscpr = true;
         private int modversion = 4096;
+        private static ILogger Logger = EditorLogging.ForContext("NewWindow");
 
         public string FileName
         {
@@ -40,7 +42,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 fileName = value;
-                RaiseProertyChanged("FileName");
+                RaisePropertyChanged("FileName");
             }
         }
 
@@ -50,7 +52,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 author = value;
-                RaiseProertyChanged("Author");
+                RaisePropertyChanged("Author");
             }
         }
 
@@ -60,7 +62,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 allowpr = value;
-                RaiseProertyChanged("AllowPR");
+                RaisePropertyChanged("AllowPR");
             }
         }
 
@@ -70,7 +72,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 allowscpr = value;
-                RaiseProertyChanged("AllowSCPR");
+                RaisePropertyChanged("AllowSCPR");
             }
         }
 
@@ -80,7 +82,7 @@ namespace LuaSTGEditorSharp.Windows
             set
             {
                 modversion = value;
-                RaiseProertyChanged("ModVersion");
+                RaisePropertyChanged("ModVersion");
             }
         }
 
@@ -108,7 +110,9 @@ namespace LuaSTGEditorSharp.Windows
                 select new DefS {
                     Text = Path.GetFileNameWithoutExtension(fi.Name),
                     FullPath = fi.FullName,
-                    Icon = "..\\images\\Icon.png" }];
+                    Icon = "..\\images\\Icon.png"
+                }
+            ];
 
             try
             {
@@ -117,24 +121,27 @@ namespace LuaSTGEditorSharp.Windows
                     client = new();
                     client.DefaultRequestHeaders.UserAgent.ParseAdd("Sharp-X Editor");
 
+                    Logger.Information("Gathering remote template files...");
                     string remoteJson = client.GetStringAsync("https://api.github.com/repos/Sharp-X-Team/Sharp-X-templates/contents/templates").Result;
                     var remoteTemplates = JsonConvert.DeserializeObject<List<RemoteTemplate>>(remoteJson);
+                    Logger.Information($"Found {remoteTemplates.Count} remote templates");
+
                     templates.AddRange([.. from RemoteTemplate rt
-                    in remoteTemplates
-                    // Get all files that ends with ".lstges" and doesn't already exist in the local templates.
-                    where (Path.GetExtension(rt.name) == ".lstges" || Path.GetExtension(rt.name) == "*.lstgproj")
-                        && !templates.Any(x => x.Text == Path.GetFileNameWithoutExtension(rt.name))
-                    select new DefS {
-                        Text = Path.GetFileNameWithoutExtension(rt.name),
-                        FullPath = rt.download_url,
-                        Icon = "..\\images\\IconRemoteTemplate.png"
-                    }
+                        in remoteTemplates
+                        // Get all files that ends with ".lstges" and doesn't already exist in the local templates.
+                        where (Path.GetExtension(rt.name) == ".lstges" || Path.GetExtension(rt.name) == "*.lstgproj")
+                            && !templates.Any(x => x.Text == Path.GetFileNameWithoutExtension(rt.name))
+                        select new DefS {
+                            Text = Path.GetFileNameWithoutExtension(rt.name),
+                            FullPath = rt.download_url,
+                            Icon = "..\\images\\IconRemoteTemplate.png"
+                        }
                     ]);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //
+                Logger.Error($"Failed to gather remote templates. Reason:\n{ex}");
             }
 
             InitializeComponent();
@@ -177,15 +184,17 @@ namespace LuaSTGEditorSharp.Windows
                     f.Close();
                 }
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                TextDescription.Text = $"No description file for \"{sel.Text}\"";
+                TextDescription.Text = $"No description file for \"{sel.Text}\".";
+                Logger.Error($"{TextDescription.Text} Reason:\n{ex}");
             }
             catch (Exception ex)
             {
                 var exc = ex;
                 var djfgklhdfg = exc;
-                TextDescription.Text = $"Couldn't get description for \"{sel.Text}\":\n{ex}";
+                TextDescription.Text = $"Couldn't get description for \"{sel.Text}\".";
+                Logger.Error($"{TextDescription.Text} Reason:\n{ex}");
             }
         }
 
@@ -211,7 +220,7 @@ namespace LuaSTGEditorSharp.Windows
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaiseProertyChanged(string propName)
+        protected void RaisePropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

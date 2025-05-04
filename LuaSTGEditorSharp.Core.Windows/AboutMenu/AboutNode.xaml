@@ -36,7 +36,7 @@
             </TabItem>
             <TabItem x:Name="Pageink" Header="Help" Margin="-2,-2,-2,0">
                 <Grid Margin="0,0,0,-1">
-                    <WebBrowser HorizontalAlignment="Left" Height="564" VerticalAlignment="Top" Width="968" Source="https://ryannthi.github.io/LuaSTG-Editor-Sharp-X/"/>
+                    <WebBrowser HorizontalAlignment="Left" Height="564" VerticalAlignment="Top" Width="968" Source="https://sharp-x-team.github.io/LuaSTG-Editor-Sharp-X/"/>
                 </Grid>
             </TabItem>
 

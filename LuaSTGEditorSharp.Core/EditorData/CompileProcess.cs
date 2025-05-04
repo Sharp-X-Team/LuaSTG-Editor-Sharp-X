@@ -12,6 +12,7 @@ using LuaSTGEditorSharp.EditorData.Document;
 using LuaSTGEditorSharp.EditorData.Compile;
 using LuaSTGEditorSharp.EditorData.Exception;
 using LuaSTGEditorSharp.Zip;
+using Serilog;
 
 namespace LuaSTGEditorSharp.EditorData
 {
@@ -20,6 +21,8 @@ namespace LuaSTGEditorSharp.EditorData
     /// </summary>
     public abstract class CompileProcess
     {
+        public static ILogger Logger = EditorLogging.ForContext("CompileProcess");
+
         /// <summary>
         /// The source <see cref="DocumentData"/> of the process.
         /// </summary>
@@ -151,7 +154,7 @@ namespace LuaSTGEditorSharp.EditorData
             }
             finally
             {
-                if (file != null) file.Close();
+                file?.Close();
             }
         }
 
@@ -172,14 +175,17 @@ namespace LuaSTGEditorSharp.EditorData
         {
             if (SCDebug)
             {
+                Logger.Information("Saving SCDebug Code.");
                 source.SaveSCDebugCode(projLuaPath);
             }
             else if (StageDebug)
             {
+                Logger.Information("Saving Stage Debug Code.");
                 source.SaveStageDebugCode(projLuaPath);
             }
             else
             {
+                Logger.Information("Saving normal lua Code.");
                 source.SaveCode(projLuaPath);
             }
         }
@@ -197,14 +203,15 @@ namespace LuaSTGEditorSharp.EditorData
                 sw = new StreamWriter(s, Encoding.UTF8);
                 sw.Write(rootCode);
             }
-            catch (System.Exception e)
+            catch (System.Exception ex)
             {
-                MessageBox.Show(e.ToString());
+                Logger.Error($"Failed to write root file. Reason:\n{ex}");
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
-                if (sw != null) sw.Close();
-                if (s != null) s.Close();
+                sw?.Close();
+                s?.Close();
             }
         }
 
@@ -243,7 +250,7 @@ namespace LuaSTGEditorSharp.EditorData
                     if (!resPathToMD5.ContainsKey(sArchive))
                         resPathToMD5.Add(sArchive, new Tuple<string, string>(spath, md5));
                 }
-                srMeta.Close();
+                srMeta?.Close();
                 swMeta = new StreamWriter(projMetaPath, false);
                 foreach (KeyValuePair<string, string> resPath in resourceFilePath)
                 {
@@ -276,12 +283,13 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Failed to gather RES META. Reason:\n{e}");
                 MessageBox.Show(e.ToString());
             }
             finally
             {
-                if (srMeta != null) srMeta.Close();
-                if (swMeta != null) swMeta.Close();
+                srMeta?.Close();
+                swMeta?.Close();
             }
         }
 
@@ -327,11 +335,12 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Failed to gather and save RES META. Reason:\n{e}");
                 MessageBox.Show(e.ToString());
             }
             finally
             {
-                if (swMeta != null) swMeta.Close();
+                swMeta?.Close();
             }
         }
 
@@ -341,13 +350,15 @@ namespace LuaSTGEditorSharp.EditorData
         /// <param name="resNeedToPack">The output list of resources need to pack.</param>
         protected void GatherAllRes(Dictionary<string, string> resNeedToPack)
         {
-            if (File.Exists(projMetaPath)) File.Delete(projMetaPath);
+            if (File.Exists(projMetaPath))
+                File.Delete(projMetaPath);
             foreach (KeyValuePair<string, string> resPath in resourceFilePath)
             {
                 bool? undcPath = RelativePathConverter.IsRelativePath(resPath.Value);
                 if (undcPath == true)
                 {
-                    if (string.IsNullOrEmpty(projPath)) throw new InvalidRelativeResPathException(resPath.Value);
+                    if (string.IsNullOrEmpty(projPath))
+                        throw new InvalidRelativeResPathException(resPath.Value);
                     resNeedToPack.Add(resPath.Key, Path.GetFullPath(Path.Combine(projPath, resPath.Value)));
                 }
                 else if (undcPath == false)
@@ -369,7 +380,7 @@ namespace LuaSTGEditorSharp.EditorData
         protected void PackFileUsingInfo(IAppSettings currentApp, Dictionary<string, string> resNeedToPack
             , Dictionary<string, Tuple<string, string>> resPathToMD5, bool includeRoot, bool preserveZip = false)
         {
-            Dictionary<string, string> entry2File = new Dictionary<string, string>();
+            Dictionary<string, string> entry2File = [];
             string temp;
             try
             {
@@ -438,11 +449,13 @@ namespace LuaSTGEditorSharp.EditorData
             }
             catch (System.Exception e)
             {
+                Logger.Error($"Pack process failed. Reason:\n{e}");
                 MessageBox.Show("Pack process failed.\n" + e.ToString());
             }
             finally
             {
-                if (File.Exists(projLuaPath)) File.Delete(projLuaPath);
+                if (File.Exists(projLuaPath))
+                    File.Delete(projLuaPath);
             }
         }
 
