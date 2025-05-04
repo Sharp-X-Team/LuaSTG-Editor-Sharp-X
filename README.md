@@ -3,7 +3,7 @@
 </p><h1 align="center">LuaSTG Editor Sharp X</h1>
 <h4 align="center">
 
-(Current release: [0.77.2](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases))
+(Current release: [0.78.0](https://github.com/RyannThi/LuaSTG-Editor-Sharp-X/releases))
 
 </h4>
 

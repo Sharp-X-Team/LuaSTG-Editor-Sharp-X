@@ -1,19 +1,19 @@
-﻿-- Update Log（January 13th, 2025）
+﻿-- Update Log（May 4th, 2025）
 
-v0.77.4
-- Added a remote template github repo: Those templates can be downloaded via the "New File" window when you create a new project. There is an option to disable those in the settings.
-- Added a log system. The log will save under "editor.log" in the main editor folder. Please send this log if you're experiencing issues so we can help debug them.
-- Revamped the "About" window.
-- Added *.glb files in the model file selector.
-- Fixed the "Play BGM" node (Thanks OLC).
-
-v0.77.3
+v0.78.0
 - New node: "Protected call". Just a "pcall" node accepting children nodes.
 - New node: "Render Animation". There was "load animation" so why not render.
+- Added a remote template github repo: Those templates can be downloaded via the "New File" window when you create a new project. There is an option to disable those in the settings.
+- Added a log system. The log will save under "editor.log" in the main editor folder. Please send this log if you're experiencing issues so we can help debug them.
 - Added a "last = " prefix to the set stage background node.
+- Revamped the "About" window.
+- Added *.glb files in the model file selector.
+- BREAKING: Add File node now support multiple files separated by a `|` character. This might break compability with some files. If this happens, delete and recreate the node.
 - Fixed indentation for the "set smooth value" node.
 - Fixed Simple Bent Lasers.
 - Fixed "3d" view mode being defaulted to "3D".
+- Fixed the "Play BGM" node (Thanks OLC).
+- Fixed the Rotation attribute window being set to "Color" in the "Create Simple Laser" node.
 
 v0.77.2
 - New node: "Create Simple Laser". A plain laser supporting tasking. (Exactly like "Simple Enemies").
