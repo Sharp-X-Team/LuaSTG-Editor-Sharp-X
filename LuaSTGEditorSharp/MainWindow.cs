@@ -157,26 +157,43 @@ namespace LuaSTGEditorSharp
             GetDirInfo(new DirectoryInfo(s), PresetsGetList);
         }
 
+        // I got frustrated.
         public void AddRecentlyOpened(string path)
         {
             try
             {
-                RecentlyOpenedList.Add(path);
+                if (!RecentlyOpenedList.Contains(path))
+                    RecentlyOpenedList.Add(path);
+
+                // Remove duplicates because I hate this
+                List<string> distinct = [.. RecentlyOpenedList.Cast<string>().Distinct(StringComparer.OrdinalIgnoreCase)];
+                
+                RecentlyOpenedList.Clear();
+                // I hate this
+                RecentlyOpenedList.AddRange([.. distinct]);
+
                 RecentlyOpenedMenu.ItemsSource = RecentlyOpenedList;
                 RaisePropertyChanged("RecentlyOpenedList");
                 (Application.Current as App).RecentlyOpened = RecentlyOpenedList;
+                // Save this fucker and hope it works...
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex)
             {
                 // Doesn't work? Fuck you, apparently.
+                // But let's face it, why wouldn't this work except the fact that SharpX is stupid ?
             }
         }
 
         public void GetRecentlyOpened()
         {
+            // ...
             RecentlyOpenedList.Clear();
             RecentlyOpenedList = (Application.Current as App).RecentlyOpened ?? [];
+
+            List<string> distinct = [.. RecentlyOpenedList.Cast<string>().Distinct(StringComparer.OrdinalIgnoreCase)];
+            RecentlyOpenedList.Clear();
+            RecentlyOpenedList.AddRange([.. distinct]);
         }
         
         private void GetDirInfo(DirectoryInfo path, ObservableCollection<FileDirectoryModel> input)
