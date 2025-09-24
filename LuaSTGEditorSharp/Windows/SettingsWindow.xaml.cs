@@ -659,12 +659,14 @@ namespace LuaSTGEditorSharp.Windows
                 if (SelectedToolbox == "Berry")
                     PluginNameInte = "lib\\LuaSTGSubBerryLib.dll";
                 else // THlib
-                PluginNameInte = "lib\\LuaSTGSubLib.dll";
+                    PluginNameInte = "lib\\LuaSTGSubLib.dll";
             }
             else if (LuaSTGExecutableInfos.ProductName.Contains("-x"))
                 PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
             else if (LuaSTGExecutableInfos.ProductName.Contains("Evo"))
                 PluginNameInte = "lib\\LuaSTGEvoLib.dll";
+            else if (LuaSTGExecutableInfos.ProductName.Contains("Flux"))
+                PluginNameInte = "lib\\LuaSTGFluxLib.dll";
             else
                 PluginNameInte = "lib\\LuaSTGLib.Default.dll";
 

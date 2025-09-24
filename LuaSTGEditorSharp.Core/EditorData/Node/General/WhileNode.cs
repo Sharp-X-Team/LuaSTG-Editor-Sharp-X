@@ -45,7 +45,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.General
         {
             string sp = Indent(spacing);
             var i = GetLogicalChildren().OrderBy((s) => (s as IIfChild)?.Priority ?? 0);
-            List<TreeNode> t = new List<TreeNode>(i);
+            List<TreeNode> t = [.. i];
 
             yield return $"{sp}while {Macrolize(0)} do\n";
             foreach (var a in base.ToLua(spacing + 1))
