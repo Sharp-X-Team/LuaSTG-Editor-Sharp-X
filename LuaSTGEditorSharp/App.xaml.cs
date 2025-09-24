@@ -422,6 +422,12 @@ namespace LuaSTGEditorSharp
             set => Settings.Default.RecentlyOpened = value;
         }
 
+        public string SelectedToolbox
+        {
+            get => Settings.Default.SelectedToolbox; 
+            set => Settings.Default.SelectedToolbox = value;
+        }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Settings.Default.Save();

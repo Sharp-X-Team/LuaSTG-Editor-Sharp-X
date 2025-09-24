@@ -412,6 +412,18 @@ namespace LuaSTGEditorSharp.Windows
             }
         }
 
+        private string selectedToolbox;
+        public string SelectedToolbox
+        {
+            get => selectedToolbox;
+            set
+            {
+                selectedToolbox = value;
+                SetTargetVersion();
+                RaisePropertyChanged("SelectedToolbox");
+            }
+        }
+
         #endregion
         #region InSettings
 
@@ -585,6 +597,12 @@ namespace LuaSTGEditorSharp.Windows
             set => mainApp.UseRemoteTemplates = value;
         }
 
+        public string SelectedToolboxSettings
+        {
+            get => mainApp.SelectedToolbox;
+            set => mainApp.SelectedToolbox = value;
+        }
+
         #endregion
         #region Integer box integration
 
@@ -637,7 +655,12 @@ namespace LuaSTGEditorSharp.Windows
             if (LuaSTGExecutableInfos.ProductName.Contains("Plus"))
                 PluginNameInte = "lib\\LuaSTGPlusLib.dll";
             else if (LuaSTGExecutableInfos.ProductName.Contains("Sub"))
+            {
+                if (SelectedToolbox == "Berry")
+                    PluginNameInte = "lib\\LuaSTGSubBerryLib.dll";
+                else // THlib
                 PluginNameInte = "lib\\LuaSTGSubLib.dll";
+            }
             else if (LuaSTGExecutableInfos.ProductName.Contains("-x"))
                 PluginNameInte = "lib\\LuaSTGXLib.Legacy.dll";
             else if (LuaSTGExecutableInfos.ProductName.Contains("Evo"))
@@ -679,6 +702,7 @@ namespace LuaSTGEditorSharp.Windows
             CheckUpdateAtLaunchSettings = CheckUpdateAtLaunch;
             UseDiscordRpcSettings = UseDiscordRpc;
             UseRemoteTemplatesSettings = UseRemoteTemplates;
+            SelectedToolboxSettings = SelectedToolbox;
 
             Logger.Information("Settings saved.");
         }
@@ -712,6 +736,7 @@ namespace LuaSTGEditorSharp.Windows
             CheckUpdateAtLaunch = CheckUpdateAtLaunchSettings;
             UseDiscordRpc = UseDiscordRpcSettings;
             UseRemoteTemplates = UseRemoteTemplatesSettings;
+            SelectedToolbox = SelectedToolboxSettings;
         }
 
         public SettingsWindow()
@@ -739,6 +764,8 @@ namespace LuaSTGEditorSharp.Windows
                 select Path.GetFileName(s)
             ];
             //PluginList.ItemsSource = pluginPaths;
+
+            ToolboxSelector.SelectedItem = SelectedToolbox;
         }
 
         public SettingsWindow(int i) : this()

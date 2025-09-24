@@ -101,6 +101,13 @@
                              Text="{Binding EditorOutputName, ElementName=window}" Grid.Column="2"/>
                     <CheckBox x:Name="FolderPackingCheck" Content="Use Folder Packing" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="669" Height="26" 
                         IsChecked="{Binding UseFolderPacking, ElementName=window}" Checked="FolderPackingCheck_Checked" Grid.ColumnSpan="3"/>
+                    <Label Content="Selected Toolbox (Require restarting the editor)" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <ComboBox IsEditable="True" Text="{Binding SelectedToolbox, ElementName=window}"
+                              HorizontalAlignment="Left" Height="26" Margin="240,340,0,0" VerticalAlignment="Top" Width="161" Grid.Column="3"
+                              x:Name="ToolboxSelector">
+                        <ComboBoxItem Content="THlib"/>
+                        <ComboBoxItem Content="Berry"/>
+                    </ComboBox>
                 </Grid>
             </TabItem>
             <TabItem x:Name="DebugTab" Header="Debug">
