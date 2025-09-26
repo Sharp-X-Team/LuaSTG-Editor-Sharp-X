@@ -649,6 +649,9 @@ namespace LuaSTGEditorSharp.Windows
 
         private void SetTargetVersion()
         {
+            if (!File.Exists(LuaSTGExecutablePath))
+                return;
+
             FileVersionInfo LuaSTGExecutableInfos = FileVersionInfo.GetVersionInfo(LuaSTGExecutablePath);
 
             string PluginNameInte;
